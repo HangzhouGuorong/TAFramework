@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<raml version="2.1" xmlns="raml21.xsd">
+	<cmData type="actual" scope="all" domain="mcRNCRNWCMPlan" adaptationVersionMajor="mcRN4.1">
+		<header>
+			<log dateTime="2014-09-04T10:45:15" action="modified" user="mcRNC" appInfo="mcRNC OMS">mcRNC CM event plan</log>
+		</header>
+		<managedObject class="FMCG" distName="RNC-1/FMCG-1" version="mcRN4.1" operation="update">
+			<p name="GSMcauseCPICHEcNo">1</p>
+			<p name="GsmDLTxPwrThrAMR">-12</p>
+			<p name="FMCGChangeOrigin">5</p>
+		</managedObject>
+	</cmData>
+</raml>

@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<raml version="2.1" xmlns="raml21.xsd">
+	<cmData type="actual" scope="all" domain="RNCRNWCMPLAN" adaptationVersionMajor="RN8.1">
+		<header>
+			<log dateTime="2014-09-03T11:33:09" action="modified" user="CRNC" appInfo="cRNC OMS">RNC CM event plan</log>
+		</header>
+		<managedObject class="IUPS" distName="RNC-1/IUPS-1" version="RN8.1" operation="update">
+			<list name="PSCNNRI">
+				<item>
+					<p name="NRIMinForPSCN">2</p>
+					<p name="NRIMaxForPSCN">3</p>
+				</item>
+				<item>
+					<p name="NRIMinForPSCN">23</p>
+					<p name="NRIMaxForPSCN">45</p>
+				</item>
+				<item>
+					<p name="NRIMinForPSCN">138</p>
+					<p name="NRIMaxForPSCN">229</p>
+				</item>
+				<item>
+					<p name="NRIMinForPSCN">527</p>
+					<p name="NRIMaxForPSCN">666</p>
+				</item>
+				<item>
+					<p name="NRIMinForPSCN">775</p>
+					<p name="NRIMaxForPSCN">967</p>
+				</item>
+				<item>
+					<p name="NRIMinForPSCN">180</p>
+					<p name="NRIMaxForPSCN">951</p>
+				</item>
+				<item>
+					<p name="NRIMinForPSCN">399</p>
+					<p name="NRIMaxForPSCN">499</p>
+				</item>
+				<item>
+					<p name="NRIMinForPSCN">47</p>
+					<p name="NRIMaxForPSCN">510</p>
+				</item>
+				<item>
+					<p name="NRIMinForPSCN">523</p>
+					<p name="NRIMaxForPSCN">555</p>
+				</item>
+				<item>
+					<p name="NRIMinForPSCN">818</p>
+					<p name="NRIMaxForPSCN">929</p>
+				</item>
+				<item>
+					<p name="NRIMinForPSCN">101</p>
+					<p name="NRIMaxForPSCN">148</p>
+				</item>
+				<item>
+					<p name="NRIMinForPSCN">505</p>
+					<p name="NRIMaxForPSCN">640</p>
+				</item>
+				<item>
+					<p name="NRIMinForPSCN">229</p>
+					<p name="NRIMaxForPSCN">676</p>
+				</item>
+				<item>
+					<p name="NRIMinForPSCN">409</p>
+					<p name="NRIMaxForPSCN">982</p>
+				</item>
+				<item>
+					<p name="NRIMinForPSCN">946</p>
+					<p name="NRIMaxForPSCN">1001</p>
+				</item>
+				<item>
+					<p name="NRIMinForPSCN">235</p>
+					<p name="NRIMaxForPSCN">255</p>
+				</item>
+			</list>
+			<p name="IUPSChangeOrigin">5</p>
+		</managedObject>
+	</cmData>
+</raml>

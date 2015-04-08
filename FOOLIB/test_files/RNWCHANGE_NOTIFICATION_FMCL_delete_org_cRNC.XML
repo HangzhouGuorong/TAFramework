@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<raml version="2.1" xmlns="raml21.xsd">
+	<cmData type="actual" scope="all" domain="RNCRNWCMPLAN" adaptationVersionMajor="RN8.1">
+		<header>
+			<log dateTime="2014-09-02T11:05:04" action="modified" user="CRNC" appInfo="cRNC OMS">RNC CM event plan</log>
+		</header>
+		<managedObject class="FMCL" distName="RNC-1/FMCL-1" version="RN8.1" operation="delete">
+			<p name="FMCLChangeOrigin">2</p>
+		</managedObject>
+	</cmData>
+</raml>

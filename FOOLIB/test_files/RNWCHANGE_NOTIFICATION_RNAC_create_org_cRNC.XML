@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<raml version="2.1" xmlns="raml21.xsd">
+	<cmData type="actual" scope="all" domain="RNCRNWCMPLAN" adaptationVersionMajor="RN8.1">
+		<header>
+			<log dateTime="2014-09-01T15:27:04" action="modified" user="CRNC" appInfo="cRNC OMS">RNC CM event plan</log>
+		</header>
+		<managedObject class="RNAC" distName="RNC-1/RNAC-1" version="RN8.1" operation="create">
+			<p name="ICRHostOperatorId">255</p>
+			<p name="EDCHSlopeOfTheCurve">20</p>
+			<p name="DownlinkInnerLoopPCStepSize">1</p>
+			<p name="PCPreamble">0</p>
+			<p name="RNACChangeOrigin">5</p>
+			<p name="UlScrCodeMin">1000000</p>
+			<p name="ULpuncturingLimit">7</p>
+			<p name="DLpuncturingLimit">5</p>
+			<p name="PCrangeDL">20</p>
+			<p name="FmaxPeriodPDCP">256</p>
+			<p name="FmaxTimePDCP">5</p>
+			<p name="ExpectReorderingPDCP">0</p>
+			<p name="HeaderCompressionMethod">0</p>
+			<p name="MaxHeaderPDCP">168</p>
+			<p name="TCPspacePDCP">15</p>
+			<p name="NonTCPspacePDCP">15</p>
+			<p name="MaxFreezingTime">2</p>
+			<p name="MaxNumberOfReAttemptsCong">2</p>
+			<list name="DLmaxBitRatePerSF">
+				<item>
+					<p name="DLmaxBitRateSF128">75</p>
+					<p name="DLmaxBitRateSF16">600</p>
+					<p name="DLmaxBitRateSF256">35</p>
+					<p name="DLmaxBitRateSF32">309</p>
+					<p name="DLmaxBitRateSF64">133</p>
+				</item>
+			</list>
+			<list name="ULmaxBitRatePerSF">
+				<item>
+					<p name="ULmaxBitRateSF128">30</p>
+					<p name="ULmaxBitRateSF16">273</p>
+					<p name="ULmaxBitRateSF256">15</p>
+					<p name="ULmaxBitRateSF32">120</p>
+					<p name="ULmaxBitRateSF64">60</p>
+					<p name="ULmaxBitRateSF8">500</p>
+				</item>
+			</list>
+			<list name="GainFactorControlPartPRACHmessage">
+				<item>
+					<p name="PrachBetaC120">10</p>
+					<p name="PrachBetaC15">13</p>
+					<p name="PrachBetaC30">12</p>
+					<p name="PrachBetaC60">11</p>
+				</item>
+			</list>
+			<list name="GainFactorDataPartPRACHmessage">
+				<item>
+					<p name="PrachBetaD120">15</p>
+					<p name="PrachBetaD15">15</p>
+					<p name="PrachBetaD30">15</p>
+					<p name="PrachBetaD60">15</p>
+				</item>
+			</list>
+			<p name="SignallingLinkInactivityTimer">4</p>
+			<p name="UpLinkInitialTransmitPowerMode">0</p>
+			<p name="UpLinkRecoveryPeriodPowerMode">0</p>
+			<p name="DLLoadSource">2</p>
+			<p name="PeriodULRCAMR">255</p>
+			<p name="AdjustmentPeriod">12</p>
+			<p name="MaxAdjustmentStep">8</p>
+			<p name="AdjustmentRatio">4</p>
+			<p name="PrefSubtract">2</p>
+			<p name="MinPrefChange">3</p>
+			<p name="BitRateSetPSNRT">0</p>
+			<p name="TFDCHZeroBitRate">16384</p>
+			<p name="StepSizeForDCHBLER">30</p>
+			<p name="StepSizeForEDCHBLER">3</p>
+			<p name="DCHSlopeOfTheCurve">2</p>
+			<p name="LoadBasedAMRCodecMode">0</p>
+			<p name="AMRLoadTxPower">2</p>
+			<p name="AMRNumofReconf">30</p>
+			<p name="AMRwinSizeSCload">20</p>
+			<p name="FreePtxSafetyMarginStr">0</p>
+			<p name="TDMultForHSDPAStreaming">6</p>
+			<p name="DLInLoopPCStepSizeCPC">2</p>
+			<p name="SRBDelay">7</p>
+			<p name="HSFACHResetTimer">2</p>
+			<p name="HSFACHDiscardTimer">2</p>
+			<p name="DynHSUPABLERPeakRateRx">1</p>
+			<p name="DynHSUPABLERBurstDataRx">1</p>
+			<p name="DynHSUPABLERContDataRx10">1</p>
+			<p name="DynHSUPABLERMaxRateThrB">80</p>
+			<p name="DynHSUPABLERAlgTrgTime">1</p>
+			<p name="DynHSUPABLERFrameWinSiz">15</p>
+			<p name="DynHSUPABLERThrBurstyTP">1</p>
+			<p name="RRCConnSetupMsgSize">0</p>
+			<p name="AutoACRLevelUpdInt">400</p>
+			<p name="AutoACRestForCellPCH">80</p>
+			<p name="AutoACRTrigRNCLoad">10</p>
+			<p name="AutoACMaxRestLevel">8</p>
+			<p name="AutoACIncRestHysRTWP">45</p>
+			<p name="AutoACDecRestHysRTWP">41</p>
+			<p name="AutoACIncRestHysNRTQ">34</p>
+			<p name="AutoACDecRestHysNRTQ">21</p>
+			<p name="ULFastOLPCDTXthld">1</p>
+			<p name="FOLPCStepSizSIRTgt">1</p>
+			<p name="FOLPCSIRTgtModInt">200</p>
+			<p name="PagingRestrictionInd">0</p>
+			<p name="RAU_LAU_RestrictionInd">0</p>
+			<p name="L1ContBLERTrgtEDCH2">-10</p>
+			<p name="DynHSUPABLERContDataRx2">2</p>
+			<p name="DynHSUPABLERMaxRateThrC10">80</p>
+			<p name="DynHSUPABLERMaxRateThrC2">80</p>
+			<p name="DynHSUPABurstyPeriod">20</p>
+			<p name="L1PeakRateBLERTrgtEDCH">-11</p>
+			<p name="L1BurstDataBLERTrgtEDCH">-10</p>
+			<p name="L1ContBLERTrgtEDCH10">-7</p>
+			<p name="RNARDSACCell_DCH">0</p>
+			<p name="RNARDSACCell_PCH">0</p>
+			<p name="RNARDSACGuardTime">30</p>
+			<p name="EmeCallPCIValue">0</p>
+			<p name="EmeCallPVIValue">0</p>
+			<p name="EmeCallLevelValue">14</p>
+			<p name="AutoACResFromCellPCH">0</p>
+		</managedObject>
+	</cmData>
+</raml>

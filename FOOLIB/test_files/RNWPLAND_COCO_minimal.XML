@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<raml version="2.1" xmlns="raml21.xsd">
+    <cmData type="actual" scope="all" domain="RNCRNWCMPLAN" adaptationVersionMajor="RN7.0">
+        <header>
+            <log dateTime="2012-11-06T09:18:41" action="modified" user="CRNC" appInfo="cRNC OMS">cRNC plan</log>
+        </header>
+        <managedObject class="COCO" distName="RNC-1/COCO-1" version="RN7.0" operation="create">
+           <list name="VPLTP">
+                <item>
+                    <p name="COCOVPI">1</p>
+                    <p name="VPLTPATMIfId">1</p>
+                    <p name="VPLTPPCR01Egr">500</p>
+                    <p name="VPLTPCDVT01Egr">1</p>
+                    <p name="VPLTPTrafficShaping">1</p>
+                </item>
+            </list>
+            <list name="CNBAPTP">
+                <item>
+                    <p name="CNBAPPCR01Egr">3</p>
+                    <p name="CNBAPPCR01Ing">4</p>
+                    <p name="CNBAPTPATMIfId">1</p>
+                    <p name="CNBAPVCI">33</p>
+                    <p name="CNBAPVPI">1</p>
+                </item>
+            </list>
+            <list name="DNBAPTP">
+                <item>
+                    <p name="CControlPortID">1</p>
+                    <p name="DNBAPATMIfId">1</p>
+                    <p name="DNBAPVCI">34</p>
+                    <p name="DNBAPVPI">1</p>
+                    <p name="DNBAPPCR01Ing">24</p>
+                    <p name="DNBAPPCR01Egr">25</p>
+                </item>
+            </list>
+           <list name="AAL2SignLinkTP">
+                <item>
+                    <p name="AAL2SignLinkATMIfId">1</p>
+                    <p name="AAL2SignLinkTPId">1</p>
+                    <p name="AAL2SignLinkVCI">35</p>
+                    <p name="AAL2SignLinkVPI">1</p>
+                    <p name="AAL2SigPCR01Ing">26</p>
+                    <p name="AAL2SigPCR01Egr">27</p>
+                    <p name="AAL2SigEarlyPacketDiscard">0</p>  <!-- has default but there is a bug in PABROS -->
+                    <p name="AAL2SigPartialPacketDiscard">0</p>  <!-- has default but there is a bug in PABROS -->
+                </item>
+            </list>
+            <list name="AAL2TP">
+                <item>
+                    <p name="AAL2PathId">1</p>
+                    <p name="AAL2SignLinkATMIfId">1</p>
+                    <p name="AAL2SignLinkVCI">35</p>
+                    <p name="AAL2SignLinkVPI">1</p>
+                    <p name="AAL2UPATMIfId">1</p>
+                    <p name="AAL2UPVCI">36</p>
+                    <p name="AAL2UPVPI">1</p>
+                    <p name="AAL2UPUsage">0</p>  <!-- has default but there is a bug in PABROS -->
+                    <p name="WAMId">1</p>
+                    <p name="AAL2UPPCR01Ing">123</p>
+                    <p name="AAL2UPPCR01Egr">234</p>
+                    <p name="COCOA2EA">1</p>
+                </item>
+            </list>
+        </managedObject>
+    </cmData>
+</raml>

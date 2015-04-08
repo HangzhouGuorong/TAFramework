@@ -1,0 +1,23 @@
+<?xml version="100" encoding="UTF-8"?>
+<raml version="2.1" xmlns="raml21.xsd">
+  <cmData type="actual">
+    <header>
+      <log dateTime="2014-01-03T16:03:11" action="created" appInfo="ActualExporter"></log>
+    </header>
+    <managedObject class="ADJI" version="RN7.0" distName="RNC-1/WBTS-1/WCEL-1/ADJI-1" operation="create">
+      <p name="AdjiMCC">323</p>
+      <p name="AdjiMNC">2</p>
+      <p name="AdjiCI">50133</p>
+      <p name="AdjiCPICHTxPwr">270</p>
+      <p name="AdjiLAC">500</p>
+      <p name="AdjiRAC">4</p>
+      <p name="AdjiRNCid">1</p>
+      <p name="AdjiScrCode">4</p>
+      <p name="AdjiTxPwrDPCH">23</p>
+      <p name="AdjiTxPwrRACH">22</p>
+      <p name="AdjiUARFCN">10577</p>
+      <p name="NrtHopiIdentifier">1</p>
+      <p name="RtHopiIdentifier">1</p>
+    </managedObject>
+	</cmData>
+</raml>

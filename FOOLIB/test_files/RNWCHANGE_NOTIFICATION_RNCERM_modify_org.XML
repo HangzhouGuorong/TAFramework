@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<raml version="2.1" xmlns="raml21.xsd">
+	<cmData type="actual" scope="all" domain="mcRNCRNWCMPlan" adaptationVersionMajor="mcRN4.1">
+		<header>
+			<log dateTime="2014-09-04T10:11:57" action="modified" user="mcRNC" appInfo="mcRNC OMS">mcRNC CM event plan</log>
+		</header>
+		<managedObject class="RNCERM" distName="RNC-1/RNCERM-1" version="mcRN4.1" operation="update">
+			<p name="RNCERMChangeOrigin">5</p>
+			<list name="RebalanceBlockBtslist">
+				<item>
+					<p name="WBTSId">1</p>
+				</item>
+				<item>
+					<p name="WBTSId">2</p>
+				</item>
+			</list>
+		</managedObject>
+	</cmData>
+</raml>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<raml version="2.1" xmlns="raml21.xsd">
+  <cmData type="actual">
+    <header>
+      <log dateTime="2014-01-03T16:03:11" action="created" appInfo="ActualExporter"></log>
+    </header>
+    <managedObject class="ADJD" distName="RNC-1/WBTS-1/WCEL-1/ADJD-1" version="mcRN4.1" operation="update">
+        <p name="AdjdRNCId">1</p>
+        <p name="AdjdCI">1</p>
+        <p name="AdjdLAC">1</p>
+        <p name="AdjdRAC">1</p>
+        <p name="AdjdScrCode">2</p>
+        <p name="AdjdDERR">0</p>
+        <p name="AdjdTxDiv">0</p>
+        <p name="AdjdCPICHTxPwr">60</p>
+        <p name="ADJDChangeOrigin">5</p>
+        <p name="AdjdSRBHopsId">1</p>
+        <p name="AdjdMCC">123</p>
+        <p name="AdjdMNC">456</p>
+        <p name="AdjdMNCLength">3</p>
+        <p name="AdjdRTHopsId">1</p>
+        <p name="AdjdNRTHopsId">1</p>
+        <p name="AdjdHSDPAHopsId">1</p>
+        <p name="AdjdRTWithHSDPAHopsId">1</p>
+    </managedObject>
+  </cmData>
+</raml>

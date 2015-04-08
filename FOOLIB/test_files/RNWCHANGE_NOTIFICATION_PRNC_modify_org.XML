@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+                    <raml version="2.1" xmlns="raml21.xsd">
+                    <cmData type="actual" scope="all" domain="RNCRNWCMPLAN" adaptationVersionMajor="RN8.0">
+                    <header>
+                        <log dateTime="2014-03-07T11:10:45" action="modified" user="CRNC" appInfo="cRNC OMS">cRNC plan upload</log>
+                    </header><managedObject class="PRNC" distName="PRNC-1" version="RN8.0" operation="update"><p name="ConnectionRetryCounter">5</p><p name="OMSIpAddress">10.20.30.40</p><p name="PRNCName">new name</p><p name="ServingOMSSwoRequest">1</p></managedObject></cmData>
+                                </raml>

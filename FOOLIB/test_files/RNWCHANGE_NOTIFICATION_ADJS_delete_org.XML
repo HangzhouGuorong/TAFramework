@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<raml version="2.1" xmlns="raml21.xsd">
+	<cmData type="actual" scope="all" domain="mcRNCRNWCMPlan" adaptationVersionMajor="mcRN4.1">
+		<header>
+			<log dateTime="2014-09-02T10:13:35" action="modified" user="mcRNC" appInfo="mcRNC OMS">mcRNC CM event plan</log>
+		</header>
+		<managedObject class="ADJS" distName="RNC-1/WBTS-1/WCEL-1/ADJS-1" version="mcRN4.1" operation="delete">
+			<p name="ADJSChangeOrigin">2</p>
+		</managedObject>
+	</cmData>
+</raml>

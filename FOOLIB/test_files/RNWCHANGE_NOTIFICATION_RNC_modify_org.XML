@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<raml version="2.1" xmlns="raml21.xsd">
+	<cmData type="actual" scope="all" domain="mcRNCRNWCMPlan" adaptationVersionMajor="mcRN4.1">
+		<header>
+			<log dateTime="2014-09-04T10:10:21" action="modified" user="mcRNC" appInfo="mcRNC OMS">mcRNC CM event plan</log>
+		</header>
+		<managedObject class="RNC" distName="RNC-1" version="mcRN4.1" operation="update">
+			<p name="RNCName">RNC-0</p>
+			<p name="RNCChangeOrigin">5</p>
+			<p name="SecOMSIpAddress">10.236.190.117</p>
+			<list name="MACLogicalChPriority">
+				<item>
+					<p name="MACLogChPriSRB1">3</p>
+					<p name="MACLogChPriSRB2">2</p>
+					<p name="MACLogChPriSRB3">1</p>
+				</item>
+			</list>
+			<p name="SigCapLicWarnThreshold">1</p>
+			<p name="WCELIdleAlarmTimeout">11</p>
+			<p name="LTEPeriodicTriggerTimer">30</p>
+			<p name="RCPMtputDLCl01to02Range">1</p>
+			<p name="RCPMtputDLCl02to03Range">2</p>
+			<p name="RCPMtputDLCl03to04Range">3</p>
+			<p name="RCPMtputDLCl04to05Range">4</p>
+			<p name="RCPMtputDLCl05to06Range">5</p>
+			<p name="RCPMtputDLCl06to07Range">6</p>
+			<p name="RCPMtputDLCl07to08Range">7</p>
+			<p name="RCPMtputDLCl08to09Range">8</p>
+			<p name="RCPMtputDLCl09to10Range">9</p>
+			<p name="RCPMtputDLCl10to11Range">10</p>
+			<p name="RCPMtputDLCl11to12Range">11</p>
+			<p name="RCPMtputDLCl12to13Range">12</p>
+			<p name="RCPMtputULCl01to02Range">1</p>
+			<p name="RCPMtputULCl02to03Range">2</p>
+			<p name="RCPMtputULCl03to04Range">3</p>
+			<p name="RCPMtputULCl04to05Range">4</p>
+			<p name="UePeriodicMeasInterval">6</p>
+			<p name="UePeriodicMeasCpuLimit">75</p>
+			<p name="CommonMNC">45</p>
+			<p name="CommonMCC">123</p>
+			<p name="CommonMNCLength">2</p>
+		</managedObject>
+	</cmData>
+</raml>

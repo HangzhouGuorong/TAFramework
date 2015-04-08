@@ -1,0 +1,106 @@
+*** Settings ***
+Suite Setup       MyTest Setup
+Suite Teardown    MyTest Teardown
+Test Setup        MyTest Case Setup
+Test Teardown     MyTest Case Teardown
+Library           Dialogs
+Resource          resources/FOOLIB_resources.html
+Resource          ../../../../../SVNRobotLib/mcRNC/TALIB/src/il.html
+
+*** Variables ***
+${Message_monitoring}    False
+
+*** Test Cases ***
+DMXMessageMonitoring
+    ${monitor_handle}=    start_oam_message_monitoring
+    set variable    ${monitor_handle}
+    Pause Execution
+    stop_oam_message_monitoring    ${monitor_handle}
+
+Log something
+    log    here
+
+Clear DB Thoroughly
+    clear_rnwdb_thoroughly
+
+Plan Upload
+    ${new_xml} =    upload_plan
+
+Plan Download
+    set test variable    ${dstfile}    RNWPLAND_WDEV1.XML
+    upload_generated_file    ${CURDIR}/test_files/${dstfile}
+    ${initial_upload_plan}=    upload_plan
+    ${output}    download_plan    ${dstfile}
+    ${dl_xml}    type_a_file    ${XML_PATH}/${dstfile}
+    ${final_upload_plan}=    upload_plan
+
+Clear All Except RNC and RNxx Objects
+    clear_all_except_rnc_objs_from_db
+
+Check RNC Objects
+    upload_generated_file    ${CURDIR}/test_files/RNWPLAND_RNC_all_objects.XML
+    check_all_rnc_objects
+    add_RNCIPAddress
+
+Make Delete Plan From Upload Plan
+    ${new_xml} =    upload_plan
+    ${delete_xml} =    make_delete_plan_from_upload_plan    ${new_xml}
+    write_plan_text_to_file    generated_delete_plan.XML    ${delete_xml}
+
+Compare Two XML files
+    ${cmdata_first}    get_cmdata_from_file    RNWPLAND_COMBINE_all_create.XML
+    ${cmdata_second}    get_cmdata_from_file    RNWCREATE_max.XML
+    ${diff_dict}    compare_plans_cmdata_into_dict    ${cmdata_first}    ${cmdata_second}
+    print_diff_dict    ${diff_dict}
+
+Create DA Config For MO
+    ${new_xml_file}    combine_mo_plan_with_dependency    WCEL    ${False}
+
+Create PLAN Config For MO
+    ${new_xml_file}    combine_mo_plan_with_dependency    WCEL    ${True}
+
+Restore RNC to Initial State
+    restore_rnc_to_initial_state
+    comment    set test variable    ${dstfile}    RestoreRNCtoInitialState.XML
+    comment    upload_a_file    ${dstfile}
+    comment    ${output}    download_plan    ${dstfile}
+
+Create Initial RNC Config
+    create_base_config_for_object    RNC
+
+Configure OMS Connection
+    add_RNCIPAddress
+
+RaktorTestMode
+    metadata_test_framework.Set Raktor Test Mode    ON
+    metadata_test_framework.Enable Optionality    255
+
+Combine All MOs
+    combine_all_mo_plan
+
+ConfigureLicense
+    configure_license
+
+TestKeyword
+    get_all_recovery_group_names
+
+Get PRNC Mode
+    get_prnc_mode
+
+*** Keywords ***
+MyTest Setup
+    metadata_connect
+
+MyTest Teardown
+    metadata_disconnect
+
+MyTest Case Setup
+    stop_log_monitoring    ${None}
+    ${LOG_HANDLE}=    start_log_monitoring
+    Set Suite Variable    ${LOG_HANDLE}
+    ${monitor_handle}=    Run Keyword If    ${MessageMonitoring}    start_oam_message_monitoring
+    Run Keyword If    ${MessageMonitoring}    Set Suite Variable    ${monitor_handle}
+
+MyTest Case Teardown
+    stop_log_monitoring    ${LOG_HANDLE}
+    Run Keyword If    ${MessageMonitoring}    stop_oam_message_monitoring    ${monitor_handle}

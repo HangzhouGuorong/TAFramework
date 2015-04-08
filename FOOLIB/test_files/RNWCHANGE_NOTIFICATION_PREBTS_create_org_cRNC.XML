@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<raml version="2.1" xmlns="raml21.xsd">
+	<cmData type="actual" scope="all" domain="RNCRNWCMPLAN" adaptationVersionMajor="RN8.1">
+		<header>
+			<log dateTime="2014-09-01T15:27:04" action="modified" user="CRNC" appInfo="cRNC OMS">RNC CM event plan</log>
+		</header>
+		<managedObject class="PREBTS" distName="RNC-1/PREBTS-1" version="RN8.1" operation="create">
+			<p name="BTSID">2</p>
+			<p name="AutoConnSiteID">DAAPADII</p>
+			<p name="AutoConnHWID">DIIPADAA</p>
+			<p name="TechnologyInformation">3</p>
+			<p name="Version">WN8.0</p>
+		</managedObject>
+	</cmData>
+</raml>

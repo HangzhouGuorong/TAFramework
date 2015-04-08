@@ -1,0 +1,40 @@
+<raml version="2.1" xmlns="raml21.xsd">
+	<cmData type="actual" scope="all" domain="RNCRNWCMPLAN" adaptationVersionMajor="RN8.1">
+		<header>
+			<log dateTime="2014-06-26T14:53:54" action="modified" user="CRNC" appInfo="cRNC OMS">RNC CM event plan</log>
+		</header>
+		<managedObject class="FMCG" distName="RNC-1/FMCG-1" version="RN8.1" operation="update">
+			<p name="AMRDirReCell">0</p>
+			<p name="ISHOClcauseCPICHEcNo">0</p>
+			<p name="ISHOClcauseCPICHrscp">0</p>
+			<p name="ISHOClcauseTxPwrUL">0</p>
+			<p name="ISHOClcauseTxPwrDL">0</p>
+			<p name="DLDPCHTxPwrClOffset">-3</p>
+			<p name="MaxBSICIdentTime">0</p>
+			<p name="GSMcauseCPICHEcNo">0</p>
+			<p name="GSMcauseCPICHrscp">0</p>
+			<p name="GSMcauseTxPwrDL">0</p>
+			<p name="GSMcauseTxPwrUL">0</p>
+			<p name="GSMcauseUplinkQuality">0</p>
+			<p name="GsmDLTxPwrThrAMR">-6</p>
+			<p name="GsmDLTxPwrThrCS">-6</p>
+			<p name="GsmDLTxPwrThrNrtPS">-2</p>
+			<p name="GsmDLTxPwrThrRtPS">-6</p>
+			<p name="GsmMaxMeasPeriod">12</p>
+			<p name="GsmMeasAveWindow">6</p>
+			<p name="GsmMeasRepInterval">2</p>
+			<p name="GsmMinHoInterval">10</p>
+			<p name="GsmMinMeasInterval">2</p>
+			<p name="GsmNcellSearchPeriod">0</p>
+			<p name="GsmUETxPwrFilterCoeff">8</p>
+			<p name="GsmUETxPwrThrAMR">-3</p>
+			<p name="GsmUETxPwrThrCS">-3</p>
+			<p name="GsmUETxPwrThrNrtPS">-1</p>
+			<p name="GsmUETxPwrThrRtPS">-3</p>
+			<p name="GsmUETxPwrTimeHyst">11</p>
+			<p name="FMCGChangeOrigin">5</p>
+			<p name="IMSIbasedGsmHo">0</p>
+			<p name="GsmMinSLHOInterval">30</p>
+		</managedObject>
+	</cmData>
+</raml

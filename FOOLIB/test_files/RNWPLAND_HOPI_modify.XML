@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<raml version="2.1" xmlns="raml21.xsd">
+    <cmData type="actual" scope="all" domain="RNCRNWCMPLAN" adaptationVersionMajor="RN7.0">
+        <header>
+            <log dateTime="2012-11-06T09:18:41" action="modified" user="CRNC" appInfo="cRNC OMS">cRNC plan upload</log>
+        </header>
+        <managedObject class="HOPI" distName="RNC-1/HOPI-1" version="mcRN4.1" operation="update">
+            <p name="AdjiPenaltyTimeNCHO">10</p>
+            <p name="AdjiPriorityHSCAHO">0</p>
+            <p name="AdjiPriorityDCellCAHO">0</p>
+            <p name="AdjiPriorityMIMOCAHO">0</p>
+            <p name="BlindHORSCPThr">-92</p>
+            <p name="AdjiPriorityReDir">0</p>
+            <p name="AdjiHCSpriority">0</p>
+            <p name="AdjiHCSthreshold">0</p>
+            <p name="AdjiPenaltyTime">0</p>
+            <p name="AdjiTempOffset1">0</p>
+            <p name="AdjiTempOffset2">0</p>
+            <p name="AdjiQrxlevMin">-58</p>
+            <p name="AdjiQqualMin">-18</p>
+            <p name="AdjiQoffset1">0</p>
+            <p name="AdjiQoffset2">0</p>
+            <p name="AdjiEcNoMargin">2</p>
+            <p name="AdjiMinEcNo">23</p>
+            <p name="AdjiMinRSCP">16</p>
+            <p name="AdjiPlossMargin">2</p>
+            <p name="AdjiPriorityCoverage">0</p>
+            <p name="AdjiPriorityQuality">0</p>
+            <p name="AdjiPrioritySLHO">0</p>
+            <p name="AdjiMinRscpNCHO">-95</p>
+            <p name="AdjiMinEcNoNCHO">-28</p>
+            <p name="AdjiAbsPrioCellReselec">0</p>
+            <p name="AdjiQqualminFDD">-18</p> 
+            <p name="AdjiQrxlevminFDD">-58</p>
+            <p name="AdjiThreshigh">0</p> 
+            <p name="AdjiThreslow">0</p>
+        </managedObject>
+    </cmData>
+    
+</raml>

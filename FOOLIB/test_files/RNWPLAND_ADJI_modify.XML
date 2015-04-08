@@ -1,0 +1,31 @@
+<?xml version="100" encoding="UTF-8"?>
+<raml version="2.1" xmlns="raml21.xsd">
+  <cmData type="actual">
+    <header>
+      <log dateTime="2014-01-03T16:03:11" action="created" appInfo="ActualExporter"></log>
+    </header>
+    <managedObject class="ADJI" version="RN7.0" distName="RNC-1/WBTS-1/WCEL-1/ADJI-1" operation="update">
+      <p name="AdjiMCC">232</p>
+      <p name="AdjiMNC">110</p>
+      <p name="AdjiMNCLength">3</p>
+      <p name="AdjiCI">50122</p>
+      <p name="AdjiCPICHTxPwr">280</p>
+      <p name="AdjiComLoadMeasDRNCCellNCHO">0</p>
+      <p name="AdjiEcNoOffsetNCHO">12</p>
+      <p name="AdjiHandlingBlockedCellSLHO">0</p>
+      <p name="AdjiLAC">510</p>
+      <p name="AdjiNCHOHSPASupport">0</p>
+      <p name="AdjiRAC">5</p>
+      <p name="AdjiRNCid">50</p>
+      <p name="AdjiSIB">1</p>
+      <p name="AdjiScrCode">5</p>
+      <p name="AdjiTxDiv">0</p>
+      <p name="AdjiTxPwrDPCH">24</p>
+      <p name="AdjiTxPwrRACH">21</p>
+      <p name="AdjiUARFCN">10588</p>
+      <p name="BlindHOTargetCell">0</p>
+      <p name="NrtHopiIdentifier">1</p>
+      <p name="RtHopiIdentifier">1</p>
+    </managedObject>
+	</cmData>
+</raml>

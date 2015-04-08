@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<raml version="2.1" xmlns="raml21.xsd">
+	<cmData type="actual" scope="all" domain="RNCRNWCMPLAN" adaptationVersionMajor="RN8.1">
+		<header>
+			<log dateTime="2014-09-01T15:27:05" action="modified" user="CRNC" appInfo="cRNC OMS">RNC CM event plan</log>
+		</header>
+		<managedObject class="ADJE" distName="RNC-1/WBTS-1/WCEL-1/ADJE-1" version="RN8.1" operation="create">
+			<p name="AdjePhysicalCellId">1</p>
+			<p name="AdjeMCC">123</p>
+			<p name="AdjeENodeBId">1</p>
+			<p name="AdjeCellId">1</p>
+			<p name="AdjeTAC">1</p>
+			<p name="AdjLIdentifier">1</p>
+			<p name="ADJEChangeOrigin">5</p>
+			<p name="AdjeMNC">45</p>
+			<p name="AdjeMNCLength">2</p>
+		</managedObject>
+	</cmData>
+</raml>

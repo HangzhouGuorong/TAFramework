@@ -1,0 +1,38 @@
+<?xml version="100" encoding="UTF-8"?>
+<raml version="2.1" xmlns="raml21.xsd">
+  <cmData type="actual">
+    <header>
+      <log dateTime="2014-01-03T16:03:11" action="created" appInfo="ActualExporter"></log>
+    </header>
+    <managedObject class="IPNB" version="RN6.0_2.0" distName="RNC-1/IPNB-1" operation="create" id="1000002635804">
+      <list name="DNBAP">
+        <item>
+            <p name="CControlPortID">4724</p>
+        </item>
+        <item>
+            <p name="CControlPortID">1</p>
+         </item>
+         <item>
+            <p name="CControlPortID">2</p>
+        </item>
+        <item>
+            <p name="CControlPortID">3</p>
+        </item>
+        <item>
+            <p name="CControlPortID">4</p>
+         </item>
+         <item>
+            <p name="CControlPortID">5</p>
+        </item>
+      </list>   
+      <p name="IPBasedRouteId">405</p>
+      <p name="MinSCTPPortIub">49960</p>
+      <p name="NBAPDSCP">46</p>
+      <p name="NodeBIPAddress">10.116.181.137</p>
+      <p name="MaxSCTPFrameSize">900</p>
+      <p name="SourceNBAPIPNetmask">12</p>
+      <p name="SourceNBAPIPAddress">55.66.77.88</p>
+      <p name="VRF">abcde</p>
+    </managedObject>
+	</cmData>
+</raml>

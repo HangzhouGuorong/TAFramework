@@ -1,0 +1,181 @@
+<xsd:schema 
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
+	xmlns:raml="raml21.xsd" 
+	targetNamespace="raml21.xsd" 
+	elementFormDefault="qualified" 
+	attributeFormDefault="unqualified">
+
+  <!-- ============================= -->
+  <!-- ============================= -->
+  <!-- ============================= -->
+  <xsd:simpleType name="versions">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="2.1"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="planType">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="actual"/>
+      <xsd:enumeration value="plan"/>
+      <xsd:enumeration value="defaults"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="scopeType">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="all"/>
+      <xsd:enumeration value="hierarchy"/>
+      <xsd:enumeration value="changes"/>
+      <xsd:enumeration value="selection"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="operationType">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="create"/>
+      <xsd:enumeration value="update"/>
+      <xsd:enumeration value="delete"/>
+      <xsd:enumeration value="auto"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+  <!-- ============================= -->
+  <!-- ============================= -->
+  <!-- ============================= -->
+  <xsd:element name="raml">
+    <xsd:annotation>
+      <xsd:documentation>RadioAccess Markup Language 2.1 definition</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element ref="raml:cmData" maxOccurs="unbounded"/>
+      </xsd:sequence>
+      <xsd:attribute name="version" type="raml:versions" use="required"/>
+    </xsd:complexType>
+  </xsd:element>
+  <!-- ============================= -->
+  <!-- ============================= -->
+  <!-- ============================= -->
+  <xsd:element name="cmData">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element ref="raml:header"/>
+        <xsd:element ref="raml:managedObject" minOccurs="0" maxOccurs="unbounded"/>
+      </xsd:sequence>
+      <xsd:attribute name="type" type="raml:planType" use="required"/>
+      <xsd:attribute name="scope" type="raml:scopeType" use="optional"/>
+      <xsd:attribute name="name" type="xsd:string" use="optional"/>
+      <xsd:attribute name="id" type="xsd:string" use="optional"/>
+      <xsd:attribute name="domain" type="xsd:string" use="optional"/>
+      <xsd:attribute name="adaptationVersionMajor" type="xsd:string" use="optional"/>
+    </xsd:complexType>
+  </xsd:element>
+  <!-- ============================= -->
+  <!-- ============================= -->
+  <!-- ============================= -->
+  <xsd:element name="header">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element ref="raml:log" maxOccurs="unbounded"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <!-- ============================= -->
+  <!-- ============================= -->
+  <!-- ============================= -->
+  <xsd:element name="log">
+    <xsd:complexType>
+      <xsd:simpleContent>
+        <xsd:extension base="xsd:string">
+          <xsd:attribute name="dateTime" type="xsd:dateTime" use="required"/>
+          <xsd:attribute name="action" type="xsd:string" use="required"/>
+          <xsd:attribute name="user" type="xsd:string" use="optional"/>
+          <xsd:attribute name="appInfo" type="xsd:string" use="optional"/>
+          <xsd:attribute name="appVersion" type="xsd:string" use="optional"/>
+          <xsd:attribute name="adaptationVersionMinor" type="xsd:string" use="optional"/>
+        </xsd:extension>
+      </xsd:simpleContent>
+    </xsd:complexType>
+  </xsd:element>
+  <!-- ============================= -->
+  <!-- ============================= -->
+  <!-- ============================= -->
+  <xsd:element name="managedObject">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element ref="raml:defaults" minOccurs="0"/>
+        <xsd:element ref="raml:extension" minOccurs="0" maxOccurs="unbounded"/>
+        <xsd:choice minOccurs="0" maxOccurs="unbounded">
+          <xsd:element ref="raml:p"/>
+          <xsd:element ref="raml:list"/>
+        </xsd:choice>
+      </xsd:sequence>
+      <xsd:attribute name="class" type="xsd:string" use="required"/>
+      <xsd:attribute name="version" type="xsd:string" use="optional"/>
+      <xsd:attribute name="operation" type="raml:operationType" use="optional"/>
+      <xsd:attribute name="distName" type="xsd:string" use="optional"/>
+      <xsd:attribute name="id" type="xsd:string" use="optional"/>
+      <xsd:attribute name="name" type="xsd:string" use="optional"/>
+      <xsd:attribute name="vendor" type="xsd:string" use="optional"/>
+      <xsd:attribute name="timeStamp" type="xsd:dateTime" use="optional"/>
+    </xsd:complexType>
+  </xsd:element>
+  <!-- ============================= -->
+  <!-- ============================= -->
+  <!-- ============================= -->
+  <xsd:element name="defaults">
+    <xsd:complexType>
+      <xsd:attribute name="name" type="xsd:string" use="required"/>
+      <xsd:attribute name="id" type="xsd:string" use="optional"/>
+      <xsd:attribute name="status" type="xsd:string" use="optional"/>
+    </xsd:complexType>
+  </xsd:element>
+  <!-- ============================= -->
+  <!-- ============================= -->
+  <!-- ============================= -->
+  <xsd:element name="extension">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:choice minOccurs="0" maxOccurs="unbounded">
+          <xsd:element ref="raml:p"/>
+          <xsd:element ref="raml:list"/>
+        </xsd:choice>
+      </xsd:sequence>
+      <xsd:attribute name="name" type="xsd:string" use="optional"/>
+    </xsd:complexType>
+  </xsd:element>
+  <!-- ============================= -->
+  <!-- ============================= -->
+  <!-- ============================= -->
+  <xsd:element name="p">
+    <xsd:complexType>
+      <xsd:simpleContent>
+        <xsd:extension base="xsd:string">
+          <xsd:attribute name="name" type="xsd:string" use="optional"/>
+        </xsd:extension>
+      </xsd:simpleContent>
+    </xsd:complexType>
+  </xsd:element>
+  <!-- ============================= -->
+  <!-- ============================= -->
+  <!-- ============================= -->
+  <xsd:element name="item">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element ref="raml:p" minOccurs="0" maxOccurs="unbounded"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <!-- ============================= -->
+  <!-- ============================= -->
+  <!-- ============================= -->
+  <xsd:element name="list">
+    <xsd:complexType>
+      <xsd:choice>
+        <xsd:element ref="raml:p" minOccurs="0" maxOccurs="unbounded"/>
+        <xsd:element ref="raml:item" minOccurs="0" maxOccurs="unbounded"/>
+      </xsd:choice>
+      <xsd:attribute name="name" type="xsd:string" use="required"/>
+    </xsd:complexType>
+  </xsd:element>
+  <!-- ============================= -->
+  <!-- ============================= -->
+  <!-- ============================= -->
+</xsd:schema>

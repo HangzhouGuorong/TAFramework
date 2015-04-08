@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<raml version="2.1" xmlns="raml21.xsd">
+    <cmData type="actual" scope="all" domain="RNCRNWCMPLAN" adaptationVersionMajor="RN7.0">
+        <header>
+            <log dateTime="2012-11-06T09:18:41" action="modified" user="CRNC" appInfo="cRNC OMS">cRNC plan upload</log>
+        </header>
+        <managedObject class="RNTRM" distName="RNC-1/RNTRM-1" version="RN7.0" operation="create">
+			<p name="IurDATree">2</p>
+			<p name="IubDATree">1</p>
+			<p name="IuDATree">3</p>
+			<p name="UsedSRBALCSet">3</p>
+			<p name="HSDPAFlowControlLowThresholdDedicatedVCC">35</p>
+			<p name="HSDPAFlowControlLowThresholdSharedVCC">35</p>
+			<p name="HSDPAFlowControlTargetDelayDedicatedVCC">205</p>
+			<p name="HSDPAFlowControlTargetDelaySharedVCC">205</p>
+			<p name="THP1DelaySensitivitySwitch">0</p>
+			<p name="THP2DelaySensitivitySwitch">0</p>
+			<p name="THP3DelaySensitivitySwitch">0</p>
+			<p name="NRTDCHFlowControlTargetDelay">100</p>
+			<p name="ToAWSOffsetForOverbook">100</p>
+			<p name="ToAWEOffsetForOverbook">10</p>
+			<p name="ULCACSwitch">2</p>
+			<p name="EchoRequestSending">0</p>
+			<p name="IPStackErrorTimer">30</p>
+			<p name="N3Requests">5</p>
+			<p name="T3Response">10</p>
+			<p name="DSCPForGTPSignalling">34</p>
+			<list name="ActivityFactorForHSPA">
+				<item>
+					<p name="AfRTHSDPA">100</p>
+					<p name="AfRTHSUPA">100</p>
+					<p name="AfSRBOnHSDPA">1</p>
+					<p name="AfSRBOnHSUPA">1</p>
+                    <p name="AfPTTDL">60</p>
+                    <p name="AfPTTUL">60</p>
+				</item>
+			</list>
+			<list name="ActivityFactorForNRTDCHTrafficBearers">
+				<item>
+					<p name="Af128NRTDCHDL">100</p>
+					<p name="Af128NRTDCHUL">100</p>
+					<p name="Af16NRTDCHDL">100</p>
+					<p name="Af16NRTDCHUL">100</p>
+					<p name="Af256NRTDCHDL">100</p>
+					<p name="Af256NRTDCHUL">100</p>
+					<p name="Af32NRTDCHDL">100</p>
+					<p name="Af32NRTDCHUL">100</p>
+					<p name="Af384NRTDCHDL">100</p>
+					<p name="Af384NRTDCHUL">100</p>
+					<p name="Af64NRTDCHDL">100</p>
+					<p name="Af64NRTDCHUL">100</p>
+					<p name="Af8NRTDCHDL">100</p>
+					<p name="Af8NRTDCHUL">100</p>
+				</item>
+			</list>
+			<list name="ActivityFactorForCSDCHTrafficBearers">
+				<item>
+					<p name="Af144CSStreDL">100</p>
+					<p name="Af144CSStreUL">100</p>
+					<p name="Af576CSStreDL">100</p>
+					<p name="Af576CSStreUL">100</p>
+					<p name="Af64CSConDL">100</p>
+					<p name="Af64CSConUL">100</p>
+				</item>
+			</list>
+			<list name="ActivityFactorForAMRDCHTrafficBearers">
+				<item>
+					<p name="Af122AMRDL">60</p>
+					<p name="Af122AMRUL">60</p>
+					<p name="Af59AMRDL">60</p>
+					<p name="Af59AMRUL">60</p>
+				</item>
+			</list>
+			<list name="ActivityFactorForRTPSTrafficBearers">
+				<item>
+					<p name="Af128RTPSAMDL">100</p>
+					<p name="Af128RTPSAMUL">100</p>
+					<p name="Af128RTPSUMDL">100</p>
+					<p name="Af128RTPSUMUL">100</p>
+					<p name="Af16RTPSAMDL">100</p>
+					<p name="Af16RTPSAMUL">100</p>
+					<p name="Af16RTPSUMDL">100</p>
+					<p name="Af16RTPSUMUL">100</p>
+					<p name="Af256RTPSAMDL">100</p>
+					<p name="Af256RTPSUMDL">100</p>
+					<p name="Af32RTPSAMDL">100</p>
+					<p name="Af32RTPSAMUL">100</p>
+					<p name="Af32RTPSUMDL">100</p>
+					<p name="Af32RTPSUMUL">100</p>
+					<p name="Af64RTPSAMDL">100</p>
+					<p name="Af64RTPSAMUL">100</p>
+					<p name="Af64RTPSUMDL">100</p>
+					<p name="Af64RTPSUMUL">100</p>
+					<p name="Af8RTPSAMDL">100</p>
+					<p name="Af8RTPSAMUL">100</p>
+					<p name="Af8RTPSUMDL">100</p>
+					<p name="Af8RTPSUMUL">100</p>
+				</item>
+			</list>
+			<list name="ActivityFactorForDCCHTrafficBearers">
+				<item>
+					<p name="Af128And136DCCHDL">8</p>
+					<p name="Af128And136DCCHUL">8</p>
+					<p name="Af16And17DCCHDL">60</p>
+					<p name="Af16And17DCCHUL">60</p>
+					<p name="Af32And34DCCHDL">30</p>
+					<p name="Af32And34DCCHUL">30</p>
+				</item>
+			</list>
+			<list name="ActivityFactorForFACHRACHTrafficBearers">
+				<item>
+					<p name="AfFACHCCDL">10</p>
+					<p name="AfFACHCIDL">10</p>
+					<p name="AfFACHContUL">10</p>
+					<p name="AfFACHSDL">10</p>
+					<p name="AfFACHUDL">10</p>
+					<p name="AfRACH208UL">10</p>
+					<p name="AfRACHContDL">10</p>
+				</item>
+			</list>
+			<list name="ActivityFactorForPCHTrafficBearers">
+				<item>
+					<p name="AfPCHContUL">10</p>
+					<p name="AfPCHDL">10</p>
+				</item>
+			</list>
+			<p name="RespSyncModEnableIP">0</p>
+			<p name="RespSyncCounterIP">15</p>
+			<p name="RespSyncTimerIP">30</p>
+			<p name="RespSyncTimerSatIP">100</p>
+			<p name="DSCPBTSOMToOMS">10</p>
+			<p name="DSCPBTSOMToBTS">10</p>
+			<p name="A2EA">4900001010</p>
+		</managedObject>
+    </cmData>
+</raml>

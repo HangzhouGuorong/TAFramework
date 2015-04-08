@@ -1,0 +1,83 @@
+<raml version="2.1" xmlns="raml21.xsd">
+	<cmData type="actual" scope="all" domain="RNCRNWCMPLAN" adaptationVersionMajor="RN8.1">
+		<header>
+			<log dateTime="2014-06-26T12:42:44" action="modified" user="CRNC" appInfo="cRNC OMS">RNC CM event plan</log>
+		</header>
+		<managedObject class="RNFC" distName="RNC-1/RNFC-1" version="RN8.1" operation="update">					<p name="WDEVControlEnabled">0</p>
+			<p name="RNFCChangeOrigin">5</p>
+			<p name="HLSModeSelection">0</p>
+			<p name="CMmasterSwitch">1</p>
+			<p name="SLHOCmAllowedNRT">1</p>
+			<p name="SignConnActivitySupervision">4</p>
+			<p name="CVUserInactInSignConnRel">1</p>
+			<p name="IuPSrelWait3G2GMultiServ">4</p>
+			<p name="PowerBalancing">1</p>
+			<p name="DLOptimisationUsage">1</p>
+			<p name="CCCHforCUCallowed">1</p>
+			<p name="AMRWithHSDSCH">1</p>
+			<p name="HSDPAMobility">1</p>
+			<p name="FlexUpgrUsage">1</p>
+			<p name="DynUsageHSDPAReturnChannel">1</p>
+			<p name="HSDPADynamicResourceAllocation">1</p>
+			<p name="HSDPA16KBPSReturnChannel">1</p>
+			<p name="HSDPA48UsersEnabled">0</p>
+			<p name="WireLessPriorityService">0</p>
+			<p name="WPSCallRestriction">0</p>
+			<p name="AMRWithEDCH">0</p>
+			<p name="HSPAInterRNCMobility">1</p>
+			<p name="ISHOCancellation">1</p>
+			<p name="CUCforPCHtoDCHallowed">1</p>
+			<p name="MOCNenabled">1</p>
+			<p name="MIBPLMNIdIncluded">0</p>
+			<p name="FRLCEnabled">1</p>
+			<p name="PWSMDriftAllowed">0</p>
+			<p name="RRCSetupCCHEnabledR99">0</p>
+			<p name="PostVerifPeriodDLSynch">1</p>
+			<p name="DCHScheOverIur">1</p>
+			<p name="ISHOInIurMobility">0</p>
+			<p name="AutomDLPlanUpdEnabled">1</p>
+			<p name="DCHBitRateBalancing">1</p>
+			<p name="EUTRAdetection">0</p>
+			<p name="RABDRAEnabled">0</p>
+			<p name="FlexULRLCEnabled">0</p>
+			<p name="EmergencyCallISHOSupport">0</p>
+			<p name="IntelligentEmergencyCallISHOSupport">0</p>
+			<p name="EmergencyCallRedirect">0</p>
+			<p name="PBSpolicy">1</p>
+			<p name="PSOpThroUsage">15</p>
+			<p name="HSPAOverIurExt">1</p>
+			<p name="FastDormancyEnabled">1</p>
+			<p name="CapaSmartphoneEnabled">0</p>
+			<p name="LFDProfEnabled">1</p>
+			<p name="HSUPADynBLEREnabled">1</p>
+			<p name="FastPCHSwitchEnabled">0</p>
+			<p name="DCHtoPCHEnabled">1</p>
+			<p name="SRVCCEnabled">0</p>
+			<p name="CSFBEnabled">0</p>
+			<p name="DCH00SuppOnIurEnabled">1</p>
+			<p name="IFHOOverIurExt">1</p>
+			<p name="AutoACResEnabled">1</p>
+			<p name="FasterOLPCEnabled">1</p>
+			<p name="FemtoHandoverControl">1</p>
+			<p name="UEEvent6f6gOffEnabled">0</p>
+			<p name="LBAMRMuteCallPrevention">0</p>
+			<p name="RABFailDueUESTCorr">1</p>
+			<p name="MRABRelocVendSpCorr">0</p>
+			<p name="CSCallSetUpFACHPCHImpr">0</p>
+			<p name="PPACEnabled">1</p>
+			<p name="SIBCapabilityCheck">1</p>
+			<p name="RRCReDirEnabled">1</p>
+			<p name="DataSessionProfEnabled">0</p>
+			<p name="ConfigurableRCPMtputEnabled">1</p>
+			<p name="IMSIMeasMDTEnabled">0</p>
+			<p name="AMRCodecSet74Enabled">0</p>
+			<p name="AMRCodecSetEnabled">0</p>
+			<p name="WBAMRCodecSetEnabled">1</p>
+			<p name="IFHOOverIurEnabled">0</p>
+			<p name="SubscriberTrace">0</p>
+			<p name="InBearerAppPrioEnabled">0</p>
+			<p name="AutoACResBTSEnabled">0</p>
+			<p name="BTSLoadIndSel">0</p>
+		</managedObject>
+	</cmData>
+</raml

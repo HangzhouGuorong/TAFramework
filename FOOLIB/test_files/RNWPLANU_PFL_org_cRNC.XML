@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<raml version="2.1" xmlns="raml21.xsd">
+     <cmData type="actual" scope="all" domain="RNCRNWCMPLAN" adaptationVersionMajor="RN7.0">
+         <header>
+             <log dateTime="2012-11-06T09:18:41" action="modified" user="mcRNC" appInfo="cRNC OMS">cRNC plan upload</log>
+         </header>
+    <managedObject class="PFL" distName="RNC-1/PFL-1" version="mcRN4.1" operation="create">
+        <p name="PFLChangeOrigin">5</p>
+        <p name="LaySelWeightPrefLayer">1000</p>
+        <p name="LaySelWeightBand">0</p>
+        <p name="LaySelWeightRSCP">0</p>
+        <p name="BlindHORSCPThrAbove">0</p>
+        <p name="BlindHORSCPThrBelow">-126</p>
+        <p name="AMRToNonPreferredLayer">0</p>
+        <p name="LaySelWeightLoad">0</p>
+        <p name="LaySelLowLoadPref">0</p>
+        <p name="HSPALoadMargin">2</p>
+        <p name="HSPALoadThreshold">3</p>
+        <list name="PFLR99NRT"></list>
+        <list name="PFLR99Str"></list>
+        <list name="PFLR99AMR"></list>
+        <list name="PFLR99AMRNRT"></list>
+        <list name="PFLHSDPANRT"></list>
+        <list name="PFLHSDPAStr"></list>
+        <list name="PFLHSDPAAMR"></list>
+        <list name="PFLHSDPAAMRNRT"></list>
+        <list name="PFLHSPANRT"></list>
+        <list name="PFLHSPAStr"></list>
+        <list name="PFLHSPAAMR"></list>
+        <list name="PFLHSPAAMRNRT"></list>
+        <list name="PFLFDPCHNRT"></list>
+        <list name="PFLFDPCHStr"></list>
+        <list name="PFLFDPCHAMR"></list>
+        <list name="PFLFDPCHAMRNRT"></list>
+        <list name="PFL64QAMNRT"></list>
+        <list name="PFL64QAMStr"></list>
+        <list name="PFL64QAMAMR"></list>
+        <list name="PFL64QAMAMRNRT"></list>
+        <list name="PFLMIMONRT"></list>
+        <list name="PFLMIMOStr"></list>
+        <list name="PFLMIMOAMR"></list>
+        <list name="PFLMIMOAMRNRT"></list>
+        <list name="PFLDCHSDNRT"></list>
+        <list name="PFLDCHSDStr"></list>
+        <list name="PFLDCHSDAMR"></list>
+        <list name="PFLDCHSDAMRNRT"></list>
+        <list name="PFLCSHSNRT"></list>
+        <list name="PFLCSHSStr"></list>
+        <list name="PFLCSHSAMR"></list>
+        <list name="PFLCSHSAMRNRT"></list>
+        <list name="PFLDCMINRT"></list>
+        <list name="PFLDCMIStr"></list>
+        <list name="PFLDCMIAMR"></list>
+        <list name="PFLDCMIAMRNRT"></list>
+        <list name="PFLFastMovUECS"></list>
+        <list name="PFLFastMovUEPS"></list>
+        <list name="PFLDBHSDNRT"></list>
+        <list name="PFLDBHSDStr"></list>
+        <list name="PFLDBHSDAMR"></list>
+        <list name="PFLDBHSDAMRNRT"></list>
+    </managedObject>
+  </cmData>
+</raml>

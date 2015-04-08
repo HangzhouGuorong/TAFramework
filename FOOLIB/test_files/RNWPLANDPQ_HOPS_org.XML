@@ -1,0 +1,28 @@
+<raml version="2.1" xmlns="raml21.xsd">
+	<cmData type="actual" scope="all" domain="mcRNCRNWCMPlan" adaptationVersionMajor="mcRN4.1">
+		<header>
+			<log dateTime="2014-06-26T13:49:58" action="modified" user="mcRNC" appInfo="mcRNC OMS">mcRNC CM event plan</log>
+		</header>
+		<managedObject class="HOPS" distName="RNC-1/HOPS-1" version="mcRN4.1" operation="update">
+			<p name="HSDPAAvailabilityIur">1</p>
+			<p name="HSUPAAvailabilityIur">1</p>
+			<p name="HHOMarginAverageEcNo">10</p>
+			<p name="ReleaseMarginAverageEcNo">25</p>
+			<p name="EcNoAveragingWindow">8</p>
+			<p name="HHOMarginPeakEcNo">4</p>
+			<p name="ReleaseMarginPeakEcNo">7</p>
+			<p name="EnableRRCRelease">0</p>
+			<p name="EnableInterRNCsho">1</p>
+			<p name="AdjsHCSpriority">0</p>
+			<p name="AdjsHCSthreshold">0</p>
+			<p name="AdjsPenaltyTime">0</p>
+			<p name="AdjsTempOffset1">0</p>
+			<p name="AdjsTempOffset2">0</p>
+			<p name="AdjsQrxlevMin">-44</p>
+			<p name="AdjsQqualMin">-18</p>
+			<p name="AdjsQoffset1">0</p>
+			<p name="AdjsQoffset2">0</p>
+			<p name="HOPSChangeOrigin">5</p>
+		</managedObject>
+	</cmData>
+</raml

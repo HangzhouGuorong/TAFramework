@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<raml version="2.1" xmlns="raml21.xsd">
+	<cmData type="actual" scope="all" domain="mcRNCRNWCMPlan" adaptationVersionMajor="mcRN4.1">
+		<header>
+			<log dateTime="2014-09-01T09:52:44" action="modified" user="mcRNC" appInfo="mcRNC OMS">mcRNC CM event plan</log>
+		</header>
+		<managedObject class="FMCL" distName="RNC-1/FMCL-1" version="mcRN4.1" operation="create">
+			<p name="FMCLChangeOrigin">5</p>
+			<p name="LTEMeasAveWindow">7</p>
+			<p name="LTEMaxMeasPeriod">13</p>
+			<p name="LTEMinMeasInterval">6</p>
+			<p name="LTENcarrFreqSearchPeriod">4</p>
+			<p name="LTEMinHoInterval">10</p>
+		</managedObject>
+	</cmData>
+</raml>

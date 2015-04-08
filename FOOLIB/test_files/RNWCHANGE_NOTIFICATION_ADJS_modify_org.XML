@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<raml version="2.1" xmlns="raml21.xsd">
+	<cmData type="actual" scope="all" domain="mcRNCRNWCMPlan" adaptationVersionMajor="mcRN4.1">
+		<header>
+			<log dateTime="2014-09-03T11:52:49" action="modified" user="mcRNC" appInfo="mcRNC OMS">mcRNC CM event plan</log>
+		</header>
+		<managedObject class="ADJS" distName="RNC-1/WBTS-1/WCEL-1/ADJS-1" version="mcRN4.1" operation="update">
+			<p name="SRBHopsIdentifier">1</p>
+			<p name="AdjsScrCode">6</p>
+			<p name="AdjsEcNoOffset">12</p>
+			<p name="ADJSChangeOrigin">5</p>
+			<p name="HSDPAHopsIdentifier">1</p>
+			<p name="RTWithHSDPAHopsIdentifier">1</p>
+		</managedObject>
+	</cmData>
+</raml>

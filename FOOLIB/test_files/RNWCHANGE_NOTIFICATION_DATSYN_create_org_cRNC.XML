@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<raml version="2.1" xmlns="raml21.xsd">
+	<cmData type="actual" scope="all" domain="RNCRNWCMPLAN" adaptationVersionMajor="RN8.1">
+		<header>
+			<log dateTime="2014-09-01T15:39:11" action="modified" user="CRNC" appInfo="cRNC OMS">RNC CM event plan</log>
+		</header>
+		<managedObject class="DATSYN" distName="PRNC-1/RNCSRV-1/DATSYN-1" version="RN8.1" operation="create">
+			<p name="BackupUpdateTime">No backup data for RNC Service</p>
+			<p name="DataSynchState">2</p>
+			<p name="RNCClusterOMLnkState">0</p>
+			<p name="DataSyncDays">0</p>
+			<p name="DataSyncHours">0</p>
+			<p name="DataSyncMinutes">0</p>
+			<p name="DATSYNChangeOrigin">7</p>
+			<p name="BackupCompleteness">0</p>
+			<p name="AutoAdaptation">1</p>
+		</managedObject>
+	</cmData>
+</raml>

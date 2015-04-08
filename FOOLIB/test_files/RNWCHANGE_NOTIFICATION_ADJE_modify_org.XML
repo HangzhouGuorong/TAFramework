@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<raml version="2.1" xmlns="raml21.xsd">
+	<cmData type="actual" scope="all" domain="mcRNCRNWCMPlan" adaptationVersionMajor="mcRN4.1">
+		<header>
+			<log dateTime="2014-09-04T10:47:13" action="modified" user="mcRNC" appInfo="mcRNC OMS">mcRNC CM event plan</log>
+		</header>
+		<managedObject class="ADJE" distName="RNC-1/WBTS-1/WCEL-1/ADJE-1" version="mcRN4.1" operation="update">
+			<p name="AdjeCellId">2</p>
+			<p name="ADJEChangeOrigin">5</p>
+			<p name="AdjeMNC">45</p>
+			<p name="AdjeMNCLength">3</p>
+		</managedObject>
+	</cmData>
+</raml>

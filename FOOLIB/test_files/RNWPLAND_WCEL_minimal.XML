@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<raml version="2.1" xmlns="raml21.xsd">
+    <cmData type="actual" scope="all" domain="RNCRNWCMPLAN" adaptationVersionMajor="RN7.0">
+        <header>
+            <log dateTime="11.11.2013-06T09:18:41" action="modified" user="mcRNC" OMS="update">cRNC plan upload</log>
+        </header>
+        <managedObject class="WCEL" distName="RNC-1/WBTS-1/WCEL-1" version="RN7.0" operation="create">
+            <p name="CId">1</p>
+            <p name="LAC">1</p>
+            <p name="SAC">1</p>
+            <p name="RAC">1</p>
+            <p name="PriScrCode">1</p>
+            <p name="UARFCN">10250</p>
+            <p name="CellRange">100</p>
+            <p name="RtFmcsIdentifier">1</p>
+            <p name="NrtFmcsIdentifier">1</p>
+            <p name="RtFmcgIdentifier">1</p>
+            <p name="NrtFmcgIdentifier">1</p>
+            <p name="RtFmciIdentifier">1</p>
+            <p name="NrtFmciIdentifier">1</p>
+            <p name="EbNoSetIdentifier">1</p>
+            <p name="Tcell">0</p>
+            <list name="URAId">
+                <p>1</p>
+            </list>
+            <list name="WCELGlobalCNid">
+                <item>
+                    <p name="WCELMCC">123</p>
+                    <p name="WCELMNC">45</p>
+                    <p name="WCELMNCLength">2</p>
+                </item>
+            </list>
+            <p name="FMCLIdentifier">1</p>
+            <p name="FMCLIdentifier">1</p>
+        </managedObject>
+    </cmData>
+</raml>

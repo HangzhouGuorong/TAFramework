@@ -1,0 +1,15 @@
+<raml version="2.1" xmlns="raml21.xsd">
+	<cmData type="actual" scope="all" domain="RNCRNWCMPLAN" adaptationVersionMajor="RN8.1">
+		<header>
+			<log dateTime="2014-06-26T14:02:12" action="modified" user="CRNC" appInfo="cRNC OMS">RNC CM event plan</log>
+		</header>
+		<managedObject class="FMCL" distName="RNC-1/FMCL-1" version="RN8.1" operation="update">
+			<p name="FMCLChangeOrigin">5</p>
+			<p name="LTEMeasAveWindow">7</p>
+			<p name="LTEMaxMeasPeriod">13</p>
+			<p name="LTEMinMeasInterval">6</p>
+			<p name="LTENcarrFreqSearchPeriod">4</p>
+			<p name="LTEMinHoInterval">10</p>
+		</managedObject>
+	</cmData>
+</raml

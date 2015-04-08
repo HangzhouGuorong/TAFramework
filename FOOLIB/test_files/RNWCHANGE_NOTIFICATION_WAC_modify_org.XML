@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<raml version="2.1" xmlns="raml21.xsd">
+	<cmData type="actual" scope="all" domain="mcRNCRNWCMPlan" adaptationVersionMajor="mcRN4.1">
+		<header>
+			<log dateTime="2014-09-03T15:43:54" action="modified" user="mcRNC" appInfo="mcRNC OMS">mcRNC CM event plan</log>
+		</header>
+		<managedObject class="WAC" distName="RNC-1/WAC-1" version="mcRN4.1" operation="update">
+			<p name="WACChangeOrigin">5</p>
+			<p name="DCHUtilRelAveWin">50</p>
+			<list name="InactivityTimerDownlinkDCH">
+				<item>
+					<p name="InactivityTimerDownlinkDCH128">15</p>
+					<p name="InactivityTimerDownlinkDCH16">5</p>
+					<p name="InactivityTimerDownlinkDCH256">2</p>
+					<p name="InactivityTimerDownlinkDCH32">5</p>
+					<p name="InactivityTimerDownlinkDCH320">13</p>
+					<p name="InactivityTimerDownlinkDCH384">2</p>
+					<p name="InactivityTimerDownlinkDCH64">3</p>
+					<p name="InactivityTimerDownlinkDCH8">5</p>
+				</item>
+			</list>
+		</managedObject>
+	</cmData>
+</raml>

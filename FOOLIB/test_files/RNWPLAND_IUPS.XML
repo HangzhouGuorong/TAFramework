@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<raml version="2.1" xmlns="raml21.xsd">
+	<cmData type="actual" scope="all" domain="RNCRNWCMPLAN" adaptationVersionMajor="RN7.0">
+		<header>
+			<log dateTime="11.11.2013-06T09:18:41" action="modified" user="mcRNC" OMS="update">cRNC plan upload</log>
+		</header>
+		<managedObject class="IUPS" distName="RNC-1/IUPS-1" version="RN7.0" operation="create">
+			<p name="CellFACHRelocSupport">0</p>
+			<p name="CNDomainVersion">10</p>
+			<list name="PSCNNRI">
+  			    <item>
+    		    	<p name="NRIMinForPSCN">2</p>
+    		    	<p name="NRIMaxForPSCN">3</p>
+  			    </item>
+                <item>
+                    <p name="NRIMaxForPSCN">45</p>
+                    <p name="NRIMinForPSCN">23</p>
+                </item>
+                <item>
+                    <p name="NRIMaxForPSCN">229</p>
+                    <p name="NRIMinForPSCN">138</p>
+                </item>
+                <item>
+                    <p name="NRIMaxForPSCN">666</p>
+                    <p name="NRIMinForPSCN">527</p>
+                </item>
+                <item>
+                    <p name="NRIMaxForPSCN">967</p>
+                    <p name="NRIMinForPSCN">775</p>
+                </item>
+                <item>
+                    <p name="NRIMaxForPSCN">951</p>
+                    <p name="NRIMinForPSCN">180</p>
+                </item>
+                <item>
+                    <p name="NRIMaxForPSCN">499</p>
+                    <p name="NRIMinForPSCN">399</p>
+                </item>
+                <item>
+                    <p name="NRIMaxForPSCN">510</p>
+                    <p name="NRIMinForPSCN">47</p>
+                </item>
+                <item>
+                    <p name="NRIMaxForPSCN">555</p>
+                    <p name="NRIMinForPSCN">523</p>
+                </item>
+                <item>
+                    <p name="NRIMaxForPSCN">929</p>
+                    <p name="NRIMinForPSCN">818</p>
+                </item>
+                <item>
+                    <p name="NRIMaxForPSCN">148</p>
+                    <p name="NRIMinForPSCN">101</p>
+                </item>
+                <item>
+                    <p name="NRIMaxForPSCN">640</p>
+                    <p name="NRIMinForPSCN">505</p>
+                </item>
+                <item>
+                    <p name="NRIMaxForPSCN">676</p>
+                    <p name="NRIMinForPSCN">229</p>
+                </item>
+                <item>
+                    <p name="NRIMaxForPSCN">982</p>
+                    <p name="NRIMinForPSCN">409</p>
+                </item>
+                <item>
+                    <p name="NRIMaxForPSCN">1001</p>
+                    <p name="NRIMinForPSCN">946</p>
+                </item>
+                <item>
+                    <p name="NRIMaxForPSCN">255</p>
+                    <p name="NRIMinForPSCN">235</p>
+                </item>
+			</list>
+			<p name="PSFlexiIuWeight">0</p>
+			<p name="DefaultCN">0</p>
+			<p name="CNId">1</p>
+			<p name="IUOIdentifier">1</p>
+			<p name="IuState">2</p>
+			<p name="NetworkInd">255</p>
+			<p name="RelocationSupport">1</p>
+			<p name="TDataFwd">1</p>
+			<p name="SignPointCode">0</p>
+			<p name="TRafC">60</p>
+			<p name="TRatC">15</p>
+			<p name="TigOR">5</p>
+			<p name="TinTR">15</p>
+		</managedObject>
+	</cmData>
+</raml>

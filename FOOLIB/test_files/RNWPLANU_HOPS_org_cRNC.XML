@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<raml version="2.1" xmlns="raml21.xsd">
+    <cmData type="actual" scope="all" domain="RNCRNWCMPLAN" adaptationVersionMajor="RN7.0">
+        <header>
+            <log dateTime="2012-11-06T09:18:41" action="modified" user="CRNC" appInfo="cRNC OMS">cRNC plan upload</log>
+        </header>
+        <managedObject class="HOPS" distName="RNC-1/HOPS-1" version="mcRN4.1" operation="create">
+            <p name="HSDPAAvailabilityIur">1</p>
+            <p name="HSUPAAvailabilityIur">1</p>
+            <p name="HHOMarginAverageEcNo">10</p>
+            <p name="ReleaseMarginAverageEcNo">25</p>
+            <p name="EcNoAveragingWindow">8</p>
+            <p name="HHOMarginPeakEcNo">4</p>
+            <p name="ReleaseMarginPeakEcNo">7</p>
+            <p name="EnableRRCRelease">0</p>
+            <p name="EnableInterRNCsho">1</p>
+            <p name="AdjsHCSpriority">0</p>
+            <p name="AdjsHCSthreshold">0</p>
+            <p name="AdjsPenaltyTime">0</p>
+            <p name="AdjsTempOffset1">0</p>
+            <p name="AdjsTempOffset2">0</p>
+            <p name="AdjsQrxlevMin">-58</p>
+            <p name="AdjsQqualMin">-18</p>
+            <p name="AdjsQoffset1">0</p>
+            <p name="AdjsQoffset2">0</p>
+            <p name="HOPSChangeOrigin">5</p>
+        </managedObject>
+    </cmData>
+    
+</raml>

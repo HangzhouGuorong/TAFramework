@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<raml version="2.1" xmlns="raml21.xsd">
+    <cmData type="actual" scope="all" domain="RNCRNWCMPLAN" adaptationVersionMajor="RN7.0">
+        <header>
+            <log dateTime="2012-11-06T09:18:41" action="modified" user="CRNC" appInfo="cRNC OMS">cRNC plan upload</log>
+        </header>
+        <managedObject class="HOPL" distName="RNC-1/HOPL-1" version="mcRN4.1" operation="create">
+            <p name="AdjLAbsPrioCellReselec">1</p>
+            <p name="AdjLQrxlevminEUTRA">-65</p>
+            <p name="AdjLThreshigh">9</p>
+            <p name="AdjLThreslow">2</p>
+            <p name="HOPLChangeOrigin">5</p>
+            <p name="AdjLQqualminEUTRA">-35</p>
+            <p name="AdjLThreshigh2">32</p>
+            <p name="AdjLThreslow2">32</p>
+            <p name="AdjLFreqPriority">0</p>
+            <p name="AdjLMinRSRPLevel">-56</p>
+            <p name="AdjLMinRSRQLevel">-24</p>
+        </managedObject>
+    </cmData>
+    
+</raml>

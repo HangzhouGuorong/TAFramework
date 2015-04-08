@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<raml version="2.1" xmlns="raml21.xsd">
+     <cmData type="actual" scope="all" domain="RNCRNWCMPLAN" adaptationVersionMajor="RN7.0">
+         <header>
+             <log dateTime="2012-11-06T09:18:41" action="modified" user="mcRNC" appInfo="cRNC OMS">cRNC plan upload</log>
+         </header>
+            <managedObject class="VCEL" distName="RNC-1/VBTS-1/VCEL-1" version="RN7.0" operation="create">
+              <p name="CSAMRModeSET">0</p>
+              <p name="CSAMRModeSETWB">1</p>
+              <p name="EDCHMinimumSetETFCI">4</p>
+              <p name="EbNoSetIdentifier">1</p>
+              <p name="HHoMaxAllowedBitrateDL">32</p>
+              <p name="HHoMaxAllowedBitrateUL">32</p>
+              <p name="HSDPAFmcgIdentifier">1</p>
+              <p name="HSDPAFmciIdentifier">1</p>
+              <p name="HSDPAFmcsIdentifier">1</p>
+              <p name="HSDPAHopsIdentifier">1</p>
+              <p name="HSDPAenabled">1</p>
+              <p name="HSPAFmcsIdentifier">1</p>
+              <p name="HSUPAEnabled">1</p>
+              <p name="InitialBitRateDL">64</p>
+              <p name="InitialBitRateUL">64</p>
+              <p name="LAC">65535</p>
+              <p name="MaxBitRateDLPSNRT">384</p>
+              <p name="MaxBitRateULPSNRT">384</p>
+              <p name="MaxTotalUplinkSymbolRate">2</p>
+              <p name="MinAllowedBitRateDL">8</p>
+              <p name="MinAllowedBitRateUL">8</p>
+              <p name="NrtFmcgIdentifier">1</p>
+              <p name="NrtFmciIdentifier">1</p>
+              <p name="NrtFmcsIdentifier">1</p>
+              <p name="NrtHopgIdentifier">1</p>
+              <p name="NrtHopiIdentifier">1</p>
+              <p name="NrtHopsIdentifier">1</p>
+              <p name="PtxOffsetHSSCCH">140</p>
+              <p name="RAC">255</p>
+              <p name="RTWithHSDPAFmcgIdentifier">1</p>
+              <p name="RTWithHSPAFmcsIdentifier">1</p>
+              <p name="RTwithHSDPAFmciIdentifier">1</p>
+              <p name="RTwithHSDPAFmcsIdentifier">1</p>
+              <p name="RTwithHSDPAHopsIdentifier">1</p>
+              <p name="RelocComm_in_InterRNC_HHO">0</p>
+              <p name="RtFmcgIdentifier">1</p>
+              <p name="RtFmciIdentifier">1</p>
+              <p name="RtFmcsIdentifier">1</p>
+              <p name="RtHopgIdentifier">1</p>
+              <p name="RtHopiIdentifier">1</p>
+              <p name="RtHopsIdentifier">1</p>
+              <p name="RxDivIndicator">2</p>
+              <p name="WACSetIdentifier">1</p>
+              <p name="PowerOffsetUpdMsgSize">0</p>
+              <p name="SRBDCHFmcsId">0</p>
+              <p name="SRBHopsIdentifier">1</p>
+              <p name="FastActOfTargetServCell">0</p>
+              <p name="DirectSCCEnabled">0</p>
+              <p name="HSPASCCSpecificATO">0</p>
+              <p name="FastCompletionOfSCC">0</p>
+              <p name="HSPwrOffsetUpdateDelay">0</p>
+            </managedObject>
+	</cmData>
+</raml>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<raml version="2.1" xmlns="raml21.xsd">
+     <cmData type="actual" scope="all" domain="RNCRNWCMPLAN" adaptationVersionMajor="RN7.0">
+         <header>
+             <log dateTime="2012-11-06T09:18:41" action="modified" user="mcRNC" appInfo="cRNC OMS">cRNC plan upload</log>
+         </header>
+            <managedObject class="IUR" distName="RNC-1/IUR-1" version="RN7.0" operation="create">
+                <p name="NRncId">1</p>
+                <p name="NRncNetworkInd">255</p>
+                <p name="NRncVersion">1</p>
+                <p name="NRncSignPointCode">1</p>
+                <list name="NeighbouringPLMNid">
+                    <item>
+                        <p name="MCC">1</p>
+                        <p name="MNC">2</p>
+                    </item>
+                </list>
+                <p name="IPBasedRouteIdIur">51</p>
+            </managedObject>
+    </cmData>
+</raml>
+

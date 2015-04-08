@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<raml version="2.1" xmlns="raml21.xsd">
+    <cmData type="actual" scope="all" domain="RNCRNWCMPLAN" adaptationVersionMajor="RN7.0">
+        <header>
+            <log dateTime="2012-11-06T09:18:41" action="modified" user="CRNC" appInfo="cRNC OMS">cRNC plan upload</log>
+        </header>
+        <managedObject class="HOPG" distName="RNC-1/HOPG-1" version="mcRN4.1" operation="update">
+            <p name="AdjgHCSpriority">0</p>
+            <p name="AdjgHCSthreshold">0</p>
+            <p name="AdjgPenaltyTime">0</p>
+            <p name="AdjgTempOffset1">0</p>
+            <p name="AdjgQrxlevMin">-51</p>
+            <p name="AdjgQoffset1">0</p>
+            <p name="AdjgPriorityCoverage">0</p>
+            <p name="AdjgRxLevMinHO">15</p>
+            <p name="AdjgMinRxLevNCHO">-95</p>
+            <p name="AdjgPrioritySLHO">0</p>
+            <p name="AdjgPenaltyTimeNCHO">10</p>
+            <p name="AdjgThreshigh">5</p> 
+            <p name="AdjgThreslow">9</p>
+            <p name="AdjgAbsPrioCellReselec">255</p>
+        </managedObject>
+    </cmData>
+    
+    
+    
+    
+</raml>

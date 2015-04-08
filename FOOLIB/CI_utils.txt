@@ -1,0 +1,82 @@
+*** Variables ***
+#${TEST_BENCH}    willie
+${TEST_BENCH}    ${HOST}
+${PACKAGE}       ARVONTA
+${UNIT}          OMU-0
+${WAIT_THIS}     OMU-1
+${STATE}         WO-EX
+
+*** Settings ***
+Documentation   This test suite provides KWs for CI
+
+Suite Setup     Suite Setup
+Suite Teardown  Suite Teardown
+Force Tags        Product_Backlog_ID-xxx_1R_M1    EFS_ID-RNC_EFS_xxx    owner-I_EXT_MBB_WCDMA_SWD3_TEAM_O2@internal.nsn.com    exec_type-automatic    type-FUT    HW_TYPE-BCN_A1    BCN_STEP-BCN_S0
+...               Phase-CRT
+Library         Collections
+Library         resources/test_framework.py
+Library         resources/parameter_utils.py
+Variables       resources/TestResources.py   ${TEST_BENCH}
+Library         resources/log_utils.py
+
+Default Tags    CI-management
+
+*** Variables ***
+
+*** Test Cases ***
+Load Unit
+    [Documentation]   Restart given unit with DSK mode
+    [Tags]            CI-keyword
+
+    restart_ipa_unit
+
+Backup OSITUS
+    [Documentation]   make a backup copy of OSITUS image
+    [Tags]            CI-keyword
+
+    ipa_copy_file     /RUNNING/BLCODE/OSITUSGX.IMG      /RUNNING/BLCODE/OSITUSGX.BAK
+
+Restore OSITUS
+    [Documentation]   Restore original copy of OSITUS image
+    [Tags]            CI-keyword
+
+    ipa_copy_file     /RUNNING/BLCODE/OSITUSGX.BAK      /RUNNING/BLCODE/OSITUSGX.IMG
+
+Change Package
+    [Documentation]   Change ${PACKAGE} as default package
+    [Tags]            CI-keyword
+    change_package    ${PACKAGE}
+
+System Restart
+    [Documentation]   This will give system reset to cRNC bench
+    [Tags]            CI-keyword
+    system_restart
+
+Wait Unit Up
+    [Documentation]   Wait until unit gets up again
+    [Tags]            CI-keyword
+    wait_unit_up      ${WAIT_THIS}      
+
+Wait Spare Unit Up
+    [Documentation]   Wait until unit gets up again
+    [Tags]            CI-keyword
+    wait_spare_unit_up      ${WAIT_THIS}      
+
+Change Unit State
+    [Tags]            CI-keyword
+    ipa_unit_change_state   ${UNIT}   ${STATE}      
+
+*** Keywords ***
+
+Suite Setup
+    # Overriding resource file variables here with whatever we
+    # get from the command line
+    ${vars} =    Get Variables
+    setResouceVariables  ${vars}
+    test_connect
+    test_suite_setup
+
+Suite Teardown
+
+    test_disconnect
+

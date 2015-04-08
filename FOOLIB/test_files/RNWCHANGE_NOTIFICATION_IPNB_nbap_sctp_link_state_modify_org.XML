@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<raml version="2.1" xmlns="raml21.xsd">
+	<cmData type="actual" scope="all" domain="mcRNCRNWCMPlan" adaptationVersionMajor="mcRNC5.0">
+		<header>
+			<log dateTime="2014-09-09T09:40:18" action="modified" user="mcRNC" appInfo="mcRNC OMS">mcRNC CM event plan</log>
+		</header>
+		<managedObject class="IPNB" distName="RNC-1/IPNB-1" version="mcRNC5.0" operation="update">
+			<list name="DNBAP">
+				<item>
+					<p name="CControlPortID">4724</p>
+					<p name="SCTPPortNumberDNBAP">54684</p>
+					<p name="DNBAPConnOpState">3</p>
+				</item>
+			</list>
+			<p name="IPNBChangeOrigin">5</p>
+			<p name="NBAPCSPUIndex">0</p>
+			<p name="NBAPEIPUIndex">0</p>
+			<p name="NBAPQNIUBIndex">0</p>
+		</managedObject>
+	</cmData>
+</raml>

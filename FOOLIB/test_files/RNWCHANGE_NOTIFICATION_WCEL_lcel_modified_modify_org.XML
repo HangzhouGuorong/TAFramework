@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<raml version="2.1" xmlns="raml21.xsd">
+	<cmData type="actual" scope="all" domain="mcRNCRNWCMPlan" adaptationVersionMajor="mcRN4.1">
+		<header>
+			<log dateTime="2014-09-11T16:18:59" action="modified" user="mcRNC" appInfo="mcRNC OMS">mcRNC CM event plan</log>
+		</header>
+		<managedObject class="WCEL" distName="RNC-1/WBTS-1/WCEL-1" version="mcRN4.1" operation="update">
+			<p name="MaxDLPowerCapability">3</p>
+			<p name="WCELChangeOrigin">5</p>
+			<p name="HSDPAcapability">2</p>
+			<p name="EDCHCapability">4</p>
+			<p name="PICState">8</p>
+			<p name="AssignedPICPool">7</p>
+			<p name="ICRCapability">9</p>
+			<p name="EVAMCapability">10</p>
+			<p name="HSRACHCapability">11</p>
+			<p name="HSFACHCapability">12</p>
+			<p name="AppAwareRANCapability">15</p>
+			<p name="UEDRXCapability">13</p>
+		</managedObject>
+	</cmData>
+</raml>

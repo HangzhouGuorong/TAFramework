@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<raml version="2.1" xmlns="raml21.xsd">
+	<cmData type="actual" scope="all" domain="RNCRNWCMPLAN" adaptationVersionMajor="RN8.1">
+		<header>
+			<log dateTime="2014-09-02T15:39:48" action="modified" user="CRNC" appInfo="cRNC OMS">RNC CM event plan</log>
+		</header>
+		<managedObject class="WSG" distName="RNC-1/WSG-1" version="RN8.1" operation="update">
+			<p name="OperatorName">operator</p>
+			<list name="HomePLMN">
+				<item>
+					<p name="HomePlmnMCC">123</p>
+					<p name="HomePlmnMNC">23</p>
+					<p name="HomePlmnMNCLength">2</p>
+				</item>
+			</list>
+			<p name="WSGChangeOrigin">5</p>
+		</managedObject>
+	</cmData>
+</raml>

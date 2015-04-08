@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<raml version="2.1" xmlns="raml21.xsd">
+	<cmData type="actual" scope="all" domain="mcRNCRNWCMPlan" adaptationVersionMajor="mcRN4.1">
+		<header>
+			<log dateTime="2014-09-04T10:16:05" action="modified" user="mcRNC" appInfo="mcRNC OMS">mcRNC CM event plan</log>
+		</header>
+		<managedObject class="WSMLC" distName="RNC-1/WSMLC-1" version="mcRN4.1" operation="update">
+			<p name="ConfAreaLevel">0</p>
+			<p name="WSMLCChangeOrigin">5</p>
+		</managedObject>
+	</cmData>
+</raml>

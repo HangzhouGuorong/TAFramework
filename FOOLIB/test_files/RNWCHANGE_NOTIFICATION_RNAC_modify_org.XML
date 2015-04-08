@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<raml version="2.1" xmlns="raml21.xsd">
+	<cmData type="actual" scope="all" domain="mcRNCRNWCMPlan" adaptationVersionMajor="mcRN4.1">
+		<header>
+			<log dateTime="2014-09-03T11:38:48" action="modified" user="mcRNC" appInfo="mcRNC OMS">mcRNC CM event plan</log>
+		</header>
+		<managedObject class="RNAC" distName="RNC-1/RNAC-1" version="mcRN4.1" operation="update">
+			<p name="RNACChangeOrigin">5</p>
+			<p name="MaxFreezingTime">2</p>
+			<p name="AdjustmentPeriod">12</p>
+			<p name="AdjustmentRatio">4</p>
+			<p name="AMRLoadTxPower">2</p>
+			<p name="AMRNumofReconf">30</p>
+			<p name="AMRwinSizeSCload">20</p>
+			<p name="AutoACRLevelUpdInt">400</p>
+			<p name="AutoACMaxRestLevel">8</p>
+			<p name="AutoACIncRestHysRTWP">45</p>
+			<p name="AutoACDecRestHysRTWP">41</p>
+			<p name="AutoACIncRestHysNRTQ">34</p>
+			<p name="AutoACDecRestHysNRTQ">21</p>
+		</managedObject>
+	</cmData>
+</raml>

@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<raml version="2.1" xmlns="raml21.xsd">
+	<cmData type="actual" scope="all" domain="RNCRNWCMPLAN" adaptationVersionMajor="RN7.0">
+		<header>
+			<log dateTime="11.11.2013-06T09:18:41" action="modified" user="mcRNC" OMS="update">cRNC plan upload</log>
+		</header>
+		<managedObject class="RNC" distName="RNC-1" version="RN8.0" operation="create">
+	        <p name="CommonMCC">123</p>
+            <p name="CommonMNC">45</p>
+            <p name="CommonMNCLength">2</p>  
+            <p name="ULBLERConfInterval">23</p>
+            <p name="DLBLERConfInterval">23</p>
+            <p name="ExtendedULDLactivationTmr">0</p>
+            <p name="N302">7</p>
+            <p name="N304">2</p>
+            <p name="N308">2</p>
+            <p name="OMSIpAddress">10.236.190.120</p>
+            <p name="PageRep1stInterv">11</p>
+            <p name="PageRep2ndInterv">20</p>
+            <p name="RANAPprocInitWait">10</p>
+            <p name="SIB11_priority">4</p>
+            <p name="SIB18_priority">4</p>
+            <p name="SIB15_priority">1</p>
+            <p name="SIB3_priority">3</p>      
+            <p name="SIB5_priority">3</p>
+            <p name="SIB1_priority">2</p>
+            <p name="T302">10</p>
+            <p name="T304">4</p>
+            <p name="T305">3</p>
+            <p name="T307">4</p>
+            <p name="T308">2</p>
+            <p name="T309">8</p>
+            <p name="T316">3</p>
+            <p name="T317">4</p>
+            <p name="ToAWE_NRT_DCH_tti10">10</p>
+            <p name="ToAWE_NRT_DCH_tti20">10</p>
+            <p name="ToAWE_NRT_DCH_tti40">10</p>
+            <p name="ToAWE_RT_DCH_tti10">10</p>
+            <p name="ToAWE_RT_DCH_tti20">10</p>
+            <p name="ToAWE_RT_DCH_tti40">10</p>
+            <p name="ToAWE_Speech">5</p>
+            <p name="ToAWS_NRT_DCH_tti10">25</p>
+            <p name="ToAWS_NRT_DCH_tti20">25</p>
+            <p name="ToAWS_NRT_DCH_tti40">25</p>
+            <p name="ToAWS_RT_DCH_tti10">25</p>
+            <p name="ToAWS_RT_DCH_tti20">25</p>
+            <p name="ToAWS_RT_DCH_tti40">25</p>
+            <p name="ToAWS_Speech">15</p>
+        </managedObject>
+		<managedObject class="RNAC" distName="RNC-1/RNAC-1" version="mcRNC3.0" operation="create">
+		</managedObject>
+        <managedObject class="RNFC" distName="RNC-1/RNFC-1" version="RN7.0" operation="create">
+	    <p name="MOCNenabled">1</p>
+	    <p name="AutomDLPlanUpdEnabled">1</p>
+        </managedObject>
+        <managedObject class="RNHSPA" distName="RNC-1/RNHSPA-1" version="RN7.0" operation="create">
+        </managedObject>
+        <managedObject class="RNMOBI" distName="RNC-1/RNMOBI-1" version="RN7.0" operation="create">
+        </managedObject>
+        <managedObject class="RNPS" distName="RNC-1/RNPS-1" version="RN7.0" operation="create">
+        </managedObject>
+        <managedObject class="RNRLC" distName="RNC-1/RNRLC-1" version="RN7.0" operation="create">
+        </managedObject>
+        <managedObject class="RNTRM" distName="RNC-1/RNTRM-1" version="RN7.0" operation="create">
+        </managedObject>
+		<managedObject class="WBTS" version="RN6.0_2.0" distName="RNC-1/WBTS-1" operation="create">
+            <p name="DediMeasRepPeriodCSdata">1</p>
+            <p name="DediMeasRepPeriodPSdata">9</p>
+            <p name="DedicatedMeasReportPeriod">9</p>
+            <p name="LoadControlPeriodPS">10</p>
+            <p name="MeasFiltCoeff">8</p>
+            <p name="NBAPCommMode">0</p>
+            <p name="PrxAlpha">10</p>
+            <p name="PtxAlpha">0</p>
+            <p name="PtxDPCHmax">-3</p>
+            <p name="PtxDPCHmin">-60</p>
+            <p name="PtxMeasAveWindow">85</p>
+            <p name="CellRange">0</p>
+        </managedObject>
+		<managedObject class="FMCS" distName="RNC-1/FMCS-1" version="RN7.0" operation="create">
+			<p name="EDCHRemEcNoOffset">4</p>
+			<p name="HSDPAServCellWindow">255</p>
+		</managedObject>
+		<managedObject class="FMCL" distName="RNC-1/FMCL-1" version="RN7.0" operation="create">
+        </managedObject>
+        <managedObject class="FMCI" distName="RNC-1/FMCI-1" version="RN7.0" operation="create">
+		</managedObject>
+		<managedObject class="FMCG" distName="RNC-1/FMCG-1" version="RN7.0" operation="create">
+		</managedObject>
+    <managedObject class="IUO" version="RN6.0_2.0" distName="RNC-1/IUO-1" operation="create">
+      <list name="PLMNid">
+        <item>
+          <p name="MCC">233</p>
+          <p name="MNC">1</p>
+          <p name="MNCLength">2</p>
+        </item>
+      </list>
+    </managedObject>		
+		<managedObject class="IUCS" distName="RNC-1/IUCS-1" version="RN7.0" operation="create">
+  			<p name="NetworkInd">255</p>
+            <p name="SignPointCode">0</p>
+			<p name="CNDomainVersion">10</p>
+            <p name="CNId">0</p>
+            <p name="IUOIdentifier">1</p>
+            <p name="IuState">2</p>
+		</managedObject>
+		<managedObject class="WRAB" distName="RNC-1/WRAB-1" version="RN7.0" operation="create">
+        </managedObject>
+    </cmData>
+</raml>

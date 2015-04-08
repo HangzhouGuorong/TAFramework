@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<raml version="2.1" xmlns="raml21.xsd">
+	<cmData type="actual" scope="all" domain="RNCRNWCMPLAN" adaptationVersionMajor="RN8.1">
+		<header>
+			<log dateTime="2014-09-03T13:29:28" action="modified" user="CRNC" appInfo="cRNC OMS">RNC CM event plan</log>
+		</header>
+		<managedObject class="RNMOBI" distName="RNC-1/RNMOBI-1" version="RN8.1" operation="update">
+			<p name="RNMOBIChangeOrigin">5</p>
+			<p name="SLHOUseStreamPSRTData">3</p>
+			<p name="SLHOUseInteractivePSNRTData">2</p>
+			<p name="SLHOUseStreamCSNTData">2</p>
+			<p name="SLHOUseConvPSSpeech">1</p>
+			<p name="SLHOUseBackgroundPSNRTData">2</p>
+			<p name="SLHOUseConvCSSpeech">3</p>
+			<p name="SLHOUseConvPSRTData">2</p>
+			<p name="TRelocPrep">12</p>
+			<p name="TRelocOverall">6</p>
+			<p name="UpperRxTxTimeDiff">1177</p>
+			<p name="LowerRxTxTimeDiff">870</p>
+			<p name="TGPLsingleframeNRTPSinterFreq">2</p>
+			<p name="TGPLdoubleframeNRTPSinterFreq">14</p>
+			<p name="TGPLsingleframeNRTPSgsm">2</p>
+			<p name="TGPLdoubleframeNRTPSgsm">124</p>
+			<p name="TGPLsingleframeAMRinterFreq">15</p>
+			<p name="TGPLsingleframeRTPSinterFreq">17</p>
+			<p name="TGPLsingleframeRTPSgsm">79</p>
+			<p name="TGPLsingleframeCSgsm">103</p>
+			<p name="GapPositionSingleFrame">6</p>
+			<p name="GsmHandoverAMR">0</p>
+			<p name="GsmHandoverRtPS">1</p>
+			<p name="ULQualDetRepThreshold">9</p>
+			<p name="SLHOHandlingOfCellLoadMeasNotAct">1</p>
+			<p name="LHOMinNrtDchAllocTime">58</p>
+			<p name="SLHOProfileConvCSSpeech">2</p>
+			<p name="SLHOProfileConvPSSpeech">1</p>
+			<p name="SLHOProfileConvPSRTData">4</p>
+			<p name="SLHOProfileStreamCSNTData">2</p>
+			<p name="SLHOProfileStreamPSRTData">4</p>
+			<p name="SLHOProfileInteractivePSNRTData">2</p>
+			<p name="SLHOProfileBackgroundPSNRTData">4</p>
+			<p name="NCHOThrComLoadMeasDRNCCell">57</p>
+			<p name="NCHOHystComLoadMeasDRNCCell">2497</p>
+			<p name="NCHOFilterCoeffComLoadMeasDRNCCell">7</p>
+			<list name="RANAPCauseServHO">
+				<item>
+					<p name="RANAPCause1ServHO">91</p>
+					<p name="RANAPCause2ServHO">42</p>
+					<p name="RANAPCause3ServHO">109</p>
+				</item>
+			</list>
+			<list name="RANAPCauseLoadHO">
+				<item>
+					<p name="RANAPCause1LoadHO">175</p>
+					<p name="RANAPCause2LoadHO">222</p>
+					<p name="RANAPCause3LoadHO">172</p>
+				</item>
+			</list>
+			<p name="HSDPACPICHReportPeriod">0</p>
+			<p name="HSDPACPICHAveWindow">5</p>
+			<p name="HSDPAServCellWindow">8</p>
+			<p name="HSDPACellChangeMinInterval">7</p>
+			<p name="HSDPASIRErrorReportPeriod">8</p>
+			<p name="HSDPASIRErrorFilterCoefficient">1</p>
+			<p name="HSDPASIRErrorAveWindow">7</p>
+			<p name="HSDPASIRErrorTargetCell">-18</p>
+			<p name="HSDPASIRErrorServCell">-12</p>
+			<p name="UEQualityRepInterv">9</p>
+			<p name="DRRCForHSDPALayerServices">43508</p>
+			<p name="HSDPALayerLoadShareThreshold">19</p>
+			<p name="HSPADRNCEcNoOffset">7</p>
+			<p name="HSPADRNCSIRErrorOffset">0</p>
+			<p name="FastUEPeriod">38</p>
+			<p name="FastUEThreshold">18</p>
+			<p name="FastUECancel">15</p>
+			<p name="CellReselectionObservingTime">51</p>
+			<p name="MaxCellReselections">16</p>
+			<p name="EcnoDifferenceThreshold">1</p>
+			<p name="GANetwARFCN">485</p>
+			<p name="GANetwNCC">6</p>
+			<p name="GANetwBCC">3</p>
+			<p name="HSCAHORabCombSupport">29</p>
+			<p name="UETxPowerMaxRef">-44</p>
+			<p name="ServBtwnHSDPALayers">10</p>
+			<p name="IBTSRabCombSupport">3492</p>
+			<p name="PreferBandForLayering">21</p>
+			<p name="MBLBGuardTimer">20</p>
+			<p name="SmartLTELayeringPrevT">119</p>
+			<p name="SmartLTELayeringServ">10</p>
+			<p name="RRCReDirBlockedCellAllowed">1</p>
+		</managedObject>
+	</cmData>
+</raml>

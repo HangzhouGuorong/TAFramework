@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<raml version="2.1" xmlns="raml21.xsd">
+	<cmData type="actual" scope="all" domain="RNCRNWCMPLAN" adaptationVersionMajor="RN8.1">
+		<header>
+			<log dateTime="2014-09-03T13:27:34" action="modified" user="CRNC" appInfo="cRNC OMS">RNC CM event plan</log>
+		</header>
+		<managedObject class="HOPS" distName="RNC-1/HOPS-1" version="RN8.1" operation="update">
+			<p name="AdjsQrxlevMin">-44</p>
+			<p name="HOPSChangeOrigin">5</p>
+		</managedObject>
+	</cmData>
+</raml>

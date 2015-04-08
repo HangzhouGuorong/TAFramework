@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<raml version="2.1" xmlns="raml21.xsd">
+	<cmData type="actual" scope="all" domain="RNCRNWCMPLAN" adaptationVersionMajor="RN8.1">
+		<header>
+			<log dateTime="2014-09-02T13:27:32" action="modified" user="CRNC" appInfo="cRNC OMS">RNC CM event plan</log>
+		</header>
+		<managedObject class="DATSYN" distName="PRNC-1/RNCSRV-1/DATSYN-1" version="RN8.1" operation="delete">
+			<p name="DATSYNChangeOrigin">7</p>
+		</managedObject>
+	</cmData>
+</raml>

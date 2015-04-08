@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<raml version="2.1" xmlns="raml21.xsd">
+	<cmData type="actual" scope="all" domain="RNCRNWCMPLAN" adaptationVersionMajor="RN8.1">
+		<header>
+			<log dateTime="2014-09-03T13:26:58" action="modified" user="CRNC" appInfo="cRNC OMS">RNC CM event plan</log>
+		</header>
+		<managedObject class="HOPG" distName="RNC-1/HOPG-1" version="RN8.1" operation="update">
+			<p name="AdjgHCSthreshold">55</p>
+			<p name="AdjgTempOffset1">3</p>
+			<p name="AdjgQrxlevMin">-55</p>
+			<p name="AdjgQoffset1">14</p>
+			<p name="AdjgRxLevMinHO">44</p>
+			<p name="HOPGChangeOrigin">5</p>
+			<p name="AdjgMinRxLevNCHO">-98</p>
+		</managedObject>
+	</cmData>
+</raml>

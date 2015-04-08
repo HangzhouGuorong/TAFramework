@@ -1,0 +1,29 @@
+<?xml version="100" encoding="UTF-8"?>
+<raml version="2.1" xmlns="raml21.xsd">
+  <cmData type="actual">
+    <header>
+      <log dateTime="2014-01-03T16:03:11" action="created" appInfo="ActualExporter"></log>
+    </header>
+    <managedObject class="ADJS" version="RN7.0" distName="RNC-1/WBTS-1/WCEL-1/ADJS-1" operation="create">
+      <p name="AdjsMCC">232</p>
+      <p name="AdjsMNC">1</p>
+      <p name="AdjsMNCLength">2</p>
+      <p name="AdjsCI">50122</p>
+      <p name="AdjsCPICHTxPwr">280</p>
+      <p name="SRBHopsIdentifier">1</p>
+      <p name="RtHopsIdentifier">1</p>
+      <p name="NrtHopsIdentifier">1</p>
+      <p name="HSDPAHopsIdentifier">1</p>
+      <p name="RTWithHSDPAHopsIdentifier">1</p>
+      <p name="AdjsEcNoOffset">12</p>
+      <p name="AdjsDERR">0</p>
+      <p name="AdjsLAC">510</p>
+      <p name="AdjsRAC">5</p>
+      <p name="AdjsRNCid">50</p>
+      <p name="AdjsSIB">1</p>
+      <p name="AdjsScrCode">6</p>
+      <p name="AdjsTxDiv">0</p>
+      <p name="AdjsTxPwrRACH">21</p>
+    </managedObject>
+	</cmData>
+</raml>

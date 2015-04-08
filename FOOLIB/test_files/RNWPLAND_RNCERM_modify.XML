@@ -1,0 +1,20 @@
+<?xml version="100" encoding="UTF-8"?>
+<raml version="2.1" xmlns="raml21.xsd">
+  <cmData type="actual" scope="all" domain="RNCRNWCMPLAN" adaptationVersionMajor="RN7.0">
+    <header>
+      <log dateTime="2014-01-03T16:03:11" action="created" appInfo="ActualExporter"></log>
+    </header>
+		<managedObject class="RNCERM" distName="RNC-1/RNCERM-1" version="RN7.0" operation="update">
+			<p name="CscpOverloadRatioThr">10</p>
+			<p name="DonateCscpLoadThrHi">90</p>
+			<p name="MaxBtsForRebalance">3</p>
+			<p name="NbrAMRCallsAllwdToDrop">5</p>
+			<p name="NumOfDaysForLM">1</p>
+			<list name="RebalanceBlockBtslist">
+                        <item><p name="WBTSId">3</p></item>
+                        <item><p name="WBTSId">4</p></item>
+			</list>
+			<p name="RecvCscpLoadThr">70</p>
+		</managedObject>
+   </cmData>
+</raml>

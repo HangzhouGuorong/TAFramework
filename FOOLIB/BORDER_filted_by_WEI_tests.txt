@@ -1,0 +1,232 @@
+*** Settings ***
+Documentation     This test suite tests BORDER FOOLIB functionality
+Suite Setup       Border Suite Setup
+Suite Teardown    Border Suite Teardown
+Test Teardown     Test Case Teardown
+Force Tags        Product_Backlog_ID-xxx_1R_M1    EFS_ID-RNC_EFS_xxx    owner-I_EXT_NWS_WCDMA_RA_RI_HZSWD_STARTUP_TEAM_WEI@internal.nsn.com    exec_type-automatic    type-FUT    HW_TYPE-BCN_A1    BCN_STEP-BCN_S0
+...               Phase-CRT    PRB-BORDER    PRB-FOOLIB    BASIC_CASE
+Default Tags      ready-for-a-team-jenkins
+Library           Collections
+Library           resources/metadata_test_framework.py
+Library           resources/plan_generate.py
+Variables         resources/TestResources.py    ${TEST_BENCH}
+Library           OperatingSystem
+Resource          resources/common_kws.txt
+
+*** Variables ***
+${TEST_BENCH}     ${HOST}    # ${TEST_BENCH}    pate56    ${TEST_BENCH}    prinsessa    ${TEST_BENCH}    bcn114
+
+*** Test Cases ***
+Direct Parameter Query Test (COCO)
+    [Tags]    ready-for-a-team-jenkins    nightly-test
+    [Setup]    create_base_config_for_object    COCO    create_object_itself=${false}
+    ####################################################################
+    # Direct parameter query tests
+    ${ismcRNC} =    ismcRNC
+    Run Keyword Unless    ${ismcRNC}    COCO_atm_interface_creation
+    Run Keyword Unless    ${ismcRNC}    Download Direct Parameter Query And Compare With Original    COCO    ${RNC-ID}/COCO-1
+
+Direct Parameter Query Test (RNFC)
+    [Tags]    ready-for-a-team-jenkins    nightly-test
+    [Setup]    create_base_config_for_object    RNFC    create_object_itself=${false}
+    # RIMUtraSIEnab is a new parameter
+    ${ignored}=    Create List    RIMUtraSIEnab
+    Download Direct Parameter Query And Compare With Original    RNFC    ${RNC-ID}/RNFC-1    ${ignored}
+
+Direct Parameter Query Test (BKPRNC)
+    [Tags]    ready-for-a-team-jenkins    nightly-test    need-robot-2.8
+    [Setup]    create_base_config_for_object    BKPRNC    create_object_itself=${false}
+    ${ismcRNC} =    ismcRNC
+    #Pass Execution If    ${ismcRNC}    No BKPRNC in mcRNC
+    Download Direct Parameter Query And Compare With Original    BKPRNC    ${RNC-ID}/BKP${RNC-ID}
+
+Direct Parameter Query Test (WBTS)
+    [Tags]    ready-for-a-team-jenkins    nightly-test
+    [Setup]    create_base_config_for_object    WBTS    create_object_itself=${false}
+    Download Direct Parameter Query And Compare With Original    WBTS    ${RNC-ID}/WBTS-1
+
+Promotion DPQ Test
+    [Tags]    ready-for-a-team-jenkins    promotion-test    Phase-SanityFT
+    [Setup]    clear_rnwdb
+    ${ismcRNC} =    ismcRNC
+    Run Keyword If    ${ismcRNC}==${false}    COCO_atm_interface_creation
+    # Create test plan
+    # Problematic objs, BKPRNC and PRNC cannot be combined
+    ${excluded_objs}=    Create List    BKPRNC    RNCSRV    DATSYN    PRNC
+    ${obj_plan_file_list}=    get_mo_plan_file_list    excluded_objs=${excluded_objs}
+    ${obj_dict}=    combine_plans    ${obj_plan_file_list}    test_plan.xml    ${CURDIR}${/}test_files
+    upload_a_file    test_plan.xml
+    download_plan    test_plan.xml
+    # RNFC/RIMUtraSIEnab is waiting new RAKTOR with support for RAN3086 CSFB with RIM
+    ${ignored_params} =    Create List    RIMUtraSIEnab
+    ${plan_xml}=    Get File    test_plan.xml
+    ${cmdata_dl} =    get_cmdata_elem_from_text    ${plan_xml}
+    @{objects} =    Get Dictionary Keys    ${obj_dict}
+    : FOR    ${obj_name}    IN    @{objects}
+    \    ${dist_name}=    Get From Dictionary    ${obj_dict}    ${obj_name}
+    \    ${ul_xml} =    direct_obj_inquire    ${dist_name}
+    \    ${cmdata_ul} =    get_cmdata_elem_from_text    ${ul_xml}
+    \    Compare Plans    ${cmdata_dl}    ${cmdata_ul}    ${obj_name}    ${dist_name}    ${ignored_params}
+    ####################
+    # topology tests
+
+Topology upload Combined
+    [Tags]    ready-for-a-team-jenkins    nightly-test    Phase-SanityFT
+    [Setup]    Run Keywords    clear_rnwdb    AND    clear_prnc_info_from_r0sfle
+    ${ismcRNC} =    ismcRNC
+    Run Keyword If    ${ismcRNC}==${false}    COCO_atm_interface_creation
+    # Create test plan
+    # Problematic objs, BKPRNC and DATSYN cannot be combined
+    # ADJX objects are got from subtopology upload
+    ${excluded_objs}=    Create List    RNCSRV    DATSYN    PRNC    ADJD    ADJG
+    ...    ADJE    ADJI    ADJL    ADJS
+    ${obj_plan_file_list}=    get_mo_plan_file_list    excluded_objs=${excluded_objs}
+    Run Keyword Unless    ${ismcRNC}    Insert Into List    ${obj_plan_file_list}    0    RNWPLAND_PRNC.XML
+    ${obj_dict}=    combine_plans    ${obj_plan_file_list}    test_plan.xml    ${CURDIR}${/}test_files
+    upload_a_file    test_plan.xml
+    download_plan    test_plan.xml
+    # RNCClusterOMLnkState is not returned by original code, even if it has topology interface defined in PDDB
+    ${ignored_params}=    Create List    PRNCIP4Address    RNCIPAddress    RNCClusterOMLnkState
+    ${ul}=    topology_upload
+    Run Keyword Unless    ${ismcRNC}    Log    ${ul}
+    ${org_file}=    Set Variable If    ${ismcRNC}    ${CURDIR}${/}test_files/RNWTOPOLOGY_COMB_org.XML    ${CURDIR}${/}test_files/RNWTOPOLOGY_COMB_org_cRNC.XML
+    ${cmdata_new} =    get_cmdata_elem_from_text    ${ul}
+    ${cmdata_org}=    get_cmdata_from_file    ${org_file}
+    @{objects} =    Get Dictionary Keys    ${obj_dict}
+    : FOR    ${obj_name}    IN    @{objects}
+    \    ${dist_name}=    Get From Dictionary    ${obj_dict}    ${obj_name}
+    \    Compare To Original    ${cmdata_org}    ${cmdata_new}    ${obj_name}    ${dist_name}    ${ignored_params}
+
+Topology upload ADJX
+    [Tags]    ready-for-a-team-jenkins    nightly-test
+    [Setup]    Run Keywords    create_base_config_for_object    ADJD    create_object_itself=${false}    AND    create_base_config_for_object
+    ...    ADJE    create_object_itself=${true}    AND    create_base_config_for_object    ADJI    create_object_itself=${true}
+    ...    AND    create_base_config_for_object    ADJG    create_object_itself=${true}    AND    create_base_config_for_object
+    ...    ADJL    create_object_itself=${true}    AND    create_base_config_for_object    ADJS    create_object_itself=${true}
+    ${ismcRNC} =    ismcRNC
+    # Create test plan
+    # ADJX objects are got from subtopology upload
+    ${obj_plan_file_list}=    Create List    RNWPLAND_ADJD.XML    RNWPLAND_ADJG.XML    RNWPLAND_ADJE.XML    RNWPLAND_ADJI.XML    RNWPLAND_ADJL.XML
+    ...    RNWPLAND_ADJS.XML
+    ${obj_dict}=    combine_plans    ${obj_plan_file_list}    test_plan.xml    ${CURDIR}${/}test_files
+    upload_a_file    test_plan.xml
+    download_plan    test_plan.xml
+    ${ignored_params}=    Create List
+    ${ul}=    topology_upload    ${RNC-ID}/WBTS-1/WCEL-1
+    Run Keyword Unless    ${ismcRNC}    Log    ${ul}
+    ${org_file}=    Set Variable If    ${ismcRNC}    ${CURDIR}${/}test_files/RNWTOPOLOGY_ADJX_org.XML    ${CURDIR}${/}test_files/RNWTOPOLOGY_ADJX_org_cRNC.XML
+    ${cmdata_new} =    get_cmdata_elem_from_text    ${ul}
+    ${cmdata_org}=    get_cmdata_from_file    ${org_file}
+    @{objects} =    Get Dictionary Keys    ${obj_dict}
+    : FOR    ${obj_name}    IN    @{objects}
+    \    ${dist_name}=    Get From Dictionary    ${obj_dict}    ${obj_name}
+    \    Compare To Original    ${cmdata_org}    ${cmdata_new}    ${obj_name}    ${dist_name}    ${ignored_params}
+    ###################################
+    # Change notification tests
+
+OMS Change Notification Test Delete Combined
+    [Tags]    ready-for-a-team-jenkins    Phase-SanityFT    # nightly-test
+    [Setup]    Run Keywords    clear_rnwdb
+    ${ismcRNC} =    ismcRNC
+    Run Keyword If    ${ismcRNC}==${false}    COCO_atm_interface_creation
+    # Problematic objs, BKPRNC and DATSYN cannot be combined
+    # RNXXX objs cannot be deleted
+    ${excluded_objs}=    Create List    RNCSRV    DATSYN    PRNC
+    set_border_test_mode_on
+    # Create part
+    All Objects Download    ${empty}    ${excluded_objs}
+    # Problematic objs, BKPRNC and DATSYN cannot be combined
+    # RNXXX objs cannot be deleted
+    ${excluded_objs}=    Create List    RNCSRV    DATSYN    PRNC    RNC    RNAC
+    ...    RNPS    RNHSPA    RNMOBI    RNTRM    RNFC    RNRLC
+    # delete
+    ${mon_handle}=    start_oms_change_notification_monitoring
+    ${obj_dict}=    All Objects Download    delete    ${excluded_objs}
+    sleep    2
+    stop_oms_change_notification_monitoring    ${mon_handle}
+    ${ignored_params}=    Create List    PRNCIP4Address    RNCIPAddress
+    @{objects} =    Get Dictionary Keys    ${obj_dict}
+    : FOR    ${obj_name}    IN    @{objects}
+    \    ${dist_name}=    Get From Dictionary    ${obj_dict}    ${obj_name}
+    \    ${org_file}=    Set Variable If    ${ismcRNC}    ${CURDIR}${/}test_files/RNWCHANGE_NOTIFICATION_${obj_name}_delete_org.XML    ${CURDIR}${/}test_files/RNWCHANGE_NOTIFICATION_${obj_name}_delete_org_cRNC.XML
+    \    ${notification_xml}=    get_oms_change_event_xml    ${mon_handle}    ${dist_name}    delete
+    \    Log    ${notification_xml}
+    \    ${cmdata_new} =    get_cmdata_elem_from_text    ${notification_xml}
+    \    ${cmdata_org}=    get_cmdata_from_file    ${org_file}
+    \    Compare To Original    ${cmdata_org}    ${cmdata_new}    ${obj_name}    ${dist_name}    ${ignored_params}
+    # Order is important here, starting with WCEL + ADJX
+
+OMS Change Notification Test Modify WCEL
+    [Setup]    create_base_config_for_object    WCEL    create_object_itself=${false}
+    ${xml_elems}=    Create List    <p name="AbsPrioCellReselec">3</p><p name="AdminCellState">1</p>
+    Change Notification Modify With XML Items And Compare To Original    WCEL    ${RNC-ID}/WBTS-1/WCEL-1    ${xml_elems}
+
+OMS Change Notification Test Modify RNC
+    [Setup]    create_base_config_for_object    RNC    create_object_itself=${false}
+    Change Notification Modify And Compare To Original    RNC    ${RNC-ID}
+
+OMS Change Notification Test Modify RNAC
+    [Setup]    create_base_config_for_object    RNAC    create_object_itself=${false}
+    Change Notification Modify And Compare To Original    RNAC    ${RNC-ID}/RNAC-1
+
+OMS Change Notification Test Modify COCO
+    [Tags]    need-robot-2.8
+    [Setup]    create_base_config_for_object    COCO    create_object_itself=${false}
+    ${ismcRNC} =    ismcRNC
+    Pass Execution If    ${ismcRNC}    No COCO in mcRNC
+    COCO_atm_interface_creation
+    download_plan    RNWPLAND_COCO_minimal.XML
+    ${ignored}=    Create List    COCOA2EA    Route    ANI    DATree
+    Change Notification Modify And Compare To Original    COCO    ${RNC-ID}/COCO-1    ignored_params=${ignored}
+
+OMS Change Notification Test Modify NBAP Link State
+    [Tags]    need-robot-2.8
+    [Setup]    create_base_config_for_object    COCO    create_object_itself=${false}
+    ${ismcRNC} =    ismcRNC
+    Pass Execution If    ${ismcRNC}    No COCO in mcRNC
+    COCO_atm_interface_creation
+    download_plan    RNWPLAND_COCO_minimal.XML
+    ${mon_handle}=    start_oms_change_notification_monitoring
+    send_nbap_link_state    link_id=0    # C-NBAP
+    sleep    1
+    stop_oms_change_notification_monitoring    ${mon_handle}
+    Compare Extra Change Notification To Original    COCO    ${RNC-ID}/COCO-1    ${mon_handle}    nbap_link_state_cnbap
+    ${mon_handle}=    start_oms_change_notification_monitoring
+    send_nbap_link_state    link_id=1    # D-NBAP
+    sleep    1
+    stop_oms_change_notification_monitoring    ${mon_handle}
+    Compare Extra Change Notification To Original    COCO    ${RNC-ID}/COCO-1    ${mon_handle}    nbap_link_state_dnbap
+
+OMS Change Notification Test Modify BKPRNC
+    [Tags]    need-robot-2.8
+    [Setup]    create_base_config_for_object    BKPRNC    create_object_itself=${false}
+    ${ismcRNC} =    ismcRNC
+    #Pass Execution If    ${ismcRNC}    No BKPRNC in mcRNC
+    Change Notification Modify And Compare To Original    BKPRNC    ${RNC-ID}/BKP${RNC-ID}
+
+*** Keywords ***
+All Objects Download
+    [Arguments]    ${plan_type}    ${excluded_objs}
+    # Create test plan
+    ${obj_plan_file_list}=    get_mo_plan_file_list    ${plan_type}    excluded_objs=${excluded_objs}
+    ${obj_dict}=    combine_plans    ${obj_plan_file_list}    test_plan.xml    ${CURDIR}${/}test_files
+    upload_a_file    test_plan.xml
+    download_plan    test_plan.xml
+    [Return]    ${obj_dict}
+
+Download Direct Parameter Query And Compare With Original
+    [Arguments]    ${obj_name}    ${dist_name}    ${ignored_params}=${empty}
+    [Documentation]    Download full plan, do direct parameter query and compare the result plan with the plan make with original BORDER version
+    download_plan    RNWPLAND_${obj_name}.XML
+    Query and Compare With Original    ${obj_name}    ${dist_name}    ${ignored_params}
+
+Border Suite Setup
+    #Suite Setup with restart DB
+    Suite Setup
+    set_border_test_mode_on
+    add_RNCIPAddress
+
+Border Suite Teardown
+    set_border_test_mode_off
+    Suite Teardown
+

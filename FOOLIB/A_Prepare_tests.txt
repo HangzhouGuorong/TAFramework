@@ -1,0 +1,47 @@
+*** Settings ***
+Suite Setup       A Prepare Setup
+Suite Teardown    A Prepare Teardown
+Library           foolib.py
+Variables         foolib.py    ${HOST}
+
+*** Test Cases ***
+Check RNC ID
+    ${rnc_id_match} =    check_rnc_id_match
+    Run Keyword If    ${rnc_id_match}==${false}    clear_rnwdb_thoroughly
+    [Teardown]    Run Keyword If Test Failed    clear_rnwdb_thoroughly
+
+Check PRNC Mode
+    ${prnc_mode}=    get_prnc_mode
+    Run Keyword If    ${prnc_mode}=="Backup"    clear_rnwdb_thoroughly
+
+Clear RNWDB Thoroughly If Needed
+    ${clear_rnwdb_thoroughly_needed} =    check_clear_rnwdb_thoroughly_needed
+    Run Keyword If    ${clear_rnwdb_thoroughly_needed}==${True}    clear_rnwdb_thoroughly
+
+Clear All except RNC Objects
+    ${rnc_all_exist} =    all_RNC_objects_exist_in_db
+    ${passed} =    Run Keyword If    ${rnc_all_exist}==${true}    Run Keyword And Continue On Failure    clear_all_except_rnc_objs_from_db
+    #Run Keyword Unless    ${passed}    clear_rnwdb    AND    clear_prnc_info    AND    add_RNCIPAddress
+    [Teardown]    Run Keyword If Test Failed    Run Keywords    clear_rnwdb_thoroughly
+
+Copy Plan file if needed
+	copy_test_files_ifneeded
+
+Check Initial RNC state
+    
+    
+
+*** Keywords ***
+A Prepare Setup
+    # Overriding resource file variables here with whatever we get from the command line
+    ${vars} =    BuiltIn.Get Variables
+    Set Resource Variables    ${vars}
+    metadata_connect
+    Enable All Features
+    set_cons_check_disabled    ${false}
+    
+Case Teardown
+    Run Keyword If Test Failed    Run Keywords    clear_rnwdb    AND    clear_prnc_info    AND    add_RNCIPAddress
+
+A Prepare Teardown
+    metadata_disconnect

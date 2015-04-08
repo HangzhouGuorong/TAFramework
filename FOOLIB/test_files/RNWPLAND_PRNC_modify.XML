@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<raml version="2.1" xmlns="raml21.xsd">
+    <cmData><header/>
+      <managedObject class="PRNC" distName="PRNC-1" operation="update">
+	    <p name="OMSIpAddress">1.2.3.5</p>
+	    <p name="PRNCMode">1</p>
+        <p name="SecOMSIpAddress">3.4.5.6</p>
+        <p name="ServingOMS">1</p>
+        <p name="ServingOMSAdminSetting">1</p>
+        <p name="ConnectionRetryCounter">14</p>
+        <p name="ServingOMSSwoRequest">0</p>
+        <p name="OMSBackupIpAddress">0.0.0.0</p>
+        <p name="PrncClientTLSMode">2</p>
+        <p name="PRNCName">PRNC name</p>
+      </managedObject>
+    </cmData>
+</raml>

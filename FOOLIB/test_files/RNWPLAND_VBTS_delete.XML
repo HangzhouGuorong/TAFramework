@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<raml version="2.1" xmlns="raml21.xsd">
+  <cmData type="actual">
+    <header>
+      <log dateTime="2014-01-03T16:03:11" action="created" appInfo="ActualExporter"></log>
+    </header>
+    <managedObject class="VBTS" version="RN7.0" distName="RNC-1/VBTS-1" operation="delete">    
+    </managedObject>
+	</cmData>
+</raml>

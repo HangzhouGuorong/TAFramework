@@ -1,0 +1,35 @@
+<raml version="2.1" xmlns="raml21.xsd">
+	<cmData type="actual" scope="all" domain="mcRNCRNWCMPlan" adaptationVersionMajor="mcRN4.1">
+		<header>
+			<log dateTime="2014-06-26T15:02:19" action="modified" user="mcRNC" appInfo="mcRNC OMS">mcRNC CM event plan</log>
+		</header>
+		<managedObject class="FMCI" distName="RNC-1/FMCI-1" version="mcRN4.1" operation="update">
+			<p name="MBLBMobilityOffset">4</p>
+			<p name="MBLBMobilityRABComb">0</p>
+			<p name="IFHOcauseCPICHEcNo">0</p>
+			<p name="IFHOcauseCPICHrscp">0</p>
+			<p name="IFHOcauseTxPwrDL">0</p>
+			<p name="IFHOcauseTxPwrUL">0</p>
+			<p name="IFHOcauseUplinkQuality">0</p>
+			<p name="InterFreqDLTxPwrThrAMR">-2</p>
+			<p name="InterFreqDLTxPwrThrCS">-6</p>
+			<p name="InterFreqDLTxPwrThrNrtPS">-2</p>
+			<p name="InterFreqDLTxPwrThrRtPS">-6</p>
+			<p name="InterFreqMaxMeasPeriod">6</p>
+			<p name="InterFreqMeasAveWindow">6</p>
+			<p name="InterFreqMeasRepInterval">2</p>
+			<p name="InterFreqMinHoInterval">10</p>
+			<p name="InterFreqMinMeasInterval">2</p>
+			<p name="InterFreqNcellSearchPeriod">0</p>
+			<p name="InterFreqUETxPwrFilterCoeff">8</p>
+			<p name="InterFreqUETxPwrThrAMR">-3</p>
+			<p name="InterFreqUETxPwrThrCS">-3</p>
+			<p name="InterFreqUETxPwrThrNrtPS">-1</p>
+			<p name="InterFreqUETxPwrThrRtPS">-3</p>
+			<p name="InterFreqUETxPwrTimeHyst">13</p>
+			<p name="FMCIChangeOrigin">5</p>
+			<p name="IMSIbasedIFHO">0</p>
+			<p name="InterFreqMinSLHOInterval">30</p>			<p name="MBLBInactivityRSCPThr">-100</p>
+		</managedObject>
+	</cmData>
+</raml

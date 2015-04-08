@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<raml version="2.1" xmlns="raml21.xsd">
+    <cmData type="actual" scope="all" domain="RNCRNWCMPLAN" adaptationVersionMajor="RN8.1">
+        <header><log dateTime="2014-04-04T05:34:04" action="modified" user="CRNC" appInfo="cRNC OMS">cRNC plan upload</log>
+        </header>
+       <managedObject class="IPNB" distName="RNC-1/IPNB-1" version="RN8.1" operation="update"><p name="WBTSId">0</p><p name="IPBasedRouteId">0</p><p name="MinSCTPPortIub">49960</p><p name="NodeBIPAddress">10.116.181.137</p><p name="NBAPDSCP">34</p><p name="IPNBChangeOrigin">5</p><p name="MaxSCTPFrameSize">1452</p><list name="CNBAP"><item><p name="CNBAPICSUIndex">65535</p><p name="SCTPPortNumberCNBAP">49960</p></item></list><list name="DNBAP"><item><p name="DNBAPICSUIndex">65535</p><p name="CControlPortID">4724</p><p name="SCTPPortNumberDNBAP">54684</p></item></list></managedObject>
+    </cmData>
+</raml>

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?> <raml version="2.1" xmlns="raml21.xsd">
+    <cmData type="actual" scope="all" domain="mcRNCRNWCMPlan" adaptationVersionMajor="mcRN4.1">
+        <header><log dateTime="2014-04-05T16:09:39" action="modified" user="mcRNC" appInfo="mcRNC OMS">mcRNC plan upload</log></header>
+        <managedObject class="IUCS" distName="RNC-1/IUCS-1" version="mcRN4.1" operation="create">
+            <p name="CSFlexiIuWeight">0</p>
+            <p name="IUOIdentifier">1</p>
+            <p name="CNId">0</p>
+            <p name="NetworkInd">255</p>
+            <p name="SignPointCode">0</p>
+            <p name="TRatC">15</p>
+            <p name="TRafC">60</p>
+            <p name="TinTR">15</p>
+            <p name="TigOR">5</p>
+            <p name="RelocationSupport">1</p>
+            <p name="CNDomainVersion">10</p>
+            <list name="CSCNNRI">
+            </list>
+            <p name="IuState">2</p>
+            <p name="DefaultCN">0</p>
+            <p name="IUCSChangeOrigin">5</p>
+            <p name="RtcpActivation">0</p>
+            <p name="MinUDPPortCS">1026</p>
+        </managedObject>
+        
+</cmData>
+</raml>

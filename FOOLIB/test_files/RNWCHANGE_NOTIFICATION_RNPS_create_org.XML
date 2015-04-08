@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<raml version="2.1" xmlns="raml21.xsd">
+	<cmData type="actual" scope="all" domain="mcRNCRNWCMPlan" adaptationVersionMajor="mcRN4.1">
+		<header>
+			<log dateTime="2014-09-01T09:52:43" action="modified" user="mcRNC" appInfo="mcRNC OMS">mcRNC CM event plan</log>
+		</header>
+		<managedObject class="RNPS" distName="RNC-1/RNPS-1" version="mcRN4.1" operation="create">
+			<p name="RNPSChangeOrigin">5</p>
+			<p name="TrafVolThresholdDLHigh">7</p>
+			<p name="ICRDowngradeDelayTimer">3</p>
+			<list name="DCHUtilUpperAveWinBitRate">
+				<item>
+					<p name="DCHUtilUpperAveWin128">200</p>
+					<p name="DCHUtilUpperAveWin256">200</p>
+					<p name="DCHUtilUpperAveWin32">200</p>
+					<p name="DCHUtilUpperAveWin384">200</p>
+					<p name="DCHUtilUpperAveWin64">200</p>
+				</item>
+			</list>
+			<list name="DCHUtilLowerAveWinBitRate">
+				<item>
+					<p name="DCHUtilLowerAveWin128">200</p>
+					<p name="DCHUtilLowerAveWin256">200</p>
+					<p name="DCHUtilLowerAveWin32">200</p>
+					<p name="DCHUtilLowerAveWin384">200</p>
+					<p name="DCHUtilLowerAveWin64">200</p>
+				</item>
+			</list>
+			<list name="DCHUtilUpperDowngradeThrBitRate">
+				<item>
+					<p name="DCHUtilUpperDowngradeThr128">64</p>
+					<p name="DCHUtilUpperDowngradeThr256">128</p>
+					<p name="DCHUtilUpperDowngradeThr32">16</p>
+					<p name="DCHUtilUpperDowngradeThr384">128</p>
+					<p name="DCHUtilUpperDowngradeThr64">32</p>
+				</item>
+			</list>
+			<list name="DCHUtilUpperTimeToTriggerBitRate">
+				<item>
+					<p name="DCHUtilUpperTimeToTrigger128">400</p>
+					<p name="DCHUtilUpperTimeToTrigger256">400</p>
+					<p name="DCHUtilUpperTimeToTrigger32">400</p>
+					<p name="DCHUtilUpperTimeToTrigger384">400</p>
+					<p name="DCHUtilUpperTimeToTrigger64">400</p>
+				</item>
+			</list>
+			<list name="DCHUtilLowerTimeToTriggerBitRate">
+				<item>
+					<p name="DCHUtilLowerTimeToTrigger128">140</p>
+					<p name="DCHUtilLowerTimeToTrigger256">140</p>
+					<p name="DCHUtilLowerTimeToTrigger32">140</p>
+					<p name="DCHUtilLowerTimeToTrigger384">140</p>
+					<p name="DCHUtilLowerTimeToTrigger64">140</p>
+				</item>
+			</list>
+			<list name="DCHUtilLowerDowngradeThrBitRate">
+				<item>
+					<p name="DCHUtilLowerDowngradeThr32">8</p>
+					<p name="DCHUtilLowerDowngradeThr64">16</p>
+					<p name="DCHUtilLowerDowngradeThr128">16</p>
+					<p name="DCHUtilLowerDowngradeThr256">32</p>
+					<p name="DCHUtilLowerDowngradeThr384">64</p>
+				</item>
+			</list>
+			<p name="DCHUtilBelowDowngradeThr">6</p>
+			<p name="DCHUtilMeasGuardTime">6</p>
+			<p name="TrafVolThresholdULHigh">7</p>
+			<p name="ActivationTimeOffset">500</p>
+			<p name="CrQueuingTimeDL">4</p>
+			<p name="CrQueuingTimeUL">4</p>
+			<p name="TrafVolTimeToTriggerDL">0</p>
+			<p name="TrafVolTimeToTriggerUL">0</p>
+			<p name="ToCellFACHinTest">1</p>
+			<p name="CellDCHtestTmr">0</p>
+			<p name="FactorMinPBSinterval">2</p>
+			<p name="DLOptimisationProhibitTime">2</p>
+			<p name="DLOptimisationPwrOffset">20</p>
+			<p name="DCHUtilHighAveWin">100</p>
+			<p name="DCHUtilHighBelowNRTDataRateThr">6</p>
+			<p name="DCHUtilHighTimeToTrigger">20</p>
+			<list name="TrafVolThresholdULHighBitRate">
+				<item>
+					<p name="TrafVolThresholdULHighDCH128">8</p>
+					<p name="TrafVolThresholdULHighDCH16">6</p>
+					<p name="TrafVolThresholdULHighDCH256">8</p>
+					<p name="TrafVolThresholdULHighDCH32">7</p>
+					<p name="TrafVolThresholdULHighDCH64">7</p>
+					<p name="TrafVolThresholdULHighDCH8">5</p>
+				</item>
+			</list>
+			<list name="TrafVolThresholdDLHighBitRate">
+				<item>
+					<p name="TrafVolThresholdDLHighDCH128">8</p>
+					<p name="TrafVolThresholdDLHighDCH16">6</p>
+					<p name="TrafVolThresholdDLHighDCH256">9</p>
+					<p name="TrafVolThresholdDLHighDCH32">7</p>
+					<p name="TrafVolThresholdDLHighDCH64">7</p>
+					<p name="TrafVolThresholdDLHighDCH8">5</p>
+				</item>
+			</list>
+			<list name="QoSPriorityMapping">
+				<item>
+					<p name="PriForStreamARP1">13</p>
+					<p name="PriForStreamARP2">13</p>
+					<p name="PriForStreamARP3">13</p>
+					<p name="PriForIntSignaling">12</p>
+					<p name="PriForIntTHP1ARP1">11</p>
+					<p name="PriForIntTHP1ARP2">11</p>
+					<p name="PriForIntTHP1ARP3">11</p>
+					<p name="PriForIntTHP2ARP1">8</p>
+					<p name="PriForIntTHP2ARP2">8</p>
+					<p name="PriForIntTHP2ARP3">8</p>
+					<p name="PriForIntTHP3ARP1">5</p>
+					<p name="PriForIntTHP3ARP2">5</p>
+					<p name="PriForIntTHP3ARP3">5</p>
+					<p name="PriForBackARP1">0</p>
+					<p name="PriForBackARP2">0</p>
+					<p name="PriForBackARP3">0</p>
+					<p name="PriForSRBsOnHSPA">15</p>
+					<p name="PriForConvOnHSPA">14</p>
+					<p name="PriForHSFACHDTCH">0</p>
+				</item>
+			</list>
+			<p name="RTOverNRTPriThresholdARP1">11</p>
+			<p name="RTOverNRTPriThresholdARP2">11</p>
+			<p name="RTOverNRTPriThresholdARP3">11</p>
+			<p name="InactDetForStreamingRB">1</p>
+			<p name="IurPriority">0</p>
+			<p name="HSFACHRestTimerDTCH">2</p>
+			<p name="HSFACHDiscardTimerDTCH">8</p>
+			<p name="ULLoadStateTTT">4</p>
+			<p name="SmartInactivityTimerDCH">6</p>
+			<p name="SmartInactTimerFACH">15</p>
+			<p name="MEHTVMPendingTime">800</p>
+			<p name="HSChaPrefInDataSesProf">0</p>
+			<p name="LargeDataTime">30</p>
+			<p name="LargeDataThr">2000</p>
+		</managedObject>
+	</cmData>
+</raml>

@@ -1,0 +1,254 @@
+*** Settings ***
+Library           ./metadata_test_framework.py
+Library           ./log_utils.py
+Library           ./XML_utils.py
+Library           ./plan_generate.py
+
+*** keywords ***
+Compare Extra Change Notification To Original
+    [Arguments]    ${obj_name}    ${dist_name}    ${mon_handle}    ${extra_item_name}    ${create_org_file}=${false}    ${ignored_params}=${empty}
+    [Documentation]    When modifying some objects we get extra notification events, like IPNB nbap_sctp_link_state_s and such.
+    ${ismcRNC} =    ismcRNC
+    # Note! Since extra items do not have separate MO class name or dist name we assume here that
+    # the main part is already checked with Compare Change Notification To Original KW.
+    # The get_oms_change_event_xml returns and removes the first matching object from the monitoring
+    ${notification_xml}=    get_oms_change_event_xml    ${mon_handle}    ${dist_name}    update
+    Log    ${notification_xml}
+    ${org_file}=    Set Variable If    ${ismcRNC}    ${CURDIR}${/}../test_files/RNWCHANGE_NOTIFICATION_${obj_name}_${extra_item_name}_modify_org.XML    ${CURDIR}${/}../test_files/RNWCHANGE_NOTIFICATION_${obj_name}_${extra_item_name}_modify_org_cRNC.XML
+    Run Keyword If    ${create_org_file}    Log    Overwriting the org file    WARN
+    Run Keyword If    ${create_org_file}    Create File    ${org_file}    ${notification_xml}
+    ${cmdata_new} =    get_cmdata_elem_from_text    ${notification_xml}
+    ${cmdata_org}=    get_cmdata_from_file    ${org_file}
+    Compare To Original    ${cmdata_org}    ${cmdata_new}    ${obj_name}    ${dist_name}    ${ignored_params}
+
+Compare Change Notification To Original
+    [Arguments]    ${obj_name}    ${dist_name}    ${mon_handle}    ${create_org_file}=${false}    ${ignored_params}=${empty}
+    ${ismcRNC} =    ismcRNC
+    ${notification_xml}=    get_oms_change_event_xml    ${mon_handle}    ${dist_name}    update
+    Log    ${notification_xml}
+    ${org_file}=    Set Variable If    ${ismcRNC}    ${CURDIR}${/}../test_files/RNWCHANGE_NOTIFICATION_${obj_name}_modify_org.XML    ${CURDIR}${/}../test_files/RNWCHANGE_NOTIFICATION_${obj_name}_modify_org_cRNC.XML
+    Run Keyword If    ${create_org_file}    Log    Overwriting the org file    WARN
+    Run Keyword If    ${create_org_file}    Create File    ${org_file}    ${notification_xml}
+    ${cmdata_new} =    get_cmdata_elem_from_text    ${notification_xml}
+    ${cmdata_org}=    get_cmdata_from_file    ${org_file}
+    Compare To Original    ${cmdata_org}    ${cmdata_new}    ${obj_name}    ${dist_name}    ${ignored_params}
+
+Change Notification Modify And Compare To Original
+    [Arguments]    ${obj_name}    ${dist_name}    ${plan_file}=${empty}    ${create_org_file}=${false}    ${use_da}=${false}    ${stop_delay}=1
+    ...    ${ignored_params}=${empty}
+    [Documentation]    KW downloads by default RNWPLAND_objname.XML file and captures OMS change notification message and compares the XML file in it to the original version (made using the old version of BORDER)
+    # Create
+    download_plan    RNWPLAND_${obj_name}_minimal.XML
+    ${new_xml} =    upload_plan
+    # Modify
+    ${mon_handle}=    start_oms_change_notification_monitoring
+    ${file}=    Set Variable If    "${plan_file}"=="${empty}"    RNWPLAND_${obj_name}.XML    ${plan_file}
+    Run Keyword Unless    ${use_da}    download_plan    ${file}
+    Run Keyword If    ${use_da}    direct_activate    ${file}
+    sleep    ${stop_delay}
+    stop_oms_change_notification_monitoring    ${mon_handle}
+    Compare Change Notification To Original    ${obj_name}    ${dist_name}    ${mon_handle}    ${create_org_file}    ${ignored_params}
+    [Return]    ${mon_handle}
+
+Change Notification Modify With XML Items And Compare To Original
+    [Arguments]    ${obj_name}    ${dist_name}    ${xml_element_list}    ${create_org_file}=${false}    ${use_da}=${false}    ${stop_delay}=1
+    ${plan} =    generate_empty_download_plan    ${obj_name}    ${dist_name}    update
+    @{xml_element_list}    set variable    ${xml_element_list}
+    : FOR    ${e}    IN    @{xml_element_list}
+    \    add_plan_param    ${plan}    ${e}
+    Log    ${plan}
+    Create File    testplan.xml    ${plan}
+    upload_a_file    testplan.xml
+    ${mon_handle}=    Change Notification Modify And Compare To Original    ${obj_name}    ${dist_name}    testplan.xml    ${create_org_file}    ${use_da}
+    ...    ${stop_delay}
+    [Return]    ${mon_handle}
+
+Create WCEL Plan
+    [Arguments]    ${admin_state}    ${operation}
+    ${plan}=    create_wcel_mini_plan    ${admin_state}    ${operation}
+    Log    ${plan}
+    Create File    testplan.xml    ${plan}
+    upload_a_file    testplan.xml
+    ${output} =    download_plan    RNWPLAND_WCEL_minimal.XML    activate=${false}
+
+Compare Plans
+    [Arguments]    ${cmdata_dl}    ${cmdata_ul}    ${obj_name}    ${dist_name}    ${ignored_params}=${empty}
+    ${diff_list} =    compare_plans_mos    ${cmdata_dl}    ${cmdata_ul}    ${dist_name}
+    print_diff_list    ${diff_list}
+    remove_ignored_param_diffs    ${diff_list}    ${ignored_params}
+    get_param_infos_from_diff_list    ${obj_name}    ${diff_list}
+    print_diff_list    ${diff_list}
+    remove_extra_list_items    ${diff_list}
+    print_diff_list    ${diff_list}
+    remove_dl_ul_only_diffs    ${diff_list}
+    print_diff_list    ${diff_list}
+    Should Be Empty    ${diff_list}
+
+Query And Compare
+    [Arguments]    ${obj_name}    ${dist_name}    ${ignored_params}=${empty}    ${plan_file}=${empty}
+    ${ul_xml} =    direct_obj_inquire    ${dist_name}
+    ${dl_xml_file}=    Set Variable If    "${plan_file}"=="${empty}"    ${XML_PATH}//RNWPLAND_${obj_name}.XML    ${XML_PATH}//${plan_file}
+    ${dl_xml} =    type_a_file    ${dl_xml_file}
+    ${cmdata_dl} =    get_cmdata_elem_from_text    ${dl_xml}
+    ${cmdata_ul} =    get_cmdata_elem_from_text    ${ul_xml}
+    Compare Plans    ${cmdata_dl}    ${cmdata_ul}    ${obj_name}    ${dist_name}    ${ignored_params}
+
+Query and Compare With Original
+    [Arguments]    ${obj_name}    ${dist_name}    ${ignored_params}=${empty}
+    ${new_xml} =    direct_obj_inquire    ${dist_name}
+    ${ismcRNC} =    ismcRNC
+    ${original_file} =    Set Variable If    ${ismcRNC}    ${CURDIR}${/}../test_files/RNWPLANDPQ_${obj_name}_org.XML    ${CURDIR}${/}../test_files/RNWPLANDPQ_${obj_name}_org_cRNC.XML
+    ${cmdata_new} =    get_cmdata_elem_from_text    ${new_xml}
+    ${cmdata_org}=    get_cmdata_from_file    ${original_file}
+    Compare To Original    ${cmdata_org}    ${cmdata_new}    ${obj_name}    ${dist_name}    ${ignored_params}
+
+Compare To Original
+    [Arguments]    ${cmdata_org}    ${cmdata_new}    ${obj_name}    ${dist_name}    ${ignored_params}=${empty}
+    [Documentation]    Compares upload plan to the upload plan made using the original SW versions. This KW is almost the same than Compare Plans but it removes only ignored params and deleted params from the difference list
+    ${diff_list} =    compare_plans_mos    ${cmdata_new}    ${cmdata_org}    ${dist_name}
+    print_diff_list    ${diff_list}
+    remove_ignored_param_diffs    ${diff_list}    ${ignored_params}
+    get_param_infos_from_diff_list    ${obj_name}    ${diff_list}
+    print_diff_list    ${diff_list}
+    Should Be Empty    ${diff_list}
+
+COCO_atm_interface_creation
+    remove_vpi_vci_from_use    1    1    33
+    remove_vpi_vci_from_use    1    1    34
+    remove_vpi_vci_from_use    1    1    35
+    remove_vpi_vci_from_use    1    1    36
+    create_atm_interface_if_needed
+
+WCEL Setup
+    [Arguments]    ${obj_name}    ${create_object_itself}
+    Create Base Config For WCEL
+    create_base_config_for_object    ${obj_name}    ${create_object_itself}
+
+Test Case Teardown
+    Run Keyword If Test Failed    Stop And Start Test Log Monitoring
+    #clean_all_except_rnc_objs_from_db
+    restore_rnc_to_initial_state
+
+Test Case Teardown With Delete
+    [Arguments]    ${delete_plan}
+    download_plan    ${delete_plan}
+    Test Case Teardown
+
+Stop And Start Test Log Monitoring
+    sleep    1
+    stop_log_monitoring    ${LOG_HANDLE}
+    ${LOG_HANDLE}=    start_log_monitoring
+    Set Suite Variable    ${LOG_HANDLE}
+
+Suite Setup
+    # Overriding resource file variables here with whatever we get from the command line
+    ${vars} =    Get Variables
+    setResouceVariables    ${vars}
+    metadata_connect
+    mcRNC_set_log_level
+    metadata_suite_setup
+    copy_test_files_ifneeded
+    ensure_unit0_working
+    get_system_uptime
+    # To speedup plan download operations...
+    set_db_file_dump_prevention
+    wait_rnwdb_normal
+    ${clear_rnwdb_thoroughly_needed} =    check_clear_rnwdb_thoroughly_needed
+    Run Keyword If    ${clear_rnwdb_thoroughly_needed}==${True}    clear_rnwdb_thoroughly
+    ${LOG_HANDLE}=    Set Suite Variable    ${None}
+    Enable All Features
+    Stop And Start Test Log Monitoring
+    Run Keyword If    ${clear_rnwdb_thoroughly_needed}==${True}    check_all_rnc_objects
+    Run Keyword If    ${clear_rnwdb_thoroughly_needed}==${False}    Run Keyword And Continue On Failure    restore_rnc_to_initial_state
+    Stop And Start Test Log Monitoring
+    set_cons_check_disabled    ${false}
+
+Suite Setup with restart DB
+    # Overriding resource file variables here with whatever we get from the command line
+    ${vars} =    Get Variables
+    setResouceVariables    ${vars}
+    metadata_connect
+    mcRNC_set_log_level
+    metadata_suite_setup
+    copy_test_files_ifneeded
+    ensure_unit0_working
+    get_system_uptime
+    # To speedup plan download operations...
+    set_db_file_dump_prevention
+    wait_rnwdb_normal
+    ${rnc_id_match} =    check_rnc_id_match
+    Run Keyword If    ${rnc_id_match}==${true}    clear_rnwdb_thoroughly
+    Run Keyword If    ${rnc_id_match}==${false}    clear_rnwdb
+    clear_prnc_info_from_r0sfle
+    Enable All Features
+    ${LOG_HANDLE}=    Set Suite Variable    ${None}
+    Stop And Start Test Log Monitoring
+    set_cons_check_disabled    ${false}
+
+Feature Suite Setup
+    # Overriding resource file variables here with whatever we get from the command line
+    ${vars} =    Get Variables
+    setResouceVariables    ${vars}
+    metadata_connect
+    mcRNC_set_log_level
+    metadata_suite_setup
+    copy_test_files_ifneeded
+    ensure_unit0_working
+    # To speedup plan download operations...
+    set_db_file_dump_prevention
+    ${rnc_id_match} =    check_rnc_id_match
+    Run Keyword If    ${rnc_id_match}==${false}    clear_rnwdb_thoroughly
+    Run Keyword If    ${rnc_id_match}==${true}    clear_rnwdb
+    clear_prnc_info_from_r0sfle
+    ${LOG_HANDLE}=    Set Suite Variable    ${None}
+    Stop And Start Test Log Monitoring
+    set_cons_check_disabled    ${false}
+
+Daily Suite Setup
+    # Overriding resource file variables here with whatever we get from the command line
+    ${vars} =    Get Variables
+    setResouceVariables    ${vars}
+    metadata_connect
+    mcRNC_set_log_level
+    metadata_suite_setup
+    copy_test_files_ifneeded
+    ensure_unit0_working
+    # To speedup plan download operations...
+    set_db_file_dump_prevention
+    ${rnc_id_match} =    check_rnc_id_match
+    Run Keyword If    ${rnc_id_match}==${false}    clear_rnwdb_thoroughly
+    # Run Keyword If    ${rnc_id_match}==${true}    clear_rnwdb
+    # clear_prnc_info_from_r0sfle
+    ${LOG_HANDLE}=    Set Suite Variable    ${None}
+    Stop And Start Test Log Monitoring
+    set_cons_check_disabled    ${false}
+
+Suite Teardown
+    # delete_object_hierarchy_down_to    WCEL    remain_object_itself=${False}
+    # clean_all_except_rnc_objs_from_db
+    sleep    1
+    metadata_suite_teardown
+    set_cons_check_disabled    ${false}
+    wait_rnwdb_normal
+    run_jondoe_cmd    cleanup
+    stop_log_monitoring    ${LOG_HANDLE}
+    metadata_disconnect
+
+Daily Suite Teardown
+    set_cons_check_disabled    ${false}
+    wait_rnwdb_normal
+    run_jondoe_cmd    cleanup
+    stop_log_monitoring    ${LOG_HANDLE}
+    metadata_disconnect
+
+Enable All Features
+    [Documentation]    Uses RAKTOR test mode and enables all features
+    set_raktor_test_mode    ON
+    enable_optionality    255
+
+Enable Listed Features
+    [Documentation]    Uses RAKTOR test mode and enables all features
+    set_raktor_test_mode    ON
+    # enable_optionality    255
+    disable_optionality    255
+    set_all_options    ON

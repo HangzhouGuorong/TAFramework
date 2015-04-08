@@ -1,0 +1,2 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<raml version="2.1" xmlns="raml21.xsd"><cmData type="actual" scope="all" domain="mcRNCRNWCMPlan" adaptationVersionMajor="mcRN3.0"><header><log dateTime="2014-02-06T13:02:01" action="modified" user="mcRNC" appInfo="mcRNC OMS">mcRNC plan upload</log></header><managedObject class="ADJL" distName="RNC-1/WBTS-1/WCEL-1/ADJL-1" version="mcRN4.1" operation="update"><p name="AdjLEARFCN">2850</p><p name="AdjLMeasBw">50</p><p name="HopLIdentifier">1</p><p name="ADJLChangeOrigin">5</p><p name="AdjLSelectFreq">0</p></managedObject></cmData></raml>

@@ -1,0 +1,336 @@
+
+<?xml version="1.0" encoding="UTF-8"?>
+<raml version="2.1" xmlns="raml21.xsd">
+	<cmData type="actual" scope="all" domain="mcRNCRNWCMPlan"
+		adaptationVersionMajor="mcRN4.1">
+		<header>
+			<log dateTime="2014-08-19T12:28:52" action="modified" user="mcRNC"
+				appInfo="mcRNC OMS">mcRNC CM event plan</log>
+		</header>
+		<managedObject class="RNC" distName="RNC-1" version="mcRN4.1"
+			operation="update">
+			<p name="RNCName">RNC-0</p>
+			<p name="CSAttachDetachAllowed">1</p>
+			<p name="RNCIPAddress">0.0.0.0</p>
+		</managedObject>
+		<managedObject class="RNCERM" distName="RNC-1/RNCERM-1"
+			version="mcRN4.1" operation="update"></managedObject>
+		<managedObject class="FMCL" distName="RNC-1/FMCL-1"
+			version="mcRN4.1" operation="update"></managedObject>
+		<managedObject class="RNAC" distName="RNC-1/RNAC-1"
+			version="mcRN4.1" operation="update"></managedObject>
+		<managedObject class="RNPS" distName="RNC-1/RNPS-1"
+			version="mcRN4.1" operation="update"></managedObject>
+		<managedObject class="RNHSPA" distName="RNC-1/RNHSPA-1"
+			version="mcRN4.1" operation="update"></managedObject>
+		<managedObject class="RNRLC" distName="RNC-1/RNRLC-1"
+			version="mcRN4.1" operation="update"></managedObject>
+		<managedObject class="RNTRM" distName="RNC-1/RNTRM-1"
+			version="mcRN4.1" operation="update"></managedObject>
+		<managedObject class="RNFC" distName="RNC-1/RNFC-1"
+			version="mcRN4.1" operation="update"></managedObject>
+		<managedObject class="RNMOBI" distName="RNC-1/RNMOBI-1"
+			version="mcRN4.1" operation="update"></managedObject>
+		<managedObject class="WBTS" distName="RNC-1/WBTS-1"
+			version="mcRN4.1" operation="update">
+			<p name="BTSRACHCapaIncCapability">0</p>
+			<p name="SchedulingPeriod">100</p>
+			<p name="RRIndPeriod">40</p>
+			<p name="HSDPA14MbpsPerUser">0</p>
+			<p name="HSUPAXUsersEnabled">0</p>
+			<p name="IPNBId">0</p>
+			<p name="IPBasedRouteIdIub">0</p>
+			<p name="IPBasedRouteIdIub2">0</p>
+			<p name="TQMId">0</p>
+			<p name="IPBasedRouteIdIub3">0</p>
+			<p name="IPBasedRouteIdIub4">0</p>
+			<p name="WBTSName">UR3GEBIWWWUE7355BZ50FDPQM9</p>
+			<p name="LoadControlPeriodPS">20</p>
+			<p name="DCNLinkStatus">0</p>
+			<p name="BTSIPAddress">0.0.0.0</p>
+			<p name="NEType">0</p>
+			<p name="NESWVersion"></p>
+			<p name="DCNSecurityStatus">255</p>
+			<p name="RFSharingState">0</p>
+			<p name="WBTSSWBuildId">No information available</p>
+			<p name="TargetId"></p>
+		</managedObject>
+		<managedObject class="WCEL" distName="RNC-1/WBTS-1/WCEL-1"
+			version="mcRN4.1" operation="update">
+			<p name="PrxNoise">-1050</p>
+			<p name="FMCLIdentifier">1</p>
+			<p name="CId">1</p>
+			<p name="WCelState">67</p>
+			<p name="LAC">1</p>
+			<p name="SAC">0</p>
+			<p name="RAC">0</p>
+			<p name="PriScrCode">0</p>
+			<p name="UARFCN">10250</p>
+			<p name="Tcell">0</p>
+			<list name="URAId">
+				<p>1</p>
+				<p>2</p>
+				<p>3</p>
+			</list>
+			<p name="SACB">0</p>
+			<p name="NbrOfSCCPCHs">1</p>
+			<p name="CellAdditionalInfo">info</p>
+			<list name="WCELGlobalCNid">
+				<item>
+					<p name="WCELMCC">123</p>
+					<p name="WCELMNC">45</p>
+					<p name="WCELMNCLength">2</p>
+				</item>
+			</list>
+			<p name="RtFmcsIdentifier">1</p>
+			<p name="NrtFmcsIdentifier">1</p>
+			<p name="RtFmciIdentifier">1</p>
+			<p name="NrtFmciIdentifier">1</p>
+			<p name="RtFmcgIdentifier">1</p>
+			<p name="NrtFmcgIdentifier">1</p>
+			<p name="HSPAFmcsIdentifier">0</p>
+			<p name="RTWithHSPAFmcsIdentifier">0</p>
+			<p name="PtxPrimaryCPICH">330</p>
+			<p name="PrxTarget">40</p>
+			<p name="PrxOffset">10</p>
+			<p name="PtxTarget">400</p>
+			<p name="PtxOffset">10</p>
+			<p name="EbNoSetIdentifier">1</p>
+			<p name="UEtxPowerMaxDPCH">24</p>
+			<p name="UEtxPowerMaxPRACH">21</p>
+			<p name="SectorID">0</p>
+			<p name="HSDPAenabled">0</p>
+			<p name="HSUPAEnabled">0</p>
+			<p name="HSDSCHOpState">255</p>
+			<p name="HSDPAcapability">255</p>
+			<p name="EDCHOpState">255</p>
+			<p name="EDCHCapability">255</p>
+			<p name="ICRCapability">1</p>
+			<p name="EVAMCapability">1</p>
+			<p name="HSRACHCapability">255</p>
+			<p name="HSFACHCapability">255</p>
+			<p name="AppAwareRANCapability">1</p>
+			<p name="UEDRXCapability">1</p>
+		</managedObject>
+		<managedObject class="IUR" distName="RNC-1/IUR-1"
+			version="mcRN4.1" operation="update">
+			<p name="NRncId">1</p>
+		</managedObject>
+		<managedObject class="IUCS" distName="RNC-1/IUCS-1"
+			version="mcRN4.1" operation="update">
+			<p name="IUOIdentifier">1</p>
+			<p name="CNId">0</p>
+		</managedObject>
+		<managedObject class="IUCSIP" distName="RNC-1/IUCS-1/IUCSIP-1"
+			version="mcRN4.1" operation="update">
+			<p name="IPBasedRouteIdCS">4</p>
+			<p name="IPQMIdCS">1</p>
+			<p name="DestIPAddressCS">12.34.56.78</p>
+			<p name="IPNetmaskCS">1.2.3.4</p>
+		</managedObject>
+		<managedObject class="IUPS" distName="RNC-1/IUPS-1"
+			version="mcRN4.1" operation="update">
+			<p name="IUOIdentifier">1</p>
+			<p name="CNId">1</p>
+		</managedObject>
+		<managedObject class="IUPSIP" distName="RNC-1/IUPS-1/IUPSIP-1"
+			version="mcRN4.1" operation="update">
+			<p name="IPBasedRouteIdPS">3</p>
+			<p name="IPQMIdPS">1</p>
+			<p name="DestIPAddressPS">11.22.33.44</p>
+			<p name="IPNetmaskPS">1.2.3.4</p>
+		</managedObject>
+		<managedObject class="HOPS" distName="RNC-1/HOPS-1"
+			version="mcRN4.1" operation="update">
+			<p name="EnableInterRNCsho">1</p>
+			<p name="AdjsHCSpriority">0</p>
+			<p name="AdjsHCSthreshold">0</p>
+		</managedObject>
+		<managedObject class="HOPI" distName="RNC-1/HOPI-1"
+			version="mcRN4.1" operation="update">
+			<p name="AdjiHCSpriority">0</p>
+			<p name="AdjiHCSthreshold">0</p>
+		</managedObject>
+		<managedObject class="HOPG" distName="RNC-1/HOPG-1"
+			version="mcRN4.1" operation="update">
+			<p name="AdjgHCSpriority">0</p>
+			<p name="AdjgHCSthreshold">55</p>
+		</managedObject>
+		<managedObject class="FMCS" distName="RNC-1/FMCS-1"
+			version="mcRN4.1" operation="update">
+			<p name="AdditionWindow">8</p>
+			<p name="DropWindow">12</p>
+			<p name="ReplacementWindow">4</p>
+			<p name="EcNoFilterCoefficient">3</p>
+		</managedObject>
+		<managedObject class="FMCG" distName="RNC-1/FMCG-1"
+			version="mcRN4.1" operation="update">
+			<p name="GSMcauseCPICHEcNo">0</p>
+			<p name="GSMcauseCPICHrscp">0</p>
+			<p name="GSMcauseTxPwrDL">0</p>
+			<p name="GSMcauseTxPwrUL">0</p>
+			<p name="GSMcauseUplinkQuality">0</p>
+		</managedObject>
+		<managedObject class="FMCI" distName="RNC-1/FMCI-1"
+			version="mcRN4.1" operation="update">
+			<p name="IFHOcauseCPICHEcNo">0</p>
+			<p name="IFHOcauseCPICHrscp">0</p>
+			<p name="IFHOcauseTxPwrDL">0</p>
+			<p name="IFHOcauseTxPwrUL">0</p>
+			<p name="IFHOcauseUplinkQuality">0</p>
+		</managedObject>
+		<managedObject class="WLCSE" distName="RNC-1/WLCSE-1"
+			version="mcRN4.1" operation="update">
+			<list name="WLCSEUtranCellId">
+				<item>
+					<p name="WLCSERncId">50</p>
+					<p name="WLCSECId">10099</p>
+					<p name="WLCSEMCC">232</p>
+					<p name="WLCSEMNC">1</p>
+					<p name="WLCSEMNCLength">2</p>
+				</item>
+			</list>
+			<list name="AntennaCoord">
+				<item>
+					<p name="AntennaCoordLatitudeDegrees">35</p>
+					<p name="AntennaCoordLatitudeMinutes">11</p>
+					<p name="AntennaCoordLatitudeSeconds">12</p>
+					<p name="AntennaCoordLatitudeFractions">88</p>
+					<p name="AntennaCoordLatitudeSign">0</p>
+					<p name="AntennaCoordLongitudeDegrees">19</p>
+					<p name="AntennaCoordLongitudeMinutes">22</p>
+					<p name="AntennaCoordLongitudeSeconds">23</p>
+					<p name="AntennaCoordLongitudeFractions">8</p>
+					<p name="AntennaCoordLongitudeSign">0</p>
+					<p name="AntennaCoordAltitudeDirect">0</p>
+					<p name="AntennaCoordAltitudeGround">34</p>
+				</item>
+			</list>
+			<p name="CovType">1</p>
+			<p name="EnvCharact">3</p>
+			<p name="MaxCellRad">20001</p>
+		</managedObject>
+		<managedObject class="WSMLC" distName="RNC-1/WSMLC-1"
+			version="mcRN4.1" operation="update">
+			<p name="ConfAreaLevel">0</p>
+			<p name="RNCLowDelayResponseTime">25</p>
+			<p name="RNCDelayTolRespTime">140</p>
+		</managedObject>
+		<managedObject class="WANE" distName="RNC-1/WANE-1"
+			version="mcRN4.1" operation="update">
+			<p name="WANEName">WaneName1234567</p>
+		</managedObject>
+		<managedObject class="CMOB" distName="RNC-1/CMOB-1"
+			version="mcRN4.1" operation="update">
+			<p name="RestrictionGroupName">forced RNAR</p>
+			<p name="RestrictionGroupType">0</p>
+		</managedObject>
+		<managedObject class="CMOB" distName="RNC-1/CMOB-2"
+			version="mcRN4.1" operation="update">
+			<p name="RestrictionGroupName">forced CS-DSAC</p>
+			<p name="RestrictionGroupType">1</p>
+		</managedObject>
+		<managedObject class="CMOB" distName="RNC-1/CMOB-3"
+			version="mcRN4.1" operation="update">
+			<p name="RestrictionGroupName">forced PS-DSAC</p>
+			<p name="RestrictionGroupType">2</p>
+		</managedObject>
+		<managedObject class="CMOB" distName="RNC-1/CMOB-4"
+			version="mcRN4.1" operation="update">
+			<p name="RestrictionGroupName">restgroupname1</p>
+			<p name="RestrictionGroupType">3</p>
+		</managedObject>
+		<managedObject class="IPQM" distName="RNC-1/IPQM-1"
+			version="mcRN4.1" operation="update"></managedObject>
+		<managedObject class="WRAB" distName="RNC-1/WRAB-1"
+			version="mcRN4.1" operation="update">
+			<p name="EbNoDCHTxDiv">3</p>
+			<p name="EbNoDCHRxDiv2">-22</p>
+			<p name="EbNoDCHRxDiv4">-11</p>
+			<p name="DownlinkOrthog">4</p>
+		</managedObject>
+		<managedObject class="IPNB" distName="RNC-1/IPNB-1"
+			version="mcRN4.1" operation="update">
+			<p name="WBTSId">0</p>
+			<list name="CNBAP">
+				<item>
+					<p name="CNBAPConnOpState">3</p>
+					<p name="SCTPPortNumberCNBAP">49960</p>
+				</item>
+			</list>
+			<list name="DNBAP">
+				<item>
+					<p name="DNBAPConnOpState">3</p>
+					<p name="CControlPortID">4724</p>
+					<p name="SCTPPortNumberDNBAP">54684</p>
+				</item>
+				<item>
+					<p name="DNBAPConnOpState">3</p>
+					<p name="CControlPortID">1</p>
+					<p name="SCTPPortNumberDNBAP">49961</p>
+				</item>
+				<item>
+					<p name="DNBAPConnOpState">3</p>
+					<p name="CControlPortID">2</p>
+					<p name="SCTPPortNumberDNBAP">49962</p>
+				</item>
+				<item>
+					<p name="DNBAPConnOpState">3</p>
+					<p name="CControlPortID">3</p>
+					<p name="SCTPPortNumberDNBAP">49963</p>
+				</item>
+				<item>
+					<p name="DNBAPConnOpState">3</p>
+					<p name="CControlPortID">4</p>
+					<p name="SCTPPortNumberDNBAP">49964</p>
+				</item>
+				<item>
+					<p name="DNBAPConnOpState">3</p>
+					<p name="CControlPortID">5</p>
+					<p name="SCTPPortNumberDNBAP">49965</p>
+				</item>
+			</list>
+			<p name="NBAPCSPUIndex">0</p>
+			<p name="NBAPEIPUIndex">0</p>
+			<p name="NBAPQNIUBIndex">0</p>
+		</managedObject>
+		<managedObject class="TQM" distName="RNC-1/TQM-1"
+			version="mcRN4.1" operation="update"></managedObject>
+		<managedObject class="CBCI" distName="RNC-1/CBCI-1"
+			version="mcRN4.1" operation="update">
+			<p name="IUOIdentifier">1</p>
+		</managedObject>
+		<managedObject class="IUO" distName="RNC-1/IUO-1"
+			version="mcRN4.1" operation="update"></managedObject>
+		<managedObject class="WSG" distName="RNC-1/WSG-1"
+			version="mcRN4.1" operation="update"></managedObject>
+		<managedObject class="HOPL" distName="RNC-1/HOPL-1"
+			version="mcRN4.1" operation="update"></managedObject>
+		<managedObject class="WAC" distName="RNC-1/WAC-1"
+			version="mcRN4.1" operation="update"></managedObject>
+		<managedObject class="VBTS" distName="RNC-1/VBTS-1"
+			version="mcRN4.1" operation="update"></managedObject>
+		<managedObject class="VCEL" distName="RNC-1/VBTS-1/VCEL-1"
+			version="mcRN4.1" operation="update">
+			<p name="LAC">65535</p>
+			<p name="RAC">255</p>
+		</managedObject>
+		<managedObject class="PFL" distName="RNC-1/PFL-1"
+			version="mcRN4.1" operation="update">
+			<p name="LaySelWeightPrefLayer">1000</p>
+			<p name="LaySelWeightBand">0</p>
+			<p name="LaySelWeightRSCP">0</p>
+			<p name="LaySelWeightLoad">0</p>
+		</managedObject>
+		<managedObject class="BKPRNC" distName="RNC-1/BKPRNC-1"
+			version="RN8.1" operation="update">
+			<p name="BackUpRNCIP4Address">11.12.13.14</p>
+			<p name="ActivityMode">4</p>
+			<p name="UnknownStatus">1</p>
+			<p name="PRNCName">Not updated</p>
+			<p name="BackupCompleteness">3</p>
+			<p name="BackupUpdateTime">Not updated</p>
+			<p name="AlarmStatus">4</p>
+		</managedObject>
+	</cmData>
+</raml>

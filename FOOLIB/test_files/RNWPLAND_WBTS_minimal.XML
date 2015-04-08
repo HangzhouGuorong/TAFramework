@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+   <raml version="2.1" xmlns="raml21.xsd">
+     <cmData type="actual">
+       <header>
+         <log dateTime="2014-01-03T16:03:11" action="created" appInfo="ActualExporter"></log>
+       </header>
+       <managedObject class="WBTS" version="RN6.0_2.0" distName="RNC-1/WBTS-1" operation="create">
+            <p name="DediMeasRepPeriodCSdata">1</p>
+            <p name="DediMeasRepPeriodPSdata">9</p>
+            <p name="DedicatedMeasReportPeriod">9</p>
+            <p name="LoadControlPeriodPS">10</p>
+            <p name="MeasFiltCoeff">8</p>
+            <p name="NBAPCommMode">0</p>
+            <p name="PrxAlpha">10</p>
+            <p name="PtxAlpha">0</p>
+            <p name="PtxDPCHmax">-3</p>
+            <p name="PtxDPCHmin">-60</p>
+            <p name="PtxMeasAveWindow">85</p>
+            <p name="CellRange">0</p>
+        </managedObject>
+    </cmData>
+</raml>

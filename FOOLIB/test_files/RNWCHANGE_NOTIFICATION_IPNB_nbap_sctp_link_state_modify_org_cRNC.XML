@@ -1,0 +1,26 @@
+<?xml version ="1.0" encoding="UTF-8"?>
+<raml version="2.1" xmlns="raml21.xsd">
+<cmData type="actual" scope="all" domain="RNCRNWCMPLAN" adaptationVersionMajor="RN8.0">
+<header>
+<log dateTime="2014-9-9T9:8:42" action="modified" user="CRNC" appInfo="RNC OMS">RNC CM event plan</log>
+</header>
+<managedObject class="IPNB" distName="RNC-1/IPNB-1" version="RN8.0" operation="update">
+<list name="CNBAP">
+<item>
+<p name="CNBAPConnOpState">3</p>
+<p name="CNBAPICSUIndex">65535</p>
+<p name="SCTPPortNumberCNBAP">49960</p>
+</item>
+</list>
+<list name="DNBAP">
+<item>
+<p name="DNBAPConnOpState">3</p>
+<p name="DNBAPICSUIndex">65535</p>
+<p name="CControlPortID">4724</p>
+<p name="SCTPPortNumberDNBAP">54684</p>
+</item>
+</list>
+<p name="IPNBChangeOrigin">5</p>
+</managedObject>
+</cmData>
+</raml>

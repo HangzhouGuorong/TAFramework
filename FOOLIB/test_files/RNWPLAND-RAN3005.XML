@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<raml version="2.1" xmlns="raml21.xsd">
+	<cmData adaptationVersionMajor="mcRNC4.0" domain="mcRNCRNWCMPlan" scope="all" type="actual">
+		<header>
+			<log action="modified" appInfo="test plan" dateTime="2014-3-25" user="mcRNC169">mcRNC169 2IPNB 2BTS with 3WCEL </log>
+		</header>
+		<managedObject class="RNC" distName="RNC-1" operation="create" version="mcRNC4.0">
+			<p name="RNCName">mcRNC169</p>
+			<p name="OMSIpAddress">10.69.44.254</p>
+		</managedObject>
+		<managedObject class="RNFC" distName="RNC-1/RNFC-1" operation="create" version="mcRNC4.0">
+			<p name="HSDPAMobility">1</p>
+			<p name="HSDPADynamicResourceAllocation">1</p>
+			<p name="FRLCEnabled">1</p>
+		</managedObject>
+		<managedObject class="RNAC" distName="RNC-1/RNAC-1" operation="create" version="mcRNC4.0">
+			<p name="AMRNumofReconf">10</p>
+		</managedObject>
+		<managedObject class="RNPS" distName="RNC-1/RNPS-1" operation="create" version="mcRNC4.0">
+			<p name="ActivationTimeOffset">300</p>
+		</managedObject>
+		<managedObject class="RNHSPA" distName="RNC-1/RNHSPA-1" operation="create" version="mcRNC4.0">
+			<p name="ATOSRBsOnHSPA">30</p>
+		</managedObject>
+		<managedObject class="RNRLC" distName="RNC-1/RNRLC-1" operation="create" version="mcRNC4.0">
+			<p name="AMRLCRespTimeEDCH">10</p>
+		</managedObject>
+		<managedObject class="RNTRM" distName="RNC-1/RNTRM-1" operation="create" version="mcRNC4.0">
+			<p name="EchoRequestSending">0</p>
+		</managedObject>
+		<managedObject class="RNMOBI" distName="RNC-1/RNMOBI-1" operation="create" version="mcRNC4.0">
+			<p name="DirectedRRCForHSDPALayerEnhanc">0</p>
+		</managedObject>
+	</cmData>
+</raml>

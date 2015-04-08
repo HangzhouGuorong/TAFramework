@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<raml version="2.1" xmlns="raml21.xsd">
+     <cmData type="actual" scope="all" domain="RNCRNWCMPLAN" adaptationVersionMajor="RN7.0">
+         <header>
+             <log dateTime="2012-11-06T09:18:41" action="modified" user="mcRNC" appInfo="cRNC OMS">cRNC plan upload</log>
+         </header>
+		<managedObject class="WANE" distName="RNC-1/WANE-1" version="RN7.0" operation="create">
+			<list name="AuthorisedNetworkPLMN">
+			  <item>
+			    <p name="AuthorisedNetworkMCC">5</p>
+			    <p name="AuthorisedNetworkMNC">66</p>
+			    <p name="AuthorisedNetworkMNClength">2</p>
+			    <p name="Technology">1</p>
+			  </item>
+			  <item>
+			    <p name="AuthorisedNetworkMCC">7</p>
+			    <p name="AuthorisedNetworkMNC">999</p>
+			    <p name="AuthorisedNetworkMNClength">3</p>
+			    <p name="Technology">2</p>
+			  </item>
+                        </list>
+			<p name="WANEName">WaneName1234567</p>			
+		</managedObject>
+	</cmData>
+</raml>

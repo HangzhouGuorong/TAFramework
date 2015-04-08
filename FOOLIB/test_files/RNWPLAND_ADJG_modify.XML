@@ -1,0 +1,25 @@
+<?xml version="100" encoding="UTF-8"?>
+<raml version="2.1" xmlns="raml21.xsd">
+  <cmData type="actual">
+    <header>
+      <log dateTime="2014-01-03T16:03:11" action="created" appInfo="ActualExporter"></log>
+    </header>
+    <managedObject class="ADJG" version="RN7.0" distName="RNC-1/WBTS-1/WCEL-1/ADJG-1" operation="update">
+      <p name="AdjgMCC">232</p>
+      <p name="AdjgMNC">1</p>
+      <p name="AdjgMNCLength">2</p>
+      <p name="ADJGType">0</p>
+      <p name="AdjgBCC">2</p>
+      <p name="AdjgBCCH">523</p>
+      <p name="AdjgBandIndicator">0</p>
+      <p name="AdjgCI">1</p>
+      <p name="AdjgLAC">1</p>
+      <p name="AdjgNCC">0</p>
+      <p name="AdjgSIB">1</p>
+      <p name="AdjgTxPwrMaxRACH">30</p>
+      <p name="AdjgTxPwrMaxTCH">20</p>
+      <p name="NrtHopgIdentifier">1</p>
+      <p name="RtHopgIdentifier">1</p>
+    </managedObject>
+  </cmData>
+</raml>

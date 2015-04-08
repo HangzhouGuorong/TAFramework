@@ -1,0 +1,15 @@
+<raml version="2.1" xmlns="raml21.xsd">
+	<cmData type="actual" scope="all" domain="mcRNCRNWCMPlan" adaptationVersionMajor="mcRN4.1">
+		<header>
+			<log dateTime="2014-06-26T12:31:43" action="modified" user="mcRNC" appInfo="mcRNC OMS">mcRNC CM event plan</log>
+		</header>
+		<managedObject class="CMOB" distName="RNC-1/CMOB-1" version="mcRN4.1" operation="update">
+			<p name="ACBarredListSystem">0</p>
+			<p name="RestrictionGroupName">forced RNAR</p>
+			<p name="CellAccessRestriction">1</p>
+			<p name="RestrictionGroupType">0</p>
+			<p name="TrafficRestriction">0</p>
+			<p name="CMOBChangeOrigin">1</p>
+		</managedObject>
+	</cmData>
+</raml

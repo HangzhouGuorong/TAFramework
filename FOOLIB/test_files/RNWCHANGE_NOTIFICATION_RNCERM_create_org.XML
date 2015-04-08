@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<raml version="2.1" xmlns="raml21.xsd">
+	<cmData type="actual" scope="all" domain="mcRNCRNWCMPlan" adaptationVersionMajor="mcRN4.1">
+		<header>
+			<log dateTime="2014-09-01T09:52:44" action="modified" user="mcRNC" appInfo="mcRNC OMS">mcRNC CM event plan</log>
+		</header>
+		<managedObject class="RNCERM" distName="RNC-1/RNCERM-1" version="mcRN4.1" operation="create">
+			<p name="RNCERMChangeOrigin">5</p>
+			<list name="RebalanceBlockBtslist">
+				<item>
+					<p name="WBTSId">1</p>
+				</item>
+				<item>
+					<p name="WBTSId">2</p>
+				</item>
+			</list>
+			<p name="DonateCscpLoadThrHi">90</p>
+			<p name="RecvCscpLoadThr">70</p>
+			<p name="NumOfDaysForLM">1</p>
+			<p name="MaxBtsForRebalance">3</p>
+			<p name="CscpOverloadRatioThr">10</p>
+			<p name="NbrAMRCallsAllwdToDrop">5</p>
+		</managedObject>
+	</cmData>
+</raml>

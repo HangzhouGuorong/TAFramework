@@ -1,0 +1,19 @@
+<raml version="2.1" xmlns="raml21.xsd">
+	<cmData type="actual" scope="all" domain="RNCRNWCMPLAN" adaptationVersionMajor="RN8.1">
+		<header>
+			<log dateTime="2014-07-01T16:05:52" action="modified" user="CRNC" appInfo="cRNC OMS">RNC CM event plan</log>
+		</header>
+		<managedObject class="BKPRNC" distName="RNC-1/BKPRNC-1" version="RN8.1" operation="update">
+			<p name="BackUpRNCIP4Address">11.12.13.14</p>
+			<p name="RNCClusterOMLnkState">0</p>
+			<p name="BKPRNCTLSClientMode">0</p>
+			<p name="BKPRNCChangeOrigin">5</p>
+			<p name="ActivityMode">4</p>
+			<p name="UnknownStatus">1</p>
+			<p name="PRNCName">Not updated</p>
+			<p name="BackupCompleteness">3</p>
+			<p name="BackupUpdateTime">Not updated</p>
+			<p name="AlarmStatus">4</p>
+		</managedObject>
+	</cmData>
+</raml

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<raml version="2.1" xmlns="raml21.xsd">
+    <cmData type="actual" scope="all" domain="RNCRNWCMPLAN" adaptationVersionMajor="RN7.0">
+        <header>
+            <log dateTime="2012-11-06T09:18:41" action="modified" user="CRNC" appInfo="cRNC OMS">cRNC plan upload</log>
+        </header>
+        <managedObject class="TEST2" distName="TEST2-0" version="RN7.0" operation="update">
+          <list name="URAIdList">
+            <p>100</p>
+            <p>200</p>
+            <p>300</p>
+          </list>
+          <list name="URAId">
+            <p>500</p>
+            <p>600</p>
+            <p>700</p>
+          </list>
+          <p name="AllowedRACHSubChannels">4095</p>
+          <p name="LaySelWeightPrefLayer">1000</p>
+          <list name="ARPWeight">
+            <item>
+              <p name="WeightForARP1">1</p>
+              <p name="WeightForARP2">2</p>
+              <p name="WeightForARP3">3</p>
+            </item>
+          </list>
+          <list name="DNBAP">
+            <item>
+              <p name="CControlPortID">1</p>
+              <p name="DNBAPICSUIndex">26</p>
+              <p name="SCTPPortNumberDNBAP">49961</p>
+            </item>
+            <item>
+              <p name="CControlPortID">2</p>
+              <p name="DNBAPICSUIndex">27</p>
+              <p name="SCTPPortNumberDNBAP">49962</p>
+            </item>
+            <item>
+              <p name="CControlPortID">3</p>
+              <p name="DNBAPICSUIndex">28</p>
+              <p name="SCTPPortNumberDNBAP">49963</p>
+            </item>
+            <item>
+              <p name="CControlPortID">4</p>
+              <p name="DNBAPICSUIndex">29</p>
+              <p name="SCTPPortNumberDNBAP">49964</p>
+            </item>
+            <item>
+              <p name="CControlPortID">5</p>
+              <p name="DNBAPICSUIndex">30</p>
+              <p name="SCTPPortNumberDNBAP">49965</p>
+            </item>
+            <item>
+              <p name="CControlPortID">6</p>
+              <p name="DNBAPICSUIndex">31</p>
+              <p name="SCTPPortNumberDNBAP">49966</p>
+            </item>                                                            
+          </list>
+        </managedObject>
+    </cmData>
+</raml>

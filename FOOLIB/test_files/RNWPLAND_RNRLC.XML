@@ -1,0 +1,264 @@
+<?xml version="100" encoding="UTF-8"?>
+<raml version="2.1" xmlns="raml21.xsd">
+  <cmData type="actual">
+    <header>
+      <log dateTime="2014-01-03T16:03:11" action="created" appInfo="ActualExporter"></log>
+    </header>
+    <managedObject class="RNRLC" version="RN6.0_2.0" distName="RNC-1/RNRLC-1" operation="create">
+      <p name="AMRLCBufMaxOverbook2NRT">13</p>
+      <p name="AMRLCBufMaxOverbook3NRT">18</p>
+      <list name="AMRLCHSFACHPS">
+        <item>
+          <p name="AMRLCHSFACHPSMaxDAT">15</p>
+          <p name="AMRLCHSFACHPSMaxMRW">12</p>
+          <p name="AMRLCHSFACHPSMaxRST">12</p>
+          <p name="AMRLCHSFACHPSPeriodMax">200</p>
+          <p name="AMRLCHSFACHPSPeriodMin">4</p>
+          <p name="AMRLCHSFACHPSPollPDU">23</p>
+          <p name="AMRLCHSFACHPSPollSDU">1</p>
+          <p name="AMRLCHSFACHPSPollWin">70</p>
+          <p name="AMRLCHSFACHPSTriggers">5940</p>
+          <p name="AMRLCRespHSFACHandRACH">50</p>
+          <p name="HSFACHAMRLCRespHSRACH">50</p>
+        </item>
+      </list>  
+      <list name="AMRLCMaximumBufferUE">        
+        <item>  
+          <p name="AMRLCMaximumBufferUE100">25</p>
+          <p name="AMRLCMaximumBufferUE1150">230</p>
+          <p name="AMRLCMaximumBufferUE1250">250</p>
+          <p name="AMRLCMaximumBufferUE150">35</p>
+          <p name="AMRLCMaximumBufferUE1k">200</p>
+          <p name="AMRLCMaximumBufferUE200">50</p>
+          <p name="AMRLCMaximumBufferUE300">60</p>
+          <p name="AMRLCMaximumBufferUE50">14</p>
+          <p name="AMRLCMaximumBufferUE500">95</p>
+          <p name="AMRLCMaximumBufferUE750">120</p>
+          <p name="AMRLCmaximumBufferUE400">70</p>
+          <p name="AMRLCMaximumBufferUE1800">40</p>
+          <p name="AMRLCMaximumBufferUE2300">460</p>
+          <p name="AMRLCMaximumBufferUE2550">580</p>
+          <p name="AMRLCMaximumBufferUE1500">60</p>
+        </item>
+      </list>
+      <list name="AMRLCOnDCHOfNRTPS">
+        <item>
+          <p name="AMRLCOnDCHOfNRTPSCount">10</p>
+          <p name="AMRLCOnDCHOfNRTPSFilterReTX">80</p>
+          <p name="AMRLCOnDCHOfNRTPSMaxDAT">15</p>
+          <p name="AMRLCOnDCHOfNRTPSMaxMRW">12</p>
+          <p name="AMRLCOnDCHOfNRTPSMaxRST">12</p>
+          <p name="AMRLCOnDCHOfNRTPSPeriodMax">140</p>
+          <p name="AMRLCOnDCHOfNRTPSPeriodMin">4</p>
+          <p name="AMRLCOnDCHOfNRTPSPollPDU">23</p>
+          <p name="AMRLCOnDCHOfNRTPSPollSDU">1</p>
+          <p name="AMRLCOnDCHOfNRTPSPollWindow">70</p>
+          <p name="AMRLCOnDCHOfNRTPSTriggers">56849</p>
+        </item>
+      </list>
+      <list name="AMRLCOnDCHOfSRB136">
+        <item>
+          <p name="AMRLCOnDCHOfSRB136MaxDAT">40</p>
+          <p name="AMRLCOnDCHOfSRB136PeriodMax">100</p>
+          <p name="AMRLCOnDCHOfSRB136PeriodMin">4</p>
+          <p name="AMRLCOnDCHOfSRB136PollPDU">23</p>
+          <p name="AMRLCOnDCHOfSRB136PollSDU">1</p>
+          <p name="AMRLCOnDCHOfSRB136PollWindow">70</p>
+          <p name="AMRLCOnDCHOfSRB136Triggers">1988</p>
+        </item>
+      </list>
+      <list name="AMRLCOnDCHOfSRB34" >
+        <item>
+          <p name="AMRLCOnDCHOfSRB34MaxDAT">30</p>
+          <p name="AMRLCOnDCHOfSRB34PeriodMax">112</p>
+          <p name="AMRLCOnDCHOfSRB34PeriodMin">4</p>
+          <p name="AMRLCOnDCHOfSRB34PollPDU">23</p>
+          <p name="AMRLCOnDCHOfSRB34PollSDU">1</p>
+          <p name="AMRLCOnDCHOfSRB34PollWindow">70</p>
+          <p name="AMRLCOnDCHOfSRB34Triggers">1988</p>
+        </item>
+      </list>
+      <list name="AMRLCOnDCHOfStream">
+        <item>
+          <p name="AMRLCOnDCHOfStreamCount">10</p>
+          <p name="AMRLCOnDCHOfStreamDiscardTime">20</p>
+          <p name="AMRLCOnDCHOfStreamFilterReTX">80</p>
+          <p name="AMRLCOnDCHOfStreamMaxDAT">15</p>
+          <p name="AMRLCOnDCHOfStreamMaxMRW">12</p>
+          <p name="AMRLCOnDCHOfStreamMaxRST">12</p>
+          <p name="AMRLCOnDCHOfStreamPeriodMax">140</p>
+          <p name="AMRLCOnDCHOfStreamPeriodMin">4</p>
+          <p name="AMRLCOnDCHOfStreamPollPDU">23</p>
+          <p name="AMRLCOnDCHOfStreamPollSDU">1</p>
+          <p name="AMRLCOnDCHOfStreamPollWindow">70</p>
+          <p name="AMRLCOnDCHOfStreamTriggers">32273</p>
+        </item>
+      </list>
+      <list name="AMRLCOnEDCHOfNRTPS">
+        <item>
+          <p name="AMRLCOnEDCHOfNRTPSCount">10</p>
+          <p name="AMRLCOnEDCHOfNRTPSMaxDAT">15</p>
+          <p name="AMRLCOnEDCHOfNRTPSMaxMRW">12</p>
+          <p name="AMRLCOnEDCHOfNRTPSMaxRST">12</p>
+          <p name="AMRLCOnEDCHOfNRTPSPeriodMax">200</p>
+          <p name="AMRLCOnEDCHOfNRTPSPeriodMin">4</p>
+          <p name="AMRLCOnEDCHOfNRTPSPollPDU">23</p>
+          <p name="AMRLCOnEDCHOfNRTPSPollSDU">1</p>
+          <p name="AMRLCOnEDCHOfNRTPSPollWindow">70</p>
+          <p name="AMRLCOnEDCHOfNRTPSTriggers">3857</p>
+        </item>
+      </list>
+      <list name="AMRLCOnEDCHOfStrPS">
+        <item>
+          <p name="EDCHStrPSCount">10</p>
+          <p name="EDCHStrPSDiscardTime">20</p>
+          <p name="EDCHStrPSMaxDAT">15</p>
+          <p name="EDCHStrPSMaxMRW">12</p>
+          <p name="EDCHStrPSMaxRST">12</p>
+          <p name="EDCHStrPSPeriodMax">200</p>
+          <p name="EDCHStrPSPeriodMin">4</p>
+          <p name="EDCHStrPSPollPDU">23</p>
+          <p name="EDCHStrPSPollSDU">1</p>
+          <p name="EDCHStrPSPollWindow">70</p>
+          <p name="EDCHStrPSTriggers">3601</p>
+        </item>
+      </list>
+      <list name="AMRLCOnFACHOfPS">
+        <item>
+          <p name="AMRLCOnFACHOfPSMaxDAT">15</p>
+          <p name="AMRLCOnFACHOfPSMaxMRW">12</p>
+          <p name="AMRLCOnFACHOfPSMaxRST">12</p>
+          <p name="AMRLCOnFACHOfPSPeriodMax">200</p>
+          <p name="AMRLCOnFACHOfPSPeriodMin">4</p>
+          <p name="AMRLCOnFACHOfPSPollPDU">23</p>
+          <p name="AMRLCOnFACHOfPSPollSDU">1</p>
+          <p name="AMRLCOnFACHOfPSPollWindow">70</p>
+        </item>
+      </list>
+      <list name="AMRLCOnFACHOfSRB">
+        <item>
+          <p name="AMRLCOnFACHOfSRBMaxDAT">30</p>
+          <p name="AMRLCOnFACHOfSRBPeriodMax">200</p>
+          <p name="AMRLCOnFACHOfSRBPeriodMin">4</p>
+          <p name="AMRLCOnFACHOfSRBPollPDU">23</p>
+          <p name="AMRLCOnFACHOfSRBPollSDU">1</p>
+          <p name="AMRLCOnFACHOfSRBPollWindow">70</p>
+          <p name="AMRLCOnFACHOfSRBTriggers">1988</p>
+        </item>
+      </list>
+      <list name="AMRLCOnHSDSCHOfNRTPS">
+        <item>
+          <p name="AMRLCOnHSDSCHOfNRTPSCount">10</p>
+          <p name="AMRLCOnHSDSCHOfNRTPSFilterReTX">66</p>
+          <p name="AMRLCOnHSDSCHOfNRTPSMaxDAT">15</p>
+          <p name="AMRLCOnHSDSCHOfNRTPSMaxMRW">12</p>
+          <p name="AMRLCOnHSDSCHOfNRTPSMaxRST">12</p>
+          <p name="AMRLCOnHSDSCHOfNRTPSPeriodMax">200</p>
+          <p name="AMRLCOnHSDSCHOfNRTPSPeriodMin">4</p>
+          <p name="AMRLCOnHSDSCHOfNRTPSPollPDU">23</p>
+          <p name="AMRLCOnHSDSCHOfNRTPSPollSDU">1</p>
+          <p name="AMRLCOnHSDSCHOfNRTPSPollWindow">70</p>
+          <p name="AMRLCOnHSDSCHOfNRTPSTriggers">122385</p>
+        </item>
+      </list>
+      <list name="AMRLCOnHSDSCHOfStrPS">
+        <item>
+          <p name="HSDSCHStrDiscardTime">20</p>
+          <p name="HSDSCHStrPSCount">10</p>
+          <p name="HSDSCHStrPSFilterReTX">66</p>
+          <p name="HSDSCHStrPSMaxDAT">15</p>
+          <p name="HSDSCHStrPSMaxMRW">12</p>
+          <p name="HSDSCHStrPSMaxRST">12</p>
+          <p name="HSDSCHStrPSPeriodMax">200</p>
+          <p name="HSDSCHStrPSPeriodMin">4</p>
+          <p name="HSDSCHStrPSPollPDU">23</p>
+          <p name="HSDSCHStrPSPollSDU">1</p>
+          <p name="HSDSCHStrPSPollWindow">70</p>
+          <p name="HSDSCHStrPSTriggers">65041</p>
+        </item>
+      </list>
+      <list name="AMRLCRelatTXWindow">
+        <item>
+          <p name="AMRLCRelatTXWindowRate1">1</p>
+          <p name="AMRLCRelatTXWindowRate1Size">2</p>
+          <p name="AMRLCRelatTXWindowRate2">4</p>
+          <p name="AMRLCRelatTXWindowRate2Size">12</p>
+          <p name="AMRLCRelatTXWindowRate3">8</p>
+          <p name="AMRLCRelatTXWindowRate3Size">12</p>
+          <p name="AMRLCRelatTXWindowRate4">48</p>
+          <p name="AMRLCRelatTXWindowRate4Size">96</p>
+          <p name="AMRLCRelatTXWindowRate5">172</p>
+          <p name="AMRLCRelatTXWindowRate5Size">200</p>
+          <p name="AMRLCRelatTXWindowRate6">200</p>
+          <p name="AMRLCRelatTXWindowRate6Size">375</p>
+          <p name="AMRLCRelatTXWindowRate7">480</p>
+          <p name="AMRLCRelatTXWindowRate7Size">512</p>
+          <p name="AMRLCRelatTXWindowRate8">10625</p>
+          <p name="AMRLCRelatTXWindowRate8Size">3875</p>
+        </item>
+      </list>
+      <list name="AMRLCRespTimeDCH">
+        <item>
+          <p name="AMRLCRespTimeDCH10">10</p>
+          <p name="AMRLCRespTimeDCH20">12</p>
+          <p name="AMRLCRespTimeDCH40">16</p>
+          <p name="AMRLCRespTimeDCHRevHSDSCH">14</p>
+          <p name="AMRLCRespTimeRevEDCH">10</p>
+        </item>
+      </list>
+      <p name="AMRLCRespTimeEDCH">10</p>
+      <p name="AMRLCRespTimeFACHAndRACH">50</p>
+      <list name="AMRLCRespTimeHSDSCH">
+        <item>
+          <p name="AMRLCRespTimeHSDSCHRevDCH">10</p>
+          <p name="AMRLCRespTimeHSDSCHRevEDCH">10</p>
+        </item>
+      </list>      
+      <list name="AMRLCSRBHSPA">
+        <item>
+          <p name="AMRLCRespTimeSRBHSPA">10</p>
+          <p name="AMRLCSRBHSPAMaxDAT">30</p>
+          <p name="AMRLCSRBHSPAPeriodMax">116</p>
+          <p name="AMRLCSRBHSPAPeriodMin">4</p>
+          <p name="AMRLCSRBHSPAPollPDU">23</p>
+          <p name="AMRLCSRBHSPAPollSDU">1</p>
+          <p name="AMRLCSRBHSPAPollWindow">70</p>
+          <p name="AMRLCSRBHSPATriggers">1988</p>
+        </item>
+      </list>
+      <list name="AMRLCTXWindowSizeSRB">
+        <item>
+          <p name="AMRLCTXWindowSizeSRB2">2</p>
+          <p name="AMRLCTXWindowSizeSRB3">2</p>
+          <p name="AMRLCTXWindowSizeSRB4">1</p>
+        </item>
+      </list>
+      <p name="PDUSizeBitRateThr">3584</p>
+      <p name="PDUSizeCodeThreshold">10</p>
+      <p name="PDUSizeSIRThr">90</p>
+      <p name="SDUdiscardModeRTPS">1</p>
+      <p name="UMRLCEVoiceDiscardTime">10</p>
+      <p name="AMRLCRespTimeHSSRB">150</p>
+      <p name="AMRLCPeriodMaxHSSRB">111</p>
+      <p name="AMRLCOnDCHSRB136OffSat">10</p>
+      <p name="AMRLCSRB3n4RespTime">144</p>
+      <p name="AMRLCRTTPollPDUSatellite">70</p>
+      <p name="AMRLCSRB3n4PeriodMax">222</p>
+      <p name="RLCConfOptionFPS">1</p>
+      <list name="AMRLCHSRACHPS">
+        <item>
+          <p name="AMRLCHSRACHPSPeriodMin">1</p>
+          <p name="AMRLCHSRACHPSMaxMRW">2</p>
+          <p name="AMRLCHSRACHPSMaxRST">3</p>
+          <p name="AMRLCHSRACHPSPollWin">50</p>
+          <p name="AMRLCHSRACHPSPeriodMax">100</p>
+          <p name="AMRLCHSRACHPSTriggers">5684</p>
+          <p name="AMRLCHSRACHPSPollSDU">7</p>
+          <p name="AMRLCHSRACHPSPollPDU">8</p>
+          <p name="HSRACHAMRLCRespHSFACH">9</p>
+          <p name="AMRLCHSRACHPSMaxDAT">10</p>
+        </item>
+      </list>
+    </managedObject>
+	</cmData>
+</raml>

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<raml version="2.1" xmlns="raml21.xsd">
+	<cmData type="actual" scope="all" domain="RNCRNWCMPLAN" adaptationVersionMajor="RN8.1">
+		<header>
+			<log dateTime="2014-09-02T15:48:23" action="modified" user="CRNC" appInfo="cRNC OMS">RNC CM event plan</log>
+		</header>
+		<managedObject class="RNFC" distName="RNC-1/RNFC-1" version="RN8.1" operation="update">
+			<p name="RNFCChangeOrigin">5</p>
+			<p name="CMmasterSwitch">1</p>
+			<p name="PowerBalancing">1</p>
+			<p name="AMRWithHSDSCH">1</p>
+			<p name="HSDPAMobility">1</p>
+			<p name="FlexUpgrUsage">1</p>
+			<p name="DynUsageHSDPAReturnChannel">1</p>
+			<p name="HSDPADynamicResourceAllocation">1</p>
+			<p name="HSDPA16KBPSReturnChannel">1</p>
+			<p name="HSPAInterRNCMobility">1</p>
+			<p name="ISHOCancellation">1</p>
+			<p name="FRLCEnabled">1</p>
+			<p name="PostVerifPeriodDLSynch">1</p>
+			<p name="DCHScheOverIur">1</p>
+			<p name="PSOpThroUsage">15</p>
+			<p name="HSPAOverIurExt">1</p>
+			<p name="LFDProfEnabled">1</p>
+			<p name="HSUPADynBLEREnabled">1</p>
+			<p name="DCH00SuppOnIurEnabled">1</p>
+			<p name="IFHOOverIurExt">1</p>
+			<p name="AutoACResEnabled">1</p>
+			<p name="FasterOLPCEnabled">1</p>
+			<p name="FemtoHandoverControl">1</p>
+			<p name="RABFailDueUESTCorr">1</p>
+			<p name="PPACEnabled">1</p>
+			<p name="SIBCapabilityCheck">1</p>
+			<p name="RRCReDirEnabled">1</p>
+			<p name="ConfigurableRCPMtputEnabled">1</p>
+			<p name="WBAMRCodecSetEnabled">1</p>
+		</managedObject>
+	</cmData>
+</raml>

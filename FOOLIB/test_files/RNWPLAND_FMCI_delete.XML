@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<raml version="2.1" xmlns="raml21.xsd">
+	<cmData type="actual" scope="all" domain="RNCRNWCMPLAN" adaptationVersionMajor="RN7.0">
+		<header>
+			<log dateTime="11.11.2013-06T09:18:41" action="modified" user="mcRNC" OMS="update">cRNC plan upload</log>
+		</header>
+		<managedObject class="FMCI" distName="RNC-1/FMCI-1" version="RN7.0" operation="delete">
+			
+		</managedObject>
+	</cmData>
+</raml>

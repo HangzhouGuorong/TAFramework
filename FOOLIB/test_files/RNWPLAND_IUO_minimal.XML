@@ -1,0 +1,17 @@
+<?xml version="100" encoding="UTF-8"?>
+<raml version="2.1" xmlns="raml21.xsd">
+  <cmData type="actual">
+    <header>
+      <log dateTime="2014-01-03T16:03:11" action="created" appInfo="ActualExporter"></log>
+    </header>
+    <managedObject class="IUO" version="RN6.0_2.0" distName="RNC-1/IUO-1" operation="create">
+      <list name="PLMNid">
+        <item>
+          <p name="MCC">233</p>
+          <p name="MNC">1</p>
+          <p name="MNCLength">2</p>
+        </item>
+      </list>
+    </managedObject>
+	</cmData>
+</raml>

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<raml version="2.1" xmlns="raml21.xsd">
+	<cmData type="actual" scope="all" domain="RNCRNWCMPLAN" adaptationVersionMajor="RN8.1">
+		<header>
+			<log dateTime="2014-09-01T15:27:04" action="modified" user="CRNC" appInfo="cRNC OMS">RNC CM event plan</log>
+		</header>
+		<managedObject class="IPNB" distName="RNC-1/IPNB-1" version="RN8.1" operation="create">
+			<p name="WBTSId">0</p>
+			<p name="IPBasedRouteId">0</p>
+			<p name="MinSCTPPortIub">49960</p>
+			<p name="NodeBIPAddress">10.116.181.137</p>
+			<p name="NBAPDSCP">46</p>
+			<p name="IPNBChangeOrigin">5</p>
+			<p name="MaxSCTPFrameSize">900</p>
+			<list name="CNBAP">
+				<item>
+					<p name="CNBAPConnOpState">3</p>
+					<p name="CNBAPICSUIndex">65535</p>
+					<p name="SCTPPortNumberCNBAP">49960</p>
+				</item>
+			</list>
+			<list name="DNBAP">
+				<item>
+					<p name="DNBAPConnOpState">3</p>
+					<p name="DNBAPICSUIndex">65535</p>
+					<p name="CControlPortID">4724</p>
+					<p name="SCTPPortNumberDNBAP">54684</p>
+				</item>
+				<item>
+					<p name="DNBAPConnOpState">3</p>
+					<p name="DNBAPICSUIndex">65535</p>
+					<p name="CControlPortID">1</p>
+					<p name="SCTPPortNumberDNBAP">49961</p>
+				</item>
+				<item>
+					<p name="DNBAPConnOpState">3</p>
+					<p name="DNBAPICSUIndex">65535</p>
+					<p name="CControlPortID">2</p>
+					<p name="SCTPPortNumberDNBAP">49962</p>
+				</item>
+				<item>
+					<p name="DNBAPConnOpState">3</p>
+					<p name="DNBAPICSUIndex">65535</p>
+					<p name="CControlPortID">3</p>
+					<p name="SCTPPortNumberDNBAP">49963</p>
+				</item>
+				<item>
+					<p name="DNBAPConnOpState">3</p>
+					<p name="DNBAPICSUIndex">65535</p>
+					<p name="CControlPortID">4</p>
+					<p name="SCTPPortNumberDNBAP">49964</p>
+				</item>
+				<item>
+					<p name="DNBAPConnOpState">3</p>
+					<p name="DNBAPICSUIndex">65535</p>
+					<p name="CControlPortID">5</p>
+					<p name="SCTPPortNumberDNBAP">49965</p>
+				</item>
+			</list>
+		</managedObject>
+	</cmData>
+</raml>

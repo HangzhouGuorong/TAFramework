@@ -1,0 +1,333 @@
+*** Settings ***
+Documentation     This test suite tests PABROS and RAYMAN
+Suite Setup       Suite Setup
+Suite Teardown    Suite Teardown
+Test Setup        IUO Test Setup
+Test Teardown     IUO Test Teardown
+Force Tags        Product_Backlog_ID-xxx_1R_M1    EFS_ID-RNC_EFS_xxx    owner-I_EXT_MBB_WCDMA_SWD3_TEAM_O2@internal.nsn.com    exec_type-automatic    type-FUT    HW_TYPE-BCN_A1    BCN_STEP-BCN_S0
+...               Phase-CRT    PRB-PABROS    PRB-RAYMAN    PRB-FOOLIB
+Default Tags      ready-for-a-team-jenkins
+Library           Collections
+Library           resources/metadata_test_framework.py
+Library           resources/XML_utils.py
+Library           resources/parameter_utils.py
+Library           resources/log_utils.py
+Variables         resources/TestResources.py    ${TEST_BENCH}
+Library           OperatingSystem
+Library           String
+Resource          resources/common_kws.txt
+
+*** Variables ***
+${TEST_BENCH}     ${HOST}    # ${TEST_BENCH}    prinsessa
+
+*** Test Cases ***
+SharedAreaPLMNIdMNC Faulty Create 1
+    [Tags]    ready-for-a-team-jenkins    nightly-test    Fails-with-org    # succeeds with orig, as a result with original code we get mnc 0 and len 3 -> a bug
+    # Test case decoding:    [<mnc> <mnclen>] ...
+    # For example:    1 2    3 -    means
+    # two mnc elements,    first mnc == 1 with length 2, second mnc == 3 length is not given
+    IUO SharedAreaPLMNIdMNC Download And Expect Failure    create    15398 - RNW PLAN DOWNLOAD FAILED: RNW PLAN MANAGER PROGRAM BLOCK HAS REJECTED THE RNW PLAN    1000 1
+    ${plan}=    upload_plan
+
+SharedAreaPLMNIdMNC Faulty Create 2
+    [Tags]    ready-for-a-team-jenkins    nightly-test
+    IUO SharedAreaPLMNIdMNC Download And Expect Failure    create    15398 - RNW PLAN DOWNLOAD FAILED: RNW PLAN MANAGER PROGRAM BLOCK HAS REJECTED THE RNW PLAN    1000 a
+    ${plan}=    upload_plan
+
+SharedAreaPLMNIdMNC Faulty Create 3
+    [Tags]    ready-for-a-team-jenkins    nightly-test    Fails-with-org    # strange error code    47806 - RNW PLAN DOWNLOAD FAILED: ERROR TEXT NOT FOUND
+    IUO SharedAreaPLMNIdMNC Download And Expect Failure    create    17645 - IUO PARAMETER CHECKING FAILED: TOO MANY ITEMS IN LIST PARAMETER    1 2    2 2    3 2    4 2
+    ${plan}=    upload_plan
+
+SharedAreaPLMNIdMNC Faulty Create 4
+    [Tags]    ready-for-a-team-jenkins    nightly-test    Fails-with-org    # results mnc 1 len 2, a bug
+    IUO SharedAreaPLMNIdMNC Download And Expect Failure    create    15398 - RNW PLAN DOWNLOAD FAILED: RNW PLAN MANAGER PROGRAM BLOCK HAS REJECTED THE RNW PLAN    1 0
+    ${plan}=    upload_plan
+
+SharedAreaPLMNIdMNC Faulty Create 5
+    [Tags]    ready-for-a-team-jenkins    nightly-test    create 5
+    IUO SharedAreaPLMNIdMNC Download And Expect Failure    create    15398 - RNW PLAN DOWNLOAD FAILED: RNW PLAN MANAGER PROGRAM BLOCK HAS REJECTED THE RNW PLAN    1000 3
+    ${plan}=    upload_plan
+
+SharedAreaPLMNIdMNC Faulty Create 6
+    [Tags]    ready-for-a-team-jenkins    nightly-test    failed-201411
+    # Download is successful even if mnc is missing but len is given, as a result the list contains two
+    # items with mnc in not defined value
+    IUO SharedAreaPLMNIdMNC Download    create    - 3    - 3
+    ${plan}=    upload_plan
+    Check MNC    65535 2    65535 2
+
+SharedAreaPLMNIdMNC Faulty Modify 1
+    [Tags]    ready-for-a-team-jenkins    nightly-test    Fails-with-org    # Result mnc 10 len == 2 --> a bug
+    IUO SharedAreaPLMNIdMNC Download    create    1 2    2 2    3 2
+    IUO SharedAreaPLMNIdMNC Download And Expect Failure    update    15398 - RNW PLAN DOWNLOAD FAILED: RNW PLAN MANAGER PROGRAM BLOCK HAS REJECTED THE RNW PLAN    10 4
+    ${plan}=    upload_plan
+
+SharedAreaPLMNIdMNC Faulty Modify 2
+    [Tags]    ready-for-a-team-jenkins    nightly-test    Fails-with-org    # result mnc 1 len 2 and mnc 10 len 2 -> a bug
+    IUO SharedAreaPLMNIdMNC Download    create    1 2    2 2    3 2
+    IUO SharedAreaPLMNIdMNC Download And Expect Failure    update    15398 - RNW PLAN DOWNLOAD FAILED: RNW PLAN MANAGER PROGRAM BLOCK HAS REJECTED THE RNW PLAN    1 2    10 4
+    ${plan}=    upload_plan
+
+SharedAreaPLMNIdMNC Faulty Modify 3
+    [Tags]    ready-for-a-team-jenkins    nightly-test
+    IUO SharedAreaPLMNIdMNC Download    create    1 2    2 2    3 2
+    IUO SharedAreaPLMNIdMNC Download And Expect Failure    update    15398 - RNW PLAN DOWNLOAD FAILED: RNW PLAN MANAGER PROGRAM BLOCK HAS REJECTED THE RNW PLAN    200 2
+    ${plan}=    upload_plan
+
+SharedAreaPLMNIdMNC Faulty Modify 4
+    [Tags]    ready-for-a-team-jenkins    nightly-test    failed-201411
+    # Modify rejects mnclengs -> mnc list is not modified but download is successful, a bug???
+    # New code modifies the list, length is rejected and uses default which is 2, so new list is 1 2
+    IUO SharedAreaPLMNIdMNC Download    create    1 2    2 2    3 2
+    IUO SharedAreaPLMNIdMNC Download    update    1 --
+    ${plan}=    upload_plan
+    Check MNC    1 2
+
+SharedAreaPLMNIdMNC Faulty Modify 5
+    [Tags]    ready-for-a-team-jenkins    nightly-test    failed-201411
+    # Modification successful, but contains a list with one elem where mnc is notdef val
+    IUO SharedAreaPLMNIdMNC Download    create    1 2    2 2    3 2
+    IUO SharedAreaPLMNIdMNC Download    update    - 2
+    ${plan}=    upload_plan
+    Check MNC    65535 2
+
+SharedAreaPLMNIdMNC Faulty Modify 6
+    [Tags]    ready-for-a-team-jenkins    nightly-test    Fails-with-org    # strange error text: 47806 - RNW PLAN DOWNLOAD FAILED: ERROR TEXT NOT FOUND
+    IUO SharedAreaPLMNIdMNC Download    create    1 2
+    IUO SharedAreaPLMNIdMNC Download And Expect Failure    update    17645 - IUO PARAMETER CHECKING FAILED: TOO MANY ITEMS IN LIST PARAMETER    1 2    2 2    3 2    4 2
+    ${plan}=    upload_plan
+
+Modify SharedAreaPLMNIdMNC From 1 2 To 2 -
+    [Tags]    ready-for-a-team-jenkins    nightly-test    failed-201411
+    IUO SharedAreaPLMNIdMNC Download    create    1 2
+    IUO SharedAreaPLMNIdMNC Download    update    2 -
+    Check MNC    2 2
+
+Modify SharedAreaPLMNIdMNC From 1 2 2 3 To 1 3
+    [Tags]    ready-for-a-team-jenkins    nightly-test
+    IUO SharedAreaPLMNIdMNC Download    create    1 2    2 3
+    IUO SharedAreaPLMNIdMNC Download    update    1 3
+    Check MNC    1 3
+
+Modify SharedAreaPLMNIdMNC From 1 3 To 2 -
+    [Tags]    ready-for-a-team-jenkins    nightly-test    failed-201411
+    IUO SharedAreaPLMNIdMNC Download    create    1 3
+    IUO SharedAreaPLMNIdMNC Download    update    2 -
+    Check MNC    2 2
+
+Modify SharedAreaPLMNIdMNC From 1 3 To 65535 -
+    [Tags]    ready-for-a-team-jenkins    nightly-test    failed-201411
+    IUO SharedAreaPLMNIdMNC Download    create    1 3
+    IUO SharedAreaPLMNIdMNC Download    update    65535 -
+    Check MNC    65535 2
+
+Create SharedAreaPLMNIdMNC 65535 -
+    [Tags]    ready-for-a-team-jenkins    nightly-test    failed-201411
+    IUO SharedAreaPLMNIdMNC Download    create    65535 -
+    Check MNC    65535 2
+
+ICRPLMNMNC Faulty Create 1
+    [Tags]    ready-for-a-team-jenkins    nightly-test    Fails-with-org    # as a result with original code we get mnc 0 and len 3 -> a bug
+    IUO ICRPLMNMNC Download And Expect Failure    create    15384 - IUO PARAMETER CHECKING FAILED: ILLEGAL VALUES FOR RNW OBJECT PARAMETERS IN RNW PLAN    1000 1
+    ${plan}=    upload_plan
+
+ICRPLMNMNC Faulty Create 2
+    [Tags]    ready-for-a-team-jenkins    nightly-test
+    IUO ICRPLMNMNC Download And Expect Failure    create    15384 - IUO PARAMETER CHECKING FAILED: ILLEGAL VALUES FOR RNW OBJECT PARAMETERS IN RNW PLAN    1000 a
+    ${plan}=    upload_plan
+
+ICRPLMNMNC Faulty Create 3
+    [Tags]    ready-for-a-team-jenkins    nightly-test    Fails-with-org    # Fails with orig code, different feedback, 1780 - RNW PLAN DOWNLOAD FAILED: TOO MANY ICR PLMN IDS FOR IUO
+    # too many list items
+    IUO ICRPLMNMNC Download And Expect Failure    create    17645 - IUO PARAMETER CHECKING FAILED: TOO MANY ITEMS IN LIST PARAMETER    1 2    2 2    3 2    4 2
+    ...    5 2    6 2    7 2    8 2    9 2    10 2
+    ...    11 2    12 2    13 2    14 2    15 2    16 2
+    ...    16 2    18 2    19 2    20 2    21 2    22 2
+    ...    23 2    24 2    25 2    26 2
+    ${plan}=    upload_plan
+
+ICRPLMNMNC Faulty Create 4
+    [Tags]    ready-for-a-team-jenkins    nightly-test    Fails-with-org    # results mnc 1 len 2, a bug
+    IUO ICRPLMNMNC Download And Expect Failure    create    15398 - RNW PLAN DOWNLOAD FAILED: RNW PLAN MANAGER PROGRAM BLOCK HAS REJECTED THE RNW PLAN    1 0
+    ${plan}=    upload_plan
+
+ICRPLMNMNC Faulty Create 5
+    [Tags]    ready-for-a-team-jenkins    nightly-test
+    IUO ICRPLMNMNC Download And Expect Failure    create    15398 - RNW PLAN DOWNLOAD FAILED: RNW PLAN MANAGER PROGRAM BLOCK HAS REJECTED THE RNW PLAN    1000 3
+    ${plan}=    upload_plan
+
+ICRPLMNMNC Faulty Create 6
+    [Tags]    ready-for-a-team-jenkins    nightly-test    failed-201411
+    # Download is successful even if mnc is missing but len is given, as a result the list contains two
+    # items with mnc in not defined value
+    IUO ICRPLMNMNC Download    create    - 3    - 3
+    ${plan}=    upload_plan
+    Check MNC    65535 2    65535 2
+
+ICRPLMNMNC Faulty Modify 1
+    [Tags]    ready-for-a-team-jenkins    nightly-test    Fails-with-org    # Result mnc 10 len == 2 --> a bug
+    IUO ICRPLMNMNC Download    create    1 2    2 2    3 2
+    IUO ICRPLMNMNC Download And Expect Failure    update    15384 - IUO PARAMETER CHECKING FAILED: ILLEGAL VALUES FOR RNW OBJECT PARAMETERS IN RNW PLAN    10 4
+    ${plan}=    upload_plan
+
+ICRPLMNMNC Faulty Modify 2
+    [Tags]    ready-for-a-team-jenkins    nightly-test    Fails-with-org    # result mnc 1 len 2 and mnc 10 len 2 -> a bug
+    IUO ICRPLMNMNC Download    create    1 2    2 2    3 2
+    IUO ICRPLMNMNC Download And Expect Failure    update    15384 - IUO PARAMETER CHECKING FAILED: ILLEGAL VALUES FOR RNW OBJECT PARAMETERS IN RNW PLAN    1 2    10 4
+    ${plan}=    upload_plan
+
+ICRPLMNMNC Faulty Modify 3
+    [Tags]    ready-for-a-team-jenkins    nightly-test
+    IUO ICRPLMNMNC Download    create    1 2    2 2    3 2
+    IUO ICRPLMNMNC Download And Expect Failure    update    15384 - IUO PARAMETER CHECKING FAILED: ILLEGAL VALUES FOR RNW OBJECT PARAMETERS IN RNW PLAN    200 2
+    ${plan}=    upload_plan
+
+ICRPLMNMNC Faulty Modify 4
+    [Tags]    ready-for-a-team-jenkins    nightly-test    Fails-with-org    failed-201411    # Modify rejects mnclengs -> mnc list is not modified but download is succesful, a bug???
+    # New code modifies the list, length is rejected and uses default which is 2, so new list is 1 2
+    IUO ICRPLMNMNC Download    create    1 2    2 2    3 2
+    IUO ICRPLMNMNC Download    update    1 --
+    ${plan}=    upload_plan
+    Check MNC    1 2
+
+ICRPLMNMNC Faulty Modify 5
+    [Tags]    ready-for-a-team-jenkins    nightly-test    failed-201411
+    # Modification successful, but contains a list with one elem where mnc is notdef val
+    IUO ICRPLMNMNC Download    create    1 2    2 2    3 2
+    IUO ICRPLMNMNC Download    update    - 2
+    ${plan}=    upload_plan
+    Check MNC    65535 2
+
+Modify ICRPLMNMNC From 1 2 To 2 -
+    [Tags]    ready-for-a-team-jenkins    nightly-test    failed-201411
+    IUO ICRPLMNMNC Download    create    1 2
+    IUO ICRPLMNMNC Download    update    2 -
+    Check MNC    2 2
+
+Modify ICRPLMNMNC From 1 2 2 3 To 1 3
+    [Tags]    ready-for-a-team-jenkins    nightly-test
+    IUO ICRPLMNMNC Download    create    1 2    2 3
+    IUO ICRPLMNMNC Download    update    1 3
+    Check MNC    1 3
+
+Modify ICRPLMNMNC From 1 3 To 2 -
+    [Tags]    ready-for-a-team-jenkins    nightly-test    failed-201411
+    IUO ICRPLMNMNC Download    create    1 3
+    IUO ICRPLMNMNC Download    update    2 -
+    Check MNC    2 2
+
+Modify ICRPLMNMNC From 1 3 To 65535 -
+    [Tags]    ready-for-a-team-jenkins    nightly-test    failed-201411
+    IUO ICRPLMNMNC Download    create    1 3
+    IUO ICRPLMNMNC Download    update    65535 -
+    Check MNC    65535 2
+
+Modify ICRPLMNMNC From 65535 - To 1 3
+    [Tags]    ready-for-a-team-jenkins    nightly-test
+    IUO ICRPLMNMNC Download    create    65535 -
+    IUO ICRPLMNMNC Download    update    1 3
+    Check MNC    1 3
+
+Create ICRPLMNMNC 65535 -
+    [Tags]    ready-for-a-team-jenkins    nightly-test
+    IUO ICRPLMNMNC Download    create    65535 -
+    Check MNC    65535 2
+
+Modify ICRPLMNMNC From 1 3 To 65535 2
+    [Tags]    ready-for-a-team-jenkins    nightly-test
+    IUO ICRPLMNMNC Download    create    1 3
+    IUO ICRPLMNMNC Download    update    65535 2
+    Check MNC    65535 2
+
+Create ICRPLMNMNC 65535 2
+    [Tags]    ready-for-a-team-jenkins    nightly-test
+    IUO ICRPLMNMNC Download    create    65535 2
+    Check MNC    65535 2
+
+*** Keywords ***
+IUO Test Setup
+    create_base_config_for_object    IUO    create_object_itself=${False}
+    ${monitor_handle}=    start_oam_message_monitoring
+    set suite variable    ${monitor_handle}
+
+Setup PLMNIdList
+    [Arguments]    ${plan}    @{plmnidlist}
+    # Return From Keyword If    @{plmnidlist}=${empty}
+    add_plan_param    ${plan}    <list name="${LIST_PARAM_NAME}">
+    : FOR    ${item}    IN    @{plmnidlist}
+    \    ${mnc}    ${mnclen} =    Split String    ${item}
+    \    add_plan_param    ${plan}    <item>
+    \    Run Keyword If    "${mnc}" != "-"    add_plan_param    ${plan}    <p name="${MNC_PARAM_NAME}">${mnc}</p>
+    \    Run Keyword If    "${mnclen}" != "-"    add_plan_param    ${plan}    <p name="${MNCLEN_PARAM_NAME}">${mnclen}</p>
+    \    add_plan_param    ${plan}    </item>
+    add_plan_param    ${plan}    </list>
+
+IUO Download
+    [Arguments]    ${operation}    @{plan_items}
+    ${plan} =    generate_empty_download_plan    IUO    ${RNC-ID}/IUO-1    ${operation}
+    # Only mandatory item
+    Run Keyword If    "${operation}" == "create"    add_plan_param    ${plan}    <list name="PLMNid"> <item> <p name="MCC">233</p> <p name="MNC">1</p> <p name="MNCLength">2</p> </item> </list>
+    Setup PLMNIdList    ${plan}    @{plan_items}
+    Log    ${plan}
+    Create File    testplan.xml    ${plan}
+    upload_a_file    testplan.xml
+    ${output}=    download_plan    testplan.xml    should_succeed=${SHOULD_SUCCEED}
+    Run Keyword Unless    ${SHOULD_SUCCEED}    Should Contain    ${output}    ${error_text}
+
+IUO SharedAreaPLMNIdMNC Download
+    [Arguments]    ${operation}    @{plan_items}
+    Set Test Variable    ${SHOULD_SUCCEED}    ${true}
+    SharedAreaPLMNIdMNC Download    ${operation}    @{plan_items}
+
+IUO SharedAreaPLMNIdMNC Download And Expect Failure
+    [Arguments]    ${operation}    ${error_text}    @{plan_items}
+    Set Test Variable    ${SHOULD_SUCCEED}    ${false}
+    SharedAreaPLMNIdMNC Download    ${operation}    @{plan_items}
+
+SharedAreaPLMNIdMNC Download
+    [Arguments]    ${operation}    @{plan_items}
+    Set Test Variable    ${LIST_PARAM_NAME}    SharedAreaPLMNid
+    Set Test Variable    ${MNC_PARAM_NAME}    SharedAreaMNC
+    Set Test Variable    ${MNCLEN_PARAM_NAME}    SharedAreaMNClength
+    IUO Download    ${operation}    @{plan_items}
+
+IUO ICRPLMNMNC Download
+    [Arguments]    ${operation}    @{plan_items}
+    Set Test Variable    ${SHOULD_SUCCEED}    ${true}
+    ICRPLMNMNC Download    ${operation}    @{plan_items}
+
+IUO ICRPLMNMNC Download And Expect Failure
+    [Arguments]    ${operation}    ${error_text}    @{plan_items}
+    Set Test Variable    ${SHOULD_SUCCEED}    ${false}
+    ICRPLMNMNC Download    ${operation}    @{plan_items}
+
+ICRPLMNMNC Download
+    [Arguments]    ${operation}    @{plan_items}
+    Set Test Variable    ${LIST_PARAM_NAME}    ICRPLMNid
+    Set Test Variable    ${MNC_PARAM_NAME}    MNC
+    Set Test Variable    ${MNCLEN_PARAM_NAME}    MNCLength
+    IUO Download    ${operation}    @{plan_items}
+
+Check MNC
+    [Arguments]    @{exp_mncs}
+    ${ul_xml}=    upload_plan
+    Log    ${ul_xml}
+    ${index} =    Set Variable    ${0}
+    : FOR    ${item}    IN    @{exp_mncs}
+    \    ${exp_mnc}    ${exp_len}=    Split String    ${item}
+    \    ${mnc}=    get_plan_list_param_value    ${ul_xml}    ${RNC-ID}/IUO-1    ${LIST_PARAM_NAME}    ${MNC_PARAM_NAME}
+    \    ...    ${index}
+    \    ${len}=    get_plan_list_param_value    ${ul_xml}    ${RNC-ID}/IUO-1    ${LIST_PARAM_NAME}    ${MNCLEN_PARAM_NAME}
+    \    ...    ${index}
+    \    Should Be True    ${mnc}==${exp_mnc}
+    \    Should Be True    ${len}==${exp_len}
+    \    ${index}=    Set Variable    ${index + 1}
+    # And no extra items in the list
+    ${count}=    get_plan_list_item_count    ${ul_xml}    ${RNC-ID}/IUO-1    ${LIST_PARAM_NAME}
+    Should Be Equal    ${count}    ${index}
+
+IUO Test Teardown
+    stop_oam_message_monitoring    ${monitor_handle}
+    Run Keyword If Test Failed    Stop And Start Test Log Monitoring
+

@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<raml version="2.1" xmlns="raml21.xsd">
+    <cmData type="actual" scope="all" domain="RNCRNWCMPLAN" adaptationVersionMajor="RN7.0">
+        <header>
+            <log dateTime="2012-11-06T09:18:41" action="modified" user="CRNC" appInfo="cRNC OMS">cRNC plan</log>
+        </header>
+        <managedObject class="COCO" distName="RNC-1/COCO-1" version="RN7.0" operation="update">
+            <p name="AAL2LossRatio">-6</p>
+            <p name="AAL2Multiplexing">0</p>
+            <p name="AAL2MuxDelay">60</p>
+            <p name="AAL2QueueHSDPAWithFC">2689</p>
+            <p name="AAL2QueueHSDPAWithoutFC">4803</p>
+            <p name="AAL2QueueHSUPA">337</p>
+            <p name="AAL2QueueNRTDCHWithFC">1669</p>
+            <p name="AAL2QueueNRTDCHWithoutFC">3241</p>
+            <p name="AAL2QueueRTDCH">13</p>
+            <p name="CalculateCDVT">0</p>
+            <p name="CreateATMTP">1</p>
+            <p name="DynNRTDCHSchedPathSwitch">0</p>
+            <p name="GenerateAAL2Num">0</p>
+            <p name="InternalHSDPAFCMethodBTS">0</p>
+            <p name="ATMEPProfileId">0</p>
+            <list name="VPLTP"> <!-- max 8 -->
+                <item>
+                    <p name="COCOVPI">1</p>
+                    <p name="VPLTPATMIfId">1</p>
+                    <p name="VPLTPPCR01Egr">116425</p>
+                    <p name="VPLTPCDVT01Egr">1</p>
+                    <p name="VPLTPTrafficShaping">1</p>
+                    <p name="VPLTPEgressMDCR">4294967295</p>
+                    <p name="VPLTPServiceCategory">0</p>
+                </item>
+            </list>
+            <list name="CNBAPTP">
+                <item>
+                    <p name="CNBAPPCR01Egr">3</p>
+                    <p name="CNBAPPCR01Ing">4</p>
+                    <p name="CNBAPTPATMIfId">1</p>
+                    <p name="CNBAPVCI">33</p>
+                    <p name="CNBAPVPI">1</p>
+                    <p name="CNBAPEarlyPacketDiscard">0</p>
+                    <p name="CNBAPEgressMDCR">4294967295</p>
+                    <p name="CNBAPEgressUBRShare">0</p>
+                    <p name="CNBAPIngressMDCR">4294967295</p>
+                    <p name="CNBAPIngressUBRShare">0</p>
+                    <p name="CNBAPCDVT01Egr">5</p>
+                    <p name="CNBAPCDVT01Ing">350000</p>
+                    <p name="CNBAPPartialPacketDiscard">1</p>
+                    <p name="CNBAPServiceCategory">0</p>
+                </item>
+            </list>
+            <list name="DNBAPTP"> <!-- max 6 -->
+                <item>
+                    <p name="CControlPortID">1</p>
+                    <p name="DNBAPATMIfId">1</p>
+                    <p name="DNBAPVCI">34</p>
+                    <p name="DNBAPVPI">1</p>
+                    <p name="DNBAPPCR01Ing">24</p>
+                    <p name="DNBAPPCR01Egr">25</p>
+                    <p name="DNBAPCDVT01Egr">26</p>
+                    <p name="DNBAPCDVT01Ing">350000</p>
+                    <p name="DNBAPEarlyPacketDiscard">0</p>
+                    <p name="DNBAPEgressMDCR">4294967295</p>
+                    <p name="DNBAPEgressUBRShare">0</p>
+                    <p name="DNBAPIngressMDCR">4294967295</p>
+                    <p name="DNBAPIngressUBRShare">0</p>
+                    <p name="DNBAPPartialPacketDiscard">0</p>
+                    <p name="DNBAPServiceCategory">0</p>
+                </item>
+            </list>
+           <list name="AAL2SignLinkTP">
+                <item>
+                    <p name="AAL2SignLinkATMIfId">1</p>
+                    <p name="AAL2SignLinkTPId">1</p>
+                    <p name="AAL2SignLinkVCI">35</p>
+                    <p name="AAL2SignLinkVPI">1</p>
+                    <p name="AAL2SigPCR01Ing">26</p>
+                    <p name="AAL2SigPCR01Egr">27</p>
+                    <p name="AAL2SigEarlyPacketDiscard">0</p>  <!-- has default but there is a bug in PABROS -->
+                    <p name="AAL2SigPartialPacketDiscard">1</p>  <!-- has default but there is a bug in PABROS -->
+                    <p name="AAL2SigCDVT01Egr">1</p>
+                    <p name="AAL2SigCDVT01Ing">350000</p>
+                    <p name="AAL2SigEgressMDCR">4294967295</p>
+                    <p name="AAL2SigEgressUBRShare">0</p>
+                    <p name="AAL2SigIngressMDCR">4294967295</p>
+                    <p name="AAL2SigIngressUBRShare">0</p>
+                    <p name="AAL2SigServiceCategory">0</p>
+                </item>
+            </list>
+            <list name="AAL2TP">
+                <item>
+                    <p name="AAL2PathId">1</p>
+                    <p name="AAL2SignLinkATMIfId">1</p>
+                    <p name="AAL2SignLinkVCI">35</p>
+                    <p name="AAL2SignLinkVPI">1</p>
+                    <p name="AAL2UPATMIfId">1</p>
+                    <p name="AAL2UPVCI">36</p>
+                    <p name="AAL2UPVPI">1</p>
+                    <p name="AAL2UPUsage">0</p>  <!-- has default but there is a bug in PABROS -->
+                    <p name="WAMId">1</p>
+                    <p name="AAL2UPPCR01Ing">123</p>
+                    <p name="AAL2UPPCR01Egr">234</p>
+                    <p name="COCOA2EA">4901244002</p>
+                    <p name="AAL2FallbAttribute">1</p>
+                    <p name="AAL2PathType">4</p>
+                    <p name="AAL2UPCDVT01Egr">13</p>
+                    <p name="AAL2UPCDVT01Ing">350000</p>
+                    <p name="AAL2UPEgressMDCR">4294967295</p>
+                    <p name="AAL2UPEgressUBRShare">0</p>
+                    <p name="AAL2UPIngressMDCR">4294967295</p>
+                    <p name="AAL2UPIngressUBRShare">0</p>
+                    <p name="AAL2UPServiceCategory">0</p>
+                    <p name="VCCInBundle">0</p>
+                </item>
+            </list>
+            <list name="VCCBundleParams">
+            </list>
+        </managedObject>
+    </cmData>
+</raml>

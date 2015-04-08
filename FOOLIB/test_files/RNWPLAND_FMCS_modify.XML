@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<raml version="2.1" xmlns="raml21.xsd">
+	<cmData type="actual" scope="all" domain="RNCRNWCMPLAN" adaptationVersionMajor="RN7.0">
+		<header>
+			<log dateTime="11.11.2013-06T09:18:41" action="modified" user="mcRNC" OMS="update">cRNC plan upload</log>
+		</header>
+		<managedObject class="FMCS" distName="RNC-1/FMCS-1" version="mcRN4.1" operation="update">
+		    <p name="DropReportingInterval">3</p>
+		    <p name="AdditionWindow">8</p>
+		    <p name="AdditionTime">6</p>
+		    <p name="AdditionReportingInterval">2</p>
+		    <p name="DropWindow">12</p>
+		    <p name="DropTime">12</p>
+		    <p name="ReplacementWindow">4</p>
+		    <p name="ReplacementTime">12</p>
+		    <p name="ReplacementReportingInterval">3</p>
+		    <p name="MaxActiveSetSize">3</p>
+		    <p name="EcNoFilterCoefficient">3</p>
+		    <p name="ActiveSetWeightingCoefficient">0</p>
+		    <p name="HHoEcNoCancel">-9</p>
+		    <p name="HHoEcNoCancelTime">14</p>
+		    <p name="HHoEcNoThreshold">-12</p>
+		    <p name="HHoEcNoTimeHysteresis">7</p>
+		    <p name="HHoRscpCancel">-102</p>
+		    <p name="HHoRscpCancelTime">13</p>
+		    <p name="HHoRscpFilterCoefficient">0</p>
+		    <p name="HHoRscpThreshold">-105</p>
+		    <p name="HHoRscpTimeHysteresis">6</p>
+		    <p name="FMCSChangeOrigin">6</p>
+		    <p name="IMSIbasedSHO">0</p>
+		    <p name="EDCHAddEcNoOffset">0</p>
+		    <p name="EDCHRemEcNoOffset">4</p>
+		    <p name="DSRepBasedSHO">0</p>
+		</managedObject>
+	</cmData>
+</raml>

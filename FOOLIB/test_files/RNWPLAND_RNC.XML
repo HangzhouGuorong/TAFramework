@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<raml version="2.1" xmlns="raml21.xsd">
+  <cmData type="actual" scope="all" domain="RNCRNWCMPLAN" adaptationVersionMajor="RN7.0">
+    <header>
+      <log dateTime="2014-01-03T16:03:11" action="created" appInfo="ActualExporter"></log>
+    </header>
+    <managedObject class="RNC" version="RN7.0" distName="RNC-1" operation="create">
+	  <p name="IMEIQuery">0</p>
+	  <p name="SigCapLicWarnThreshold">90</p>
+      <p name="CommonMCC">123</p>
+      <p name="CommonMNC">45</p>
+      <p name="CommonMNCLength">2</p>
+      <p name="ConnectionRetryCounter">15</p>
+      <p name="DLBLERConfInterval">23</p>
+      <p name="EmergencyCallRedirectTimer">60</p>
+      <p name="ExtendedULDLactivationTmr">0</p>
+      <p name="LCSSupportForAnchoring">0</p>
+      <p name="LCSfunctionality">0</p>
+      <p name="N302">7</p>
+      <p name="N304">2</p>
+      <p name="N308">2</p>
+      <p name="OMSIpAddress">10.236.190.120</p>
+      <p name="CBCSourceIPAddress">0.0.0.0</p>
+      <p name="PWSMDuration">5</p>
+      <p name="PWSMExceededTrafficDur">20</p>
+      <p name="PageRep1stInterv">11</p>
+      <p name="PageRep2ndInterv">20</p>
+      <p name="RANAPprocInitWait">10</p>
+      <p name="RNCName">RNC-0</p>
+      <p name="RTservicesForPS">2</p>
+      <p name="RestrictionInterval">60</p>
+      <p name="SIB11_priority">4</p>
+      <p name="SIB18_priority">4</p>
+      <p name="SIB19Priority">4</p>
+      <p name="SIB1_priority">2</p>
+      <p name="SIB2_priority">2</p>
+      <p name="SIB3_priority">3</p>      
+      <p name="SIB5_priority">3</p>
+      <p name="SecOMSIpAddress">10.236.190.117</p>
+      <p name="ServingOMSAdminSetting">0</p>
+      <p name="T302">10</p>
+      <p name="T304">4</p>
+      <p name="T305">3</p>
+      <p name="T307">4</p>
+      <p name="T308">2</p>
+      <p name="T309">8</p>
+      <p name="T314">2</p>
+      <p name="T316">3</p>
+      <p name="T317">4</p>
+      <p name="ToAWE_NRT_DCH_tti10">10</p>
+      <p name="ToAWE_NRT_DCH_tti20">10</p>
+      <p name="ToAWE_NRT_DCH_tti40">10</p>
+      <p name="ToAWE_RT_DCH_tti10">10</p>
+      <p name="ToAWE_RT_DCH_tti20">10</p>
+      <p name="ToAWE_RT_DCH_tti40">10</p>
+      <p name="ToAWE_Speech">5</p>
+      <p name="ToAWS_NRT_DCH_tti10">25</p>
+      <p name="ToAWS_NRT_DCH_tti20">25</p>
+      <p name="ToAWS_NRT_DCH_tti40">25</p>
+      <p name="ToAWS_RT_DCH_tti10">25</p>
+      <p name="ToAWS_RT_DCH_tti20">25</p>
+      <p name="ToAWS_RT_DCH_tti40">25</p>
+      <p name="ToAWS_Speech">15</p>
+      <p name="TraceLCSHorizAccur">30</p>
+      <p name="TraceLCSPriority">1</p>
+      <p name="TraceLCSVertAccur">70</p>
+      <p name="TraceLCSWaitPeriod">10</p>
+      <p name="ULBLERConfInterval">23</p>
+      <p name="UL_DLcapacityReqWait">10</p>
+      <p name="DSCPStatisticsGroupTCPack">255</p>
+      <p name="AlarmSetforWCELBLINIT">0</p>
+      <p name="UePeriodicMeasCpuLimit">75</p>
+      <p name="WCELIdleAlarmTimeout">11</p>
+      <p name="UePeriodicMeasInterval">6</p>
+      <p name="SIB15_priority">1</p>
+      <p name="DSCPStatisticsGroupB">255</p>
+      <p name="DSCPStatisticsGroupC">255</p>
+      <p name="LTEPeriodicTriggerTimer">30</p>
+      <p name="CSAttachDetachAllowed">1</p>
+      <p name="DSCPStatisticsGroupA">255</p>
+      <list name="MACLogicalChPriority">
+        <item>
+          <p name="MACLogChPriSRB1">3</p>
+          <p name="MACLogChPriSRB2">2</p>
+          <p name="MACLogChPriSRB3">1</p>
+        </item>
+      </list>            
+      <p name="RCPMtputULCl01to02Range">1</p>
+      <p name="RCPMtputULCl02to03Range">2</p>
+      <p name="RCPMtputULCl03to04Range">3</p>
+      <p name="RCPMtputULCl04to05Range">4</p>
+      <p name="RCPMtputDLCl05to06Range">5</p>
+      <p name="RCPMtputDLCl06to07Range">6</p>
+      <p name="RCPMtputDLCl07to08Range">7</p>
+      <p name="RCPMtputDLCl08to09Range">8</p>
+      <p name="RCPMtputDLCl09to10Range">9</p>
+      <p name="RCPMtputDLCl10to11Range">10</p>
+      <p name="RCPMtputDLCl11to12Range">11</p>
+      <p name="RCPMtputDLCl12to13Range">12</p>      
+      <p name="RCPMtputDLCl01to02Range">1</p>
+      <p name="RCPMtputDLCl02to03Range">2</p>
+      <p name="RCPMtputDLCl03to04Range">3</p>
+      <p name="RCPMtputDLCl04to05Range">4</p>
+      <p name="RCPMtputAggregationLevel">0</p>      
+    </managedObject>
+
+	</cmData>
+</raml>

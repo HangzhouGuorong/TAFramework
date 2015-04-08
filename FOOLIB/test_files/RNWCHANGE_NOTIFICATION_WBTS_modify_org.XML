@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<raml version="2.1" xmlns="raml21.xsd">
+	<cmData type="actual" scope="all" domain="mcRNCRNWCMPlan" adaptationVersionMajor="mcRN4.1">
+		<header>
+			<log dateTime="2014-09-03T11:54:09" action="modified" user="mcRNC" appInfo="mcRNC OMS">mcRNC CM event plan</log>
+		</header>
+		<managedObject class="WBTS" distName="RNC-1/WBTS-1" version="mcRN4.1" operation="update">
+			<list name="R99OperIdWeightPair">
+				<item>
+					<p name="R99OperatorId">255</p>
+					<p name="R99OperatorWeight">0</p>
+				</item>
+			</list>
+			<list name="HSDPAOperIdWeightPair">
+				<item>
+					<p name="HSDPAOperatorId">255</p>
+					<p name="HSDPAOperatorWeight">0</p>
+				</item>
+			</list>
+			<p name="WBTSName">UR3GEBIWWWUE7355BZ50FDPQM9</p>
+			<p name="PrxMeasAveWindow">10</p>
+			<p name="PtxMeasAveWindow">10</p>
+			<p name="PrxAlpha">0</p>
+			<p name="PtxDPCHmax">-30</p>
+			<p name="PtxDPCHmin">-28</p>
+			<p name="LoadControlPeriodPS">20</p>
+			<p name="WBTSChangeOrigin">5</p>
+			<p name="DedicatedMeasReportPeriod">5</p>
+			<p name="MeasFiltCoeff">5</p>
+			<p name="BTSAdditionalInfo">8JF4A</p>
+			<p name="DediMeasRepPeriodCSdata">3</p>
+			<p name="DediMeasRepPeriodPSdata">1</p>
+		</managedObject>
+	</cmData>
+</raml>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<raml version="2.1" xmlns="raml21.xsd">
+	<cmData type="actual" scope="all" domain="mcRNCRNWCMPlan" adaptationVersionMajor="mcRN4.1">
+		<header>
+			<log dateTime="2014-09-03T15:42:34" action="modified" user="mcRNC" appInfo="mcRNC OMS">mcRNC CM event plan</log>
+		</header>
+		<managedObject class="RNPS" distName="RNC-1/RNPS-1" version="mcRN4.1" operation="update">
+			<p name="RNPSChangeOrigin">5</p>
+			<list name="DCHUtilUpperDowngradeThrBitRate">
+				<item>
+					<p name="DCHUtilUpperDowngradeThr128">64</p>
+					<p name="DCHUtilUpperDowngradeThr256">128</p>
+					<p name="DCHUtilUpperDowngradeThr32">16</p>
+					<p name="DCHUtilUpperDowngradeThr384">128</p>
+					<p name="DCHUtilUpperDowngradeThr64">32</p>
+				</item>
+			</list>
+			<p name="LargeDataTime">30</p>
+			<p name="LargeDataThr">2000</p>
+		</managedObject>
+	</cmData>
+</raml>

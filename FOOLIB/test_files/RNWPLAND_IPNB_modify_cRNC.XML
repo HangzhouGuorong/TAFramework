@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<raml version="2.1" xmlns="raml21.xsd">
+     <cmData type="actual" scope="all" domain="RNCRNWCMPLAN" adaptationVersionMajor="RN7.0">
+         <header>
+             <log dateTime="2012-11-06T09:18:41" action="modified" user="mcRNC" appInfo="cRNC OMS">cRNC plan upload</log>
+         </header>
+            <managedObject class="IPNB" distName="RNC-1/IPNB-1" version="RN7.0" operation="update">
+                <list name="DNBAP">
+                    <item>
+                        <p name="CControlPortID">4724</p>
+                        <p name="SCTPPortNumberDNBAP">54684</p>
+                    </item>
+                    <item>
+                        <p name="CControlPortID">1</p>
+                        <p name="SCTPPortNumberDNBAP">54685</p>
+                     </item>
+                     <item>
+                        <p name="CControlPortID">2</p>
+                        <p name="SCTPPortNumberDNBAP">54686</p>
+                    </item>
+                    <item>
+                        <p name="CControlPortID">3</p>
+                        <p name="SCTPPortNumberDNBAP">54687</p>
+                    </item>
+                    <item>
+                        <p name="CControlPortID">4</p>
+                        <p name="SCTPPortNumberDNBAP">54688</p>
+                     </item>
+                     <item>
+                        <p name="CControlPortID">5</p>
+                        <p name="SCTPPortNumberDNBAP">54689</p>
+                    </item>
+                </list>   
+                <p name="MinSCTPPortIub">49960</p>
+                <p name="NodeBIPAddress">10.116.181.138</p>
+                <p name="SourceNBAPIPAddress">0.0.0.0</p>
+                <p name="SourceNBAPIPNetmask">0</p>
+                <p name="VRF">default</p>
+                <p name="NBAPDSCP">34</p>
+                <p name="MaxSCTPFrameSize">1452</p>
+            </managedObject>
+	</cmData>
+</raml>

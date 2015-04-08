@@ -1,0 +1,53 @@
+<?xml version="100" encoding="UTF-8"?>
+<raml version="2.1" xmlns="raml21.xsd">
+  <cmData type="actual">
+    <header>
+      <log dateTime="2014-01-03T16:03:11" action="created" appInfo="ActualExporter"></log>
+    </header>
+    
+    <!-- this plan deletes the configuration created with RNWPLAND_incoming_ADJS.XML, except for the RN* objects -->
+    
+		<!-- bidirectional -->
+    <managedObject class="ADJS" version="RN7.0" distName="RNC-1/WBTS-1/WCEL-1/ADJS-1" operation="delete">
+    </managedObject>		
+    <!-- bidirectional -->
+    <managedObject class="ADJS" version="RN7.0" distName="RNC-1/WBTS-2/WCEL-2/ADJS-2" operation="delete">
+    </managedObject>		      
+    <!-- unidirectional -->
+    <managedObject class="ADJS" version="RN7.0" distName="RNC-1/WBTS-1/WCEL-1/ADJS-10" operation="delete">
+    </managedObject>      
+		<managedObject class="WCEL" distName="RNC-1/WBTS-1/WCEL-1" version="mcRN4.1" operation="delete">
+		</managedObject>    
+		<managedObject class="WCEL" distName="RNC-1/WBTS-2/WCEL-2" version="mcRN4.1" operation="delete">
+		</managedObject>		
+		<managedObject class="WBTS" version="RN6.0_2.0" distName="RNC-1/WBTS-1" operation="delete">
+    </managedObject>
+		<managedObject class="WBTS" version="RN6.0_2.0" distName="RNC-1/WBTS-2" operation="delete">
+    </managedObject>         
+    <managedObject class="HOPS" version="RN6.0_2.0" distName="RNC-1/HOPS-1" operation="delete">
+    </managedObject>
+    <managedObject class="WRAB" version="RN6.0_2.0" distName="RNC-1/WRAB-1" operation="delete">
+    </managedObject>
+    <managedObject class="IUCS" version="RN6.0_2.0" distName="RNC-1/IUCS-1" operation="delete">
+    </managedObject>
+    <managedObject class="IUO" version="RN6.0_2.0" distName="RNC-1/IUO-1" operation="delete">
+    </managedObject>
+    <managedObject class="IUO" version="RN6.0_2.0" distName="RNC-1/IUO-2" operation="delete">
+    </managedObject>
+    <managedObject class="FMCG" version="RN6.0_2.0" distName="RNC-1/FMCG-1" operation="delete">
+    </managedObject>
+    <managedObject class="FMCI" version="RN6.0_2.0" distName="RNC-1/FMCI-1" operation="delete">
+    </managedObject>
+    <managedObject class="FMCL" version="RN6.0_2.0" distName="RNC-1/FMCL-1" operation="delete">
+    </managedObject>
+    <managedObject class="FMCS" version="RN6.0_2.0" distName="RNC-1/FMCS-1" operation="delete">
+    </managedObject>    
+    <managedObject class="FMCI" version="RN6.0_2.0" distName="RNC-1/FMCI-1" operation="delete">
+    </managedObject>
+    <managedObject class="FMCI" version="RN6.0_2.0" distName="RNC-1/FMCI-1" operation="delete">
+    </managedObject>
+    <managedObject class="FMCI" version="RN6.0_2.0" distName="RNC-1/FMCI-1" operation="delete">
+    </managedObject>            
+    
+	</cmData>
+</raml>

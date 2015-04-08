@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<raml version="2.1" xmlns="raml21.xsd">
+	<cmData type="actual" scope="all" domain="mcRNCRNWCMPlan" adaptationVersionMajor="mcRN4.1">
+		<header>
+			<log dateTime="2014-09-01T09:52:44" action="modified" user="mcRNC" appInfo="mcRNC OMS">mcRNC CM event plan</log>
+		</header>
+		<managedObject class="IUCS" distName="RNC-1/IUCS-1" version="mcRN4.1" operation="create">
+			<p name="CSFlexiIuWeight">0</p>
+			<p name="IUOIdentifier">1</p>
+			<p name="CNId">0</p>
+			<p name="NetworkInd">255</p>
+			<p name="SignPointCode">0</p>
+			<p name="TRatC">15</p>
+			<p name="TRafC">60</p>
+			<p name="TinTR">15</p>
+			<p name="TigOR">5</p>
+			<p name="RelocationSupport">1</p>
+			<p name="CNDomainVersion">10</p>
+			<list name="CSCNNRI">
+				<item>
+					<p name="NRIMinForCSCN">2</p>
+					<p name="NRIMaxForCSCN">3</p>
+				</item>
+				<item>
+					<p name="NRIMinForCSCN">23</p>
+					<p name="NRIMaxForCSCN">45</p>
+				</item>
+				<item>
+					<p name="NRIMinForCSCN">138</p>
+					<p name="NRIMaxForCSCN">229</p>
+				</item>
+				<item>
+					<p name="NRIMinForCSCN">527</p>
+					<p name="NRIMaxForCSCN">666</p>
+				</item>
+				<item>
+					<p name="NRIMinForCSCN">775</p>
+					<p name="NRIMaxForCSCN">967</p>
+				</item>
+				<item>
+					<p name="NRIMinForCSCN">180</p>
+					<p name="NRIMaxForCSCN">951</p>
+				</item>
+				<item>
+					<p name="NRIMinForCSCN">399</p>
+					<p name="NRIMaxForCSCN">499</p>
+				</item>
+				<item>
+					<p name="NRIMinForCSCN">47</p>
+					<p name="NRIMaxForCSCN">510</p>
+				</item>
+				<item>
+					<p name="NRIMinForCSCN">523</p>
+					<p name="NRIMaxForCSCN">555</p>
+				</item>
+				<item>
+					<p name="NRIMinForCSCN">818</p>
+					<p name="NRIMaxForCSCN">929</p>
+				</item>
+				<item>
+					<p name="NRIMinForCSCN">101</p>
+					<p name="NRIMaxForCSCN">148</p>
+				</item>
+				<item>
+					<p name="NRIMinForCSCN">505</p>
+					<p name="NRIMaxForCSCN">640</p>
+				</item>
+				<item>
+					<p name="NRIMinForCSCN">229</p>
+					<p name="NRIMaxForCSCN">676</p>
+				</item>
+				<item>
+					<p name="NRIMinForCSCN">409</p>
+					<p name="NRIMaxForCSCN">982</p>
+				</item>
+				<item>
+					<p name="NRIMinForCSCN">946</p>
+					<p name="NRIMaxForCSCN">1001</p>
+				</item>
+				<item>
+					<p name="NRIMinForCSCN">235</p>
+					<p name="NRIMaxForCSCN">255</p>
+				</item>
+			</list>
+			<p name="IuState">2</p>
+			<p name="DefaultCN">0</p>
+			<p name="IUCSChangeOrigin">5</p>
+			<p name="RtcpActivation">0</p>
+			<p name="MinUDPPortCS">1026</p>
+		</managedObject>
+	</cmData>
+</raml>

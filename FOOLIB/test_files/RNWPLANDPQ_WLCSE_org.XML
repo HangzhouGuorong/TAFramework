@@ -1,0 +1,42 @@
+<raml version="2.1" xmlns="raml21.xsd">
+	<cmData type="actual" scope="all" domain="mcRNCRNWCMPlan" adaptationVersionMajor="mcRN4.1">
+		<header>
+			<log dateTime="2014-06-27T15:53:25" action="modified" user="mcRNC" appInfo="mcRNC OMS">mcRNC CM event plan</log>
+		</header>
+		<managedObject class="WLCSE" distName="RNC-1/WLCSE-1" version="mcRN4.1" operation="update">
+			<list name="WLCSEUtranCellId">
+				<item>
+					<p name="WLCSERncId">50</p>
+					<p name="WLCSECId">10099</p>
+					<p name="WLCSEMCC">232</p>
+					<p name="WLCSEMNC">1</p>
+					<p name="WLCSEMNCLength">2</p>
+				</item>
+			</list>
+			<list name="AntennaCoord">
+				<item>
+					<p name="AntennaCoordLatitudeDegrees">35</p>
+					<p name="AntennaCoordLatitudeMinutes">11</p>
+					<p name="AntennaCoordLatitudeSeconds">12</p>
+					<p name="AntennaCoordLatitudeFractions">88</p>
+					<p name="AntennaCoordLatitudeSign">0</p>
+					<p name="AntennaCoordLongitudeDegrees">19</p>
+					<p name="AntennaCoordLongitudeMinutes">22</p>
+					<p name="AntennaCoordLongitudeSeconds">23</p>
+					<p name="AntennaCoordLongitudeFractions">8</p>
+					<p name="AntennaCoordLongitudeSign">0</p>
+					<p name="AntennaCoordAltitudeDirect">0</p>
+					<p name="AntennaCoordAltitudeGround">34</p>
+				</item>
+			</list>
+			<p name="CovType">1</p>
+			<p name="EnvCharact">3</p>
+			<p name="AntBearing">90</p>
+			<p name="AntHPBW">63</p>
+			<p name="MaxCellRad">20001</p>
+			<p name="MaxCellBackRad">300</p>
+			<p name="RepeaterExist">0</p>
+			<p name="WLCSEChangeOrigin">5</p>
+		</managedObject>
+	</cmData>
+</raml

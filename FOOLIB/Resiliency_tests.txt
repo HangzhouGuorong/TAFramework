@@ -1,0 +1,397 @@
+*** Variables ***
+#${TEST_BENCH}    prinsessa
+${TEST_BENCH}    ${HOST}
+
+*** Settings ***
+Documentation   This test suite tests Resiliency object (PRNC/RNCSRV/DATSYN) cases 
+
+Suite Setup     Resiliency Suite Setup
+Suite Teardown  Resiliency Suite Teardown
+Test Teardown   Test Case Teardown
+Force Tags      Product_Backlog_ID-xxx_1R_M1    EFS_ID-RNC_EFS_xxx    owner-I_EXT_MBB_WCDMA_SWD3_TEAM_O2@internal.nsn.com    exec_type-automatic    type-FUT    HW_TYPE-BCN_A1    BCN_STEP-BCN_S0
+...             Phase-CRT    PRB-FOOLIB
+Library         Collections
+Library         resources/metadata_test_framework.py
+Variables       resources/TestResources.py   ${TEST_BENCH}
+Library         OperatingSystem
+Resource        resources/common_kws.txt
+
+Default Tags    ready-for-a-team-jenkins
+
+*** Variables ***
+
+
+*** Test Cases ***
+
+PRNC: directactivate primary mode before RNC create
+    [Tags]                ready-for-a-team-jenkins   nightly-test    need-robot-2.8
+    [Documentation]       PRNC directactivate then PRNC is in primary mode will also create RNC
+    [Setup]               create_base_config_for_prnc
+
+    ${ismcRNC} =          ismcRNC
+    Pass Execution If     ${ismcRNC}    No PRNC in mcRNC 
+    direct_activate       RNWPLAND_PRNC.XML
+    ${new_xml}=           upload_plan
+    ${val}=               get_plan_param_value    ${new_xml}   ${RNC-ID}   RNCName
+    Should Be Equal   ${val}   PRNC name
+
+
+PRNC: create primary mode after RNC create
+    [Tags]                ready-for-a-team-jenkins   nightly-test    need-robot-2.8
+    [Documentation]       When PRNC is created in primary mode, the RNC object is also modified using PRNC data
+    [Setup]               Run Keywords   create_base_config_for_prnc    AND   download_plan   RNWPLAND_RNC.XML   
+
+    ${ismcRNC} =          ismcRNC
+    Pass Execution If   ${ismcRNC}    No PRNC in mcRNC 
+
+    ${org_xml}=    upload_plan   
+    # Need delete because RNC create also creates PRNC
+    delete_object_from_db  PRNC
+    direct_activate        RNWPLAND_PRNC.XML
+    # OMS upload only parameters
+    ${ignored_params}=   Create List   PRNCChangeOrigin  PRNCIP4Address
+    Query And Compare     PRNC   P${RNC-ID}   ${ignored_params}
+
+    # Check that RNC object is modified correctly
+    ${new_xml}=    upload_plan
+    ${cmdata_org} =       get_cmdata_elem_from_text    ${org_xml}
+    ${cmdata_new} =       get_cmdata_elem_from_text    ${new_xml}
+    # Only these should change in RNC
+    ${changed_params}=    Create List   SecOMSIpAddress  OMSIpAddress  RNCChangeOrigin  RNCName  ServingOMSAdminSetting   ConnectionRetryCounter 
+    Compare Plans         ${cmdata_org}   ${cmdata_new}   RNC   ${RNC-ID}   ${changed_params}
+
+    # And then check the changed value
+    ${prnc_xml}=    Get File   ${CURDIR}${/}test_files/RNWPLAND_PRNC.XML
+
+    ${expected_val}=      get_plan_param_value    ${prnc_xml}   PRNC-1   SecOMSIpAddress
+    ${val_in_plan}=       get_plan_param_value    ${new_xml}    ${RNC-ID}    SecOMSIpAddress
+    Should Be Equal       ${expected_val}         ${val_in_plan}
+
+    #${expected_val}=      get_plan_param_value    ${prnc_xml}   PRNC-1   OMSIpAddress
+    #${val_in_plan}=       get_plan_param_value    ${new_xml}    ${RNC-ID}    OMSIpAddress
+    #Should Be Equal       ${expected_val}         ${val_in_plan}
+
+    #${expected_val}=      get_plan_param_value    ${prnc_xml}   PRNC-1   PRNCName
+    #${val_in_plan}=       get_plan_param_value    ${new_xml}    ${RNC-ID}    RNCName
+    #Should Be Equal       ${expected_val}         ${val_in_plan}
+
+    ${expected_val}=      get_plan_param_value    ${prnc_xml}   PRNC-1   ServingOMSAdminSetting
+    ${val_in_plan}=       get_plan_param_value    ${new_xml}    ${RNC-ID}    ServingOMSAdminSetting
+    Should Be Equal       ${expected_val}         ${val_in_plan}
+
+    ${expected_val}=      get_plan_param_value    ${prnc_xml}   PRNC-1   ConnectionRetryCounter
+    ${val_in_plan}=       get_plan_param_value    ${new_xml}    ${RNC-ID}    ConnectionRetryCounter
+    Should Be Equal       ${expected_val}         ${val_in_plan}
+    direct_obj_inquire    ${RNC-ID}
+
+PRNC: Create Upload and Compare with the original upload plan
+    [Tags]    ready-for-a-team-jenkins   nightly-test    need-robot-2.8
+    [Setup]   create_base_config_for_prnc
+
+    ${ismcRNC} =          ismcRNC
+    Pass Execution If     ${ismcRNC}    No PRNC in mcRNC 
+
+    download_plan         RNWPLAND_PRNC_minimal.XML
+    # Ignore following parameters: IPv4 address is different in different test benches, ServingOMSSwoRequest is download only      
+    ${ignored_params}=    Create List      PRNCIP4Address  ServingOMSSwoRequest    OMSIpAddress
+    ${ismcRNC} =          ismcRNC
+    ${output} =           Run Keyword If  ${ismcRNC}==False   delete_object_from_db  PRNC
+    Run Keyword If        ${ismcRNC}==False   Download And DirectParameterQuery and Compare With Original  PRNC  P${RNC-ID}     ${ignored_params}
+
+PRNC: Directactivate - Create
+    [Tags]   ready-for-a-team-jenkins   nightly-test    
+    [Setup]  create_base_config_for_prnc
+    
+    ${ignored_params}=    Create List  PRNCIP4Address  PRNCChangeOrigin  ServingOMSSwoRequest    OMSIpAddress    OMSBackupIpAddress
+    ${ismcRNC} =          ismcRNC
+    Run Keyword If  ${ismcRNC}==False   delete_object_from_db  PRNC
+    Run Keyword If  ${ismcRNC}==False   direct_activate        RNWPLAND_PRNC_minimal.XML
+    Run Keyword If  ${ismcRNC}==False   Query and Compare With Original  PRNC  P${RNC-ID}  ${ignored_params}
+
+PRNC: Directactivate - Modify 
+    [Tags]     ready-for-a-team-jenkins   nightly-test
+    [Setup]    create_base_config_for_prnc  create_prnc=${true}  prnc_mode=BACKUP
+    
+    ${ismcRNC} =          ismcRNC
+    # IP address depends test bench, change origin is upload only as is backup IP address, prncmode is unmodifiable
+    ${ignored_params}=    Create List  PRNCIP4Address   PRNCChangeOrigin  OMSBackupIpAddress    PRNCMode
+    Run Keyword If        ${ismcRNC}==False   Direct Activate And DirectParameterQuery And Compare   RNWPLAND_PRNC_modify.XML     PRNC  P${RNC-ID}  ${ignored_params}
+
+PRNC: Deletion Not Allowed In DA Operation
+    [Tags]   ready-for-a-team-jenkins   nightly-test
+
+    ${ismcRNC} =          ismcRNC
+    ${output} =           Run Keyword If  ${ismcRNC}==False   direct_activate   RNWPLAND_PRNC_delete.XML   should_succeed=${false}
+    Run Keyword If        ${ismcRNC}==False   Should Contain  ${output}         ILLEGAL OPERATION FOR PRNC OBJECT IN RNW PLA
+     
+PRNC: Modification Not Allowed in Plan Operation
+    [Tags]   ready-for-a-team-jenkins   nightly-test
+
+    ${ismcRNC} =          ismcRNC
+    ${output} =           Run Keyword If  ${ismcRNC}==False   download_plan   RNWPLAND_PRNC_minimal.XML   should_succeed=${True}
+    ${output} =           Run Keyword If  ${ismcRNC}==False   Should Contain  ${output}        P${RNC-ID}  -> PRNC MODIFICATION SKIPPED:MODIFICATION OPERATION NOT ALLOWED
+
+PRNC: Deletion Not Allowed in Plan Operation
+    [Tags]   ready-for-a-team-jenkins   nightly-test
+
+    ${ismcRNC} =          ismcRNC
+    ${output} =           Run Keyword If  ${ismcRNC}==False   download_plan   RNWPLAND_PRNC_delete.XML   should_succeed=${false}
+    Run Keyword If        ${ismcRNC}==False   Should Contain  ${output}        Error in RNW Plan download:
+    Run Keyword If        ${ismcRNC}==False   Should Contain  ${output}        ILLEGAL OPERATION FOR PRNC OBJECT IN RNW PLA
+
+RNCSRV: Directactivate - Create
+    [Tags]   ready-for-a-team-jenkins   nightly-test
+    [Setup]  create_base_config_for_rncsrv
+    
+    # UL params
+    ${ignored_params} =    Create List    ActivityMode  ServiceStatus  RNCSRVChangeOrigin    
+    ${ismcRNC} =          ismcRNC
+    Run Keyword If        ${ismcRNC}==False   Direct Activate And DirectParameterQuery And Compare  RNWPLAND_RNCSRV.XML   RNCSRV  P${RNC-ID}/RNCSRV-1   ignored_params=${ignored_params}
+
+RNCSRV: Directactivate - Modify 
+    [Tags]   ready-for-a-team-jenkins   nightly-test
+    [Setup]  create_base_config_for_rncsrv   create_rncsrv=${true}
+
+    ${ismcRNC} =          sleep      60
+    # UL params
+    ${ignored_params} =    Create List    ActivityMode  ServiceStatus  RNCSRVChangeOrigin    
+
+    ${ismcRNC} =          ismcRNC
+    Run Keyword If        ${ismcRNC}==False   Direct Activate And DirectParameterQuery And Compare   RNWPLAND_RNCSRV_modify.XML   RNCSRV  P${RNC-ID}/RNCSRV-1   ignored_params=${ignored_params}   
+    
+RNCSRV: Directactivate - Delete 
+    [Tags]   ready-for-a-team-jenkins     nightly-test
+    [Setup]  create_base_config_for_rncsrv   create_rncsrv=${true}
+        
+    ${ismcRNC} =          ismcRNC
+    Run Keyword If        ${ismcRNC}==False   delete_rncsrv_obj
+
+DATSYN: Automatically Created When RNCSRV Is Created
+    [Tags]   ready-for-a-team-jenkins   nightly-test
+    [Setup]  create_base_config_for_rncsrv   create_rncsrv=${true}
+
+    ${ismcRNC} =          ismcRNC
+    Run Keyword If        ${ismcRNC}==False   Query and Compare With Original      DATSYN  P${RNC-ID}/RNCSRV-1/DATSYN-1
+
+DATSYN: Automatically Deleted When RNCSRV Is Deleted
+    [Tags]   ready-for-a-team-jenkins   nightly-test
+    [Setup]  create_base_config_for_rncsrv   create_rncsrv=${true}
+
+    ${ismcRNC} =          ismcRNC
+    ${output} =           Run Keyword If        ${ismcRNC}==False   direct_obj_inquire  P${RNC-ID}/RNCSRV-1/DATSYN-1
+    Run Keyword If        ${ismcRNC}==False     Should Contain        ${output}             P${RNC-ID}/RNCSRV-1/DATSYN-1
+    Run Keyword If        ${ismcRNC}==False     delete_rncsrv_obj
+    ${output} =           Run Keyword If        ${ismcRNC}==False   direct_obj_inquire  P${RNC-ID}/RNCSRV-1/DATSYN-1
+    Run Keyword If        ${ismcRNC}==False     Should Contain        ${output}             DATSYN OBJECT NOT FOUND
+
+DATSYN: Directactivate - Modify
+    [Tags]   ready-for-a-team-jenkins   nightly-test
+    [Setup]  create_base_config_for_rncsrv   create_rncsrv=${true}
+    
+    # Need to sleep before we can do delete after create
+    ${ismcRNC} =          sleep      60
+    Run Keyword If        ${ismcRNC}==False   Direct Activate And DirectParameterQuery And Compare    RNWPLAND_DATSYN.XML    DATSYN  P${RNC-ID}/RNCSRV-1/DATSYN-1  DATSYNChangeOrigin
+    
+DATSYN: Creation Not Allowed In Plan Operation
+    [Tags]   ready-for-a-team-jenkins   nightly-test
+
+    ${ismcRNC} =          ismcRNC
+    ${output} =           Run Keyword If  ${ismcRNC}==False   download_plan   RNWPLAND_DATSYN_minimal.XML   should_succeed=${True}
+    Run Keyword If  ${ismcRNC}==False   Should Contain  ${output}        DATSYN CREATION SKIPPED:CREATION OPERATION NOT ALLOWED
+
+DATSYN: Creation Not Allowed In DA Operation
+    [Tags]   ready-for-a-team-jenkins   nightly-test
+           
+    ${ismcRNC} =          ismcRNC
+    ${output} =           Run Keyword If  ${ismcRNC}==False   direct_activate   RNWPLAND_DATSYN_minimal.XML   should_succeed=${false}
+    Run Keyword If  ${ismcRNC}==False   Should Contain  ${output}        RNW DIRECT ACTIVATION FAILED: ILLEGAL OPERATION FOR DATSYN OBJECT IN RNW PLAN
+
+DATSYN: Deletion Not Allowed in DA Operation
+    [Tags]   ready-for-a-team-jenkins   nightly-test    need-robot-2.8
+    [Setup]  create_base_config_for_rncsrv   create_rncsrv=${true}
+
+    ${ismcRNC} =                ismcRNC
+    Pass Execution If    ${ismcRNC}   No DATSYN
+
+    ${output}=  direct_activate   RNWPLAND_DATSYN_delete.XML   should_succeed=${false}
+    Should Contain    ${output}         RNW DIRECT ACTIVATION FAILED: ILLEGAL OPERATION FOR DATSYN OBJECT IN RNW PLAN
+
+DATSYN: Deletion Not Allowed in Plan Operation
+    [Tags]   ready-for-a-team-jenkins   nightly-test    need-robot-2.8
+    [Setup]  create_base_config_for_rncsrv   create_rncsrv=${true}
+
+    ${ismcRNC} =                ismcRNC
+    Pass Execution If    ${ismcRNC}   No DATSYN
+    
+    ${output}=   download_plan         RNWPLAND_DATSYN_delete.XML   should_succeed=${true}
+    Should Contain    ${output}        DATSYN DELETION SKIPPED:DELETION OPERATION NOT ALLOWED
+
+
+Direct Parameter Query Test (PRNC)
+    [Tags]    ready-for-a-team-jenkins   nightly-test    need-robot-2.8
+    [Setup]   delete_object_from_db  PRNC   
+
+    ${ismcRNC} =          ismcRNC
+    Pass Execution If   ${ismcRNC}   No PRNC in mcRNC
+
+    download_plan                      RNWPLAND_PRNC_minimal.XML
+    # ServingOMSSwoRequest is download only in PDDB
+    ${ignored_params}=  Create List    PRNCIP4Address  ServingOMSSwoRequest    OMSIpAddress
+    Query and Compare With Original    PRNC   P${RNC-ID}      ${ignored_params}
+
+Direct Parameter Query Test (RNCSRV and DATSYN)
+    [Tags]    ready-for-a-team-jenkins    need-robot-2.8
+    [Setup]   create_base_config_for_rncsrv   create_rncsrv=${false}
+
+    ${ismcRNC} =                ismcRNC
+    Pass Execution If   ${ismcRNC}   No RNCSRV in mcRNC
+    
+    # RNCSRV creation with plan operation fails with strange errors, using DA
+    direct_activate   RNWPLAND_RNCSRV.XML
+
+    Query and Compare With Original    RNCSRV   P${RNC-ID}/RNCSRV-1
+    # RNCSRV also creates DATSYN
+    Query and Compare With Original    DATSYN   P${RNC-ID}/RNCSRV-1/DATSYN-1
+
+Topology upload PRNC RNCSRV and DATSYN
+    [Tags]    ready-for-a-team-jenkins   nightly-test    need-robot-2.8
+    [Setup]   create_base_config_for_rncsrv   create_rncsrv=${false}
+
+
+    ${ismcRNC} =          ismcRNC
+    Pass Execution If     ${ismcRNC}   No PRNC in mcRNC
+
+    direct_activate   RNWPLAND_RNCSRV.XML
+    ${ul}=   topology_upload
+    Run Keyword Unless  ${ismcRNC}    Log   ${ul}
+
+    # For creating the org file
+    #Create File    ${CURDIR}${/}test_files/RNWTOPOLOGY_RESILIENCY_org_cRNC.XML   ${ul}
+
+    ${cmdata_new} =      get_cmdata_elem_from_text   ${ul}
+    ${cmdata_org}=       get_cmdata_from_file        ${CURDIR}${/}test_files/RNWTOPOLOGY_RESILIENCY_org_cRNC.XML
+
+    ${ignored_params}=   Create List   PRNCIP4Address
+    Compare To Original  ${cmdata_org}   ${cmdata_new}  PRNC    P${RNC-ID}        ${ignored_params}
+    Compare To Original  ${cmdata_org}   ${cmdata_new}  RNCSRV  P${RNC-ID}/RNCSRV-1
+    Compare To Original  ${cmdata_org}   ${cmdata_new}  DATSYN  P${RNC-ID}/RNCSRV-1/DATSYN-1
+    
+OMS Change Notification Test Create Resiliency
+    [Tags]    ready-for-a-team-jenkins   nightly-test    need-robot-2.8
+    [Setup]   create_base_config_for_rncsrv   create_rncsrv=${false}
+
+    ${ismcRNC} =          ismcRNC
+    Pass Execution If     ${ismcRNC}   No PRNC in mcRNC
+
+    set_border_test_mode_on
+    ${mon_handle}=  start_oms_change_notification_monitoring
+    direct_activate   RNWPLAND_RNCSRV.XML
+    sleep  1
+    stop_oms_change_notification_monitoring   ${mon_handle}
+
+
+    ${notification_xml}=  get_oms_change_event_xml   ${mon_handle}   P${RNC-ID}/RNCSRV-1   create
+    Log                   ${notification_xml}
+    ${cmdata_new} =       get_cmdata_elem_from_text   ${notification_xml}
+    ${cmdata_org}=        get_cmdata_from_file        ${CURDIR}${/}test_files/RNWCHANGE_NOTIFICATION_RNCSRV_create_org_cRNC.XML
+    Compare To Original   ${cmdata_org}   ${cmdata_new}  RNCSRV  P${RNC-ID}/RNCSRV-1
+
+    ${notification_xml}=  get_oms_change_event_xml   ${mon_handle}   P${RNC-ID}/RNCSRV-1/DATSYN-1   create
+    Log                   ${notification_xml}
+    ${cmdata_new} =       get_cmdata_elem_from_text   ${notification_xml}
+    ${cmdata_org}=        get_cmdata_from_file        ${CURDIR}${/}test_files/RNWCHANGE_NOTIFICATION_DATSYN_create_org_cRNC.XML
+    Compare To Original   ${cmdata_org}   ${cmdata_new}  RNCSRV  P${RNC-ID}/RNCSRV-1/DATSYN-1
+
+OMS Change Notification Test Delete Resiliency
+    [Tags]       ready-for-a-team-jenkins   nightly-test    need-robot-2.8
+    [Setup]   create_base_config_for_rncsrv   create_rncsrv=${true}
+
+    ${ismcRNC} =          ismcRNC
+    Pass Execution If     ${ismcRNC}   No PRNC in mcRNC
+
+    set_border_test_mode_on
+
+    ${mon_handle}=  start_oms_change_notification_monitoring
+    delete_rncsrv_obj
+    sleep  1
+    stop_oms_change_notification_monitoring   ${mon_handle}
+
+    ${notification_xml}=  get_oms_change_event_xml   ${mon_handle}   P${RNC-ID}/RNCSRV-1   delete
+    Log   ${notification_xml}
+    ${cmdata_new} =      get_cmdata_elem_from_text   ${notification_xml}
+    ${cmdata_org}=       get_cmdata_from_file        ${CURDIR}${/}test_files/RNWCHANGE_NOTIFICATION_RNCSRV_delete_org_cRNC.XML
+    Compare To Original  ${cmdata_org}   ${cmdata_new}  RNCSRV  P${RNC-ID}/RNCSRV-1
+
+    ${notification_xml}=  get_oms_change_event_xml   ${mon_handle}   P${RNC-ID}/RNCSRV-1/DATSYN-1   delete
+    Log   ${notification_xml}
+    ${cmdata_new} =      get_cmdata_elem_from_text   ${notification_xml}
+    ${cmdata_org}=       get_cmdata_from_file        ${CURDIR}${/}test_files/RNWCHANGE_NOTIFICATION_DATSYN_delete_org_cRNC.XML
+    Compare To Original  ${cmdata_org}   ${cmdata_new}  RNCSRV  P${RNC-ID}/RNCSRV-1/DATSYN-1
+    
+OMS Change Notification Test Modify PRNC
+    [Tags]    ready-for-a-team-jenkins   nightly-test    need-robot-2.8
+    [Setup]   create_base_config_for_prnc   create_prnc=${true}  prnc_mode=BACKUP
+
+    ${ismcRNC} =          ismcRNC
+    Pass Execution If   ${ismcRNC}   No PRNC in mcRNC
+
+    set_border_test_mode_on
+    ${xml_elems}=    Create List    <p name="ConnectionRetryCounter">5</p><p name="OMSIpAddress">10.20.30.40</p><p name="PRNCName">new name</p><p name="ServingOMSSwoRequest">1</p>
+    Change Notification Modify With XML Items And Compare To Original   PRNC    P${RNC-ID}    ${xml_elems}   use_da=${true}
+
+OMS Change Notification Test Modify RNCSRV
+    [Tags]    ready-for-a-team-jenkins   nightly-test    need-robot-2.8
+    [Setup]   create_base_config_for_rncsrv   create_rncsrv=${true}
+
+    ${ismcRNC} =          ismcRNC
+    Pass Execution If   ${ismcRNC}   No RNCSRV in mcRNC
+
+    ${ismcRNC} =          sleep      60
+    set_border_test_mode_on
+    ${xml_elems}=    Create List    <p name="CBCSourceIPAddress">1.2.3.4</p>
+    Change Notification Modify With XML Items And Compare To Original   RNCSRV    P${RNC-ID}/RNCSRV-1    ${xml_elems}    use_da=${true}
+
+OMS Change Notification Test Modify DATSYN
+    [Tags]    ready-for-a-team-jenkins   nightly-test    need-robot-2.8
+    [Setup]   create_base_config_for_rncsrv   create_rncsrv=${true}
+
+    ${ismcRNC} =          ismcRNC
+    Pass Execution If   ${ismcRNC}   No DATSYN in mcRNC
+
+    set_border_test_mode_on
+    
+    # Need to sleep because resiliency obj creation takes a long time for some reason
+    sleep      60
+    ${plan} =                        generate_empty_download_plan   DATSYN  P${RNC-ID}/RNCSRV-1/DATSYN-1   update
+    add_plan_param                   ${plan}    <p name="AutoAdaptation">0</p><p name="DataSyncDays">1</p><p name="DataSynchState">1</p>
+    Create File                      testplan.xml     ${plan}
+    upload_a_file                    testplan.xml
+    ${mon_handle}=     start_oms_change_notification_monitoring
+    direct_activate    testplan.xml
+    stop_oms_change_notification_monitoring   ${mon_handle}
+    Compare Change Notification To Original    DATSYN   P${RNC-ID}/RNCSRV-1/DATSYN-1    ${mon_handle} 
+
+*** Keywords ***
+
+Download And DirectParameterQuery and Compare With Original
+    [Arguments]    ${obj_name}   ${dist_name}   ${ignored_params}=${empty}
+    
+    download_plan                      RNWPLAND_${obj_name}_minimal.XML
+    Query and Compare With Original    ${obj_name}   ${dist_name}  ${ignored_params}
+
+Direct Activate And DirectParameterQuery And Compare
+    [Arguments]     ${plan_file}   ${obj_name}  ${dist_name}  ${ignored_params}=${empty}
+    
+    direct_activate      ${plan_file} 
+    Query and Compare    ${obj_name}   ${dist_name}   ${ignored_params}   ${plan_file}
+
+Resiliency Suite Setup
+    Suite Setup
+    set_border_test_mode_on
+
+Resiliency Suite Teardown
+    set_border_test_mode_off
+    clean_all_except_rnc_objs_from_db
+    clear_prnc_info_from_r0sfle
+    Suite Teardown
+

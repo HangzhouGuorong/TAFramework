@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<raml version="2.1" xmlns="raml21.xsd">
+	<cmData type="actual" scope="all" domain="mcRNCRNWCMPlan" adaptationVersionMajor="mcRN4.1">
+		<header>
+			<log dateTime="2014-09-03T11:48:09" action="modified" user="mcRNC" appInfo="mcRNC OMS">mcRNC CM event plan</log>
+		</header>
+		<managedObject class="TQM" distName="RNC-1/TQM-1" version="mcRN4.1" operation="update">
+			<list name="AFForHSPATrafficBearers">
+				<item>
+					<p name="AfHSDPAQoSPri0">20</p>
+					<p name="AfHSDPAQoSPri1">100</p>
+					<p name="AfHSDPAQoSPri10">100</p>
+					<p name="AfHSDPAQoSPri11">100</p>
+					<p name="AfHSDPAQoSPri12">100</p>
+					<p name="AfHSDPAQoSPri13">100</p>
+					<p name="AfHSDPAQoSPri14">100</p>
+					<p name="AfHSDPAQoSPri15">100</p>
+					<p name="AfHSDPAQoSPri2">100</p>
+					<p name="AfHSDPAQoSPri3">100</p>
+					<p name="AfHSDPAQoSPri4">100</p>
+					<p name="AfHSDPAQoSPri5">100</p>
+					<p name="AfHSDPAQoSPri6">100</p>
+					<p name="AfHSDPAQoSPri7">100</p>
+					<p name="AfHSDPAQoSPri8">100</p>
+					<p name="AfHSDPAQoSPri9">100</p>
+					<p name="AfHSUPAQoSPri0">100</p>
+					<p name="AfHSUPAQoSPri1">30</p>
+					<p name="AfHSUPAQoSPri10">100</p>
+					<p name="AfHSUPAQoSPri11">100</p>
+					<p name="AfHSUPAQoSPri12">100</p>
+					<p name="AfHSUPAQoSPri13">100</p>
+					<p name="AfHSUPAQoSPri14">100</p>
+					<p name="AfHSUPAQoSPri15">100</p>
+					<p name="AfHSUPAQoSPri2">100</p>
+					<p name="AfHSUPAQoSPri3">100</p>
+					<p name="AfHSUPAQoSPri4">100</p>
+					<p name="AfHSUPAQoSPri5">100</p>
+					<p name="AfHSUPAQoSPri6">100</p>
+					<p name="AfHSUPAQoSPri7">100</p>
+					<p name="AfHSUPAQoSPri8">100</p>
+					<p name="AfHSUPAQoSPri9">100</p>
+				</item>
+			</list>
+			<list name="QosPriToDSCP">
+				<item>
+					<p name="CSTrafficToDSCP">20</p>
+					<p name="DCHQoSPri0ToDSCP">40</p>
+					<p name="DCHQoSPri10ToDSCP">34</p>
+					<p name="DCHQoSPri11ToDSCP">34</p>
+					<p name="DCHQoSPri12ToDSCP">34</p>
+					<p name="DCHQoSPri13ToDSCP">34</p>
+					<p name="DCHQoSPri14ToDSCP">34</p>
+					<p name="DCHQoSPri15ToDSCP">34</p>
+					<p name="DCHQoSPri1ToDSCP">34</p>
+					<p name="DCHQoSPri2ToDSCP">34</p>
+					<p name="DCHQoSPri3ToDSCP">34</p>
+					<p name="DCHQoSPri4ToDSCP">34</p>
+					<p name="DCHQoSPri5ToDSCP">34</p>
+					<p name="DCHQoSPri6ToDSCP">34</p>
+					<p name="DCHQoSPri7ToDSCP">34</p>
+					<p name="DCHQoSPri8ToDSCP">34</p>
+					<p name="DCHQoSPri9ToDSCP">34</p>
+					<p name="HSPAQoSPri0ToDSCP">0</p>
+					<p name="HSPAQoSPri10ToDSCP">0</p>
+					<p name="HSPAQoSPri11ToDSCP">0</p>
+					<p name="HSPAQoSPri12ToDSCP">26</p>
+					<p name="HSPAQoSPri13ToDSCP">26</p>
+					<p name="HSPAQoSPri14ToDSCP">46</p>
+					<p name="HSPAQoSPri15ToDSCP">46</p>
+					<p name="HSPAQoSPri1ToDSCP">0</p>
+					<p name="HSPAQoSPri2ToDSCP">0</p>
+					<p name="HSPAQoSPri3ToDSCP">0</p>
+					<p name="HSPAQoSPri4ToDSCP">0</p>
+					<p name="HSPAQoSPri5ToDSCP">0</p>
+					<p name="HSPAQoSPri6ToDSCP">0</p>
+					<p name="HSPAQoSPri7ToDSCP">0</p>
+					<p name="HSPAQoSPri8ToDSCP">0</p>
+					<p name="HSPAQoSPri9ToDSCP">0</p>
+					<p name="PchFachRachToDSCP">46</p>
+					<p name="SRBToDSCP">46</p>
+				</item>
+			</list>
+			<p name="TQMChangeOrigin">5</p>
+		</managedObject>
+	</cmData>
+</raml>

@@ -1,0 +1,243 @@
+<?xml version="100" encoding="UTF-8"?>
+<raml version="2.1" xmlns="raml21.xsd">
+  <cmData type="actual">
+    <header>
+      <log dateTime="2014-01-03T16:03:11" action="created" appInfo="ActualExporter"></log>
+    </header>
+    
+    <!-- this plan creates a configuration for bidirectional incoming and outgoing ADJS -->
+    
+    <managedObject class="RNC" distName="RNC-1" version="RN8.0" operation="create">
+      <p name="CommonMCC">123</p>
+      <p name="CommonMNC">45</p>
+      <p name="CommonMNCLength">2</p>  
+      <p name="ULBLERConfInterval">23</p>
+      <p name="DLBLERConfInterval">23</p>
+      <p name="ExtendedULDLactivationTmr">0</p>
+      <p name="N302">7</p>
+      <p name="N304">2</p>
+      <p name="N308">2</p>
+      <p name="OMSIpAddress">10.236.190.120</p>
+      <p name="PageRep1stInterv">11</p>
+      <p name="PageRep2ndInterv">20</p>
+      <p name="RANAPprocInitWait">10</p>
+      <p name="SIB11_priority">4</p>
+      <p name="SIB18_priority">4</p>
+      <p name="SIB15_priority">1</p>
+      <p name="SIB3_priority">3</p>      
+      <p name="SIB5_priority">3</p>
+      <p name="SIB1_priority">2</p>
+      <p name="T302">10</p>
+      <p name="T304">4</p>
+      <p name="T305">3</p>
+      <p name="T307">4</p>
+      <p name="T308">2</p>
+      <p name="T309">8</p>
+      <p name="T316">3</p>
+      <p name="T317">4</p>
+      <p name="ToAWE_NRT_DCH_tti10">10</p>
+      <p name="ToAWE_NRT_DCH_tti20">10</p>
+      <p name="ToAWE_NRT_DCH_tti40">10</p>
+      <p name="ToAWE_RT_DCH_tti10">10</p>
+      <p name="ToAWE_RT_DCH_tti20">10</p>
+      <p name="ToAWE_RT_DCH_tti40">10</p>
+      <p name="ToAWE_Speech">5</p>
+      <p name="ToAWS_NRT_DCH_tti10">25</p>
+      <p name="ToAWS_NRT_DCH_tti20">25</p>
+      <p name="ToAWS_NRT_DCH_tti40">25</p>
+      <p name="ToAWS_RT_DCH_tti10">25</p>
+      <p name="ToAWS_RT_DCH_tti20">25</p>
+      <p name="ToAWS_RT_DCH_tti40">25</p>
+      <p name="ToAWS_Speech">15</p>
+    </managedObject>
+    <managedObject class="RNAC" distName="RNC-1/RNAC-1" version="mcRNC3.0" operation="create">
+    </managedObject>
+    <managedObject class="RNFC" distName="RNC-1/RNFC-1" version="RN7.0" operation="create">
+      <p name="MOCNenabled">1</p>
+      <p name="AutomDLPlanUpdEnabled">1</p>
+    </managedObject>
+    <managedObject class="RNHSPA" distName="RNC-1/RNHSPA-1" version="RN7.0" operation="create">
+    </managedObject>
+    <managedObject class="RNMOBI" distName="RNC-1/RNMOBI-1" version="RN7.0" operation="create">
+    </managedObject>
+    <managedObject class="RNPS" distName="RNC-1/RNPS-1" version="RN7.0" operation="create">
+    </managedObject>
+    <managedObject class="RNRLC" distName="RNC-1/RNRLC-1" version="RN7.0" operation="create">
+    </managedObject>
+    <managedObject class="RNTRM" distName="RNC-1/RNTRM-1" version="RN7.0" operation="create">
+    </managedObject>
+    <managedObject class="WBTS" version="RN6.0_2.0" distName="RNC-1/WBTS-1" operation="create">
+      <p name="DediMeasRepPeriodCSdata">1</p>
+      <p name="DediMeasRepPeriodPSdata">9</p>
+      <p name="DedicatedMeasReportPeriod">9</p>
+      <p name="LoadControlPeriodPS">10</p>
+      <p name="MeasFiltCoeff">8</p>
+      <p name="NBAPCommMode">0</p>
+      <p name="PrxAlpha">10</p>
+      <p name="PtxAlpha">0</p>
+      <p name="PtxDPCHmax">-3</p>
+      <p name="PtxDPCHmin">-60</p>
+      <p name="PtxMeasAveWindow">85</p>
+      <p name="CellRange">0</p>
+    </managedObject>
+    <managedObject class="FMCS" distName="RNC-1/FMCS-1" version="RN7.0" operation="create">
+      <p name="EDCHRemEcNoOffset">4</p>
+      <p name="HSDPAServCellWindow">255</p>
+    </managedObject>
+    <managedObject class="FMCL" distName="RNC-1/FMCL-1" version="RN7.0" operation="create">
+    </managedObject>
+    <managedObject class="FMCI" distName="RNC-1/FMCI-1" version="RN7.0" operation="create">
+    </managedObject>
+    <managedObject class="FMCG" distName="RNC-1/FMCG-1" version="RN7.0" operation="create">
+    </managedObject>
+    <managedObject class="IUO" version="RN6.0_2.0" distName="RNC-1/IUO-2" operation="create">
+      <list name="PLMNid">
+        <item>
+          <p name="MCC">123</p>
+          <p name="MNC">46</p>
+          <p name="MNCLength">2</p>
+        </item>
+      </list>
+    </managedObject>    
+    <managedObject class="IUCS" distName="RNC-1/IUCS-1" version="RN7.0" operation="create">
+      <p name="NetworkInd">255</p>
+      <p name="SignPointCode">0</p>
+      <p name="CNDomainVersion">10</p>
+      <p name="CNId">0</p>
+      <p name="IUOIdentifier">2</p>
+      <p name="IuState">2</p>
+    </managedObject>
+    <managedObject class="WRAB" distName="RNC-1/WRAB-1" version="RN7.0" operation="create">
+    </managedObject>
+    <managedObject class="WBTS" version="RN6.0_2.0" distName="RNC-1/WBTS-2" operation="create">
+      <p name="DediMeasRepPeriodCSdata">1</p>
+      <p name="DediMeasRepPeriodPSdata">9</p>
+      <p name="DedicatedMeasReportPeriod">9</p>
+      <p name="LoadControlPeriodPS">10</p>
+      <p name="MeasFiltCoeff">8</p>
+      <p name="NBAPCommMode">0</p>
+      <p name="PrxAlpha">10</p>
+      <p name="PtxAlpha">0</p>
+      <p name="PtxDPCHmax">-3</p>
+      <p name="PtxDPCHmin">-60</p>
+      <p name="PtxMeasAveWindow">85</p>
+      <p name="CellRange">0</p>
+    </managedObject>        
+    <managedObject class="WCEL" distName="RNC-1/WBTS-1/WCEL-1" version="mcRN4.1" operation="create">
+      <p name="CId">1</p>
+      <p name="LAC">1</p>
+      <p name="SAC">1</p>
+      <p name="RAC">1</p>
+      <p name="PriScrCode">1</p>
+      <p name="UARFCN">10250</p>    <!-- ADJS: source and target WCELs must have the same value -->
+      <p name="CellRange">100</p>
+      <p name="RtFmcsIdentifier">1</p>
+      <p name="NrtFmcsIdentifier">1</p>
+      <p name="RtFmcgIdentifier">1</p>
+      <p name="NrtFmcgIdentifier">1</p>
+      <p name="RtFmciIdentifier">1</p>
+      <p name="NrtFmciIdentifier">1</p>
+      <p name="EbNoSetIdentifier">1</p>
+      <p name="Tcell">0</p>
+      <list name="URAId">
+        <p>1</p>
+      </list>
+      <list name="WCELGlobalCNid">
+        <item>
+          <p name="WCELMCC">123</p>
+          <p name="WCELMNC">45</p>
+          <p name="WCELMNCLength">2</p>
+        </item>
+      </list>
+      <p name="FMCLIdentifier">1</p>
+      <p name="AMRUnderSC">50</p>
+      <p name="AMRTargetSC">70</p>
+      <p name="AMROverSC">90</p>
+      <p name="UEtxPowerMaxPRACH">21</p>
+      <p name="PtxPrimaryCPICH">280</p>
+    </managedObject>    
+    <managedObject class="WCEL" distName="RNC-1/WBTS-2/WCEL-2" version="mcRN4.1" operation="create">
+      <p name="CId">2</p>
+      <p name="LAC">2</p>
+      <p name="SAC">2</p>
+      <p name="RAC">2</p>
+      <p name="PriScrCode">2</p>
+      <p name="UARFCN">10250</p>    <!-- ADJS: source and target WCELs must have the same value -->
+      <p name="CellRange">100</p>
+      <p name="RtFmcsIdentifier">1</p>
+      <p name="NrtFmcsIdentifier">1</p>
+      <p name="RtFmcgIdentifier">1</p>
+      <p name="NrtFmcgIdentifier">1</p>
+      <p name="RtFmciIdentifier">1</p>
+      <p name="NrtFmciIdentifier">1</p>
+      <p name="EbNoSetIdentifier">1</p>
+      <p name="Tcell">0</p>
+      <list name="URAId">
+        <p>1</p>
+      </list>
+      <list name="WCELGlobalCNid">
+        <item>
+          <p name="WCELMCC">123</p>
+          <p name="WCELMNC">45</p>
+          <p name="WCELMNCLength">2</p>
+        </item>
+      </list>
+      <p name="FMCLIdentifier">1</p>
+      <p name="AMRUnderSC">50</p>
+      <p name="AMRTargetSC">70</p>
+      <p name="AMROverSC">90</p>
+      <p name="UEtxPowerMaxPRACH">21</p>
+      <p name="PtxPrimaryCPICH">280</p>
+    </managedObject>         
+    
+    <managedObject class="HOPS" version="mcRN3.0" distName="RNC-1/HOPS-1" operation="create">
+    </managedObject>
+    
+    <!-- bidirectional -->
+    <!-- source WCEL-1, target WCEL-2 -->
+    <managedObject class="ADJS" version="RN7.0" distName="RNC-1/WBTS-1/WCEL-1/ADJS-1" operation="create">
+      <p name="AdjsMCC">123</p>           <!-- must be the same as MCC IUO, it means that target is in the same RNC -->
+      <p name="AdjsMNC">46</p>            <!-- must be the same as MNC in IUO, it means that target is in the same RNC -->
+      <p name="AdjsCI">2</p>              <!-- CId of the target WCEL -->
+      <p name="AdjsCPICHTxPwr">280</p>    <!-- must the same as PtxPrimaryCPICH in target WCEL -->
+      <p name="RtHopsIdentifier">1</p>
+      <p name="NrtHopsIdentifier">1</p>
+      <p name="AdjsLAC">2</p>             <!-- must be the same as LAC in target WCEL -->
+      <p name="AdjsRAC">2</p>             <!-- must be the same as RAC in target WCEL -->
+      <p name="AdjsRNCid">1</p>
+      <p name="AdjsScrCode">2</p>         <!-- must be the same as PriScrCode in target WCEL -->
+      <p name="AdjsTxPwrRACH">21</p>      <!-- must be the same as UEtxPowerMaxPRACH in target WCEL -->
+    </managedObject>    
+
+    <!-- bidirectional -->
+    <!-- source WCEL-2, target WCEL-1 -->
+    <managedObject class="ADJS" version="RN7.0" distName="RNC-1/WBTS-2/WCEL-2/ADJS-2" operation="create">
+      <p name="AdjsMCC">123</p>           <!-- must be the same as MCC in IUO, it means that target is in the same RNC -->
+      <p name="AdjsMNC">46</p>            <!-- must be the same as MNC in IUO, it means that target is in the same RNC -->
+      <p name="AdjsCI">1</p>              <!-- CId of the target WCEL -->
+      <p name="AdjsCPICHTxPwr">280</p>    <!-- must the same as PtxPrimaryCPICH in target WCEL -->
+      <p name="RtHopsIdentifier">1</p>
+      <p name="NrtHopsIdentifier">1</p>
+      <p name="AdjsLAC">1</p>             <!-- must be the same as LAC in target WCEL -->
+      <p name="AdjsRAC">1</p>             <!-- must be the same as RAC in target WCEL -->
+      <p name="AdjsRNCid">1</p>
+      <p name="AdjsScrCode">1</p>         <!-- must be the same as PriScrCode in target WCEL -->
+      <p name="AdjsTxPwrRACH">21</p>      <!-- must be the same as UEtxPowerMaxPRACH in target WCEL -->
+    </managedObject>    
+      
+    <!-- unidirectional -->
+    <managedObject class="ADJS" version="RN7.0" distName="RNC-1/WBTS-1/WCEL-1/ADJS-10" operation="create">
+      <p name="AdjsMCC">232</p>
+      <p name="AdjsMNC">1</p>
+      <p name="AdjsCI">50122</p>
+      <p name="AdjsCPICHTxPwr">280</p>
+      <p name="RtHopsIdentifier">1</p>
+      <p name="NrtHopsIdentifier">1</p>
+      <p name="AdjsLAC">510</p>
+      <p name="AdjsRAC">5</p>
+      <p name="AdjsRNCid">50</p>
+      <p name="AdjsScrCode">5</p>
+      <p name="AdjsTxPwrRACH">21</p>
+    </managedObject>      
+  </cmData>
+</raml>

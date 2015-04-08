@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<raml version="2.1" xmlns="raml21.xsd">
+	<cmData type="actual" scope="all" domain="RNCRNWCMPLAN" adaptationVersionMajor="RN8.1">
+		<header>
+			<log dateTime="2014-09-01T15:27:04" action="modified" user="CRNC" appInfo="cRNC OMS">RNC CM event plan</log>
+		</header>
+		<managedObject class="WBTS" distName="RNC-1/WBTS-1" version="RN8.1" operation="create">
+			<p name="BTSRACHCapaIncCapability">0</p>
+			<p name="DSCPHigh">46</p>
+			<p name="DSCPMedDCH">34</p>
+			<p name="DSCPMedHSPA">26</p>
+			<p name="DSCPLow">0</p>
+			<p name="SchedulingPeriod">100</p>
+			<p name="RRIndPeriod">40</p>
+			<p name="WinACRABsetupDL">5</p>
+			<p name="WinACRABsetupUL">5</p>
+			<p name="RACHloadIndicationPeriod">1</p>
+			<p name="HSDPACCEnabled">0</p>
+			<p name="PSAveragingWindowSize">4</p>
+			<p name="WinLCHSUPA">5</p>
+			<p name="WinLCHSDPA">5</p>
+			<p name="PrxTargetPSAdjustPeriod">5</p>
+			<p name="BTSSupportForHSPACM">0</p>
+			<p name="NodeBRABReconfigSupport">0</p>
+			<p name="HSDPA14MbpsPerUser">0</p>
+			<p name="SharedHSDPAallocation">0</p>
+			<p name="MaxNumberEDCHLCG">0</p>
+			<p name="HSUPAXUsersEnabled">0</p>
+			<p name="IPNBId">0</p>
+			<p name="IPBasedRouteIdIub">0</p>
+			<p name="IPBasedRouteIdIub2">0</p>
+			<p name="MinUDPPortIub">1026</p>
+			<p name="IubTransportMedia">0</p>
+			<p name="HSUPADLCToDSCP">34</p>
+			<p name="HSDPAULCToDSCP">34</p>
+			<p name="ToAWSOffsetRTDCHIP">0</p>
+			<p name="ToAWSOffsetNRTDCHIP">0</p>
+			<p name="ToAWEOffsetRTDCHIP">0</p>
+			<p name="ToAWEOffsetNRTDCHIP">0</p>
+			<p name="TQMId">0</p>
+			<p name="SatelliteIubUsage">0</p>
+			<p name="InactUsersCIDThreshold">6</p>
+			<p name="BroadcastSIB15">0</p>
+			<p name="BroadcastSIB15_2">0</p>
+			<p name="BroadcastSIB15_3">0</p>
+			<p name="PWSMInUse">0</p>
+			<p name="PWSMShutdownBeginHour">22</p>
+			<p name="PWSMShutdownBeginMin">0</p>
+			<p name="PWSMShutdownEndHour">6</p>
+			<p name="PWSMShutdownEndMin">0</p>
+			<p name="PWSMWeekday">0</p>
+			<p name="PWSMRemCellSDBeginHour">22</p>
+			<p name="PWSMRemCellSDBeginMin">0</p>
+			<p name="PWSMRemCellSDEndHour">6</p>
+			<p name="PWSMRemCellSDEndMin">0</p>
+			<p name="BTSFallbackEnabled">0</p>
+			<p name="IubTransportFallback">15</p>
+			<p name="ProbabilityFactorMax2msTTI">1000</p>
+			<p name="ProbabilityFactorMax">1000</p>
+			<p name="DelayThresholdMax2msTTI">10000</p>
+			<p name="DelayThresholdMid2msTTI">7000</p>
+			<p name="DelayThresholdMin2msTTI">5000</p>
+			<p name="DelayThresholdMin">5000</p>
+			<p name="DelayThresholdMid">7000</p>
+			<p name="DelayThresholdMax">10000</p>
+			<p name="MDCBufferingTime">50</p>
+			<p name="PDUSize656WithHSDSCH">2</p>
+			<p name="InactCACThresholdATM">170</p>
+			<p name="InactCACThresholdIP">80</p>
+			<p name="IntelligentSDPrioHO">0</p>
+			<p name="BlindHOIntraBTSQCheck">0</p>
+			<p name="ICREnabled">0</p>
+			<list name="R99OperIdWeightPair">
+				<item>
+					<p name="R99OperatorId">255</p>
+					<p name="R99OperatorWeight">0</p>
+				</item>
+			</list>
+			<p name="HSDPAIurWeight">0</p>
+			<p name="HSDPAUserThreshold">1</p>
+			<p name="HSDPAUserHysterisis">0</p>
+			<list name="HSDPAOperIdWeightPair">
+				<item>
+					<p name="HSDPAOperatorId">255</p>
+					<p name="HSDPAOperatorWeight">0</p>
+				</item>
+			</list>
+			<p name="MaxFPDLFrameSizeIub">1428</p>
+			<p name="IPBasedRouteIdIub3">0</p>
+			<p name="IPBasedRouteIdIub4">0</p>
+			<p name="TQMId2">0</p>
+			<p name="TQMId3">0</p>
+			<p name="TQMId4">0</p>
+			<p name="IubTransportSharing">0</p>
+			<p name="HSUPACCEnabled">1</p>
+			<p name="ATMInterfaceID">65535</p>
+			<p name="VPI">65535</p>
+			<p name="VCI">0</p>
+			<p name="PWSMEnableWakeUpTime">0</p>
+			<p name="PWSMAVTrafficVERLogic">0</p>
+			<p name="WBTSName">UR3GEBIWWWUE7355BZ50FDPQM9</p>
+			<p name="COCOId">0</p>
+			<p name="PrxMeasAveWindow">10</p>
+			<p name="PtxMeasAveWindow">10</p>
+			<p name="PrxAlpha">0</p>
+			<p name="PtxAlpha">0</p>
+			<p name="PtxDPCHmax">-30</p>
+			<p name="PtxDPCHmin">-28</p>
+			<p name="LoadControlPeriodPS">20</p>
+			<p name="WBTSChangeOrigin">5</p>
+			<p name="DedicatedMeasReportPeriod">5</p>
+			<p name="MeasFiltCoeff">5</p>
+			<p name="BTSAdditionalInfo">8JF4A</p>
+			<p name="DediMeasRepPeriodCSdata">3</p>
+			<p name="DediMeasRepPeriodPSdata">1</p>
+			<p name="NbrOfOverbookedHSDPAUsers">48</p>
+			<p name="ReleaseTimerForSharedHSDPAallocation">3</p>
+			<p name="SharedHSDPAVCCSelectionMethod">0</p>
+			<p name="PSRLAveragingWindowSize">0</p>
+			<p name="DLORLAveragingWindowSize">0</p>
+			<p name="OverbookingSwitch">0</p>
+			<p name="HARQRVConfiguration">1</p>
+			<list name="RRMULDCHActivityFactor">
+				<item>
+					<p name="RRMULDCHActivityFactorSRB">1</p>
+					<p name="RRMULDCHActivityFactorCSAMR">50</p>
+					<p name="RRMULDCHActivityFactorCSTData">100</p>
+					<p name="RRMULDCHActivityFactorCSNTData">95</p>
+					<p name="RRMULDCHActivityFactorPSStream">50</p>
+					<p name="RRMULDCHActivityFactorPSTHP1">50</p>
+					<p name="RRMULDCHActivityFactorPSTHP2">50</p>
+					<p name="RRMULDCHActivityFactorPSTHP3">50</p>
+					<p name="RRMULDCHActivityFactorPSBackgr">50</p>
+				</item>
+			</list>
+			<p name="DCNLinkStatus">0</p>
+			<p name="BTSIPAddress">0.0.0.0</p>
+			<p name="NEType">0</p>
+			<p name="NESWVersion"></p>
+			<p name="DCNSecurityStatus">255</p>
+			<p name="RFSharingState">0</p>
+			<p name="WBTSSWBuildId">No information available</p>
+			<p name="BTSRACHCapaIncCapability">0</p>
+		</managedObject>
+	</cmData>
+</raml>

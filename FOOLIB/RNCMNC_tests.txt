@@ -1,0 +1,355 @@
+*** Settings ***
+Documentation     This test suite tests PABROS and RAYMAN
+Suite Setup       Suite Setup
+Suite Teardown    Suite Teardown
+Test Setup        Run Keyword If    ${MessageMonitoring}    RNC_MNC Test Setup
+Test Teardown     Run Keyword If    ${MessageMonitoring}    RNC_MNC Test Teardown
+Force Tags        Product_Backlog_ID-xxx_1R_M1    EFS_ID-RNC_EFS_xxx    owner-I_EXT_MBB_WCDMA_SWD3_TEAM_O2@internal.nsn.com    exec_type-automatic    type-FUT    HW_TYPE-BCN_A1    BCN_STEP-BCN_S0
+...               Phase-CRT    PRB-PABROS    PRB-RAYMAN    PRB-FOOLIB
+Default Tags      ready-for-a-team-jenkins
+Library           Collections
+Library           resources/metadata_test_framework.py
+Library           resources/XML_utils.py
+Library           resources/parameter_utils.py
+Library           resources/log_utils.py
+Variables         resources/TestResources.py    ${TEST_BENCH}
+Library           OperatingSystem
+Resource          resources/common_kws.txt
+
+*** Variables ***
+${TEST_BENCH}     ${HOST}    # ${TEST_BENCH}    prinsessa
+${MessageMonitoring}    False
+
+*** Test Cases ***
+RNC Object MNC Create - -
+    [Tags]    ready-for-a-team-jenkins    nightly-test
+    RNC Object MNC Create Test    ${empty}    ${empty}    65535    0
+
+RNC Object MNC Create - 0
+    [Tags]    ready-for-a-team-jenkins    nightly-test
+    RNC Object MNC Create Test    ${empty}    0    65535    0
+
+RNC Object MNC Create - 2
+    [Tags]    ready-for-a-team-jenkins    nightly-test
+    RNC Object MNC Create Test    ${empty}    2    65535    0
+
+RNC Object MNC Create - 3
+    [Tags]    ready-for-a-team-jenkins    nightly-test
+    RNC Object MNC Create Test    ${empty}    3    65535    0
+
+RNC Object MNC Create 1 -
+    [Tags]    ready-for-a-team-jenkins    nightly-test
+    RNC Object MNC Create Test    1    ${empty}    65535    0
+
+RNC Object MNC Create 1 0 fail
+    [Tags]    ready-for-a-team-jenkins    nightly-test
+    RNC Object MNC Create Test    1    0    123    3    dl_should_succeed=${false}    error_txt=(?i)15384.*Mismatch in CommonMNC and CommonMNCLength values
+
+RNC Object MNC Create 1 2
+    [Tags]    ready-for-a-team-jenkins    nightly-test
+    RNC Object MNC Create Test    1    2    1    2
+
+RNC Object MNC Create 1 3
+    [Tags]    ready-for-a-team-jenkins    nightly-test
+    RNC Object MNC Create Test    1    3    1    3
+
+RNC Object MNC Create 123 -
+    [Tags]    ready-for-a-team-jenkins    nightly-test
+    RNC Object MNC Create Test    123    ${empty}    65535    0
+
+RNC Object MNC Create 123 0 fail
+    [Tags]    ready-for-a-team-jenkins    nightly-test
+    RNC Object MNC Create Test    123    0    123    3    dl_should_succeed=${false}    error_txt=(?i)15384.*Mismatch in CommonMNC and CommonMNCLength values
+
+RNC Object MNC Create 123 2 fail
+    [Tags]    ready-for-a-team-jenkins    nightly-test
+    RNC Object MNC Create Test    123    2    123    3    dl_should_succeed=${false}    error_txt=(?i)15384.*Mismatch in CommonMNC and CommonMNCLength values
+
+RNC Object MNC Create 123 3
+    [Tags]    ready-for-a-team-jenkins    nightly-test
+    RNC Object MNC Create Test    123    3    123    3
+
+RNC Object MNC Create 65535 -
+    [Tags]    ready-for-a-team-jenkins    nightly-test
+    RNC Object MNC Create Test    65535    ${empty}    65535    0
+
+RNC Object MNC Create 65535 0
+    [Tags]    ready-for-a-team-jenkins    nightly-test
+    RNC Object MNC Create Test    65535    0    65535    0
+
+RNC Object MNC Create 65535 2 fail
+    [Tags]    ready-for-a-team-jenkins    nightly-test
+    RNC Object MNC Create Test    65535    2    65535    0    dl_should_succeed=${false}    error_txt=(?i)15384.*Mismatch in CommonMNC and CommonMNCLength values
+
+RNC Object MNC Create 65535 3 fail
+    [Tags]    ready-for-a-team-jenkins    nightly-test
+    RNC Object MNC Create Test    65535    3    65535    0    dl_should_succeed=${false}    error_txt=(?i)15384.*Mismatch in CommonMNC and CommonMNCLength values
+
+RNC Object MNC Modify From 65535 0 To - -
+    [Tags]    ready-for-a-team-jenkins    nightly-test
+    RNC Object MNC Modify Test    65535    0    ${empty}    ${empty}    65535    0
+
+RNC Object MNC Modify From 65535 0 To - 0
+    [Tags]    ready-for-a-team-jenkins    nightly-test
+    RNC Object MNC Modify Test    65535    0    ${empty}    0    65535    0
+
+RNC Object MNC Modify From 65535 0 To - 2 fail
+    [Tags]    ready-for-a-team-jenkins    nightly-test
+    RNC Object MNC Modify Test    65535    0    ${empty}    2    65535    0
+    ...    dl_should_succeed=${false}    error_txt=(?i)15384.*Mismatch in Old CommonMNC and New CommonMNCLength values
+
+RNC Object MNC Modify From 65535 0 To - 3 fail
+    [Tags]    ready-for-a-team-jenkins    nightly-test
+    RNC Object MNC Modify Test    65535    0    ${empty}    3    65535    0
+    ...    dl_should_succeed=${false}    error_txt=(?i)15384.*Mismatch in Old CommonMNC and New CommonMNCLength values
+
+RNC Object MNC Modify From 65535 0 To 1 - fail
+    [Tags]    ready-for-a-team-jenkins    nightly-test
+    RNC Object MNC Modify Test    65535    0    1    ${empty}    65535    0
+    ...    dl_should_succeed=${false}    error_txt=(?i)15384.*Mismatch in Old CommonMNC and New CommonMNC values
+
+RNC Object MNC Modify From 65535 0 To 1 0 fail
+    [Tags]    ready-for-a-team-jenkins    nightly-test
+    RNC Object MNC Modify Test    65535    0    1    0    65535    0
+    ...    dl_should_succeed=${false}    error_txt=(?i)15384.*Mismatch in CommonMNC and CommonMNCLength values
+
+RNC Object MNC Modify From 65535 0 To 1 2
+    [Tags]    ready-for-a-team-jenkins    nightly-test
+    RNC Object MNC Modify Test    65535    0    1    2    1    2
+
+RNC Object MNC Modify From 65535 0 To 1 3
+    [Tags]    ready-for-a-team-jenkins    nightly-test
+    RNC Object MNC Modify Test    65535    0    1    3    1    3
+
+RNC Object MNC Modify From 65535 0 To 123 - fail
+    [Tags]    ready-for-a-team-jenkins    nightly-test
+    RNC Object MNC Modify Test    65535    0    123    ${empty}    65535    0
+    ...    dl_should_succeed=${false}    error_txt=(?i)15384.*Mismatch in old CommonMNC and new CommonMNC values
+
+RNC Object MNC Modify From 65535 0 To 123 0 fail
+    [Tags]    ready-for-a-team-jenkins    nightly-test
+    RNC Object MNC Modify Test    65535    0    123    0    65535    0
+    ...    dl_should_succeed=${false}    error_txt=(?i)15384.*Mismatch in CommonMNC and CommonMNCLength values
+
+RNC Object MNC Modify From 65535 0 To 123 2 fail
+    [Tags]    ready-for-a-team-jenkins    nightly-test
+    RNC Object MNC Modify Test    65535    0    123    2    65535    0
+    ...    dl_should_succeed=${false}    error_txt=(?i)15384.*Mismatch in CommonMNC and CommonMNCLength values
+
+RNC Object MNC Modify From 65535 0 To 123 3
+    [Tags]    ready-for-a-team-jenkins    nightly-test
+    RNC Object MNC Modify Test    65535    0    123    3    123    3
+
+RNC Object MNC Modify From 65535 0 To 65535 -
+    [Tags]    ready-for-a-team-jenkins    nightly-test
+    RNC Object MNC Modify Test    65535    0    65535    ${empty}    65535    0
+
+RNC Object MNC Modify From 65535 0 To 65535 0
+    [Tags]    ready-for-a-team-jenkins    nightly-test
+    RNC Object MNC Modify Test    65535    0    65535    0    65535    0
+
+RNC Object MNC Modify From 65535 0 To 65535 2 fail
+    [Tags]    ready-for-a-team-jenkins    nightly-test
+    RNC Object MNC Modify Test    65535    0    65535    2    65535    0
+    ...    dl_should_succeed=${false}    error_txt=(?i)15384.*Mismatch in CommonMNC and CommonMNCLength values
+
+RNC Object MNC Modify From 65535 0 To 65535 3 fail
+    [Tags]    ready-for-a-team-jenkins    nightly-test
+    RNC Object MNC Modify Test    65535    0    65535    3    65535    0
+    ...    dl_should_succeed=${false}    error_txt=(?i)15384.*Mismatch in CommonMNC and CommonMNCLength values
+
+RNC Object MNC Modify From 1 2 To - -
+    [Tags]    ready-for-a-team-jenkins    nightly-test
+    RNC Object MNC Modify Test    1    2    ${empty}    ${empty}    1    2
+
+RNC Object MNC Modify From 1 2 To - 0 fail
+    [Tags]    ready-for-a-team-jenkins    nightly-test
+    RNC Object MNC Modify Test    1    2    ${empty}    0    1    2
+    ...    dl_should_succeed=${false}    error_txt=(?i)15384.*Mismatch in old CommonMNC and new CommonMNCLength values
+
+RNC Object MNC Modify From 1 2 To - 2
+    [Tags]    ready-for-a-team-jenkins    nightly-test
+    RNC Object MNC Modify Test    1    2    ${empty}    2    1    2
+
+RNC Object MNC Modify From 1 2 To - 3
+    [Tags]    ready-for-a-team-jenkins    nightly-test
+    RNC Object MNC Modify Test    1    2    ${empty}    3    1    3
+
+RNC Object MNC Modify From 1 2 To 1 -
+    [Tags]    ready-for-a-team-jenkins    nightly-test
+    RNC Object MNC Modify Test    1    2    1    ${empty}    1    2
+
+RNC Object MNC Modify From 1 2 To 1 0 fail
+    [Tags]    ready-for-a-team-jenkins    nightly-test
+    RNC Object MNC Modify Test    1    2    1    0    1    2
+    ...    dl_should_succeed=${false}    error_txt=(?i)15384.*Mismatch in CommonMNC and CommonMNCLength values
+
+RNC Object MNC Modify From 1 2 To 1 2
+    [Tags]    ready-for-a-team-jenkins    nightly-test
+    RNC Object MNC Modify Test    1    2    1    2    1    2
+
+RNC Object MNC Modify From 1 2 To 1 3
+    [Tags]    ready-for-a-team-jenkins    nightly-test
+    RNC Object MNC Modify Test    1    2    1    3    1    3
+
+RNC Object MNC Modify From 1 2 To 123 - fail
+    [Tags]    ready-for-a-team-jenkins    nightly-test
+    RNC Object MNC Modify Test    1    2    123    ${empty}    1    2
+    ...    dl_should_succeed=${false}    error_txt=(?i)15384.*Mismatch in old CommonMNC and new CommonMNC values
+
+RNC Object MNC Modify From 1 2 To 123 0 fail
+    [Tags]    ready-for-a-team-jenkins    nightly-test
+    RNC Object MNC Modify Test    1    2    123    0    1    2
+    ...    dl_should_succeed=${false}    error_txt=(?i)15384.*Mismatch in CommonMNC and CommonMNCLength values
+
+RNC Object MNC Modify From 1 2 To 123 2 fail
+    [Tags]    ready-for-a-team-jenkins    nightly-test
+    RNC Object MNC Modify Test    1    2    123    2    1    2
+    ...    dl_should_succeed=${false}    error_txt=(?i)15384.*Mismatch in CommonMNC and CommonMNCLength values
+
+RNC Object MNC Modify From 1 2 To 123 3
+    [Tags]    ready-for-a-team-jenkins    nightly-test
+    RNC Object MNC Modify Test    1    2    123    3    123    3
+
+RNC Object MNC Modify From 1 2 To 65535 - fail
+    [Tags]    ready-for-a-team-jenkins    nightly-test
+    RNC Object MNC Modify Test    1    2    65535    ${empty}    1    2
+    ...    dl_should_succeed=${false}    error_txt=(?i)15384.*Mismatch in old CommonMNC and new CommonMNC values
+
+RNC Object MNC Modify From 1 2 To 65535 0
+    [Tags]    ready-for-a-team-jenkins    nightly-test
+    RNC Object MNC Modify Test    1    2    65535    0    65535    0
+
+RNC Object MNC Modify From 1 2 To 65535 2 fail
+    [Tags]    ready-for-a-team-jenkins    nightly-test
+    RNC Object MNC Modify Test    1    2    65535    2    1    2
+    ...    dl_should_succeed=${false}    error_txt=(?i)15384.*Mismatch in CommonMNC and CommonMNCLength values
+
+RNC Object MNC Modify From 1 2 To 65535 3 fail
+    [Tags]    ready-for-a-team-jenkins    nightly-test
+    RNC Object MNC Modify Test    1    2    65535    3    1    2
+    ...    dl_should_succeed=${false}    error_txt=(?i)15384.*Mismatch in CommonMNC and CommonMNCLength values
+
+RNC Object MNC Modify From 123 3 To - -
+    [Tags]    ready-for-a-team-jenkins    nightly-test
+    RNC Object MNC Modify Test    123    3    ${empty}    ${empty}    123    3
+
+RNC Object MNC Modify From 123 3 To - 0 fail
+    [Tags]    ready-for-a-team-jenkins    nightly-test
+    RNC Object MNC Modify Test    123    3    ${empty}    0    123    3
+    ...    dl_should_succeed=${false}    error_txt=(?i)15384.*Mismatch in Old CommonMNC and New CommonMNCLength values
+
+RNC Object MNC Modify From 123 3 To - 2 fail
+    [Tags]    ready-for-a-team-jenkins    nightly-test
+    RNC Object MNC Modify Test    123    3    ${empty}    2    123    3
+    ...    dl_should_succeed=${false}    error_txt=(?i)15384.*Mismatch in Old CommonMNC and New CommonMNCLength values
+
+RNC Object MNC Modify From 123 3 To - 3
+    [Tags]    ready-for-a-team-jenkins    nightly-test
+    RNC Object MNC Modify Test    123    3    ${empty}    3    123    3
+
+RNC Object MNC Modify From 123 3 To 1 -
+    [Tags]    ready-for-a-team-jenkins    nightly-test
+    RNC Object MNC Modify Test    123    3    1    ${empty}    1    3
+
+RNC Object MNC Modify From 123 3 To 1 0 fail
+    [Tags]    ready-for-a-team-jenkins    nightly-test
+    RNC Object MNC Modify Test    123    3    1    0    123    3
+    ...    dl_should_succeed=${false}    error_txt=(?i)15384.*Mismatch in CommonMNC and CommonMNCLength values
+
+RNC Object MNC Modify From 123 3 To 1 2
+    [Tags]    ready-for-a-team-jenkins    nightly-test
+    RNC Object MNC Modify Test    123    3    1    2    1    2
+
+RNC Object MNC Modify From 123 3 To 1 3
+    [Tags]    ready-for-a-team-jenkins    nightly-test
+    RNC Object MNC Modify Test    123    3    1    3    1    3
+
+RNC Object MNC Modify From 123 3 To 123 -
+    [Tags]    ready-for-a-team-jenkins    nightly-test
+    RNC Object MNC Modify Test    123    3    123    ${empty}    123    3
+
+RNC Object MNC Modify From 123 3 To 123 0 fail
+    [Tags]    ready-for-a-team-jenkins    nightly-test
+    RNC Object MNC Modify Test    123    3    123    0    123    3
+    ...    dl_should_succeed=${false}    error_txt=(?i)15384.*Mismatch in CommonMNC and CommonMNCLength values
+
+RNC Object MNC Modify From 123 3 To 123 2 fail
+    [Tags]    ready-for-a-team-jenkins    nightly-test
+    RNC Object MNC Modify Test    123    3    123    2    123    3
+    ...    dl_should_succeed=${false}    error_txt=(?i)15384.*Mismatch in CommonMNC and CommonMNCLength values
+
+RNC Object MNC Modify From 123 3 To 123 3
+    [Tags]    ready-for-a-team-jenkins    nightly-test
+    RNC Object MNC Modify Test    123    3    123    3    123    3
+
+RNC Object MNC Modify From 123 3 To 65535 - fail
+    [Tags]    ready-for-a-team-jenkins    nightly-test
+    RNC Object MNC Modify Test    123    3    65535    ${empty}    123    3
+    ...    dl_should_succeed=${false}    error_txt=(?i)15384.*Mismatch in old CommonMNC and new CommonMNC values
+
+RNC Object MNC Modify From 123 3 To 65535 0
+    [Tags]    ready-for-a-team-jenkins    nightly-test
+    RNC Object MNC Modify Test    123    3    65535    0    65535    0
+
+RNC Object MNC Modify From 123 3 To 65535 2 fail
+    [Tags]    ready-for-a-team-jenkins    nightly-test
+    RNC Object MNC Modify Test    123    3    65535    2    123    3
+    ...    dl_should_succeed=${false}    error_txt=(?i)15384.*Mismatch in CommonMNC and CommonMNCLength values
+
+RNC Object MNC Modify From 123 3 To 65535 3 fail
+    [Tags]    ready-for-a-team-jenkins    nightly-test
+    RNC Object MNC Modify Test    123    3    65535    3    123    3
+    ...    dl_should_succeed=${false}    error_txt=(?i)15384.*Mismatch in CommonMNC and CommonMNCLength values
+
+*** Keywords ***
+Check MNC Values
+    [Arguments]    ${exp_mnc}    ${exp_len}
+    ${ul_xml}=    upload_plan
+    ${mnc}=    get_plan_param_value    ${ul_xml}    ${RNC-ID}    CommonMNC
+    ${len}=    get_plan_param_value    ${ul_xml}    ${RNC-ID}    CommonMNCLength
+    Should Be True    ${mnc}==${exp_mnc}
+    Should Be True    ${len}==${exp_len}
+
+RNC Object MNC Create Test
+    [Arguments]    ${new_mnc}    ${new_len}    ${exp_mnc}    ${exp_len}    ${dl_should_succeed}=${true}    ${error_txt}=${empty}
+    #create_base_config_for_object    RNC    create_object_itself=${False}
+    # create
+    ${output}=    Download RNC with MNC    ${new_mnc}    ${new_len}    should_succeed=${dl_should_succeed}
+    Run Keyword If    ${dl_should_succeed}==${false}    Should Match Regexp    ${output}    ${error_txt}
+    Run Keyword If    ${dl_should_succeed}==${true}    Check MNC Values    ${exp_mnc}    ${exp_len}
+
+Download RNC with MNC
+    [Arguments]    ${mnc}    ${mnclen}    ${operation}=create    ${should_succeed}=${true}
+    ${plan} =    generate_empty_download_plan    RNC    ${RNC-ID}    ${operation}
+    Run Keyword If    "${mnc}" != "${empty}"    add_plan_param    ${plan}    <p name="CommonMNC">${mnc}</p>
+    Run Keyword If    "${mnclen}" != "${empty}"    add_plan_param    ${plan}    <p name="CommonMNCLength">${mnclen}</p>
+    add_plan_param    ${plan}    <p name="OMSIpAddress">1.2.3.4</p>    # mandatory
+    Log    ${plan}
+    Create File    testplan.xml    ${plan}
+    upload_a_file    testplan.xml
+    ${output}=    download_plan    testplan.xml    ${should_succeed}
+    [Return]    ${output}
+
+RNC Object MNC Modify Test
+    [Arguments]    ${old_mnc}    ${old_len}    ${new_mnc}    ${new_len}    ${exp_mnc}    ${exp_len}
+    ...    ${dl_should_succeed}=${true}    ${error_txt}=${empty}
+    #create_base_config_for_object    RNC    create_object_itself=${False}
+    # create
+    ${output}=    Download RNC with MNC    ${old_mnc}    ${old_len}
+    # modify
+    ${output}=    Download RNC with MNC    ${new_mnc}    ${new_len}    operation=update    should_succeed=${dl_should_succeed}
+    Run Keyword If    ${dl_should_succeed}==${false}    Should Match Regexp    ${output}    ${error_txt}
+    ${ul_xml}=    upload_plan
+    ${mnc}=    get_plan_param_value    ${ul_xml}    ${RNC-ID}    CommonMNC
+    ${len}=    get_plan_param_value    ${ul_xml}    ${RNC-ID}    CommonMNCLength
+    Should Be True    ${mnc}==${exp_mnc}
+    Should Be True    ${len}==${exp_len}
+
+RNC_MNC Test Setup
+    ${monitor_handle}=    start_oam_message_monitoring
+    set suite variable    ${monitor_handle}
+
+RNC_MNC Test Teardown
+    stop_oam_message_monitoring    ${monitor_handle}
+    Run Keyword If Test Failed    Stop And Start Test Log Monitoring

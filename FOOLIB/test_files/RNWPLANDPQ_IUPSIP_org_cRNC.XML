@@ -1,0 +1,14 @@
+<raml version="2.1" xmlns="raml21.xsd">
+	<cmData type="actual" scope="all" domain="RNCRNWCMPLAN" adaptationVersionMajor="RN8.1">
+		<header>
+			<log dateTime="2014-06-26T11:07:32" action="modified" user="CRNC" appInfo="cRNC OMS">RNC CM event plan</log>
+		</header>
+		<managedObject class="IUPSIP" distName="RNC-1/IUPS-1/IUPSIP-1" version="RN8.1" operation="update">
+			<p name="IUPSIPChangeOrigin">5</p>
+			<p name="IPBasedRouteIdPS">3</p>
+			<p name="IPQMIdPS">1</p>
+			<p name="DestIPAddressPS">11.22.33.44</p>
+			<p name="IPNetmaskPS">1.2.3.4</p>
+		</managedObject>
+	</cmData>
+</raml

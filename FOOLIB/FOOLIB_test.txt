@@ -1,0 +1,74 @@
+*** Settings ***
+Suite Setup       Suite Setup
+Suite Teardown    Suite Teardown
+Test Setup        Case Setup
+Test Teardown     Case Teardown
+Library           foolib.py
+Variables         foolib.py    ${HOST}
+
+*** Test Cases ***
+Clear DB except RNC
+    clear_all_except_rnc_objs_from_db
+
+Download Combined Plan
+    ${dstfile}=    combine_mo_plan_with_dependency    WCEL
+    set test variable    ${dstfile}
+    upload_a_file    ${dstfile}
+    ${output}    download_plan    ${dstfile}
+    ${dl_xml}    type_a_file    ${XML_PATH}/${dstfile}
+    ${ul_xml}    upload_plan
+    ${cmdata_dl}    get_cmdata_elem_from_text    ${dl_xml}
+    ${cmdata_ul}    get_cmdata_elem_from_text    ${ul_xml}
+    ${diff_dict}    compare_plans_cmdata_into_dict    ${cmdata_dl}    ${cmdata_ul}
+    ${mo_dict}    get_mo_dict_from_file    ${dstfile}
+    print_diff_dict    ${diff_dict}
+
+Log something
+    log    here is a test
+
+Clear DB thoroughly
+    clear_rnwdb_thoroughly
+
+Download Plan
+    ${dstfile}=    RNWPLAND_RNC_all_objects.XML
+    set test variable    ${dstfile}
+    upload_a_file    ${dstfile}
+    ${output}    download_plan    ${dstfile}
+    ${dl_xml}    type_a_file    ${XML_PATH}/${dstfile}
+    ${ul_xml}    upload_plan
+    ${cmdata_dl}    get_cmdata_elem_from_text    ${dl_xml}
+    ${cmdata_ul}    get_cmdata_elem_from_text    ${ul_xml}
+    ${diff_dict}    compare_plans_cmdata_into_dict    ${cmdata_dl}    ${cmdata_ul}
+    ${mo_dict}    get_mo_dict_from_file    ${dstfile}
+    print_diff_dict    ${diff_dict}
+
+Clear DB include RNC
+    clear_rnwdb
+
+*** Keywords ***
+Suite Setup
+    # Overriding resource file variables here with whatever we get from the command line
+    ${vars} =    BuiltIn.Get Variables
+    Set Resource Variables    ${vars}
+    metadata_connect
+    copy_test_files_ifneeded
+    ${rnc_id_match} =    check_rnc_id_match
+    Run Keyword If    ${rnc_id_match}==${false}    clear_rnwdb_thoroughly
+    Run Keyword If    ${rnc_id_match}==${true}    clear_all_except_rnc_objs_from_db
+    check_all_rnc_objects
+    Enable All Features
+    set_cons_check_disabled    ${false}
+
+Case Setup
+    ${LOG_HANDLE}=    stop_and_start_log_monitoring    ${None}    ${None}
+    Set Suite Variable    ${LOG_HANDLE}
+    ${Message_handle}    start_oms_change_notification_monitoring
+    Set Suite Variable    ${Message_handle}
+
+Case Teardown
+    stop_oms_change_notification_monitoring    ${Message_handle}
+    Stop Log Monitoring    ${LOG_HANDLE}
+
+Suite Teardown
+    metadata_disconnect
+

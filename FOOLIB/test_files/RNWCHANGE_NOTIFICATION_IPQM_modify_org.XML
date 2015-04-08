@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<raml version="2.1" xmlns="raml21.xsd">
+	<cmData type="actual" scope="all" domain="mcRNCRNWCMPlan" adaptationVersionMajor="mcRN4.1">
+		<header>
+			<log dateTime="2014-09-03T11:47:17" action="modified" user="mcRNC" appInfo="mcRNC OMS">mcRNC CM event plan</log>
+		</header>
+		<managedObject class="IPQM" distName="RNC-1/IPQM-1" version="mcRN4.1" operation="update">
+			<p name="ConversationalTCToDSCP">50</p>
+			<p name="StreamingTCToDSCP">35</p>
+			<p name="InteractiveTHP1TCToDSCP">50</p>
+			<p name="InteractiveTHP2TCToDSCP">40</p>
+			<p name="InteractiveTHP3TCToDSCP">20</p>
+			<p name="BackgroundTCToDSCP">3</p>
+			<p name="IPQMChangeOrigin">5</p>
+		</managedObject>
+	</cmData>
+</raml>

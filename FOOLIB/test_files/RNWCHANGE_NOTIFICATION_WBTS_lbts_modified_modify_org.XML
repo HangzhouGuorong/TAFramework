@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<raml version="2.1" xmlns="raml21.xsd">
+	<cmData type="actual" scope="all" domain="mcRNCRNWCMPlan" adaptationVersionMajor="mcRN4.1">
+		<header>
+			<log dateTime="2014-09-09T13:36:29" action="modified" user="mcRNC" appInfo="mcRNC OMS">mcRNC CM event plan</log>
+		</header>
+		<managedObject class="WBTS" distName="RNC-1/WBTS-1" version="mcRN4.1" operation="update">
+			<p name="WBTSChangeOrigin">1</p>
+			<p name="DCNLinkStatus">0</p>
+			<p name="BTSIPAddress">0.0.0.0</p>
+			<p name="NEType">0</p>
+			<p name="NESWVersion"></p>
+			<p name="DCNSecurityStatus">255</p>
+			<p name="RFSharingState">0</p>
+			<p name="WBTSSWBuildId">No information available</p>
+			<p name="TargetId"></p>
+		</managedObject>
+	</cmData>
+</raml>

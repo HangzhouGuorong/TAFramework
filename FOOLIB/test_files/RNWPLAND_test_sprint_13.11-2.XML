@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<raml version="2.1" xmlns="raml21.xsd">
+    <cmData type="actual" scope="all" domain="RNCRNWCMPLAN" adaptationVersionMajor="RN7.0">
+        <header>
+            <log dateTime="2012-11-06T09:18:41" action="modified" user="CRNC" appInfo="cRNC OMS">cRNC plan upload</log>
+        </header>
+        <managedObject class="TEST2" distName="TEST2-0" version="RN7.0" operation="update">
+          <list name="URAIdList">
+            <p>100</p>
+            <p>200</p>
+            <p>300</p>
+          </list>
+          <list name="URAId">
+            <p>100</p>
+            <p>200</p>
+            <p>300</p>
+          </list>
+          <p name="AllowedRACHSubChannels">4095</p>
+          <p name="LaySelWeightPrefLayer">1000</p>
+          <list name="ARPWeight">
+            <item>
+              <p name="WeightForARP1">1</p>
+              <p name="WeightForARP2">2</p>
+              <p name="WeightForARP3">3</p>
+            </item>
+          </list>
+          <list name="DNBAP">
+            <item>
+              <p name="CControlPortID">1</p>
+              <p name="DNBAPICSUIndex">26</p>
+              <p name="SCTPPortNumberDNBAP">49961</p>
+            </item>
+            <item>
+              <p name="CControlPortID">2</p>
+              <p name="DNBAPICSUIndex">27</p>
+              <p name="SCTPPortNumberDNBAP">49962</p>
+            </item>
+            <item>
+              <p name="CControlPortID">3</p>
+              <p name="DNBAPICSUIndex">28</p>
+              <p name="SCTPPortNumberDNBAP">49963</p>
+            </item>
+            <item>
+              <p name="CControlPortID">4</p>
+              <p name="DNBAPICSUIndex">29</p>
+              <p name="SCTPPortNumberDNBAP">49964</p>
+            </item>
+            <item>
+              <p name="CControlPortID">5</p>
+              <p name="DNBAPICSUIndex">30</p>
+              <p name="SCTPPortNumberDNBAP">49965</p>
+            </item>
+            <item>
+              <p name="CControlPortID">6</p>
+              <p name="DNBAPICSUIndex">31</p>
+              <p name="SCTPPortNumberDNBAP">49966</p>
+            </item>                                                            
+          </list>
+        </managedObject>
+        <managedObject class="TEST" distName="TEST-1" version="RN7.0" operation="update">
+          <p name="CellRange">100</p>
+          <p name="SAC">1</p>
+          <p name="HCS_PRIO">0</p>
+          <p name="PtxAICH">-8</p>
+          <p name="PtxAICH2">-800</p>
+          <p name="BlindHORSCPThrTarget">-95</p>
+          <p name="CBCSourceIPAddress">11.12.13.14</p>
+          <p name="AmpliRatioOptHSRACH">1</p>
+          <p name="ACBarredList">63</p>		  
+          <p name="CellAdditionalInfo">"This is add info"</p>
+          <p name="AltScramblingCodeCM">1</p>
+          <p name="TCPEventECommMeas">1</p>
+          <p name="PtxMeasFilterCoeff">11</p>
+          <p name="CId">555</p>		
+          <p name="OMSBackupIpAddress">10.20.30.40</p>
+          <p name="AdminWBTSState">1</p>
+          <p name="AMROverTransmission">9</p>
+          <list name="CSCNNRI">
+            <item>
+              <p name="NRIMinForCSCN">10</p>
+              <p name="NRIMaxForCSCN">1000</p> 
+            </item>
+          </list>
+          <p name="NRIMinForCSCN">20</p>
+          <p name="NRIMaxForCSCN2">555</p>   
+          <list name="URAId">
+            <p>10</p>
+            <p>20</p>         
+            <p>30</p>
+            <p>40</p>   
+          </list>
+          <list name="CBCIPaddress">
+            <p>10.0.0.1</p>
+            <p>10.0.0.2</p>            
+          </list>
+        <p name="TFDCHZeroBitRate">16384</p>
+        <list name="HSDPAOperIdWeightPair">
+            <item>
+              <p name="HSDPAOperatorId">1</p>
+              <p name="HSDPAOperatorWeight">21</p>
+            </item>
+            <item>
+              <p name="HSDPAOperatorId">2</p>
+              <p name="HSDPAOperatorWeight">22</p>
+            </item>
+        </list>
+        <list name="VCCBundleParams">
+            <item>
+              <p name="VCCBundleEBS">10</p>
+              <p name="VCCBundleId">11</p>
+              <p name="VCCBundlePCR">12</p>
+            </item>
+            <item>
+              <p name="VCCBundleEBS">20</p>
+              <p name="VCCBundleId">21</p>
+              <p name="VCCBundlePCR">22</p>
+            </item>
+        </list>
+       </managedObject>
+
+    </cmData>
+</raml>

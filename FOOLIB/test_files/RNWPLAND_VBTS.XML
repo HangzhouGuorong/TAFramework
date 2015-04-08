@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<raml version="2.1" xmlns="raml21.xsd">
+     <cmData type="actual" scope="all" domain="RNCRNWCMPLAN" adaptationVersionMajor="RN7.0">
+         <header>
+             <log dateTime="2012-11-06T09:18:41" action="modified" user="mcRNC" appInfo="cRNC OMS">cRNC plan upload</log>
+         </header>
+            <managedObject class="VBTS" distName="RNC-1/VBTS-1" version="RN7.0" operation="create">
+              <list name="ControllerIdPair">
+                <item>
+                  <p name="IHSPAadapterId">50</p>
+                  <p name="ServingRNCId">51</p>
+                </item>
+              </list>
+              <p name="DediMeasRepPeriodCSdata">3</p>
+              <p name="DediMeasRepPeriodPSdata">1</p>
+              <p name="DedicatedMeasReportPeriod">5</p>
+              <p name="HARQRVConfiguration">1</p>
+              <p name="MeasFiltCoeff">5</p>
+              <p name="NodeBRABReconfigSupport">0</p>
+             </managedObject>
+	</cmData>
+</raml>

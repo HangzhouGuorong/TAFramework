@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<raml version="2.1" xmlns="raml21.xsd">
+	<cmData type="actual" scope="all" domain="RNCRNWCMPLAN" adaptationVersionMajor="RN8.1">
+		<header>
+			<log dateTime="2014-09-04T15:54:23" action="modified" user="CRNC" appInfo="cRNC OMS">RNC CM event plan</log>
+		</header>
+		<managedObject class="RNTRM" distName="RNC-1/RNTRM-1" version="RN8.1" operation="update">
+			<p name="RNTRMChangeOrigin">5</p>
+			<list name="ActivityFactorForAMRDCHTrafficBearers">
+				<item>
+					<p name="Af122AMRDL">62</p>
+					<p name="Af122AMRUL">60</p>
+					<p name="Af59AMRDL">60</p>
+					<p name="Af59AMRUL">60</p>
+				</item>
+			</list>
+			<p name="DSCPBTSOMToBTS">40</p>
+		</managedObject>
+	</cmData>
+</raml>

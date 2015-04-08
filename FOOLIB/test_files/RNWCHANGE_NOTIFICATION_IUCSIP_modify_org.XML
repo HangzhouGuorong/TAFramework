@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<raml version="2.1" xmlns="raml21.xsd">
+	<cmData type="actual" scope="all" domain="mcRNCRNWCMPlan" adaptationVersionMajor="mcRN4.1">
+		<header>
+			<log dateTime="2014-09-03T13:05:06" action="modified" user="mcRNC" appInfo="mcRNC OMS">mcRNC CM event plan</log>
+		</header>
+		<managedObject class="IUCSIP" distName="RNC-1/IUCS-1/IUCSIP-1" version="mcRN4.1" operation="update">
+			<p name="IUCSIPChangeOrigin">5</p>
+			<p name="DestIPAddressCS">12.34.56.78</p>
+			<p name="IPNetmaskCS">1.2.3.4</p>
+		</managedObject>
+	</cmData>
+</raml>

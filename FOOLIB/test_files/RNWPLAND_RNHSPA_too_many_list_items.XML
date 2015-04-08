@@ -1,0 +1,158 @@
+<raml version="2.1" xmlns="raml21.xsd">
+	<cmData type="actual" scope="all" domain="RNCRNWCMPLAN" adaptationVersionMajor="RN7.0">
+		<header>
+			<log dateTime="11.11.2013-06T09:18:41" action="modified" user="mcRNC" OMS="update">cRNC plan upload</log>
+		</header>
+		<managedObject class="RNHSPA" distName="RNC-1/RNHSPA-1" version="RN7.0" operation="create">
+			<list name="AARConfigTable">
+			  <item>
+			    <p name="AppGrpId">1</p>
+			    <p name="DSCPCode1">1</p>
+			    <p name="DSCPCode2">1</p>
+			    <p name="DSCPCode3">1</p>
+			    <p name="DSCPCode4">1</p>
+			    <p name="DSCPCode5">1</p>
+			    <p name="Precedence">1</p>
+			    <p name="TargetSPIforSPI0">1</p>
+			    <p name="TargetSPIforSPI1">1</p>
+			    <p name="TargetSPIforSPI10">1</p>
+			    <p name="TargetSPIforSPI11">1</p>
+			    <p name="TargetSPIforSPI2">1</p>
+			    <p name="TargetSPIforSPI3">1</p>
+			    <p name="TargetSPIforSPI4">1</p>
+			    <p name="TargetSPIforSPI5">1</p>
+			    <p name="TargetSPIforSPI6">1</p>
+			    <p name="TargetSPIforSPI7">1</p>
+			    <p name="TargetSPIforSPI8">1</p>
+			    <p name="TargetSPIforSPI9">1</p>
+			  </item>
+			  <item>
+			    <p name="AppGrpId">2</p>
+			    <p name="DSCPCode1">2</p>
+			    <p name="DSCPCode2">2</p>
+			    <p name="DSCPCode3">2</p>
+			    <p name="DSCPCode4">2</p>
+			    <p name="DSCPCode5">2</p>
+			    <p name="Precedence">2</p>
+			    <p name="TargetSPIforSPI0">2</p>
+			    <p name="TargetSPIforSPI1">2</p>
+			    <p name="TargetSPIforSPI10">2</p>
+			    <p name="TargetSPIforSPI11">2</p>
+			    <p name="TargetSPIforSPI2">2</p>
+			    <p name="TargetSPIforSPI3">2</p>
+			    <p name="TargetSPIforSPI4">2</p>
+			    <p name="TargetSPIforSPI5">2</p>
+			    <p name="TargetSPIforSPI6">2</p>
+			    <p name="TargetSPIforSPI7">2</p>
+			    <p name="TargetSPIforSPI8">2</p>
+			    <p name="TargetSPIforSPI9">2</p>
+			  </item>
+			  <item>
+			    <p name="AppGrpId">3</p>
+			    <p name="DSCPCode1">3</p>
+			    <p name="DSCPCode2">3</p>
+			    <p name="DSCPCode3">3</p>
+			    <p name="DSCPCode4">3</p>
+			    <p name="DSCPCode5">3</p>
+			    <p name="Precedence">3</p>
+			    <p name="TargetSPIforSPI0">3</p>
+			    <p name="TargetSPIforSPI1">3</p>
+			    <p name="TargetSPIforSPI10">3</p>
+			    <p name="TargetSPIforSPI11">3</p>
+			    <p name="TargetSPIforSPI2">3</p>
+			    <p name="TargetSPIforSPI3">3</p>
+			    <p name="TargetSPIforSPI4">3</p>
+			    <p name="TargetSPIforSPI5">3</p>
+			    <p name="TargetSPIforSPI6">3</p>
+			    <p name="TargetSPIforSPI7">3</p>
+			    <p name="TargetSPIforSPI8">3</p>
+			    <p name="TargetSPIforSPI9">3</p>
+			  </item>
+			  <item>
+			    <p name="AppGrpId">4</p>
+			    <p name="DSCPCode1">4</p>
+			    <p name="DSCPCode2">4</p>
+			    <p name="DSCPCode3">4</p>
+			    <p name="DSCPCode4">4</p>
+			    <p name="DSCPCode5">4</p>
+			    <p name="Precedence">4</p>
+			    <p name="TargetSPIforSPI0">4</p>
+			    <p name="TargetSPIforSPI1">4</p>
+			    <p name="TargetSPIforSPI10">4</p>
+			    <p name="TargetSPIforSPI11">4</p>
+			    <p name="TargetSPIforSPI2">4</p>
+			    <p name="TargetSPIforSPI3">4</p>
+			    <p name="TargetSPIforSPI4">4</p>
+			    <p name="TargetSPIforSPI5">4</p>
+			    <p name="TargetSPIforSPI6">4</p>
+			    <p name="TargetSPIforSPI7">4</p>
+			    <p name="TargetSPIforSPI8">4</p>
+			    <p name="TargetSPIforSPI9">4</p>
+			  </item>
+			  <item>
+			    <p name="AppGrpId">5</p>
+			    <p name="DSCPCode1">5</p>
+			    <p name="DSCPCode2">5</p>
+			    <p name="DSCPCode3">5</p>
+			    <p name="DSCPCode4">5</p>
+			    <p name="DSCPCode5">5</p>
+			    <p name="Precedence">5</p>
+			    <p name="TargetSPIforSPI0">5</p>
+			    <p name="TargetSPIforSPI1">5</p>
+			    <p name="TargetSPIforSPI10">5</p>
+			    <p name="TargetSPIforSPI11">5</p>
+			    <p name="TargetSPIforSPI2">5</p>
+			    <p name="TargetSPIforSPI3">5</p>
+			    <p name="TargetSPIforSPI4">5</p>
+			    <p name="TargetSPIforSPI5">5</p>
+			    <p name="TargetSPIforSPI6">5</p>
+			    <p name="TargetSPIforSPI7">5</p>
+			    <p name="TargetSPIforSPI8">5</p>
+			    <p name="TargetSPIforSPI9">5</p>
+			  </item>
+			  <item>
+			    <p name="AppGrpId">6</p>
+			    <p name="DSCPCode1">6</p>
+			    <p name="DSCPCode2">6</p>
+			    <p name="DSCPCode3">6</p>
+			    <p name="DSCPCode4">6</p>
+			    <p name="DSCPCode5">6</p>
+			    <p name="Precedence">6</p>
+			    <p name="TargetSPIforSPI0">6</p>
+			    <p name="TargetSPIforSPI1">6</p>
+			    <p name="TargetSPIforSPI10">6</p>
+			    <p name="TargetSPIforSPI11">6</p>
+			    <p name="TargetSPIforSPI2">6</p>
+			    <p name="TargetSPIforSPI3">6</p>
+			    <p name="TargetSPIforSPI4">6</p>
+			    <p name="TargetSPIforSPI5">6</p>
+			    <p name="TargetSPIforSPI6">6</p>
+			    <p name="TargetSPIforSPI7">6</p>
+			    <p name="TargetSPIforSPI8">6</p>
+			    <p name="TargetSPIforSPI9">6</p>
+			  </item>
+			  <item>
+			    <p name="AppGrpId">6</p>
+			    <p name="DSCPCode1">6</p>
+			    <p name="DSCPCode2">6</p>
+			    <p name="DSCPCode3">6</p>
+			    <p name="DSCPCode4">6</p>
+			    <p name="DSCPCode5">6</p>
+			    <p name="Precedence">6</p>
+			    <p name="TargetSPIforSPI0">6</p>
+			    <p name="TargetSPIforSPI1">6</p>
+			    <p name="TargetSPIforSPI10">6</p>
+			    <p name="TargetSPIforSPI11">6</p>
+			    <p name="TargetSPIforSPI2">6</p>
+			    <p name="TargetSPIforSPI3">6</p>
+			    <p name="TargetSPIforSPI4">6</p>
+			    <p name="TargetSPIforSPI5">6</p>
+			    <p name="TargetSPIforSPI6">6</p>
+			    <p name="TargetSPIforSPI7">6</p>
+			    <p name="TargetSPIforSPI8">6</p>
+			    <p name="TargetSPIforSPI9">6</p>
+			  </item>			  
+			</list>
+		</managedObject>
+	</cmData>
+</raml>

@@ -1,0 +1,57 @@
+*** Variables ***
+#${TEST_BENCH}    prinsessa
+${TEST_BENCH}    ${HOST}
+
+*** Settings ***
+Documentation   This test suite tests PABROS and RAYMAN
+
+Suite Setup     Suite Setup
+Suite Teardown  Suite Teardown
+Test Teardown   Profilation Test Case Teardown
+Force Tags      Product_Backlog_ID-xxx_1R_M1    EFS_ID-RNC_EFS_xxx    owner-I_EXT_MBB_WCDMA_SWD3_TEAM_O2@internal.nsn.com    exec_type-automatic    type-FUT    HW_TYPE-BCN_A1    BCN_STEP-BCN_S0
+...             Phase-CRT    PRB-FOOLIB
+Library         Collections
+Library         resources/metadata_test_framework.py
+Library         resources/XML_utils.py
+Library         resources/parameter_utils.py
+Library         resources/log_utils.py
+Variables       resources/TestResources.py   ${TEST_BENCH}
+Library         OperatingSystem
+Default Tags
+Resource        resources/common_kws.txt
+
+*** Variables ***
+
+*** Test Cases ***
+
+Test1
+    # Original code still needs NBAPCommMode parameter which is removed from the new PDDB data
+    #${output}=     download_plan   large_plan_old.xml
+    Log     Profile download
+    start_profilation
+    ${output}=     download_plan   large_plan.xml   activate=${false}
+    ${dl_time}=    calculate_time_to_file  ${output}    dl_time.txt
+    Log     ${dl_time}
+    ${output}=     stop_profilation
+
+    Log     Profile activation
+    start_profilation
+    ${output}=     activate_plan
+    ${act_time}=   calculate_time_to_file  ${output}        act_time.txt
+    Log     ${act_time}
+    ${output}=     stop_profilation
+
+    Log     Profile upload
+    start_profilation
+    ${output}=     upload_plan      return_plan_content=${false}
+    ${ul_time}=    calculate_time_to_file  ${output}    ul_time.txt
+    Log     ${ul_time}
+    ${output}=     stop_profilation
+
+*** Keywords ***
+
+Profilation Test Case Teardown
+    foolib_mem_files_check
+    Run Keyword If Test Failed    Stop And Start Test Log Monitoring
+
+    ${output}=     download_plan   large_plan_delete.xml

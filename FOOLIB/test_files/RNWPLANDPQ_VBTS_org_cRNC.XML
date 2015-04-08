@@ -1,0 +1,22 @@
+<raml version="2.1" xmlns="raml21.xsd">
+	<cmData type="actual" scope="all" domain="RNCRNWCMPLAN" adaptationVersionMajor="RN8.1">
+		<header>
+			<log dateTime="2014-06-26T14:02:41" action="modified" user="CRNC" appInfo="cRNC OMS">RNC CM event plan</log>
+		</header>
+		<managedObject class="VBTS" distName="RNC-1/VBTS-1" version="RN8.1" operation="update">
+			<p name="DedicatedMeasReportPeriod">5</p>
+			<p name="DediMeasRepPeriodCSdata">3</p>
+			<p name="DediMeasRepPeriodPSdata">1</p>
+			<p name="MeasFiltCoeff">5</p>
+			<list name="ControllerIdPair">
+				<item>
+					<p name="IHSPAadapterId">50</p>
+					<p name="ServingRNCId">51</p>
+				</item>
+			</list>
+			<p name="VBTSChangeOrigin">5</p>
+			<p name="HARQRVConfiguration">1</p>
+			<p name="NodeBRABReconfigSupport">0</p>
+		</managedObject>
+	</cmData>
+</raml

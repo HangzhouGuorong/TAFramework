@@ -1,0 +1,632 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<raml version="2.1" xmlns="raml21.xsd">
+	<cmData type="actual" scope="all" domain="RNCRNWCMPLAN" adaptationVersionMajor="RN8.1">
+		<header>
+			<log dateTime="2014-09-02T15:36:45" action="modified" user="CRNC" appInfo="cRNC OMS">RNC CM event plan</log>
+		</header>
+		<managedObject class="PFL" distName="RNC-1/PFL-1" version="RN8.1" operation="update">
+			<p name="PFLChangeOrigin">5</p>
+			<list name="PFLFDPCHNRT">
+				<item>
+					<p name="PrefLayerFDPCHNRT">9</p>
+				</item>
+				<item>
+					<p name="PrefLayerFDPCHNRT">14120</p>
+				</item>
+				<item>
+					<p name="PrefLayerFDPCHNRT">16078</p>
+				</item>
+				<item>
+					<p name="PrefLayerFDPCHNRT">7915</p>
+				</item>
+				<item>
+					<p name="PrefLayerFDPCHNRT">11155</p>
+				</item>
+				<item>
+					<p name="PrefLayerFDPCHNRT">9881</p>
+				</item>
+				<item>
+					<p name="PrefLayerFDPCHNRT">5365</p>
+				</item>
+				<item>
+					<p name="PrefLayerFDPCHNRT">7452</p>
+				</item>
+			</list>
+			<list name="PFLFDPCHStr">
+				<item>
+					<p name="PrefLayerFDPCHStr">9</p>
+				</item>
+				<item>
+					<p name="PrefLayerFDPCHStr">11374</p>
+				</item>
+				<item>
+					<p name="PrefLayerFDPCHStr">15504</p>
+				</item>
+				<item>
+					<p name="PrefLayerFDPCHStr">10922</p>
+				</item>
+				<item>
+					<p name="PrefLayerFDPCHStr">2458</p>
+				</item>
+				<item>
+					<p name="PrefLayerFDPCHStr">2813</p>
+				</item>
+				<item>
+					<p name="PrefLayerFDPCHStr">16222</p>
+				</item>
+				<item>
+					<p name="PrefLayerFDPCHStr">11232</p>
+				</item>
+			</list>
+			<list name="PFLFDPCHAMR">
+				<item>
+					<p name="PrefLayerFDPCHAMR">9</p>
+				</item>
+				<item>
+					<p name="PrefLayerFDPCHAMR">15325</p>
+				</item>
+				<item>
+					<p name="PrefLayerFDPCHAMR">14650</p>
+				</item>
+				<item>
+					<p name="PrefLayerFDPCHAMR">2479</p>
+				</item>
+				<item>
+					<p name="PrefLayerFDPCHAMR">6870</p>
+				</item>
+				<item>
+					<p name="PrefLayerFDPCHAMR">6442</p>
+				</item>
+				<item>
+					<p name="PrefLayerFDPCHAMR">6851</p>
+				</item>
+			</list>
+			<list name="PFLFDPCHAMRNRT">
+				<item>
+					<p name="PrefLayerFDPCHAMRNRT">9</p>
+				</item>
+				<item>
+					<p name="PrefLayerFDPCHAMRNRT">12463</p>
+				</item>
+				<item>
+					<p name="PrefLayerFDPCHAMRNRT">12892</p>
+				</item>
+				<item>
+					<p name="PrefLayerFDPCHAMRNRT">1301</p>
+				</item>
+				<item>
+					<p name="PrefLayerFDPCHAMRNRT">12976</p>
+				</item>
+				<item>
+					<p name="PrefLayerFDPCHAMRNRT">13706</p>
+				</item>
+				<item>
+					<p name="PrefLayerFDPCHAMRNRT">1007</p>
+				</item>
+				<item>
+					<p name="PrefLayerFDPCHAMRNRT">13620</p>
+				</item>
+			</list>
+			<list name="PFL64QAMNRT">
+				<item>
+					<p name="PrefLayer64QAMNRT">9</p>
+				</item>
+				<item>
+					<p name="PrefLayer64QAMNRT">2836</p>
+				</item>
+				<item>
+					<p name="PrefLayer64QAMNRT">14689</p>
+				</item>
+				<item>
+					<p name="PrefLayer64QAMNRT">2557</p>
+				</item>
+				<item>
+					<p name="PrefLayer64QAMNRT">331</p>
+				</item>
+				<item>
+					<p name="PrefLayer64QAMNRT">7913</p>
+				</item>
+				<item>
+					<p name="PrefLayer64QAMNRT">7696</p>
+				</item>
+				<item>
+					<p name="PrefLayer64QAMNRT">5000</p>
+				</item>
+			</list>
+			<list name="PFL64QAMStr">
+				<item>
+					<p name="PrefLayer64QAMStr">9</p>
+				</item>
+				<item>
+					<p name="PrefLayer64QAMStr">10916</p>
+				</item>
+				<item>
+					<p name="PrefLayer64QAMStr">13467</p>
+				</item>
+				<item>
+					<p name="PrefLayer64QAMStr">318</p>
+				</item>
+				<item>
+					<p name="PrefLayer64QAMStr">3790</p>
+				</item>
+				<item>
+					<p name="PrefLayer64QAMStr">2097</p>
+				</item>
+				<item>
+					<p name="PrefLayer64QAMStr">4708</p>
+				</item>
+				<item>
+					<p name="PrefLayer64QAMStr">2773</p>
+				</item>
+			</list>
+			<list name="PFL64QAMAMR">
+				<item>
+					<p name="PrefLayer64QAMAMR">1</p>
+				</item>
+				<item>
+					<p name="PrefLayer64QAMAMR">2</p>
+				</item>
+				<item>
+					<p name="PrefLayer64QAMAMR">3</p>
+				</item>
+				<item>
+					<p name="PrefLayer64QAMAMR">4</p>
+				</item>
+				<item>
+					<p name="PrefLayer64QAMAMR">5</p>
+				</item>
+				<item>
+					<p name="PrefLayer64QAMAMR">6</p>
+				</item>
+				<item>
+					<p name="PrefLayer64QAMAMR">7</p>
+				</item>
+				<item>
+					<p name="PrefLayer64QAMAMR">8</p>
+				</item>
+			</list>
+			<list name="PFL64QAMAMRNRT">
+				<item>
+					<p name="PrefLayer64QAMAMRNRT">9</p>
+				</item>
+				<item>
+					<p name="PrefLayer64QAMAMRNRT">4223</p>
+				</item>
+				<item>
+					<p name="PrefLayer64QAMAMRNRT">758</p>
+				</item>
+				<item>
+					<p name="PrefLayer64QAMAMRNRT">14296</p>
+				</item>
+				<item>
+					<p name="PrefLayer64QAMAMRNRT">3199</p>
+				</item>
+				<item>
+					<p name="PrefLayer64QAMAMRNRT">5354</p>
+				</item>
+				<item>
+					<p name="PrefLayer64QAMAMRNRT">783</p>
+				</item>
+				<item>
+					<p name="PrefLayer64QAMAMRNRT">2653</p>
+				</item>
+			</list>
+			<list name="PFLDCHSDNRT">
+				<item>
+					<p name="PrefLayerDCHSDNRT">9</p>
+				</item>
+				<item>
+					<p name="PrefLayerDCHSDNRT">3464</p>
+				</item>
+				<item>
+					<p name="PrefLayerDCHSDNRT">13858</p>
+				</item>
+				<item>
+					<p name="PrefLayerDCHSDNRT">15021</p>
+				</item>
+				<item>
+					<p name="PrefLayerDCHSDNRT">14884</p>
+				</item>
+				<item>
+					<p name="PrefLayerDCHSDNRT">11503</p>
+				</item>
+				<item>
+					<p name="PrefLayerDCHSDNRT">4202</p>
+				</item>
+				<item>
+					<p name="PrefLayerDCHSDNRT">4790</p>
+				</item>
+			</list>
+			<list name="PFLDCHSDStr">
+				<item>
+					<p name="PrefLayerDCHSDStr">9</p>
+				</item>
+				<item>
+					<p name="PrefLayerDCHSDStr">11600</p>
+				</item>
+				<item>
+					<p name="PrefLayerDCHSDStr">10027</p>
+				</item>
+				<item>
+					<p name="PrefLayerDCHSDStr">12959</p>
+				</item>
+				<item>
+					<p name="PrefLayerDCHSDStr">7095</p>
+				</item>
+				<item>
+					<p name="PrefLayerDCHSDStr">4039</p>
+				</item>
+				<item>
+					<p name="PrefLayerDCHSDStr">3734</p>
+				</item>
+				<item>
+					<p name="PrefLayerDCHSDStr">14449</p>
+				</item>
+			</list>
+			<list name="PFLDCHSDAMR">
+				<item>
+					<p name="PrefLayerDCHSDAMR">9</p>
+				</item>
+				<item>
+					<p name="PrefLayerDCHSDAMR">13966</p>
+				</item>
+				<item>
+					<p name="PrefLayerDCHSDAMR">6033</p>
+				</item>
+				<item>
+					<p name="PrefLayerDCHSDAMR">7241</p>
+				</item>
+				<item>
+					<p name="PrefLayerDCHSDAMR">4806</p>
+				</item>
+				<item>
+					<p name="PrefLayerDCHSDAMR">4885</p>
+				</item>
+				<item>
+					<p name="PrefLayerDCHSDAMR">9907</p>
+				</item>
+				<item>
+					<p name="PrefLayerDCHSDAMR">11140</p>
+				</item>
+			</list>
+			<list name="PFLDCHSDAMRNRT">
+				<item>
+					<p name="PrefLayerDCHSDAMRNRT">9</p>
+				</item>
+				<item>
+					<p name="PrefLayerDCHSDAMRNRT">11091</p>
+				</item>
+				<item>
+					<p name="PrefLayerDCHSDAMRNRT">4977</p>
+				</item>
+				<item>
+					<p name="PrefLayerDCHSDAMRNRT">10625</p>
+				</item>
+				<item>
+					<p name="PrefLayerDCHSDAMRNRT">1311</p>
+				</item>
+				<item>
+					<p name="PrefLayerDCHSDAMRNRT">8110</p>
+				</item>
+				<item>
+					<p name="PrefLayerDCHSDAMRNRT">10567</p>
+				</item>
+				<item>
+					<p name="PrefLayerDCHSDAMRNRT">12192</p>
+				</item>
+			</list>
+			<list name="PFLCSHSNRT">
+				<item>
+					<p name="PrefLayerCSHSNRT">9</p>
+				</item>
+				<item>
+					<p name="PrefLayerCSHSNRT">10649</p>
+				</item>
+				<item>
+					<p name="PrefLayerCSHSNRT">402</p>
+				</item>
+				<item>
+					<p name="PrefLayerCSHSNRT">3401</p>
+				</item>
+				<item>
+					<p name="PrefLayerCSHSNRT">1999</p>
+				</item>
+				<item>
+					<p name="PrefLayerCSHSNRT">609</p>
+				</item>
+				<item>
+					<p name="PrefLayerCSHSNRT">4336</p>
+				</item>
+				<item>
+					<p name="PrefLayerCSHSNRT">5592</p>
+				</item>
+			</list>
+			<list name="PFLCSHSStr">
+				<item>
+					<p name="PrefLayerCSHSStr">9</p>
+				</item>
+				<item>
+					<p name="PrefLayerCSHSStr">14819</p>
+				</item>
+				<item>
+					<p name="PrefLayerCSHSStr">3342</p>
+				</item>
+				<item>
+					<p name="PrefLayerCSHSStr">15093</p>
+				</item>
+				<item>
+					<p name="PrefLayerCSHSStr">14569</p>
+				</item>
+				<item>
+					<p name="PrefLayerCSHSStr">11947</p>
+				</item>
+				<item>
+					<p name="PrefLayerCSHSStr">6282</p>
+				</item>
+				<item>
+					<p name="PrefLayerCSHSStr">9250</p>
+				</item>
+			</list>
+			<list name="PFLCSHSAMR">
+				<item>
+					<p name="PrefLayerCSHSAMR">9</p>
+				</item>
+				<item>
+					<p name="PrefLayerCSHSAMR">12969</p>
+				</item>
+				<item>
+					<p name="PrefLayerCSHSAMR">650</p>
+				</item>
+				<item>
+					<p name="PrefLayerCSHSAMR">6159</p>
+				</item>
+				<item>
+					<p name="PrefLayerCSHSAMR">8368</p>
+				</item>
+				<item>
+					<p name="PrefLayerCSHSAMR">11177</p>
+				</item>
+				<item>
+					<p name="PrefLayerCSHSAMR">11789</p>
+				</item>
+				<item>
+					<p name="PrefLayerCSHSAMR">14256</p>
+				</item>
+			</list>
+			<list name="PFLCSHSAMRNRT">
+				<item>
+					<p name="PrefLayerCSHSAMRNRT">9</p>
+				</item>
+				<item>
+					<p name="PrefLayerCSHSAMRNRT">2891</p>
+				</item>
+				<item>
+					<p name="PrefLayerCSHSAMRNRT">15181</p>
+				</item>
+				<item>
+					<p name="PrefLayerCSHSAMRNRT">1114</p>
+				</item>
+				<item>
+					<p name="PrefLayerCSHSAMRNRT">10664</p>
+				</item>
+				<item>
+					<p name="PrefLayerCSHSAMRNRT">2378</p>
+				</item>
+				<item>
+					<p name="PrefLayerCSHSAMRNRT">6008</p>
+				</item>
+				<item>
+					<p name="PrefLayerCSHSAMRNRT">15805</p>
+				</item>
+			</list>
+			<list name="PFLDCMINRT">
+				<item>
+					<p name="PrefLayerDCMINRT">9</p>
+				</item>
+				<item>
+					<p name="PrefLayerDCMINRT">6537</p>
+				</item>
+				<item>
+					<p name="PrefLayerDCMINRT">12285</p>
+				</item>
+				<item>
+					<p name="PrefLayerDCMINRT">12094</p>
+				</item>
+				<item>
+					<p name="PrefLayerDCMINRT">15086</p>
+				</item>
+				<item>
+					<p name="PrefLayerDCMINRT">6494</p>
+				</item>
+				<item>
+					<p name="PrefLayerDCMINRT">14514</p>
+				</item>
+				<item>
+					<p name="PrefLayerDCMINRT">11361</p>
+				</item>
+			</list>
+			<list name="PFLDCMIStr">
+				<item>
+					<p name="PrefLayerDCMIStr">9</p>
+				</item>
+				<item>
+					<p name="PrefLayerDCMIStr">14251</p>
+				</item>
+				<item>
+					<p name="PrefLayerDCMIStr">3733</p>
+				</item>
+				<item>
+					<p name="PrefLayerDCMIStr">7342</p>
+				</item>
+				<item>
+					<p name="PrefLayerDCMIStr">4287</p>
+				</item>
+				<item>
+					<p name="PrefLayerDCMIStr">9132</p>
+				</item>
+				<item>
+					<p name="PrefLayerDCMIStr">9655</p>
+				</item>
+				<item>
+					<p name="PrefLayerDCMIStr">14995</p>
+				</item>
+			</list>
+			<list name="PFLDCMIAMR">
+				<item>
+					<p name="PrefLayerDCMIAMR">9</p>
+				</item>
+				<item>
+					<p name="PrefLayerDCMIAMR">5232</p>
+				</item>
+				<item>
+					<p name="PrefLayerDCMIAMR">7966</p>
+				</item>
+				<item>
+					<p name="PrefLayerDCMIAMR">5712</p>
+				</item>
+				<item>
+					<p name="PrefLayerDCMIAMR">15541</p>
+				</item>
+				<item>
+					<p name="PrefLayerDCMIAMR">10664</p>
+				</item>
+				<item>
+					<p name="PrefLayerDCMIAMR">6388</p>
+				</item>
+				<item>
+					<p name="PrefLayerDCMIAMR">13007</p>
+				</item>
+			</list>
+			<list name="PFLDCMIAMRNRT">
+				<item>
+					<p name="PrefLayerDCMIAMRNRT">9</p>
+				</item>
+				<item>
+					<p name="PrefLayerDCMIAMRNRT">2463</p>
+				</item>
+				<item>
+					<p name="PrefLayerDCMIAMRNRT">3023</p>
+				</item>
+				<item>
+					<p name="PrefLayerDCMIAMRNRT">1634</p>
+				</item>
+				<item>
+					<p name="PrefLayerDCMIAMRNRT">16181</p>
+				</item>
+				<item>
+					<p name="PrefLayerDCMIAMRNRT">12929</p>
+				</item>
+				<item>
+					<p name="PrefLayerDCMIAMRNRT">11638</p>
+				</item>
+				<item>
+					<p name="PrefLayerDCMIAMRNRT">396</p>
+				</item>
+			</list>
+			<list name="PFLDBHSDNRT">
+				<item>
+					<p name="PrefLayerDBHSDNRT">9</p>
+				</item>
+				<item>
+					<p name="PrefLayerDBHSDNRT">961</p>
+				</item>
+				<item>
+					<p name="PrefLayerDBHSDNRT">14562</p>
+				</item>
+				<item>
+					<p name="PrefLayerDBHSDNRT">6439</p>
+				</item>
+				<item>
+					<p name="PrefLayerDBHSDNRT">10397</p>
+				</item>
+				<item>
+					<p name="PrefLayerDBHSDNRT">43</p>
+				</item>
+				<item>
+					<p name="PrefLayerDBHSDNRT">9236</p>
+				</item>
+				<item>
+					<p name="PrefLayerDBHSDNRT">11131</p>
+				</item>
+			</list>
+			<list name="PFLDBHSDStr">
+				<item>
+					<p name="PrefLayerDBHSDStr">9</p>
+				</item>
+				<item>
+					<p name="PrefLayerDBHSDStr">1390</p>
+				</item>
+				<item>
+					<p name="PrefLayerDBHSDStr">811</p>
+				</item>
+				<item>
+					<p name="PrefLayerDBHSDStr">88</p>
+				</item>
+				<item>
+					<p name="PrefLayerDBHSDStr">9578</p>
+				</item>
+				<item>
+					<p name="PrefLayerDBHSDStr">16254</p>
+				</item>
+				<item>
+					<p name="PrefLayerDBHSDStr">5242</p>
+				</item>
+				<item>
+					<p name="PrefLayerDBHSDStr">5732</p>
+				</item>
+			</list>
+			<list name="PFLDBHSDAMR">
+				<item>
+					<p name="PrefLayerDBHSDAMR">9</p>
+				</item>
+				<item>
+					<p name="PrefLayerDBHSDAMR">7569</p>
+				</item>
+				<item>
+					<p name="PrefLayerDBHSDAMR">13050</p>
+				</item>
+				<item>
+					<p name="PrefLayerDBHSDAMR">1309</p>
+				</item>
+				<item>
+					<p name="PrefLayerDBHSDAMR">2304</p>
+				</item>
+				<item>
+					<p name="PrefLayerDBHSDAMR">9483</p>
+				</item>
+				<item>
+					<p name="PrefLayerDBHSDAMR">12170</p>
+				</item>
+				<item>
+					<p name="PrefLayerDBHSDAMR">13454</p>
+				</item>
+			</list>
+			<list name="PFLDBHSDAMRNRT">
+				<item>
+					<p name="PrefLayerDBHSDAMRNRT">9</p>
+				</item>
+				<item>
+					<p name="PrefLayerDBHSDAMRNRT">11561</p>
+				</item>
+				<item>
+					<p name="PrefLayerDBHSDAMRNRT">2969</p>
+				</item>
+				<item>
+					<p name="PrefLayerDBHSDAMRNRT">10194</p>
+				</item>
+				<item>
+					<p name="PrefLayerDBHSDAMRNRT">11051</p>
+				</item>
+				<item>
+					<p name="PrefLayerDBHSDAMRNRT">267</p>
+				</item>
+				<item>
+					<p name="PrefLayerDBHSDAMRNRT">9740</p>
+				</item>
+				<item>
+					<p name="PrefLayerDBHSDAMRNRT">9122</p>
+				</item>
+			</list>
+		</managedObject>
+	</cmData>
+</raml>

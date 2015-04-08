@@ -1,0 +1,378 @@
+<raml version="2.1" xmlns="raml21.xsd">
+	<cmData type="actual" scope="all" domain="mcRNCRNWCMPlan" adaptationVersionMajor="mcRN4.1">
+		<header>
+			<log dateTime="2014-06-26T15:03:23" action="modified" user="mcRNC" appInfo="mcRNC OMS">mcRNC CM event plan</log>
+		</header>
+		<managedObject class="RNHSPA" distName="RNC-1/RNHSPA-1" version="mcRN4.1" operation="update">
+			<p name="RNHSPAChangeOrigin">5</p>
+			<p name="MACdflowthroughputRelThr">0</p>
+			<p name="MACdflowthroughputTimetoTrigger">25</p>
+			<p name="HSDSCHGuardTimerLowThroughput">30</p>
+			<p name="HsdschGuardTimerHO">5</p>
+			<p name="HSDPARRCdiversity">1</p>
+			<p name="HSDPAPriority">1</p>
+			<p name="HSDPAPeakRateLimitRABMax">1</p>
+			<p name="HSPDSCHAdjustPeriod">5</p>
+			<list name="WeightHSPA">
+				<item>
+					<p name="WeightHSPABG">25</p>
+					<p name="WeightHSPATHP1">100</p>
+					<p name="WeightHSPATHP2">75</p>
+					<p name="WeightHSPATHP3">50</p>
+				</item>
+			</list>
+			<list name="WeightDCH">
+				<item>
+					<p name="WeightDCHBG">15</p>
+					<p name="WeightDCHTHP1">90</p>
+					<p name="WeightDCHTHP2">65</p>
+					<p name="WeightDCHTHP3">40</p>
+				</item>
+			</list>
+			<p name="HSDSCHCTSwitchGuardTimer">5</p>
+			<p name="HSDPAChaTypeSwitchWindow">0</p>
+			<p name="HSDPACPICHCTSRepPer">2</p>
+			<p name="UPResAllocInCellDCHWait">3</p>
+			<p name="HappyBitDelayConditionEDCH">3</p>
+			<p name="EDCHMaxNumberOfHARQReTx">3</p>
+			<list name="ThresholdMaxEDPDCHSR">
+				<item>
+					<p name="ThresholdMaxEDPDCHSR1920kbps">16</p>
+					<p name="ThresholdMaxEDPDCHSR960kbps">8</p>
+					<p name="ThresholdMaxEDPDCHSR3840kbps">32</p>
+				</item>
+			</list>
+			<p name="CPICHECNOSRBHSPA">-6</p>
+			<p name="CPICHECNOThreEDCH2MS">-6</p>
+			<p name="CPICHRSCPThreSRBHSDPA">-103</p>
+			<p name="CPICHRSCPThreEDCH2MS">136</p>
+			<p name="EDCHCTSwitchGuardTimer">4</p>
+			<p name="HSDPACPICHEcNoThreshold">-10</p>
+			<p name="HSDPACellChangeRepetitionTime">10</p>
+			<p name="HSDPAMaxCellChangeRepetition">4</p>
+			<p name="HSDPASRBWindow">2</p>
+			<p name="FactorEDCHMaxBitRate">15</p>
+			<p name="PeriodicityForSI">6</p>
+			<p name="PowerOffsetForSI">3</p>
+			<p name="MaxReWaitTime">32</p>
+			<p name="HSDSCHQoSclasses">63</p>
+			<p name="EDCHQOSClasses">63</p>
+			<list name="ARPWeight">
+				<item>
+					<p name="WeightForARP1">100</p>
+					<p name="WeightForARP2">100</p>
+					<p name="WeightForARP3">100</p>
+				</item>
+			</list>
+			<list name="HSPANBRValues">
+				<item>
+					<p name="NBRForPri12UL">0</p>
+					<p name="NBRForPri11UL">0</p>
+					<p name="NBRForPri10UL">0</p>
+					<p name="NBRForPri9UL">0</p>
+					<p name="NBRForPri8UL">0</p>
+					<p name="NBRForPri7UL">0</p>
+					<p name="NBRForPri6UL">0</p>
+					<p name="NBRForPri5UL">0</p>
+					<p name="NBRForPri4UL">0</p>
+					<p name="NBRForPri3UL">0</p>
+					<p name="NBRForPri2UL">0</p>
+					<p name="NBRForPri1UL">0</p>
+					<p name="NBRForPri0UL">0</p>
+					<p name="NBRForPri12DL">0</p>
+					<p name="NBRForPri11DL">0</p>
+					<p name="NBRForPri10DL">0</p>
+					<p name="NBRForPri9DL">0</p>
+					<p name="NBRForPri8DL">0</p>
+					<p name="NBRForPri7DL">0</p>
+					<p name="NBRForPri6DL">0</p>
+					<p name="NBRForPri5DL">0</p>
+					<p name="NBRForPri4DL">0</p>
+					<p name="NBRForPri3DL">0</p>
+					<p name="NBRForPri2DL">0</p>
+					<p name="NBRForPri1DL">0</p>
+					<p name="NBRForPri0DL">0</p>
+				</item>
+			</list>
+			<p name="MACdflowutilStrTtT">10</p>
+			<p name="MACdflowtputStrTtT">25</p>
+			<p name="EDCHMACdflowtputStrTtT">25</p>
+			<p name="EDCHMaxHARQReTxStr">3</p>
+			<p name="NRTRBBRWithEDCHStr">1</p>
+			<p name="MaxReWaitTimeRT">10</p>
+			<p name="FactorEDCHMaxBitRate2NRT">14</p>
+			<p name="FactorEDCHMaxBitRate3NRT">13</p>
+			<p name="FactorEDCHMaxBRPSstream">18</p>
+			<p name="MaxBitRateNRTMACDFlow">0</p>
+			<p name="ATOSRBsOnHSPA">30</p>
+			<p name="EDCHMaxHarqReTxSRB">3</p>
+			<p name="EDCHMaxHarqReTxSRB2MS">4</p>
+			<p name="FDPCHAllocMinInterval">3</p>
+			<p name="FDPCHAndSRBOnHSPATC">127</p>
+			<p name="MaxReWaitTime2msTTI">60</p>
+			<p name="InacUsersOverloadFact">90</p>
+			<p name="InacUserNbrXXXOverNRT">2</p>
+			<list name="CPCVoice2msTTI">
+				<item>
+					<p name="V2msCPCOptObjective">1</p>
+					<p name="V2msCQIDTXTimer">6</p>
+					<p name="V2msCQIFeedbackCPC">3</p>
+					<p name="V2msInacThrUEDRXCycle">6</p>
+					<p name="V2msInacThrUEDTXCycl2">4</p>
+					<p name="V2msMACDTXCycle">3</p>
+					<p name="V2msMACInacThr">0</p>
+					<p name="V2msUEDPCCHburst1">0</p>
+					<p name="V2msUEDPCCHburst2">0</p>
+					<p name="V2msUEDRXCycle">1</p>
+					<p name="V2msUEDTXCycle1">3</p>
+					<p name="V2msUEDTXCycle2">4</p>
+					<p name="V2msUEDTXLongPreamble">1</p>
+				</item>
+			</list>
+			<list name="CPCVoice10msTTI">
+				<item>
+					<p name="V10msCPCOptObjective">1</p>
+					<p name="V10msCQIDTXTimer">6</p>
+					<p name="V10msCQIFeedbackCPC">4</p>
+					<p name="V10msInacThrUEDRXCycle">6</p>
+					<p name="V10msInacThrUEDTXCycl2">2</p>
+					<p name="V10msMACDTXCycle">1</p>
+					<p name="V10msMACInacThr">4</p>
+					<p name="V10msUEDPCCHburst1">0</p>
+					<p name="V10msUEDPCCHburst2">0</p>
+					<p name="V10msUEDRXCycle">1</p>
+					<p name="V10msUEDTXCycle1">2</p>
+					<p name="V10msUEDTXCycle2">2</p>
+					<p name="V10msUEDTXLongPreamble">1</p>
+				</item>
+			</list>
+			<list name="CPCStreaming2msTTI">
+				<item>
+					<p name="S2msCPCOptObjective">1</p>
+					<p name="S2msCQIDTXTimer">7</p>
+					<p name="S2msCQIFeedbackCPC">3</p>
+					<p name="S2msInacThrUEDRXCycle">7</p>
+					<p name="S2msInacThrUEDTXCycl2">5</p>
+					<p name="S2msMACDTXCycle">3</p>
+					<p name="S2msMACInacThr">0</p>
+					<p name="S2msUEDPCCHburst1">0</p>
+					<p name="S2msUEDPCCHburst2">0</p>
+					<p name="S2msUEDRXCycle">2</p>
+					<p name="S2msUEDTXCycle1">3</p>
+					<p name="S2msUEDTXCycle2">4</p>
+					<p name="S2msUEDTXLongPreamble">1</p>
+				</item>
+			</list>
+			<list name="CPCStreaming10msTTI">
+				<item>
+					<p name="S10msCPCOptObjective">1</p>
+					<p name="S10msCQIDTXTimer">7</p>
+					<p name="S10msCQIFeedbackCPC">4</p>
+					<p name="S10msInacThrUEDRXCycle">7</p>
+					<p name="S10msInacThrUEDTXCycl2">3</p>
+					<p name="S10msMACDTXCycle">1</p>
+					<p name="S10msMACInacThr">0</p>
+					<p name="S10msUEDPCCHburst1">0</p>
+					<p name="S10msUEDPCCHburst2">0</p>
+					<p name="S10msUEDRXCycle">2</p>
+					<p name="S10msUEDTXCycle1">2</p>
+					<p name="S10msUEDTXCycle2">2</p>
+					<p name="S10msUEDTXLongPreamble">1</p>
+				</item>
+			</list>
+			<list name="CPCNRT2msTTI">
+				<item>
+					<p name="N2msCPCOptObjective">1</p>
+					<p name="N2msCQIDTXTimer">7</p>
+					<p name="N2msCQIFeedbackCPC">3</p>
+					<p name="N2msInacThrUEDRXCycle">7</p>
+					<p name="N2msInacThrUEDTXCycl2">5</p>
+					<p name="N2msMACDTXCycle">3</p>
+					<p name="N2msMACInacThr">0</p>
+					<p name="N2msUEDPCCHburst1">0</p>
+					<p name="N2msUEDPCCHburst2">0</p>
+					<p name="N2msUEDRXCycle">2</p>
+					<p name="N2msUEDTXCycle1">3</p>
+					<p name="N2msUEDTXCycle2">4</p>
+					<p name="N2msUEDTXLongPreamble">1</p>
+				</item>
+			</list>
+			<list name="CPCNRT10msTTI">
+				<item>
+					<p name="N10msCPCOptObjective">1</p>
+					<p name="N10msCQIDTXTimer">7</p>
+					<p name="N10msCQIFeedbackCPC">4</p>
+					<p name="N10msInacThrUEDRXCycle">7</p>
+					<p name="N10msInacThrUEDTXCycl2">3</p>
+					<p name="N10msMACDTXCycle">1</p>
+					<p name="N10msMACInacThr">0</p>
+					<p name="N10msUEDPCCHburst1">0</p>
+					<p name="N10msUEDPCCHburst2">0</p>
+					<p name="N10msUEDRXCycle">2</p>
+					<p name="N10msUEDTXCycle1">2</p>
+					<p name="N10msUEDTXCycle2">2</p>
+					<p name="N10msUEDTXLongPreamble">1</p>
+				</item>
+			</list>
+			<p name="EnablDelayHHO">6</p>
+			<p name="EnablDelayStand">5</p>
+			<p name="MaxCSDelayUE">6</p>
+			<p name="MaxCSDelayRNCETTI2">8</p>
+			<p name="MaxCSDelayRNCETTI10">5</p>
+			<p name="DiscardTimerHSCSVoice">2</p>
+			<p name="T1HSCSVoice">1</p>
+			<p name="MaxEHARQReTxCSAMR2">2</p>
+			<p name="MaxEHARQReTxCSAMR10">1</p>
+			<p name="MaxSetOfEDPDCHCSAMR2">0</p>
+			<p name="MaxSetOfEDPDCHCSAMR10">0</p>
+			<p name="PowerOffsetEHARQVoice">0</p>
+			<p name="FDPCHSetupEC">4065</p>
+			<p name="DCellVsMIMOPreference">0</p>
+			<p name="MaxReWaitTime2msTTI16">60</p>
+			<p name="TGPLHSDPAInterFreq">4</p>
+			<p name="TGPLAMRHSDPAInterFreq">4</p>
+			<p name="TGPLHSPAInterFreq">5</p>
+			<p name="T1HSFACH">1</p>
+			<p name="SmartHSPATputAveWin">2</p>
+			<p name="SmartHSPATimeToTrigger">1</p>
+			<p name="InitialSPINRT">5</p>
+			<p name="MEHHSUPAUserIncr">1</p>
+			<p name="MEHCQIFeedbackCycle">1</p>
+			<p name="VCPHSDPAPrevDuration">10</p>
+			<p name="VCPHSDPAUserIncr">1</p>
+			<p name="TGPLForLTEMeas">5</p>
+			<p name="DPCCHPwrOffsetSecULFreq">4</p>
+			<p name="IBAODSCPHighPrioQPart1">0</p>
+			<p name="IBAODSCPHighPrioQPart2">0</p>
+			<p name="IBAOHighQueueWeight">5</p>
+			<list name="AARConfigTable">
+				<item>
+					<p name="AppGrpId">1</p>
+					<p name="Precedence">6</p>
+					<p name="DSCPCode1">55</p>
+					<p name="DSCPCode2">56</p>
+					<p name="DSCPCode3">57</p>
+					<p name="DSCPCode4">58</p>
+					<p name="DSCPCode5">59</p>
+					<p name="TargetSPIforSPI0">8</p>
+					<p name="TargetSPIforSPI1">6</p>
+					<p name="TargetSPIforSPI2">4</p>
+					<p name="TargetSPIforSPI3">8</p>
+					<p name="TargetSPIforSPI4">4</p>
+					<p name="TargetSPIforSPI5">0</p>
+					<p name="TargetSPIforSPI6">3</p>
+					<p name="TargetSPIforSPI7">6</p>
+					<p name="TargetSPIforSPI8">7</p>
+					<p name="TargetSPIforSPI9">0</p>
+					<p name="TargetSPIforSPI10">4</p>
+					<p name="TargetSPIforSPI11">0</p>
+				</item>
+				<item>
+					<p name="AppGrpId">2</p>
+					<p name="Precedence">5</p>
+					<p name="DSCPCode1">5</p>
+					<p name="DSCPCode2">4</p>
+					<p name="DSCPCode3">3</p>
+					<p name="DSCPCode4">2</p>
+					<p name="DSCPCode5">1</p>
+					<p name="TargetSPIforSPI0">3</p>
+					<p name="TargetSPIforSPI1">1</p>
+					<p name="TargetSPIforSPI2">5</p>
+					<p name="TargetSPIforSPI3">2</p>
+					<p name="TargetSPIforSPI4">6</p>
+					<p name="TargetSPIforSPI5">0</p>
+					<p name="TargetSPIforSPI6">9</p>
+					<p name="TargetSPIforSPI7">10</p>
+					<p name="TargetSPIforSPI8">1</p>
+					<p name="TargetSPIforSPI9">9</p>
+					<p name="TargetSPIforSPI10">7</p>
+					<p name="TargetSPIforSPI11">1</p>
+				</item>
+				<item>
+					<p name="AppGrpId">3</p>
+					<p name="Precedence">4</p>
+					<p name="DSCPCode1">24</p>
+					<p name="DSCPCode2">27</p>
+					<p name="DSCPCode3">25</p>
+					<p name="DSCPCode4">21</p>
+					<p name="DSCPCode5">29</p>
+					<p name="TargetSPIforSPI0">10</p>
+					<p name="TargetSPIforSPI1">2</p>
+					<p name="TargetSPIforSPI2">5</p>
+					<p name="TargetSPIforSPI3">7</p>
+					<p name="TargetSPIforSPI4">5</p>
+					<p name="TargetSPIforSPI5">0</p>
+					<p name="TargetSPIforSPI6">10</p>
+					<p name="TargetSPIforSPI7">5</p>
+					<p name="TargetSPIforSPI8">10</p>
+					<p name="TargetSPIforSPI9">2</p>
+					<p name="TargetSPIforSPI10">1</p>
+					<p name="TargetSPIforSPI11">8</p>
+				</item>
+				<item>
+					<p name="AppGrpId">4</p>
+					<p name="Precedence">3</p>
+					<p name="DSCPCode1">15</p>
+					<p name="DSCPCode2">11</p>
+					<p name="DSCPCode3">13</p>
+					<p name="DSCPCode4">18</p>
+					<p name="DSCPCode5">10</p>
+					<p name="TargetSPIforSPI0">6</p>
+					<p name="TargetSPIforSPI1">2</p>
+					<p name="TargetSPIforSPI2">4</p>
+					<p name="TargetSPIforSPI3">6</p>
+					<p name="TargetSPIforSPI4">3</p>
+					<p name="TargetSPIforSPI5">5</p>
+					<p name="TargetSPIforSPI6">5</p>
+					<p name="TargetSPIforSPI7">6</p>
+					<p name="TargetSPIforSPI8">6</p>
+					<p name="TargetSPIforSPI9">3</p>
+					<p name="TargetSPIforSPI10">4</p>
+					<p name="TargetSPIforSPI11">6</p>
+				</item>
+				<item>
+					<p name="AppGrpId">5</p>
+					<p name="Precedence">2</p>
+					<p name="DSCPCode1">30</p>
+					<p name="DSCPCode2">34</p>
+					<p name="DSCPCode3">31</p>
+					<p name="DSCPCode4">36</p>
+					<p name="DSCPCode5">35</p>
+					<p name="TargetSPIforSPI0">7</p>
+					<p name="TargetSPIforSPI1">5</p>
+					<p name="TargetSPIforSPI2">3</p>
+					<p name="TargetSPIforSPI3">8</p>
+					<p name="TargetSPIforSPI4">1</p>
+					<p name="TargetSPIforSPI5">3</p>
+					<p name="TargetSPIforSPI6">10</p>
+					<p name="TargetSPIforSPI7">3</p>
+					<p name="TargetSPIforSPI8">1</p>
+					<p name="TargetSPIforSPI9">3</p>
+					<p name="TargetSPIforSPI10">2</p>
+					<p name="TargetSPIforSPI11">7</p>
+				</item>
+				<item>
+					<p name="AppGrpId">6</p>
+					<p name="Precedence">1</p>
+					<p name="DSCPCode1">47</p>
+					<p name="DSCPCode2">44</p>
+					<p name="DSCPCode3">42</p>
+					<p name="DSCPCode4">46</p>
+					<p name="DSCPCode5">41</p>
+					<p name="TargetSPIforSPI0">6</p>
+					<p name="TargetSPIforSPI1">3</p>
+					<p name="TargetSPIforSPI2">2</p>
+					<p name="TargetSPIforSPI3">5</p>
+					<p name="TargetSPIforSPI4">8</p>
+					<p name="TargetSPIforSPI5">7</p>
+					<p name="TargetSPIforSPI6">7</p>
+					<p name="TargetSPIforSPI7">8</p>
+					<p name="TargetSPIforSPI8">10</p>
+					<p name="TargetSPIforSPI9">3</p>
+					<p name="TargetSPIforSPI10">9</p>
+					<p name="TargetSPIforSPI11">1</p>
+				</item>
+			</list>
+		</managedObject>
+	</cmData>
+</raml

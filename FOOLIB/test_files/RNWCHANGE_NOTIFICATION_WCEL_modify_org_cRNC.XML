@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<raml version="2.1" xmlns="raml21.xsd">
+	<cmData type="actual" scope="all" domain="RNCRNWCMPLAN" adaptationVersionMajor="RN8.1">
+		<header>
+			<log dateTime="2014-09-04T15:29:29" action="modified" user="CRNC" appInfo="cRNC OMS">RNC CM event plan</log>
+		</header>
+		<managedObject class="WCEL" distName="RNC-1/WBTS-1/WCEL-1" version="RN8.1" operation="update">
+			<p name="AbsPrioCellReselec">3</p>
+			<p name="WCELChangeOrigin">5</p>
+			<p name="RACHPreambleSignatures">1</p>
+		</managedObject>
+	</cmData>
+</raml>

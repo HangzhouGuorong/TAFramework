@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<raml version="2.1" xmlns="raml21.xsd">
+	<cmData type="actual" scope="all" domain="RNCRNWCMPLAN" adaptationVersionMajor="RN7.0">
+		<header>
+			<log dateTime="11.11.2013-06T09:18:41" action="modified" user="mcRNC" OMS="update">cRNC plan upload</log>
+		</header>
+		<managedObject class="WAC" distName="RNC-1/WAC-1" version="RN7.0" operation="create">
+			<p name="DCHUtilRelAveWin">100</p>
+			<p name="DCHUtilRelThrDL">8</p>
+			<p name="DCHUtilRelThrUL">8</p>
+			<p name="DCHUtilRelTimeToTrigger">20</p>
+			<p name="EDCHMACdFlowThroughputAveWin">6</p>
+			<p name="EDCHMACdFlowThroughputRelThr">1</p>
+			<p name="EDCHMACdFlowThroughputTimetoTrigger">0</p>
+			<p name="HSDPAInitialBRULStrNRT">3</p>
+			<p name="HSDPAMaxBitrateUL">6</p>
+			<p name="HSDPAMinBRULStrNRT">3</p>
+			<p name="HSDPAinitialBitrateUL">3</p>
+			<p name="HSDPAminAllowedBitrateUL">3</p>
+			<p name="InactCPCBatOptT">0</p>
+			<p name="InactCPCNoBatOptT">48</p>
+			<p name="InactHSRACH">0</p>
+			<p name="InactNonCPCBatOptT">0</p>
+			<p name="InactNonCPCNoBatOptT">0</p>
+			<list name="InactivityTimerDownlinkDCH">
+				<item>
+					<p name="InactivityTimerDownlinkDCH128">2</p>
+					<p name="InactivityTimerDownlinkDCH16">5</p>
+					<p name="InactivityTimerDownlinkDCH256">2</p>
+					<p name="InactivityTimerDownlinkDCH32">5</p>
+					<p name="InactivityTimerDownlinkDCH320">2</p>
+					<p name="InactivityTimerDownlinkDCH384">2</p>
+					<p name="InactivityTimerDownlinkDCH64">3</p>
+					<p name="InactivityTimerDownlinkDCH8">5</p>
+				</item>
+			</list>
+			<list name="InactivityTimerUplinkDCH">
+				<item>
+					<p name="InactivityTimerUplinkDCH128">2</p>
+					<p name="InactivityTimerUplinkDCH16">5</p>
+					<p name="InactivityTimerUplinkDCH256">2</p>
+					<p name="InactivityTimerUplinkDCH32">5</p>
+					<p name="InactivityTimerUplinkDCH320">2</p>
+					<p name="InactivityTimerUplinkDCH384">2</p>
+					<p name="InactivityTimerUplinkDCH64">3</p>
+					<p name="InactivityTimerUplinkDCH8">5</p>
+				</item>
+			</list>
+			<p name="MACdflowthroughputAveWin">6</p>
+			<p name="MACdflowutilRelThr">1</p>
+			<p name="MACdflowutilTimetoTrigger">0</p>
+			<p name="MSActivitySupervision">15</p>
+			<p name="PrxNoiseMaxTuneAbsolute">255</p>
+			<p name="TrafVolPendingTimeDL">200</p>
+			<p name="TrafVolPendingTimeUL">400</p>
+			<p name="TrafVolThresholdULLow">128</p>
+			<p name="UL_DL_activation_timer">2</p>
+			<list name="WaitTimeRRC">
+				<item>
+					<p name="WaitTimeRRCbackground">8</p>
+					<p name="WaitTimeRRCconversational">4</p>
+					<p name="WaitTimeRRCemergency">1</p>
+					<p name="WaitTimeRRChighPrioritySignalling">4</p>
+					<p name="WaitTimeRRCinterRATreselection">4</p>
+					<p name="WaitTimeRRCinteractive">8</p>
+					<p name="WaitTimeRRClowPrioritySignalling">8</p>
+					<p name="WaitTimeRRCother">4</p>
+					<p name="WaitTimeRRCregistration">5</p>
+					<p name="WaitTimeRRCstreaming">4</p>
+					<p name="WaitTimeRRCsubscribed">4</p>
+					<p name="WaitTimeRRCunknown">4</p>
+				</item>
+			</list>
+		</managedObject>
+	</cmData>
+</raml>

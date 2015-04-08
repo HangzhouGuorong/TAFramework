@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<raml version="2.1" xmlns="raml21.xsd">
+	<cmData type="actual" scope="all" domain="mcRNCRNWCMPlan" adaptationVersionMajor="mcRN4.1">
+		<header>
+			<log dateTime="2014-09-03T11:51:11" action="modified" user="mcRNC" appInfo="mcRNC OMS">mcRNC CM event plan</log>
+		</header>
+		<managedObject class="CMOB" distName="RNC-1/CMOB-4" version="mcRN4.1" operation="update">
+			<p name="RestrictionGroupName">restgroupname1</p>
+			<p name="CellAccessRestriction">9</p>
+			<p name="TrafficRestriction">1</p>
+			<p name="CMOBChangeOrigin">5</p>
+		</managedObject>
+	</cmData>
+</raml>

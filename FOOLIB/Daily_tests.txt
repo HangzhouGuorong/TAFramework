@@ -1,0 +1,156 @@
+*** Settings ***
+Documentation     This test suite tests Daily work
+Suite Setup       Daily Suite Setup
+Suite Teardown    Daily Suite Teardown
+Test Teardown     Test Case Teardown
+Force Tags        Product_Backlog_ID-xxx_1R_M1    EFS_ID-RNC_EFS_xxx    guorong.song.nsn@internal.nsn.com    exec_type-automatic    type-FUT
+Default Tags      ready-for-a-team-jenkins
+Library           Collections
+Library           OperatingSystem
+Library           resources/metadata_test_framework.py
+Library           resources/XML_utils.py
+Library           resources/parameter_utils.py
+Library           resources/log_utils.py
+Variables         resources/TestResources.py    ${TEST_BENCH}
+Resource          resources/common_kws.txt    # Resource    IpaMml.html
+
+*** Variables ***
+${TEST_BENCH}     ${HOST}    # ${TEST_BENCH}    pate56    ${TEST_BENCH}    jokeri    ${TEST_BENCH}    bcn114
+${WCEL_STATE_LOCK}    0
+${WCEL_STATE_UNLOCK}    1
+
+*** Test Cases ***
+Plan Download Full
+    [Tags]    nightly-test
+    [Setup]    # None of these objects require any other than RNC-all, so one set-up is enough
+    ${obj_plan_file_list}=    Create List    RNWPLAND_WCEL.XML    RNWPLAND_WSMLC.XML    RNWPLAND_WANE.XML    RNWPLAND_CMOB.XML    RNWPLAND_IPQM.XML
+    ...    RNWPLAND_IUR.XML    RNWPLAND_WRAB.XML    RNWPLAND_IPNB.XML    RNWPLAND_TQM.XML    RNWPLAND_IUO.XML    RNWPLAND_PFL.XML
+    ${dist_names_dict}=    combine_plans    ${obj_plan_file_list}    test_plan.xml    ${CURDIR}${/}test_files
+    upload_a_file    test_plan.xml
+    ${output} =    download_plan    test_plan.xml
+    ${dl_xml} =    type_a_file    ${XML_PATH}/test_plan.xml
+    ${ul_xml} =    upload_plan
+    ${cmdata_dl} =    get_cmdata_elem_from_text    ${dl_xml}
+    ${cmdata_ul} =    get_cmdata_elem_from_text    ${ul_xml}
+    @{objects} =    Get Dictionary Keys    ${dist_names_dict}
+    : FOR    ${obj_name}    IN    @{objects}
+    \    ${dist_name}=    Get From Dictionary    ${dist_names_dict}    ${obj_name}
+    \    Compare Plans    ${cmdata_dl}    ${cmdata_ul}    ${obj_name}    ${dist_name}
+    [Teardown]
+
+Plan Download RNC minimal
+    Download Upload Compare    RNC    ${RNC-ID}    ignored_params=RNCIPAddress
+
+Plan Upload All
+    ${new_xml} =    upload_plan
+    ${cmdata_new} =    get_cmdata_elem_from_text    ${new_xml}
+
+Direct Activate Create FMCI for RAN3093
+    [Tags]    ready-for-a-team-jenkins    nightly-test
+    [Setup]    create_base_config_for_object    FMCI    create_object_itself=${False}
+    [Template]    Directactivate Create and Delete
+    FMCI    ${RNC-ID}/FMCI-1    ignored_params=RNCIPAddress
+
+Direct Activate Create PFL for RAN3093
+    [Tags]    ready-for-a-team-jenkins    nightly-test
+    [Setup]    create_base_config_for_object    PFL    create_object_itself=${False}
+    [Template]    Directactivate Create and Delete
+    PFL    ${RNC-ID}/PFL-1    ignored_params=RNCIPAddress
+
+Direct Activate Create WCEL
+    [Tags]    ready-for-a-team-jenkins    nightly-test
+    [Setup]    create_base_config_for_object    WCEL    create_object_itself=${False}
+    ${new_params_dict}=    Create WCEL Params Dict for All Features
+    Directactivate Create and Delete    WCEL    ${RNC-ID}/WBTS-1/WCEL-1    ${new_params_dict}
+
+Try Keyword
+    Create WCEL Params Dict for All Features
+
+Clear DB Thoroughly
+    ${vars} =    Get Variables
+    setResouceVariables    ${vars}
+    metadata_connect
+    clear_rnwdb_thoroughly
+
+Clean All Objects in DB
+    clean_all_objs_from_db
+
+Create MO with dependency
+    ${excluded_objs}=    Create List    RNCSRV    DATSYN    PRNC
+    ${obj_plan_file_list}    get_mo_plan_file_list    excluded_objs=${excluded_objs}
+    ${obj_dict}    combine_plans    ${obj_plan_file_list}    test_plan.xml    ${CURDIR}${/}test_files
+    upload_a_file    test_plan.xml
+    download_plan    test_plan.xml
+
+Clean RNW DB
+    clear_rnwdb
+
+*** Keywords ***
+Upload And Compare Plan
+    [Arguments]    ${plan_file}    ${obj_name}    ${dist_name}    ${ignored_params}=${empty}
+    ${dl_xml} =    type_a_file    ${plan_file}
+    ${ul_xml} =    upload_plan
+    ${cmdata_dl} =    get_cmdata_elem_from_text    ${dl_xml}
+    ${cmdata_ul} =    get_cmdata_elem_from_text    ${ul_xml}
+    Compare Plans    ${cmdata_dl}    ${cmdata_ul}    ${obj_name}    ${dist_name}    ${ignored_params}
+
+Download Upload Compare
+    [Arguments]    ${obj_name}    ${dist_name}    ${ignored_params}=${empty}
+    download_plan    RNWPLAND_${obj_name}.XML
+    comment    download_plan    RNWPLAND-RAN3005.XML
+    comment    Upload And Compare Plan    ${XML_PATH}//RNWPLAND_${obj_name}.XML    ${obj_name}    ${dist_name}    ${ignored_params}
+    comment    download_plan    RNWPLAND_${obj_name}_modify.XML
+    comment    download_plan    RNWPLAND_WBTS_delete.XML
+
+Directactivate Upload Compare
+    [Arguments]    ${plan}    ${obj_name}    ${dist_name}    ${ignored_params}=${empty}
+    download_plan    RNWPLAND_${obj_name}_minimal.XML    activate=${false}
+    direct_activate    ${plan}
+    Upload And Compare Plan    ${XML_PATH}//${plan}    ${obj_name}    ${dist_name}    ${ignored_params}
+    # newdb update is controlled by AutomDLPlanUpdEnabled parameter in RNFC.
+    # Since whole rnc object (rnc_gen,rnfc,rnmobi,rnac,...) must be present before newdb can be updated we check
+    # if this is the case with this object
+    ${newdb_cannot_be_updated}=    isRNCObject    ${obj_name}
+    Run Keyword Unless    ${newdb_cannot_be_updated}    activate_plan
+    Run Keyword Unless    ${newdb_cannot_be_updated}    Upload And Compare Plan    ${XML_PATH}//${plan}    ${obj_name}    ${dist_name}    ${ignored_params}
+
+Directactivate Full
+    [Arguments]    ${obj_name}    ${dist_name}    ${ignored_params}=${empty}
+    Directactivate Upload Compare    RNWPLAND_${obj_name}.XML    ${obj_name}    ${dist_name}    ${ignored_params}
+
+Directactivate Create and Delete
+    [Arguments]    ${obj_name}    ${dist_name}    ${new_params_dict}=${empty}
+    # iterating new_params_dict
+    configure_feature_license    1938=on
+    Directactivate Create Upload Compare    RNWPLAND_${obj_name}.XML    ${obj_name}    ${dist_name}    ${ignored_params}
+    Directactivate Delete For Next Create    ${obj_name}    ${dist_name}
+
+Directactivate Create Upload Compare
+    [Arguments]    ${plan}    ${obj_name}    ${dist_name}    ${ignored_params}=${empty}
+    direct_activate    ${plan}
+    Upload And Compare Plan    ${XML_PATH}//${plan}    ${obj_name}    ${dist_name}    ${ignored_params}
+    # newdb update is controlled by AutomDLPlanUpdEnabled parameter in RNFC.
+    # Since whole rnc object (rnc_gen,rnfc,rnmobi,rnac,...) must be present before newdb can be updated we check
+    # if this is the case with this object
+    ${newdb_cannot_be_updated}=    isRNCObject    ${obj_name}
+    Run Keyword If    ${newdb_cannot_be_updated}    activate_plan
+    Run Keyword If    ${newdb_cannot_be_updated}    Upload And Compare Plan    ${XML_PATH}//${plan}    ${obj_name}    ${dist_name}    ${ignored_params}
+
+Directactivate Delete For Next Create
+    [Arguments]    ${obj_name}    ${dist_name}
+    direct_activate    RNWPLAND_${obj_name}_delete.XML
+    ${ul} =    upload_plan
+    Should Not Contain    ${ul}    <managedObject class="${obj_name}" distName="${dist_name}"
+
+Create WCEL Params Dict for All Features
+    ${new_param_dict}=    Create WCEL Params Dict for    ${RAN3093}
+    log    ${new_param_dict}
+
+Create WCEL Params Dict for
+    [Arguments]    ${RAN3093}
+    Create Params Dict    ${WCEL}    ${RAN3093}
+
+Create Params Dict
+    [Arguments]    ${obj_name}    ${feature}
+    ${new_params_dict}=    create_params_dict_from_template    ${obj_name}    ${feature}
+

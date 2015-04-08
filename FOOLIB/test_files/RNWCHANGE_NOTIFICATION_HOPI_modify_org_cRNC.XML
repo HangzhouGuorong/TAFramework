@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<raml version="2.1" xmlns="raml21.xsd">
+	<cmData type="actual" scope="all" domain="RNCRNWCMPLAN" adaptationVersionMajor="RN8.1">
+		<header>
+			<log dateTime="2014-09-03T13:28:09" action="modified" user="CRNC" appInfo="cRNC OMS">RNC CM event plan</log>
+		</header>
+		<managedObject class="HOPI" distName="RNC-1/HOPI-1" version="RN8.1" operation="update">
+			<p name="AdjiPriorityReDir">3</p>
+			<p name="AdjiTempOffset1">3</p>
+			<p name="AdjiTempOffset2">2</p>
+			<p name="AdjiQrxlevMin">-50</p>
+			<p name="AdjiMinEcNo">1</p>
+			<p name="AdjiMinRSCP">1</p>
+			<p name="AdjiPlossMargin">0</p>
+			<p name="HOPIChangeOrigin">5</p>
+			<p name="AdjiMinEcNoNCHO">0</p>
+		</managedObject>
+	</cmData>
+</raml>

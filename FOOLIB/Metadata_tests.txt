@@ -1,0 +1,908 @@
+*** Variables ***
+#${TEST_BENCH}   bcn114 
+#${TEST_BENCH}   pate56 
+${TEST_BENCH}    ${HOST}
+
+*** Settings ***
+Documentation   This test suite tests FOOLIB
+
+Suite Setup     Suite Setup
+Suite Teardown  Suite Teardown
+#Test Setup      Test Case Setup
+Test Teardown   Test Case Teardown
+Force Tags      Product_Backlog_ID-xxx_1R_M1    EFS_ID-RNC_EFS_xxx    owner-I_EXT_MBB_WCDMA_SWD3_TEAM_O2@internal.nsn.com    exec_type-automatic    type-FUT    HW_TYPE-BCN_A1    BCN_STEP-BCN_S0
+...             Phase-CRT    PRB-FOOLIB
+Library         Collections
+Library         resources/metadata_test_framework.py
+Library         resources/XML_utils.py
+Library         resources/parameter_utils.py
+Variables       resources/TestResources.py   ${TEST_BENCH}
+Library         resources/log_utils.py
+
+Default Tags    ready-for-a-team-jenkins
+
+*** Variables ***
+
+*** Test Cases ***
+
+#Transfer file to test bench KW test
+    # Default target directory is ${XML_PATH}
+    #upload_a_file                 RNWPLAND_TEST.XML
+
+    # Dir to existing Dir
+    #upload_a_file                test_files               /root/esa
+
+    # File to Dir
+    #upload_a_file                test_files/raml21.xsd    /tmp
+
+    # File to named target File
+    #upload_a_file                test_files/raml21.xsd    ${XML_PATH}     myfile.xsd
+
+Download, upload and compare plans (TEST)
+    [Documentation]             This test case downloads a plan, then uploads it and compares that the plans are equal
+
+    run_jondoe_cmd              create -D ${XML_PATH}/RNWPLAND_TEST.XML -U ${XML_PATH}/test_ul_plan.xml -l 2
+    ${dl_xml} =                 type_a_file    ${XML_PATH}//RNWPLAND_TEST.XML
+    ${ul_xml} =                 type_a_file    ${XML_PATH}/test_ul_plan.xml
+
+    ${cmdata_dl} =              get_cmdata_elem_from_text    ${dl_xml}
+    ${cmdata_ul} =              get_cmdata_elem_from_text    ${ul_xml}
+
+    ${diff_list} =              compare_plans_cmdata    ${cmdata_dl}    ${cmdata_ul}
+    Remove Parameters           TEST    ${diff_list}
+
+    Should Be Empty             ${diff_list}
+
+Download, upload and compare plans (TEST2)
+    [Documentation]             This test case downloads a plan, then uploads it and compares that the plans are equal
+
+    run_jondoe_cmd              create -D ${XML_PATH}/RNWPLAND_TEST2.XML -U ${XML_PATH}/test_ul_plan.xml
+    ${dl_xml} =                 type_a_file    ${XML_PATH}//RNWPLAND_TEST2.XML
+    ${ul_xml} =                 type_a_file    ${XML_PATH}/test_ul_plan.xml
+
+    ${cmdata_dl} =              get_cmdata_elem_from_text    ${dl_xml}
+    ${cmdata_ul} =              get_cmdata_elem_from_text    ${ul_xml}
+
+    ${diff_list} =              compare_plans_cmdata    ${cmdata_dl}    ${cmdata_ul}
+    Remove Parameters           TEST2   ${diff_list}
+    print_diff_list             ${diff_list}
+    Should Be Empty             ${diff_list}
+
+Download and check object structure (TEST)
+    [Documentation]             This test case downloads a plan, then it checks that the parameter fields got correctly to the obj_t structure
+    ${output} =                 run_jondoe_cmd    parse -F ${XML_PATH}/RNWPLAND_TEST.XML
+
+    ${obj} =                    get_obj_from_jondoe_output          ${output}
+
+    ${dl_xml} =                 type_a_file    ${XML_PATH}/RNWPLAND_TEST.XML
+    ${cmdata_dl} =              get_cmdata_elem_from_text    ${dl_xml}
+
+    ${diff_list} =              compare_plan_cmdata_and_obj  ${obj}  ${cmdata_dl}
+    print_diff_list             ${diff_list}
+    Remove Parameters           TEST   ${diff_list}
+    print_diff_list             ${diff_list}
+    Should Be Empty             ${diff_list}
+
+Download and check object structure (TEST2)
+    [Documentation]             This test case downloads a plan, then it checks that the parameter fields got correctly to the obj_t structure
+
+    ${output} =                 run_jondoe_cmd        parse -F ${XML_PATH}/RNWPLAND_TEST2.XML
+
+    ${obj} =                    get_obj_from_jondoe_output          ${output}
+
+    ${dl_xml} =                 type_a_file    ${XML_PATH}/RNWPLAND_TEST2.XML
+    ${cmdata_dl} =              get_cmdata_elem_from_text    ${dl_xml}
+
+    ${diff_list} =              compare_plan_cmdata_and_obj  ${obj}  ${cmdata_dl}
+    print_diff_list             ${diff_list}
+    Remove Parameters           TEST2  ${diff_list}
+    print_diff_list             ${diff_list}
+    Should Be Empty             ${diff_list}
+
+Download empty plan, upload and check UL plan is valid (TEST)
+    [Documentation]             This test case downloads a plan, then uploads it and compares that the plans are equal
+
+    run_jondoe_cmd              create -D ${XML_PATH}/RNWPLAND_TEST_EMPTY.XML -U ${XML_PATH}/test_ul_plan.xml
+    ${dl_xml} =                 type_a_file    ${XML_PATH}/RNWPLAND_TEST_EMPTY.XML
+    ${ul_xml} =                 type_a_file    ${XML_PATH}/test_ul_plan.xml
+
+    ${cmdata_dl} =              get_cmdata_elem_from_text    ${dl_xml}
+    ${cmdata_ul} =              get_cmdata_elem_from_text    ${ul_xml}
+
+    ${diff_list} =              compare_plans_cmdata    ${cmdata_dl}    ${cmdata_ul}
+
+    # check couple of parameters
+    Sanity Check                ${ul_xml}   ${diff_list}
+
+Download plan with only uploadOnly parameters, upload check UL plan is valid (TEST)
+    [Documentation]             This test case downloads a plan, then uploads it and compares that the plans are equal
+
+    run_jondoe_cmd              create -D ${XML_PATH}/RNWPLAND_TEST_ULOnly.XML -U ${XML_PATH}/test_ul_plan.xml
+    ${dl_xml} =                 type_a_file    ${XML_PATH}/RNWPLAND_TEST_ULOnly.XML
+    ${ul_xml} =                 type_a_file    ${XML_PATH}/test_ul_plan.xml
+
+    ${cmdata_dl} =              get_cmdata_elem_from_text    ${dl_xml}
+    ${cmdata_ul} =              get_cmdata_elem_from_text    ${ul_xml}
+
+    ${diff_list} =              compare_plans_cmdata    ${cmdata_dl}    ${cmdata_ul}
+
+    # check couple of parameters
+    Sanity Check                ${ul_xml}   ${diff_list}    
+
+Validation Tests: parameters with invalid values (validation fails)
+    [Documentation]             This test case uses dl plan with invalid value and checks that validation fails due to parameters with invalid values
+
+    run_jondoe_cmd              create -D ${XML_PATH}/RNWPLAND_TEST_BOUNDARY.XML -U ${XML_PATH}/test_ul_plan.xml -N InvalidValueTooBig_Dword-1 -l 2
+    ${dl_xml} =                 type_a_file    ${XML_PATH}/RNWPLAND_TEST_BOUNDARY.XML
+
+    # No upload file should be created
+    ${status}  ${ul_xml}=       Run Keyword And Ignore Error  type_a_file  ${XML_PATH}/test_ul_plan.xml
+    Should Be True              '${status}' == 'FAIL'
+
+    # Check error log: both ERR and INFO
+    Check Log                   FOOLIB: Param CellRange val is larger than maxIncl
+
+Validation Tests: parameters which requires optional features that are not on (validation fails)
+    [Documentation]             Some optional features are set to off state, which means that plan cannot contain those
+    [Documentation]             parameters
+
+    run_jondoe_cmd              create -D ${XML_PATH}/RNWPLAND_TEST.XML -U ${XML_PATH}/test_ul_plan.xml -l 2 -F 89 -F 44
+    ${dl_xml} =                 type_a_file    ${XML_PATH}//RNWPLAND_TEST.XML
+    ${ul_xml} =                 type_a_file    ${XML_PATH}/test_ul_plan.xml
+
+    ${cmdata_dl} =              get_cmdata_elem_from_text    ${dl_xml}
+    ${cmdata_ul} =              get_cmdata_elem_from_text    ${ul_xml}
+
+    ${diff_list} =              compare_plans_cmdata    ${cmdata_dl}    ${cmdata_ul}
+    ${off_features}=            Create List    89   44
+    Remove Parameters           TEST    ${diff_list}  features=${off_features}
+
+    # Now should be empty
+    Should Be Empty             ${diff_list}
+
+Validation Tests: parameter which can have only default value when the related feature in in config state (validation fails)
+    [Documentation]             Some parameters can have only default value when related features are in config state or
+    [Documentation]             the parameter validation will fail
+
+    # First try value which is not the default, validation fails
+    run_jondoe_cmd              create -D ${XML_PATH}/RNWPLAND_TEST.XML -U ${XML_PATH}/test_ul_plan.xml -l 2 -F 143:1
+    ${dl_xml} =                 type_a_file    ${XML_PATH}//RNWPLAND_TEST.XML
+    ${ul_xml} =                 type_a_file    ${XML_PATH}/test_ul_plan.xml
+
+    ${cmdata_dl} =              get_cmdata_elem_from_text    ${dl_xml}
+    ${cmdata_ul} =              get_cmdata_elem_from_text    ${ul_xml}
+
+    ${diff_list} =              compare_plans_cmdata    ${cmdata_dl}    ${cmdata_ul}
+    Remove Parameters           TEST    ${diff_list}   features=143
+
+    # Now should be empty
+    Should Be Empty             ${diff_list}
+
+    # Again with default value
+
+    run_jondoe_cmd              create -D ${XML_PATH}/RNWPLAND_TEST_BOUNDARY.XML -U ${XML_PATH}/test_ul_plan.xml -N MinValue-1 -l 2 -F 143:1
+    ${dl_xml} =                 type_a_file    ${XML_PATH}/RNWPLAND_TEST_BOUNDARY.XML
+    ${ul_xml} =                 type_a_file    ${XML_PATH}/test_ul_plan.xml
+
+    ${cmdata_dl} =              get_cmdata_elem_from_text    ${dl_xml}
+    ${cmdata_ul} =              get_cmdata_elem_from_text    ${ul_xml}
+
+    ${diff_list} =              compare_plans_cmdata    ${cmdata_dl}    ${cmdata_ul}
+    # XXX we do not remove any related parameter from the list
+    Remove Parameters           TEST    ${diff_list}
+
+    # Now should be empty
+    Should Be Empty             ${diff_list}
+
+Default Value Tests: parameters are filled with default values
+    [Documentation]             This test case downloads an empty plan, then uploads it and check that all parameters have their correct default values
+
+    run_jondoe_cmd              create -D ${XML_PATH}/RNWPLAND_TEST_EMPTY.XML -U ${XML_PATH}/test_ul_plan.xml
+    ${dl_xml} =                 type_a_file    ${XML_PATH}/RNWPLAND_TEST_EMPTY.XML
+    ${ul_xml} =                 type_a_file    ${XML_PATH}/test_ul_plan.xml
+
+    ${cmdata_dl} =              get_cmdata_elem_from_text    ${dl_xml}
+    ${cmdata_ul} =              get_cmdata_elem_from_text    ${ul_xml}
+
+    # check default values of all parameters in the generated upload XML file
+    check_default_values        TEST  ${cmdata_ul}
+
+List Tests: empty scalar and struct list
+    [Documentation]             This test case uses download plan with empty lists and checks that upload plan is properly generated
+
+    # Plan validation is not done because URAId list is mandatory but the list in plan is empty
+    run_jondoe_cmd              create -D ${XML_PATH}/RNWPLAND_TEST_LISTS.XML -U ${XML_PATH}/test_ul_plan.xml -N EmptyList-1 -V -l 2
+    ${dl_xml} =                 type_a_file    ${XML_PATH}/RNWPLAND_TEST_LISTS.XML
+    ${ul_xml} =                 type_a_file    ${XML_PATH}/test_ul_plan.xml
+
+    ${cmdata_dl} =              get_cmdata_elem_from_text    ${dl_xml}
+    ${cmdata_ul} =              get_cmdata_elem_from_text    ${ul_xml}
+
+    ${diff_list} =              compare_plans_mos    ${cmdata_dl}    ${cmdata_ul}   EmptyList-1
+    Remove Parameters           TEST    ${diff_list}
+
+List Tests: scalar and struct lists with maximum items
+    [Documentation]             This test case uses download plan with lists having maximum items and checks that upload plan is properly generated
+
+    run_jondoe_cmd              create -D ${XML_PATH}/RNWPLAND_TEST_LISTS.XML -U ${XML_PATH}/test_ul_plan.xml -N ListWithMaximumItem-1
+    ${dl_xml} =                 type_a_file    ${XML_PATH}//RNWPLAND_TEST_LISTS.XML
+    ${ul_xml} =                 type_a_file    ${XML_PATH}/test_ul_plan.xml
+
+    ${cmdata_dl} =              get_cmdata_elem_from_text    ${dl_xml}
+    ${cmdata_ul} =              get_cmdata_elem_from_text    ${ul_xml}
+
+    ${diff_list} =              compare_plans_mos    ${cmdata_dl}    ${cmdata_ul}  ListWithMaximumItem-1
+    Remove Parameters           TEST    ${diff_list}
+
+List Tests: struct lists with a single items
+    [Documentation]             This test case uses download plan with lists having maximum items and checks that upload plan is properly generated
+
+    run_jondoe_cmd              create -D ${XML_PATH}/RNWPLAND_TEST_LISTS.XML -U ${XML_PATH}/test_ul_plan.xml -N ListWithSingleItems-1
+    ${dl_xml} =                 type_a_file    ${XML_PATH}//RNWPLAND_TEST_LISTS.XML
+    ${ul_xml} =                 type_a_file    ${XML_PATH}/test_ul_plan.xml
+
+    ${cmdata_dl} =              get_cmdata_elem_from_text    ${dl_xml}
+    ${cmdata_ul} =              get_cmdata_elem_from_text    ${ul_xml}
+
+    ${diff_list} =              compare_plans_mos    ${cmdata_dl}    ${cmdata_ul}  ListWithSingleItems-1
+    Remove Parameters           TEST    ${diff_list}
+
+List Tests: scalar list with too many items (no_count_field)
+    [Documentation]             This test case uses download plan with scalar list having too many items and checks that no upload plan is generated
+
+    run_jondoe_cmd              create -D ${XML_PATH}/RNWPLAND_TEST_LISTS.XML -U ${XML_PATH}/test_ul_plan.xml -N ScalarListWithTooManyItemsNoCountField-1 -l 2
+    ${dl_xml} =                 type_a_file    ${XML_PATH}/RNWPLAND_TEST_LISTS.XML
+
+    # No upload file should be created
+    ${status}  ${ul_xml}=       Run Keyword And Ignore Error  type_a_file  ${XML_PATH}/test_ul_plan.xml
+    Should Be True              '${status}' == 'FAIL'
+
+    Check Log                   FOOLIB: List.*has too many elements
+
+List Tests: scalar list with too many items (with_count_field)
+    [Documentation]             This test case uses download plan with scalar list having too many items and checks that no upload plan is generated
+
+    run_jondoe_cmd              create -D ${XML_PATH}/RNWPLAND_TEST_LISTS.XML -U ${XML_PATH}/test_ul_plan.xml -N ScalarListWithTooManyItemsWithCountField-1 -l 2
+    ${dl_xml} =                 type_a_file    ${XML_PATH}/RNWPLAND_TEST_LISTS.XML
+
+    # No upload file should be created
+    ${status}  ${ul_xml}=       Run Keyword And Ignore Error  type_a_file  ${XML_PATH}/test_ul_plan.xml
+    Should Be True              '${status}' == 'FAIL'
+
+    Check Log                   FOOLIB: List.*has too many elements
+
+List Tests: struct list with too many items (no_count_field)
+    [Documentation]             This test case uses download plan with struct list having too many items and checks that no upload plan is generated
+
+    run_jondoe_cmd              create -D ${XML_PATH}/RNWPLAND_TEST_LISTS.XML -U ${XML_PATH}/test_ul_plan.xml -N StructListWithTooManyItemsNoCountField-1 -l 2
+    ${dl_xml} =                 type_a_file    ${XML_PATH}/RNWPLAND_TEST_LISTS.XML
+
+    # No upload file should be created
+    ${status}  ${ul_xml}=       Run Keyword And Ignore Error  type_a_file  ${XML_PATH}/test_ul_plan.xml
+    Should Be True              '${status}' == 'FAIL'
+
+    # Check error log
+    Check Log                   FOOLIB: List.*has too many elements
+
+List Tests: struct list with too many items (with_count_field)
+    [Documentation]             This test case uses download plan with struct list having too many items and checks that no upload plan is generated
+
+    run_jondoe_cmd              create -D ${XML_PATH}/RNWPLAND_TEST_LISTS.XML -U ${XML_PATH}/test_ul_plan.xml -N StructListWithTooManyItemsWithCountField-1 -l 2
+    ${dl_xml} =                 type_a_file    ${XML_PATH}/RNWPLAND_TEST_LISTS.XML
+
+    # No upload file should be created
+    ${status}  ${ul_xml}=       Run Keyword And Ignore Error  type_a_file  ${XML_PATH}/test_ul_plan.xml
+    Should Be True              '${status}' == 'FAIL'
+
+    # Check error log
+    Check Log                   FOOLIB: List.*has too many elements
+
+Boundary Tests: Minimum values
+    [Documentation]             This test case test the boundary value of parameters of "decimal" types
+
+    run_jondoe_cmd              create -D ${XML_PATH}/RNWPLAND_TEST_BOUNDARY.XML -U ${XML_PATH}/test_ul_plan.xml -N MinValue-1 -l 2
+    ${dl_xml} =                 type_a_file    ${XML_PATH}/RNWPLAND_TEST_BOUNDARY.XML
+    ${ul_xml} =                 type_a_file    ${XML_PATH}/test_ul_plan.xml
+
+    ${cmdata_dl} =              get_cmdata_elem_from_text    ${dl_xml}
+    ${cmdata_ul} =              get_cmdata_elem_from_text    ${ul_xml}
+
+    ${diff_list} =              compare_plans_mos    ${cmdata_dl}    ${cmdata_ul}   MinValue-1
+    Remove Parameters           TEST    ${diff_list}
+
+    Should Be Empty             ${diff_list}
+
+Boundary Tests: Maximum values
+    [Documentation]             This test case test the boundary value of parameters of "decimal" types
+
+    run_jondoe_cmd              create -D ${XML_PATH}/RNWPLAND_TEST_BOUNDARY.XML -U ${XML_PATH}/test_ul_plan.xml -N MaxValue-1 -l 2
+    ${dl_xml} =                 type_a_file    ${XML_PATH}/RNWPLAND_TEST_BOUNDARY.XML
+    ${ul_xml} =                 type_a_file    ${XML_PATH}/test_ul_plan.xml
+
+    ${cmdata_dl} =              get_cmdata_elem_from_text    ${dl_xml}
+    ${cmdata_ul} =              get_cmdata_elem_from_text    ${ul_xml}
+
+    ${diff_list} =              compare_plans_mos    ${cmdata_dl}    ${cmdata_ul}  MaxValue-1
+    Remove Parameters           TEST    ${diff_list}
+
+    Should Be Empty             ${diff_list}
+
+Boundary Tests: val is smaller than minIncl (byte)
+    [Documentation]             This test case test the boundary value of parameters of "decimal" types
+
+    run_jondoe_cmd              create -D ${XML_PATH}/RNWPLAND_TEST_BOUNDARY.XML -U ${XML_PATH}/test_ul_plan.xml -N InvalidValueTooSmall_Byte-1 -l 2
+    ${dl_xml} =                 type_a_file    ${XML_PATH}/RNWPLAND_TEST_BOUNDARY.XML
+
+    # No upload file should be created
+    ${status}  ${ul_xml}=       Run Keyword And Ignore Error  type_a_file  ${XML_PATH}/test_ul_plan.xml
+    Should Be True              '${status}' == 'FAIL'
+
+    # Check error log: both ERR and INFO
+    Check Log                   FOOLIB: Param HCS_PRIO val is smaller than minIncl
+
+Boundary Tests: val is bigger than maxIncl (byte)
+    [Documentation]             This test case test the boundary value of parameters of "decimal" types
+
+    run_jondoe_cmd              create -D ${XML_PATH}/RNWPLAND_TEST_BOUNDARY.XML -U ${XML_PATH}/test_ul_plan.xml -N InvalidValueTooBig_Byte-1 -l 2
+    ${dl_xml} =                 type_a_file    ${XML_PATH}/RNWPLAND_TEST_BOUNDARY.XML
+
+    # No upload file should be created
+    ${status}  ${ul_xml}=       Run Keyword And Ignore Error  type_a_file  ${XML_PATH}/test_ul_plan.xml
+    Should Be True              '${status}' == 'FAIL'
+
+    # Check error log: both ERR and INFO
+    Check Log                   FOOLIB: Param HCS_PRIO val is larger than maxIncl
+
+Boundary Tests: val is smaller than minIncl (word)
+    [Documentation]             This test case test the boundary value of parameters of "decimal" types
+
+    run_jondoe_cmd              create -D ${XML_PATH}/RNWPLAND_TEST_BOUNDARY.XML -U ${XML_PATH}/test_ul_plan.xml -N InvalidValueTooSmall_Word-1 -l 2
+    ${dl_xml} =                 type_a_file    ${XML_PATH}/RNWPLAND_TEST_BOUNDARY.XML
+
+    # No upload file should be created
+    ${status}  ${ul_xml}=       Run Keyword And Ignore Error  type_a_file  ${XML_PATH}/test_ul_plan.xml
+    Should Be True              '${status}' == 'FAIL'
+
+    # Check error log: both ERR and INFO
+    Check Log                   FOOLIB: Param SAC val is smaller than minIncl
+
+Boundary Tests: val is bigger than maxIncl (word)
+    [Documentation]             This test case test the boundary value of parameters of "decimal" types
+
+    run_jondoe_cmd              create -D ${XML_PATH}/RNWPLAND_TEST_BOUNDARY.XML -U ${XML_PATH}/test_ul_plan.xml -N InvalidValueTooBig_Word-1 -l 2
+    ${dl_xml} =                 type_a_file    ${XML_PATH}/RNWPLAND_TEST_BOUNDARY.XML
+
+    # No upload file should be created
+    ${status}  ${ul_xml}=       Run Keyword And Ignore Error  type_a_file  ${XML_PATH}/test_ul_plan.xml
+    Should Be True              '${status}' == 'FAIL'
+
+    # Check error log: both ERR and INFO
+    Check Log                   FOOLIB: Param SAC val is larger than maxIncl
+
+Boundary Tests: val is smaller than minIncl (dword)
+    [Documentation]             This test case test the boundary value of parameters of "decimal" types
+
+    run_jondoe_cmd              create -D ${XML_PATH}/RNWPLAND_TEST_BOUNDARY.XML -U ${XML_PATH}/test_ul_plan.xml -N InvalidValueTooSmall_Dword-1 -l 2
+    ${dl_xml} =                 type_a_file    ${XML_PATH}/RNWPLAND_TEST_BOUNDARY.XML
+
+    # No upload file should be created
+    ${status}  ${ul_xml}=       Run Keyword And Ignore Error  type_a_file  ${XML_PATH}/test_ul_plan.xml
+    Should Be True              '${status}' == 'FAIL'
+
+    # Check error log: both ERR and INFO
+    Check Log                   FOOLIB: Param CellRange val is smaller than minIncl
+
+Boundary Tests: val is bigger than maxIncl (dword)
+    [Documentation]             This test case test the boundary value of parameters of "decimal" types
+
+    run_jondoe_cmd              create -D ${XML_PATH}/RNWPLAND_TEST_BOUNDARY.XML -U ${XML_PATH}/test_ul_plan.xml -N InvalidValueTooBig_Dword-1 -l 2
+    ${dl_xml} =                 type_a_file    ${XML_PATH}/RNWPLAND_TEST_BOUNDARY.XML
+
+    # No upload file should be created
+    ${status}  ${ul_xml}=       Run Keyword And Ignore Error  type_a_file  ${XML_PATH}/test_ul_plan.xml
+    Should Be True              '${status}' == 'FAIL'
+
+    # Check error log: both ERR and INFO
+    Check Log                   FOOLIB: Param CellRange val is larger than maxIncl
+
+Boundary Tests: val is smaller than minIncl (shortint)
+    [Documentation]             This test case test the boundary value of parameters of "decimal" types
+
+    run_jondoe_cmd              create -D ${XML_PATH}/RNWPLAND_TEST_BOUNDARY.XML -U ${XML_PATH}/test_ul_plan.xml -N InvalidValueTooSmall_ShortInt-1 -l 2
+    ${dl_xml} =                 type_a_file    ${XML_PATH}/RNWPLAND_TEST_BOUNDARY.XML
+
+    # No upload file should be created
+    ${status}  ${ul_xml}=       Run Keyword And Ignore Error  type_a_file  ${XML_PATH}/test_ul_plan.xml
+    Should Be True              '${status}' == 'FAIL'
+
+    # Check error log: both ERR and INFO
+    Check Log                   FOOLIB: Param PtxAICH val is smaller than minIncl
+
+Boundary Tests: val is bigger than maxIncl (shortint)
+    [Documentation]             This test case test the boundary value of parameters of "decimal" types
+
+    run_jondoe_cmd              create -D ${XML_PATH}/RNWPLAND_TEST_BOUNDARY.XML -U ${XML_PATH}/test_ul_plan.xml -N InvalidValueTooBig_ShortInt-1 -l 2
+    ${dl_xml} =                 type_a_file    ${XML_PATH}/RNWPLAND_TEST_BOUNDARY.XML
+
+    # No upload file should be created
+    ${status}  ${ul_xml}=       Run Keyword And Ignore Error  type_a_file  ${XML_PATH}/test_ul_plan.xml
+    Should Be True              '${status}' == 'FAIL'
+
+    # Check error log: both ERR and INFO
+    Check Log                   FOOLIB: Param PtxAICH val is larger than maxIncl
+
+Boundary Tests: val is smaller than minIncl (longint)
+    [Documentation]             This test case test the boundary value of parameters of "decimal" types
+
+    run_jondoe_cmd              create -D ${XML_PATH}/RNWPLAND_TEST_BOUNDARY.XML -U ${XML_PATH}/test_ul_plan.xml -N InvalidValueTooSmall_LongInt-1 -l 2
+    ${dl_xml} =                 type_a_file    ${XML_PATH}/RNWPLAND_TEST_BOUNDARY.XML
+
+    # No upload file should be created
+    ${status}  ${ul_xml}=       Run Keyword And Ignore Error  type_a_file  ${XML_PATH}/test_ul_plan.xml
+    Should Be True              '${status}' == 'FAIL'
+
+    # Check error log: both ERR and INFO
+    Check Log                   FOOLIB: Param PtxAICH2 val is smaller than minIncl
+
+Boundary Tests: val is bigger than maxIncl (longint)
+    [Documentation]             This test case test the boundary value of parameters of "decimal" types
+
+    run_jondoe_cmd              create -D ${XML_PATH}/RNWPLAND_TEST_BOUNDARY.XML -U ${XML_PATH}/test_ul_plan.xml -N InvalidValueTooBig_LongInt-1 -l 2
+    ${dl_xml} =                 type_a_file    ${XML_PATH}/RNWPLAND_TEST_BOUNDARY.XML
+
+    # No upload file should be created
+    ${status}  ${ul_xml}=       Run Keyword And Ignore Error  type_a_file  ${XML_PATH}/test_ul_plan.xml
+    Should Be True              '${status}' == 'FAIL'
+
+    # Check error log: both ERR and INFO
+    Check Log                   FOOLIB: Param PtxAICH2 val is larger than maxIncl
+
+Boundary Tests: val is smaller than minIncl (integer)
+    [Documentation]             This test case test the boundary value of parameters of "decimal" types
+
+    run_jondoe_cmd              create -D ${XML_PATH}/RNWPLAND_TEST_BOUNDARY.XML -U ${XML_PATH}/test_ul_plan.xml -N InvalidValueTooSmall_Integer-1 -l 2
+    ${dl_xml} =                 type_a_file    ${XML_PATH}/RNWPLAND_TEST_BOUNDARY.XML
+
+    # No upload file should be created
+    ${status}  ${ul_xml}=       Run Keyword And Ignore Error  type_a_file  ${XML_PATH}/test_ul_plan.xml
+    Should Be True              '${status}' == 'FAIL'
+
+    # Check error log: both ERR and INFO
+    Check Log                   FOOLIB: Param BlindHORSCPThrTarget val is smaller than minIncl
+
+Boundary Tests: val is bigger than maxIncl (integer)
+    [Documentation]             This test case test the boundary value of parameters of "decimal" types
+
+    run_jondoe_cmd              create -D ${XML_PATH}/RNWPLAND_TEST_BOUNDARY.XML -U ${XML_PATH}/test_ul_plan.xml -N InvalidValueTooBig_Integer-1 -l 2
+    ${dl_xml} =                 type_a_file    ${XML_PATH}/RNWPLAND_TEST_BOUNDARY.XML
+
+    # No upload file should be created
+    ${status}  ${ul_xml}=       Run Keyword And Ignore Error  type_a_file  ${XML_PATH}/test_ul_plan.xml
+    Should Be True              '${status}' == 'FAIL'
+
+    # Check error log: both ERR and INFO
+    Check Log                   FOOLIB: Param BlindHORSCPThrTarget val is larger than maxIncl
+
+Release And Catch Test
+    [Documentation]             This test case downloads a plan, then uploads it and compares that the plans are equal
+
+    run_jondoe_cmd              create -D ${XML_PATH}/RNWPLAND_TEST.XML -U ${XML_PATH}/test_ul_plan.xml -C
+    ${dl_xml} =                 type_a_file    ${XML_PATH}//RNWPLAND_TEST.XML
+    ${ul_xml} =                 type_a_file    ${XML_PATH}/test_ul_plan.xml
+
+    ${cmdata_dl} =              get_cmdata_elem_from_text    ${dl_xml}
+    ${cmdata_ul} =              get_cmdata_elem_from_text    ${ul_xml}
+
+    ${diff_list} =              compare_plans_cmdata    ${cmdata_dl}    ${cmdata_ul}
+    Remove Parameters           TEST    ${diff_list}
+
+    Should Be Empty             ${diff_list}
+
+Download, upload and compare plans (COCO)
+    [Documentation]   COCO is CRNC object, only
+    ${mcRNC} =        ismcRNC
+    Run Keyword If    ${mcRNC} == False    Plan Download And Upload And Compare   COCO
+
+Download And Check Object Structure (COCO)
+    [Documentation]   COCO is CRNC object, only
+    ${mcRNC} =        ismcRNC
+    Run Keyword If    ${mcRNC} == False    Download And Check Object Structure   COCO
+
+Download, upload and compare plans (RNAC)
+    Plan Download And Upload And Compare   RNAC
+
+Download And Check Object Structure (RNAC)
+    Download And Check Object Structure   RNAC
+
+Download, upload and compare plans (PFL)
+    Plan Download And Upload And Compare   PFL
+
+Download And Check Object Structure (PFL)
+    Download And Check Object Structure   PFL
+
+Download, upload and compare plans (CBCI)
+    Plan Download And Upload And Compare   CBCI
+
+Download And Check Object Structure (CBCI)
+    Download And Check Object Structure   CBCI
+
+Download, upload and compare plans (IUPSIP)
+    Plan Download And Upload And Compare   IUPSIP
+
+Download And Check Object Structure (IUPSIP)
+    Download And Check Object Structure   IUPSIP
+
+Download, upload and compare plans (IUCSIP)
+    Plan Download And Upload And Compare   IUCSIP
+
+Download And Check Object Structure (IUCSIP)
+    Download And Check Object Structure   IUCSIP
+
+Download, upload and compare plans (ADJL)
+    Plan Download And Upload And Compare   ADJL
+
+Download And Check Object Structure (ADJL)
+    Download And Check Object Structure   ADJL
+
+Download, upload and compare plans (IPQM)
+    Plan Download And Upload And Compare   IPQM
+
+Download And Check Object Structure (IPQM)
+    Download And Check Object Structure   IPQM
+
+Download, upload and compare plans (WANE)
+    Plan Download And Upload And Compare   WANE
+
+Download And Check Object Structure (WANE)
+    Download And Check Object Structure   WANE
+
+Download, upload and compare plans (WSG)
+    Plan Download And Upload And Compare   WSG
+
+Download and check object structure (WSG)
+    Download And Check Object Structure   WSG
+
+Download, upload and compare plans (TQM)
+    Plan Download And Upload And Compare   TQM
+
+Download and check object structure (TQM)
+    Download And Check Object Structure   TQM
+
+Download, upload and compare plans (IUCS)
+    Plan Download And Upload And Compare   IUCS
+
+Download And Check Object Structure (IUCS)
+    Download And Check Object Structure   IUCS
+
+Download, upload and compare plans (WRAB)
+    Plan Download And Upload And Compare   WRAB
+
+Download And Check Object Structure (WRAB)
+    Download And Check Object Structure   WRAB
+
+Download, upload and compare plans (IUPS)
+    Plan Download And Upload And Compare   IUPS
+
+Download And Check Object Structure (IUPS)
+    Download And Check Object Structure   IUPS
+
+Download, upload and compare plans (CMOB)
+    Plan Download And Upload And Compare   CMOB
+
+Download And Check Object Structure (CMOB)
+    Download And Check Object Structure   CMOB
+
+Download, upload and compare plans (RNFC)
+    Plan Download And Upload And Compare   RNFC
+
+Download And Check Object Structure (RNFC)
+    Download And Check Object Structure   RNFC
+
+Download, upload and compare plans (VCEL)
+    Plan Download And Upload And Compare   VCEL
+
+Download And Check Object Structure (VCEL)
+    Download And Check Object Structure   VCEL
+
+Download, upload and compare plans (IUR)
+    Plan Download And Upload And Compare   IUR
+
+Download And Check Object Structure (IUR)
+    Download And Check Object Structure   IUR
+
+Download, upload and compare plans (ADJI)
+    Plan Download And Upload And Compare   ADJI
+
+Download And Check Object Structure (ADJI)
+    Download And Check Object Structure   ADJI
+
+Download, upload and compare plans (ADJD)
+    Plan Download And Upload And Compare   ADJD
+
+Download And Check Object Structure (ADJD)
+    Download And Check Object Structure   ADJD
+
+Download, upload and compare plans (ADJS)
+    Plan Download And Upload And Compare   ADJS
+
+Download And Check Object Structure (ADJS)
+    Download And Check Object Structure   ADJS
+
+Download, upload and compare plans (ADJG)
+    Plan Download And Upload And Compare   ADJG
+
+Download And Check Object Structure (ADJG)
+    Download And Check Object Structure   ADJG
+
+Download, upload and compare plans (RNTRM)
+    run_jondoe_cmd              create -D ${XML_PATH}/RNWPLAND_RNTRM.XML -U ${XML_PATH}/test_ul_plan.xml -l 2
+    ${dl_xml} =                 type_a_file    ${XML_PATH}//RNWPLAND_RNTRM.XML
+    ${ul_xml} =                 type_a_file    ${XML_PATH}/test_ul_plan.xml
+
+    ${cmdata_dl} =              get_cmdata_elem_from_text    ${dl_xml}
+    ${cmdata_ul} =              get_cmdata_elem_from_text    ${ul_xml}
+
+    ${diff_list} =              compare_plans_cmdata    ${cmdata_dl}    ${cmdata_ul}
+    Remove Parameters           RNTRM    ${diff_list}
+    Should Be Empty             ${diff_list}
+
+Download And Check Object Structure (RNTRM)
+    Download And Check Object Structure   RNTRM
+
+Download, upload and compare plans (WBTS)
+    Plan Download And Upload And Compare   WBTS
+
+Download And Check Object Structure (WBTS)
+    Download And Check Object Structure   WBTS
+
+Download, upload and compare plans (RNPS)
+    Plan Download And Upload And Compare   RNPS
+
+Download And Check Object Structure (RNPS)
+    Download And Check Object Structure   RNPS
+
+Download, upload and compare plans (HOPL)
+    Plan Download And Upload And Compare   HOPL
+
+Download And Check Object Structure (HOPL)
+    Download And Check Object Structure   HOPL
+
+Download, upload and compare plans (HOPG)
+    Plan Download And Upload And Compare   HOPG
+
+Download And Check Object Structure (HOPG)
+    Download And Check Object Structure   HOPG
+
+Download, upload and compare plans (HOPS)
+    Plan Download And Upload And Compare   HOPS
+
+Download And Check Object Structure (HOPS)
+    Download And Check Object Structure   HOPS
+
+Download, upload and compare plans (HOPI)
+    Plan Download And Upload And Compare   HOPI
+
+Download And Check Object Structure (HOPI)
+    Download And Check Object Structure   HOPI
+
+Download, upload and compare plans (RNRLC)
+    Plan Download And Upload And Compare   RNRLC
+
+Download And Check Object Structure (RNRLC)
+    Download And Check Object Structure   RNRLC
+
+Download, upload and compare plans (IUO)
+    Plan Download And Upload And Compare   IUO
+
+Download And Check Object Structure (IUO)
+    Download And Check Object Structure   IUO
+
+Download, upload and compare plans (WAC)
+    Plan Download And Upload And Compare   WAC
+
+Download And Check Object Structure (WAC)
+    Download And Check Object Structure   WAC
+
+Download, upload and compare plans (RNMOBI)
+    Plan Download And Upload And Compare   RNMOBI
+
+Download And Check Object Structure (RNMOBI)
+    Download And Check Object Structure   RNMOBI
+
+Download, upload and compare plans (IPNB)
+    Plan Download And Upload And Compare   IPNB
+
+Download And Check Object Structure (IPNB)
+    Download And Check Object Structure   IPNB
+
+Download, upload and compare plans (BKPRNC)
+    [Documentation]   BKPRNC is CRNC object, only
+    ${mcRNC} =        ismcRNC
+    Run Keyword If    ${mcRNC} == False    Plan Download And Upload And Compare   BKPRNC
+
+Download And Check Object Structure (BKPRNC)
+    [Documentation]   BKPRNC is CRNC object, only
+    ${mcRNC} =        ismcRNC
+    Run Keyword If    ${mcRNC} == False    Download And Check Object Structure   BKPRNC
+
+Download, upload and compare plans (FMCL)
+    Plan Download And Upload And Compare   FMCL
+
+Download And Check Object Structure (FMCL)
+    Download And Check Object Structure   FMCL
+
+Download, upload and compare plans (ADJE)
+    Plan Download And Upload And Compare   ADJE
+
+Download And Check Object Structure (ADJE)
+    Download And Check Object Structure   ADJE
+
+Download, upload and compare plans (VBTS)
+    Plan Download And Upload And Compare   VBTS
+
+Download And Check Object Structure (VBTS)
+    Download And Check Object Structure   VBTS
+
+Download, upload and compare plans (RNC)
+    Plan Download And Upload And Compare   RNC
+
+Download And Check Object Structure (RNC)
+    Download And Check Object Structure   RNC
+
+Download, upload and compare plans (PREBTS)
+    [Documentation]   PREBTS is CRNC object, only
+    ${mcRNC} =        ismcRNC
+    Run Keyword If    ${mcRNC} == False    Plan Download And Upload And Compare   PREBTS
+
+Download And Check Object Structure (PREBTS)
+    [Documentation]   PREBTS is CRNC object, only
+    ${mcRNC} =        ismcRNC
+    Run Keyword If    ${mcRNC} == False    Download And Check Object Structure   PREBTS
+
+Download, upload and compare plans (WCEL)
+    Plan Download And Upload And Compare   WCEL
+
+Download And Check Object Structure (WCEL)
+    Download And Check Object Structure   WCEL
+
+Download, upload and compare plans (WLCSE)
+    Plan Download And Upload And Compare   WLCSE
+
+Download And Check Object Structure (WLCSE)
+    Download And Check Object Structure   WLCSE
+
+Download, upload and compare plans (FMCS)
+    Plan Download And Upload And Compare   FMCS
+
+Download And Check Object Structure (FMCS)
+    Download And Check Object Structure   FMCS
+
+Download, upload and compare plans (FMCI)
+    Plan Download And Upload And Compare   FMCI
+
+Download And Check Object Structure (FMCI)
+    Download And Check Object Structure   FMCI
+
+Download, upload and compare plans (FMCG)
+    Plan Download And Upload And Compare   FMCG
+
+Download And Check Object Structure (FMCG)
+    Download And Check Object Structure   FMCG
+
+Download, upload and compare plans (WSMLC)
+    Plan Download And Upload And Compare   WSMLC
+
+Download And Check Object Structure (WSMLC)
+    Download And Check Object Structure   WSMLC
+
+Download, upload and compare plans (RNHSPA)
+    Plan Download And Upload And Compare   RNHSPA
+
+Download And Check Object Structure (RNHSPA)
+    Download And Check Object Structure   RNHSPA
+
+Download, upload and compare plans (RNCERM)
+    ${ismcRNC} =                ismcRNC
+    Run Keyword If              ${ismcRNC}==True   Plan Download And Upload And Compare   RNCERM
+
+Download And Check Object Structure (RNCERM)
+    ${ismcRNC} =                ismcRNC
+    Run Keyword If              ${ismcRNC}==True   Download And Check Object Structure   RNCERM
+
+*** Keywords ***
+Plan Download And Upload And Compare
+    [Arguments]     ${obj_name}
+    [Documentation]             This test case downloads a plan, then uploads it and compares that the plans are equal
+
+    run_jondoe_cmd              create -D ${XML_PATH}/RNWPLAND_${obj_name}.XML -U ${XML_PATH}/test_ul_plan.xml -l 2
+    ${dl_xml} =                 type_a_file    ${XML_PATH}//RNWPLAND_${obj_name}.XML
+    ${ul_xml} =                 type_a_file    ${XML_PATH}/test_ul_plan.xml
+
+    ${cmdata_dl} =              get_cmdata_elem_from_text    ${dl_xml}
+    ${cmdata_ul} =              get_cmdata_elem_from_text    ${ul_xml}
+
+    ${diff_list} =              compare_plans_cmdata    ${cmdata_dl}    ${cmdata_ul}
+    Remove Parameters           ${obj_name}    ${diff_list}
+    Should Be Empty             ${diff_list}
+
+Download And Check Object Structure
+    [Arguments]                 ${obj_name}
+    [Documentation]             This test case downloads a plan, then it checks that the parameter fields got correctly to the structure
+
+    ${output} =                 run_jondoe_cmd    parse -F ${XML_PATH}/RNWPLAND_${obj_name}.XML -l 2
+
+    ${obj} =                    get_obj_from_jondoe_output          ${output}
+
+    ${dl_xml} =                 type_a_file    ${XML_PATH}/RNWPLAND_${obj_name}.XML
+    ${cmdata_dl} =              get_cmdata_elem_from_text    ${dl_xml}
+
+    ${diff_list} =              compare_plan_cmdata_and_obj  ${obj}  ${cmdata_dl}
+    Remove Parameters           ${obj_name}    ${diff_list}
+    Should Be Empty             ${diff_list}
+    remove_log_pattern          ${LOG_MON_HANDLE}   FOOLIB:.*param.*not found    ${true}
+
+Remove Parameters
+    [Documentation]             Removes unexpected parameters ....
+    [Arguments]                 ${obj}    ${diff_list}   ${features}=${empty}
+
+    print_diff_list                 ${diff_list}
+    get_param_infos_from_diff_list  ${obj}   ${diff_list}  ${LOG_MON_HANDLE}
+  
+    remove_dl_ul_only_diffs     ${diff_list}
+    print_diff_list             ${diff_list}
+    remove_oms_only_diffs       ${diff_list}
+    print_diff_list             ${diff_list}
+    remove_extra_list_items     ${diff_list}
+    print_diff_list             ${diff_list}
+    remove_deleted_diffs        ${diff_list}   checkfeatures=${features}
+    print_diff_list             ${diff_list}
+
+
+Sanity Check
+    [Documentation]             Just checks that the upload plan contains something valid (not empty)
+    [Arguments]                 ${ul_xml}  ${diff_list}
+
+    print_diff_list             ${diff_list}
+    Should Not Be Empty         ${diff_list}
+
+    Should Contain              ${ul_xml}   CellRange
+    Should Contain              ${ul_xml}   BlindHORSCPThrTarget
+    Should Contain              ${ul_xml}   CSCNNRI
+    Should Contain              ${ul_xml}   VCCBundleParams
+
+Check Log
+    [Arguments]             ${pattern}
+
+    sleep                   2
+    check_log_pattern       ${LOG_MON_HANDLE}  ${pattern}    remove=${true}
+
+#Test Case Setup
+    #run_cmd        logger ....................................................................................
+    #run_cmd        logger "${TEST_NAME}"
+    #run_cmd        logger ....................................................................................
+
+Test Case Teardown
+    Run Keyword And Ignore Error    delete_a_file  ${XML_PATH}/test_ul_plan.xml
+
+Suite Setup
+    # Overriding resource file variables here with whatever we
+    # get from the command line
+    ${vars} =    Get Variables
+    setResouceVariables  ${vars}
+    metadata_connect
+    metadata_suite_setup
+
+    ${LOG_MON_HANDLE}=    start_log_monitoring_with_args    pattern=FOO
+    Set Suite Variable     ${LOG_MON_HANDLE}
+
+Suite Teardown
+    # No open object tree files exist
+    foolib_mem_files_check
+
+    sleep  1
+    stop_log_monitoring    ${LOG_MON_HANDLE}
+    check_log_pattern      ${LOG_MON_HANDLE}  FOOLIB   should_match=${false}
+    run_jondoe_cmd   cleanup
+    metadata_suite_teardown
+    metadata_disconnect
+
